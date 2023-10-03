@@ -43,14 +43,24 @@ const HomeScreen: FC<IParams> = async ({
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2>Лідери продажу</h2>
-              <SliderProducts productList={responseProducts.data} />
+              <div className={style.wrapSwiper}>
+                <SliderProducts
+                  productList={responseProducts.data}
+                  slidesPerView={{ desktop: 3, tablet: 2, mobile: 1 }}
+                />
+              </div>
             </section>
           )}
 
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2>Переглянуті</h2>
-              <SliderProducts productList={responseProducts.data} />
+              <div className={style.wrapSwiper}>
+                <SliderProducts
+                  productList={responseProducts.data}
+                  slidesPerView={{ desktop: 3, tablet: 2, mobile: 1 }}
+                />
+              </div>
             </section>
           )}
 
