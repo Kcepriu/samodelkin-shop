@@ -1,3 +1,7 @@
 .sectionSliderProducts {
   @apply mt-20 mb-28;
 }
+
+.wrapSwiper {
+  @apply w-full;
+}

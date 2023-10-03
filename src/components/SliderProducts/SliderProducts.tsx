@@ -14,11 +14,16 @@ import style from "./SliderProducts.module.css";
 
 interface IProps {
   productList: IProduct[];
+  slidesPerView: {
+    desktop: number;
+    tablet: number;
+    mobile: number;
+  };
 }
 
-const SliderProducts: FC<IProps> = ({ productList }) => {
+const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
   return (
-    <div className={style.wrapSwiper}>
+    <>
       <Swiper
         loop={true}
         navigation={{
@@ -30,15 +35,15 @@ const SliderProducts: FC<IProps> = ({ productList }) => {
         className="mySwiperProduct"
         breakpoints={{
           480: {
-            slidesPerView: 1,
+            slidesPerView: slidesPerView.mobile,
             spaceBetween: 10,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: slidesPerView.tablet,
             spaceBetween: 24,
           },
           1440: {
-            slidesPerView: 3,
+            slidesPerView: slidesPerView.desktop,
             spaceBetween: 24,
           },
         }}
@@ -59,7 +64,7 @@ const SliderProducts: FC<IProps> = ({ productList }) => {
           Next
         </button>
       </div> */}
-    </div>
+    </>
   );
 };
 

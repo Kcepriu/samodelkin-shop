@@ -25,3 +25,10 @@
 .section {
   @apply mt-20;
 }
+
+.wrapSwiper {
+  @apply w-full 
+  sm:max-w-screen-sm 
+  md:max-w-screen-md 
+  lg:max-w-[924px];
+}
