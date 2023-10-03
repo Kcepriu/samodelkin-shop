@@ -92,12 +92,6 @@ class HttpService {
 
   // * get sales leaders
   async getSalesLeaders(): Promise<IResponseProduct | null> {
-    // const paramsObj: { [key: string]: string } = {
-    //   ...ADD_SEARCH_PARAMS["product.data"],
-    //   "pagination[pageSize]": this.countPageOnPage,
-    //   "pagination[page]": "1",
-    // };
-
     const paramsObj: { [key: string]: string } = {
       "pagination[pageSize]": "24",
       "pagination[page]": "1",
@@ -156,7 +150,27 @@ class HttpService {
       return null;
     }
   }
+
+  // * get Last Reviews for HOME page
+  async getLastReviews(): Promise<IResponseAboutUs | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_US}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        // throw new Error("Failed to fetch data");
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      // throw new Error("Failed to fetch data");
+      return null;
+    }
+  }
 }
+
 const httpServices = new HttpService();
 
 export default httpServices;

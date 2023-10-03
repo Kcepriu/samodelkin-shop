@@ -60,19 +60,3 @@ export const TYPES_ADD_INFORMATION_PRODUCT = [
     url: ADD_INFORMATION_ROUTES.VIDEOS,
   },
 ];
-
-// TODO delete
-export const ADD_SEARCH_PARAMS = {
-  "order.data": {
-    "populate[0]": "products",
-    "populate[1]": "products.product.*",
-    "populate[2]": "products.product.images.*",
-    "populate[3]": "adresDelivery",
-    "populate[4]": "adresDelivery.delivery_service",
-  },
-  "product.data": {
-    "populate[categories]": "*",
-    "populate[images]": "*",
-    "populate[propertys][populate]": "*",
-  },
-};
