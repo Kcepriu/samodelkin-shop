@@ -17,6 +17,9 @@ export const BACKEND_ROUTES = {
   COLORS: "/api/colors",
   DELIVERY_SERVICES: "/api/delivery-services",
   ORDERS: "/api/orders",
+  ABOUT_US: "/api/about-us-section",
+  CATEGORY_DESCRIPTION: "/api/category-descriptions",
+  PRODUCT_DESCRIPTION: "/api/product-descriptions",
 };
 
 // Frontend routes
@@ -58,6 +61,7 @@ export const TYPES_ADD_INFORMATION_PRODUCT = [
   },
 ];
 
+// TODO delete
 export const ADD_SEARCH_PARAMS = {
   "order.data": {
     "populate[0]": "products",

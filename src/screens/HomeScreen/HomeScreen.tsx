@@ -3,7 +3,8 @@ import Image from "next/image";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import style from "./HomeScreen.module.css";
 import heroImage from "@/assets/hero.jpg";
-import TypeGames from "@/components/TypeGames/TypeGames";
+// import TypeGames from "@/components/TypeGames/TypeGames";
+import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import httpServices from "@/services/http";
 
@@ -60,8 +61,7 @@ const HomeScreen: FC<IParams> = async ({
         </div>
       </div>
       <section className={style.section}>
-        <h2>About Us</h2>
-        <p>Content about us</p>
+        <AboutUsSection />
       </section>
     </>
   );

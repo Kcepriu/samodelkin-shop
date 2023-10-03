@@ -1,0 +1,17 @@
+.wrapContent {
+  @apply flex gap-6 mt-20
+   
+  data-[reverse=true]:flex-row-reverse
+  data-[after-title=true]:mt-8;
+}
+.wrapContent .wrapText {
+  @apply overflow-hidden flex flex-col justify-center;
+}
+
+.wrapImage {
+  @apply overflow-hidden;
+}
+
+.image {
+  @apply w-full;
+}

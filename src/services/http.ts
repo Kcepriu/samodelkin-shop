@@ -1,10 +1,7 @@
 import { cookies } from "next/headers";
 
-import {
-  STORAGE_KEYS,
-  BACKEND_ROUTES,
-  ADD_SEARCH_PARAMS,
-} from "@/constants/app-keys.const";
+import { STORAGE_KEYS, BACKEND_ROUTES } from "@/constants/app-keys.const";
+import { IResponseAboutUs } from "@/types/articles.type";
 
 class HttpService {
   private accessToken: string = "";
@@ -55,7 +52,6 @@ class HttpService {
     category: string;
   }): Promise<IResponseProduct | null> {
     const paramsObj: { [key: string]: string } = {
-      ...ADD_SEARCH_PARAMS["product.data"],
       "pagination[pageSize]": this.countPageOnPage,
       "pagination[page]": page,
     };
@@ -79,11 +75,7 @@ class HttpService {
 
   // * get ONE Products
   async getOneProducts(slug: string): Promise<IResponseProduct | null> {
-    const params = new URLSearchParams({
-      ...ADD_SEARCH_PARAMS["product.data"],
-    });
-
-    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS}/${slug}?${params}`;
+    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS}/${slug}`;
 
     try {
       const res = await fetch(url);
@@ -107,7 +99,6 @@ class HttpService {
     // };
 
     const paramsObj: { [key: string]: string } = {
-      ...ADD_SEARCH_PARAMS["product.data"],
       "pagination[pageSize]": "24",
       "pagination[page]": "1",
     };
@@ -131,6 +122,25 @@ class HttpService {
   // * get Categories
   async getCategories(): Promise<IResponseCategories | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.CATEGORIES}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        // throw new Error("Failed to fetch data");
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      // throw new Error("Failed to fetch data");
+      return null;
+    }
+  }
+
+  // * get About Us
+  async getAboutUs(): Promise<IResponseAboutUs | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_US}`;
 
     try {
       const res = await fetch(url);
