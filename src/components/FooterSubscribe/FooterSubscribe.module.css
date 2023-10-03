@@ -1,0 +1,14 @@
+.form {
+  @apply max-w-[402px] flex flex-col gap-6;
+}
+
+.input {
+  @apply px-2 py-1;
+}
+
+.button {
+  @apply border rounded w-full px-4 py-2 bg-lime-400;
+}
+.form .button {
+  @apply bg-slate-400;
+}

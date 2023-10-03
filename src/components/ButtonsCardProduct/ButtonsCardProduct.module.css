@@ -1,0 +1,3 @@
+.wrapButtom {
+  @apply flex justify-end pr-5;
+}

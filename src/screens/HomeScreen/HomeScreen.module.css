@@ -1,0 +1,27 @@
+.wrap {
+  @apply flex;
+}
+
+.wrapHomePage {
+  @apply w-full flex gap-6;
+}
+
+.wrapFilter {
+  @apply w-[292px];
+}
+
+.wrapContent {
+  @apply flex-grow;
+}
+
+.imageHero {
+  @apply w-full max-w-[924px];
+}
+
+.sectionTypeGames {
+  @apply mt-6;
+}
+
+.section {
+  @apply mt-20;
+}

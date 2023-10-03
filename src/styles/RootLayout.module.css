@@ -1,0 +1,25 @@
+.container {
+  @apply mx-auto 
+  px-3 
+  w-full 
+  flex 
+  flex-col 
+  sm:max-w-screen-sm 
+  md:max-w-screen-md 
+  lg:max-w-screen-lg 
+  lg:px-[100px] 
+  bg-gray-300
+  overflow-hidden;
+}
+
+.wrapBody {
+  @apply flex flex-col  justify-between min-h-screen;
+}
+
+.wrapMain {
+  @apply flex-grow h-full  mt-6;
+}
+
+.wrapFooter {
+  @apply mt-20;
+}

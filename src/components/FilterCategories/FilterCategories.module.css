@@ -1,0 +1,20 @@
+.listCategory {
+  @apply ml-3 flex flex-col gap-1 items-stretch;
+}
+
+.buttonCategory {
+  @apply px-4 
+  py-2
+  w-full 
+  text-start 
+  rounded-lg
+
+  transition
+  hover:bg-indigo-400
+   focus:bg-indigo-400
+   
+   focus:text-gray-100
+   hover:text-gray-100
+  
+  data-[active=true]:bg-indigo-500;
+}

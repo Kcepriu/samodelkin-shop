@@ -1,0 +1,3 @@
+.wrapDevelopers {
+  @apply flex  gap-20 justify-center;
+}

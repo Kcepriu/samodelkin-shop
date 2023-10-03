@@ -1,0 +1,26 @@
+.wrapHeader {
+  @apply flex justify-between pt-1 pb-1;
+}
+
+.wrapNavigate {
+  @apply flex justify-between gap-32;
+}
+
+.wrapButton {
+  @apply flex justify-between gap-12;
+}
+
+.link {
+  @apply hover:bg-indigo-400;
+}
+
+.icon {
+  @apply w-6 h-6
+   text-orange-800 
+   fill-red-800
+    stroke-green-700
+    stroke-2;
+}
+.link .icon {
+  @apply hover:bg-indigo-400 hover:text-rose-600;
+}

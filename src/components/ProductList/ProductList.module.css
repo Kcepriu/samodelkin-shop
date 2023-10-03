@@ -1,0 +1,10 @@
+.listCard {
+  @apply flex
+  flex-wrap
+  justify-between
+  gap-6;
+}
+
+.elementCard {
+  @apply w-[292px];
+}

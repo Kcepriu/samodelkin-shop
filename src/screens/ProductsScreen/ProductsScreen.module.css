@@ -1,0 +1,15 @@
+.wrapPage {
+  @apply w-full flex gap-6;
+}
+
+.wrapFilter {
+  @apply w-[292px];
+}
+
+.wrapContent {
+  @apply flex-grow;
+}
+
+.wrapSection {
+  @apply mt-20;
+}

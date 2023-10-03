@@ -1,0 +1,45 @@
+.wrapCard {
+  @apply relative  
+  w-full
+  h-[550px] 
+  overflow-hidden;
+}
+
+.wrapCard:hover {
+  @apply overflow-visible;
+}
+
+.card {
+  @apply flex flex-col p-3  
+  w-full 
+  max-h-full
+  h-[550px] 
+  content-center 
+  border 
+  rounded-xl 
+  bg-gray-300;
+}
+
+.card:hover {
+  @apply absolute max-h-max h-auto z-10 shadow-lg shadow-gray-500/80;
+}
+
+.image {
+  @apply h-80 w-auto ml-auto mr-auto object-contain;
+}
+
+.title {
+  @apply mt-2 text-lg font-bold;
+}
+
+.information {
+  @apply overflow-y-auto mt-1;
+}
+
+.appearInformation {
+  @apply hidden;
+}
+
+.card:hover .appearInformation {
+  @apply block;
+}

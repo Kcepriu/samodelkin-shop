@@ -1,0 +1,34 @@
+.wrapComponent {
+  @apply flex flex-col w-[600px];
+}
+
+.form {
+  @apply flex flex-col gap-4 mt-4;
+}
+
+.wrapField {
+  @apply flex flex-col gap-2;
+}
+
+.field {
+  @apply ml-3;
+}
+
+.fieldTextArea {
+  @apply ml-3 h-52;
+}
+
+.wrapButton {
+  @apply flex justify-end gap-8;
+}
+
+.button {
+  @apply px-4 py-4 
+  border 
+  rounded-lg
+  w-1/3;
+}
+
+.button:hover {
+  @apply shadow-lg shadow-gray-500/80;
+}

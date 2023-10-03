@@ -1,0 +1,9 @@
+.wrapSectionSlider {
+  @apply h-full  
+  w-full  
+  overflow-hidden;
+}
+
+.wrapSlider {
+  @apply flex flex-col w-full h-full gap-2;
+}

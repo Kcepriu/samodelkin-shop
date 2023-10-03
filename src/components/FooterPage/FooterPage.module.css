@@ -1,0 +1,9 @@
+.wrapFooter {
+  @apply pt-1 pb-2;
+}
+.wrapTopRow {
+  @apply flex justify-between w-full;
+}
+.wrapBottomRow {
+  @apply text-center mt-2;
+}

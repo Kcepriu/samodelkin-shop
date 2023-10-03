@@ -1,0 +1,15 @@
+.listTypeGames {
+  @apply flex gap-6 justify-around flex-wrap;
+}
+
+.elementTypeGames {
+  @apply rounded-lg border  h-28 w-36 px-6 py-1 text-center;
+}
+
+.elementTypeGames:hover {
+  @apply shadow-lg shadow-gray-500/80;
+}
+
+.link {
+  @apply w-full h-full block;
+}
