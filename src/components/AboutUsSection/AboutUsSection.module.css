@@ -1,0 +1,7 @@
+.titleSection {
+  @apply text-center;
+}
+
+.wrapContent {
+  @apply mt-8;
+}
