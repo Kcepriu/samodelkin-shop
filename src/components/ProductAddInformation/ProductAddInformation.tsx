@@ -2,7 +2,9 @@ import { FC } from "react";
 import Link from "next/link";
 import httpServices from "@/services/http";
 import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAddInfoReviews";
+import ProductAddInfoCharacteristics from "../ProductAddInfoCharacteristics/ProductAddInfoCharacteristics";
 import ProductDescription from "../ProductDescription/ProductDescription";
+import ProductAddInfoVideos from "../ProductAddInfoVideos/ProductAddInfoVideos";
 import {
   FRONTEND_ROUTES,
   ADD_INFORMATION_ROUTES,
@@ -29,6 +31,9 @@ const ProductAddInformation: FC<IProps> = async ({
 
   if (!responseProduct || responseProduct.data.length === 0) return <></>;
 
+  const product = responseProduct.data[0];
+  const videos = product.attributes.videos;
+
   return (
     <>
       <ul className={style.listTypesInfo}>
@@ -50,13 +55,21 @@ const ProductAddInformation: FC<IProps> = async ({
         })}
       </ul>
       {currentUrlInfo === ADD_INFORMATION_ROUTES.DESCRIBE && (
-        <ProductDescription slugProduct={slug} />
+        <ProductDescription productId={String(product.id)} />
       )}
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.INFO && <p>INFO</p>}
+
+      {currentUrlInfo === ADD_INFORMATION_ROUTES.INFO && (
+        <ProductAddInfoCharacteristics product={product} />
+      )}
+
       {currentUrlInfo === ADD_INFORMATION_ROUTES.REVIEWS && (
-        <ProductAddInfoReviews product={responseProduct.data[0]} />
+        <ProductAddInfoReviews product={product} />
       )}
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.VIDEOS && <p>VIDEOS</p>}
+
+      {currentUrlInfo === ADD_INFORMATION_ROUTES.VIDEOS && (
+        <ProductAddInfoVideos videos={videos} />
+      )}
+
       {currentUrlInfo === ADD_INFORMATION_ROUTES.MANUALS && <p>MANUAL</p>}
     </>
   );

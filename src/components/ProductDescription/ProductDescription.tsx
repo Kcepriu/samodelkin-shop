@@ -5,13 +5,13 @@ import { TypeDescription } from "@/types/generalTypes/articles.type";
 import style from "./ProductDescription.module.css";
 
 interface IPros {
-  slugProduct: string;
+  productId: string;
 }
 const ProductDescription: FC<IPros> = async ({
-  slugProduct,
+  productId,
 }): Promise<JSX.Element> => {
   const respProductDescription = await httpServices.getProductDescriptions(
-    slugProduct
+    productId
   );
 
   if (!respProductDescription || respProductDescription.data.length === 0)

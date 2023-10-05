@@ -172,9 +172,9 @@ class HttpService {
 
   // * get PRODUCT_DESCRIPTION
   async getProductDescriptions(
-    slugProduct: string
+    productId: string
   ): Promise<IResponseProductDescription | null> {
-    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCT_DESCRIPTION}/${slugProduct}`;
+    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCT_DESCRIPTION}/${productId}`;
 
     try {
       const res = await fetch(url);
