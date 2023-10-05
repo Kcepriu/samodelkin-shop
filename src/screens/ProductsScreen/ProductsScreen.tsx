@@ -3,6 +3,7 @@ import httpServices from "@/services/http";
 import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
+import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
 
 import style from "./ProductsScreen.module.css";
 
@@ -39,7 +40,7 @@ const ProductsScreen: FC<IParams> = async ({
         </div>
       </section>
       <section className={style.wrapSection}>
-        <p>about Categories</p>
+        <CategoryDescription categoryId={String(category)} />
       </section>
     </>
   );

@@ -27,6 +27,12 @@ const config: Config = {
         lg: "1440px",
         // => @media (min-width: 1280px) { ... }
       },
+      margin: {
+        describe_big: "80px",
+        describe_big_after_title: "32px",
+        describe: "32px",
+        describe_after_title: "32px",
+      },
     },
   },
   plugins: [],

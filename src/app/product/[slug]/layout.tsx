@@ -1,4 +1,4 @@
-import { FC, ReactNode, Suspense } from "react";
+import { FC, ReactNode } from "react";
 import Product from "@/components/Product/Product";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import httpServices from "@/services/http";

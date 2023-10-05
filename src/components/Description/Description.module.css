@@ -1,0 +1,8 @@
+.wrapContent {
+  @apply mt-describe_big 
+  data-[after-title=true]:mt-describe_big_after_title
+  data-[category=true]:mt-describe
+  data-[category=true]:data-[after-title=true]:mt-describe_after_title
+  data-[product=true]:mt-describe
+  data-[product=true]:data-[after-title=true]:mt-describe_after_title;
+}

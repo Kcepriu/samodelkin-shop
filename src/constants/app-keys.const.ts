@@ -20,6 +20,10 @@ export const BACKEND_ROUTES = {
   ABOUT_US: "/api/about-us-section",
   CATEGORY_DESCRIPTION: "/api/category-descriptions",
   PRODUCT_DESCRIPTION: "/api/product-descriptions",
+  REVIEWS: "/api/reviews",
+  REPLY_TO_REVIEWS: "/api/replyToReview",
+  CHANGE_STATUS_REVIEWS: "/api/changeStatusReview",
+  CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
 };
 
 // Frontend routes
@@ -32,7 +36,7 @@ export const FRONTEND_ROUTES = {
   CONTACTS: "/contacts",
   FAVORITES: "/favorites",
   PAYMENT: "/payment_and_delivery",
-  ACCOUNT: "account",
+  ACCOUNT: "/account",
 };
 
 export const ADD_INFORMATION_ROUTES = {
@@ -40,6 +44,7 @@ export const ADD_INFORMATION_ROUTES = {
   INFO: "/info",
   REVIEWS: "/reviews",
   VIDEOS: "/videos",
+  MANUALS: "/manuals",
 };
 
 export const TYPES_ADD_INFORMATION_PRODUCT = [
@@ -59,20 +64,8 @@ export const TYPES_ADD_INFORMATION_PRODUCT = [
     title: "Відео",
     url: ADD_INFORMATION_ROUTES.VIDEOS,
   },
+  {
+    title: "Інструкції",
+    url: ADD_INFORMATION_ROUTES.MANUALS,
+  },
 ];
-
-// TODO delete
-export const ADD_SEARCH_PARAMS = {
-  "order.data": {
-    "populate[0]": "products",
-    "populate[1]": "products.product.*",
-    "populate[2]": "products.product.images.*",
-    "populate[3]": "adresDelivery",
-    "populate[4]": "adresDelivery.delivery_service",
-  },
-  "product.data": {
-    "populate[categories]": "*",
-    "populate[images]": "*",
-    "populate[propertys][populate]": "*",
-  },
-};

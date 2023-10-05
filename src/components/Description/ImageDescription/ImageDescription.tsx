@@ -1,15 +1,15 @@
 import { IImageArticle } from "@/types/articles.type";
 import { FC } from "react";
 import Image from "next/image";
-import style from "./ImageAboutUsSection.module.css";
+import style from "./ImageDescription.module.css";
+
 interface IProps {
   params: IImageArticle;
-  afterTitle: boolean;
 }
 
-const ImageAboutUsSection: FC<IProps> = ({ params, afterTitle }) => {
+const ImageDescription: FC<IProps> = ({ params }) => {
   return (
-    <div className={style.wrapContent} data-after-title={afterTitle}>
+    <div className={style.wrapContent}>
       <Image
         className={style.image}
         src={params.image.data.attributes.url}
@@ -23,4 +23,4 @@ const ImageAboutUsSection: FC<IProps> = ({ params, afterTitle }) => {
   );
 };
 
-export default ImageAboutUsSection;
+export default ImageDescription;

@@ -4,3 +4,9 @@ export enum TypeArticles {
   Content = "articles.content",
   Image = "articles.image",
 }
+
+export enum TypeDescription {
+  AboutUs = "aboutUs",
+  Product = "product",
+  Category = "category",
+}

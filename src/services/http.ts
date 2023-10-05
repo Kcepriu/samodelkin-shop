@@ -1,7 +1,11 @@
 import { cookies } from "next/headers";
 
 import { STORAGE_KEYS, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import { IResponseAboutUs } from "@/types/articles.type";
+import {
+  IResponseAboutUs,
+  IResponseCategoryDescription,
+  IResponseProductDescription,
+} from "@/types/articles.type";
 
 class HttpService {
   private accessToken: string = "";
@@ -92,12 +96,6 @@ class HttpService {
 
   // * get sales leaders
   async getSalesLeaders(): Promise<IResponseProduct | null> {
-    // const paramsObj: { [key: string]: string } = {
-    //   ...ADD_SEARCH_PARAMS["product.data"],
-    //   "pagination[pageSize]": this.countPageOnPage,
-    //   "pagination[page]": "1",
-    // };
-
     const paramsObj: { [key: string]: string } = {
       "pagination[pageSize]": "24",
       "pagination[page]": "1",
@@ -127,13 +125,11 @@ class HttpService {
       const res = await fetch(url);
 
       if (!res.ok) {
-        // throw new Error("Failed to fetch data");
         return null;
       }
 
       return res.json();
     } catch {
-      // throw new Error("Failed to fetch data");
       return null;
     }
   }
@@ -146,17 +142,71 @@ class HttpService {
       const res = await fetch(url);
 
       if (!res.ok) {
-        // throw new Error("Failed to fetch data");
         return null;
       }
 
       return res.json();
     } catch {
-      // throw new Error("Failed to fetch data");
+      return null;
+    }
+  }
+
+  // * get CATEGORY_DESCRIPTION
+  async getCategoryDescriptions(
+    idCategory: string
+  ): Promise<IResponseCategoryDescription | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CATEGORY_DESCRIPTION}/${idCategory}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get PRODUCT_DESCRIPTION
+  async getProductDescriptions(
+    productId: string
+  ): Promise<IResponseProductDescription | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCT_DESCRIPTION}/${productId}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get Last Reviews for HOME page
+  async getLastReviews(): Promise<IResponseReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
       return null;
     }
   }
 }
+
 const httpServices = new HttpService();
 
 export default httpServices;

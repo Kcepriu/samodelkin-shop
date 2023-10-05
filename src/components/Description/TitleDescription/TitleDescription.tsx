@@ -5,8 +5,8 @@ interface IProps {
   params: ITitleArticle;
 }
 
-const TitleAboutUsSection: FC<IProps> = ({ params }) => {
+const TitleDescription: FC<IProps> = ({ params }) => {
   return <h2>{params.title}</h2>;
 };
 
-export default TitleAboutUsSection;
+export default TitleDescription;

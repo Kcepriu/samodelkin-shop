@@ -4,26 +4,25 @@ interface IResponseImages {
 
 interface IImage {
   id: number;
-  attributes: IAttributesImage;
+  attributes: {
+    name: string;
+    alternativeText: string;
+    caption: any;
+    width: number;
+    height: number;
+    formats: IFormatsImage;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: any;
+    provider: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 
-interface IAttributesImage {
-  name: string;
-  alternativeText: string;
-  caption: any;
-  width: number;
-  height: number;
-  formats: IFormatsImage;
-  hash: string;
-  ext: string;
-  mime: string;
-  size: number;
-  url: string;
-  previewUrl: any;
-  provider: string;
-  createdAt: string;
-  updatedAt: string;
-}
 enum ETypeImages {
   thumbnail = "thumbnail",
   medium = "medium",
