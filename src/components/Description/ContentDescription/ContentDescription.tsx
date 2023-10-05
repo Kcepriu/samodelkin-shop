@@ -1,18 +1,18 @@
 import { IContentArticle } from "@/types/articles.type";
 import { FC } from "react";
 import ReactMarkdown from "react-markdown";
-import style from "./ContentAboutUsSection.module.css";
+import { TypeDescription } from "@/types/generalTypes/articles.type";
+import style from "./ContentDescription.module.css";
 interface IProps {
   params: IContentArticle;
-  afterTitle: boolean;
 }
 
-const ContentAboutUsSection: FC<IProps> = ({ params, afterTitle }) => {
+const ContentDescription: FC<IProps> = ({ params }) => {
   return (
-    <div className={style.wrapContent} data-after-title={afterTitle}>
+    <div className={style.wrapContent}>
       <ReactMarkdown>{params.content}</ReactMarkdown>
     </div>
   );
 };
 
-export default ContentAboutUsSection;
+export default ContentDescription;

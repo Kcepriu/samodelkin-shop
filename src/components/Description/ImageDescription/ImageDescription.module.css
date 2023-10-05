@@ -1,0 +1,7 @@
+.wrapContent {
+  /* @apply mt-20 data-[after-title=true]:mt-8; */
+}
+
+.image {
+  @apply w-full;
+}

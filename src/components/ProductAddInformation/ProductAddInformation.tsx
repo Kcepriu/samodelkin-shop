@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import httpServices from "@/services/http";
 import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAddInfoReviews";
-
+import ProductDescription from "../ProductDescription/ProductDescription";
 import {
   FRONTEND_ROUTES,
   ADD_INFORMATION_ROUTES,
@@ -49,12 +49,15 @@ const ProductAddInformation: FC<IProps> = async ({
           );
         })}
       </ul>
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.DESCRIBE && <p>DESCRIBE</p>}
+      {currentUrlInfo === ADD_INFORMATION_ROUTES.DESCRIBE && (
+        <ProductDescription slugProduct={slug} />
+      )}
       {currentUrlInfo === ADD_INFORMATION_ROUTES.INFO && <p>INFO</p>}
       {currentUrlInfo === ADD_INFORMATION_ROUTES.REVIEWS && (
         <ProductAddInfoReviews product={responseProduct.data[0]} />
       )}
       {currentUrlInfo === ADD_INFORMATION_ROUTES.VIDEOS && <p>VIDEOS</p>}
+      {currentUrlInfo === ADD_INFORMATION_ROUTES.MANUALS && <p>MANUAL</p>}
     </>
   );
 };

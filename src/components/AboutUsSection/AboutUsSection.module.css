@@ -2,6 +2,6 @@
   @apply text-center;
 }
 
-.wrapContent {
+.wrapSection {
   @apply mt-8;
 }
