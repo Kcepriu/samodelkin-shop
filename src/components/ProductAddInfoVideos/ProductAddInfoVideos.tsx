@@ -18,6 +18,7 @@ const ProductAddInfoVideos: FC<IProps> = ({ videos }) => {
       {videos.map((video, index) => {
         return (
           <div key={index}>
+            <p>{video.url}</p>
             <iframe
               width="853"
               height="480"
