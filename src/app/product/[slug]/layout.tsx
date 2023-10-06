@@ -39,5 +39,6 @@ const Layout: FC<IProps> = async ({
     </>
   );
 };
+export const revalidate = 60;
 
 export default Layout;

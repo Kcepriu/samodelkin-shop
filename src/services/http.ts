@@ -82,7 +82,7 @@ class HttpService {
     const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS}/${slug}`;
 
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { next: { revalidate: 60 } });
 
       if (!res.ok) {
         return null;
