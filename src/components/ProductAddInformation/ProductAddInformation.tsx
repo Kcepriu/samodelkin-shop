@@ -33,11 +33,22 @@ const ProductAddInformation: FC<IProps> = async ({
 
   const product = responseProduct.data[0];
   const videos = product.attributes.videos;
+  const reviews = ["first"];
+  const countVideos = videos.length > 0 ? String(videos.length) : "";
+  const countReviews = reviews.length > 0 ? String(reviews.length) : "";
 
   return (
     <>
       <ul className={style.listTypesInfo}>
         {TYPES_ADD_INFORMATION_PRODUCT.map((type_info, ind) => {
+          let addTitle = "";
+          if (type_info.url === ADD_INFORMATION_ROUTES.VIDEOS) {
+            addTitle = countVideos;
+          }
+          if (type_info.url === ADD_INFORMATION_ROUTES.REVIEWS) {
+            addTitle = countReviews;
+          }
+
           return (
             <li
               key={ind}
@@ -48,7 +59,8 @@ const ProductAddInformation: FC<IProps> = async ({
                 className={style.linkInfo}
                 href={getUrlAddInformation(type_info.url, slug)}
               >
-                {type_info.title}
+                {type_info.title}&nbsp;
+                <span>{addTitle}</span>
               </Link>
             </li>
           );

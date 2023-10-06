@@ -15,6 +15,7 @@ const getVideoId = (url: string): string => {
 const ProductAddInfoVideos: FC<IProps> = ({ videos }) => {
   return (
     <div className={style.wrapContent}>
+      <p>count {videos.length}</p>
       {videos.map((video, index) => {
         return (
           <div key={index}>
