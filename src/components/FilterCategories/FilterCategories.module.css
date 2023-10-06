@@ -1,5 +1,11 @@
+.titleCategory {
+  @apply text-title_filter
+  font-title_filter 
+  leading-title_filter;
+}
+
 .listCategory {
-  @apply ml-3 flex flex-col gap-1 items-stretch;
+  @apply mt-4 ml-3 flex flex-col gap-3 items-stretch;
 }
 
 .buttonCategory {
@@ -8,6 +14,11 @@
   w-full 
   text-start 
   rounded-lg
+
+  text-text_filter
+  font-text_filter
+  leading-text_filter
+
 
   transition
   hover:bg-indigo-400

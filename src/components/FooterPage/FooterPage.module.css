@@ -1,9 +1,14 @@
 .wrapFooter {
-  @apply pt-1 pb-2;
+  @apply pt-1 pb-2 
+  text-text_footer
+  font-text_footer
+  leading-text_footer;
 }
+
 .wrapTopRow {
   @apply flex justify-between w-full;
 }
+
 .wrapBottomRow {
   @apply text-center mt-2;
 }

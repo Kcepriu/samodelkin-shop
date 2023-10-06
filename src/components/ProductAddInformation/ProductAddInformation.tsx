@@ -36,6 +36,10 @@ const ProductAddInformation: FC<IProps> = async ({
   const reviews = ["first"];
   const countVideos = videos.length > 0 ? String(videos.length) : "";
   const countReviews = reviews.length > 0 ? String(reviews.length) : "";
+  const urlToManuals = getUrlAddInformation(
+    ADD_INFORMATION_ROUTES.MANUALS,
+    slug
+  );
 
   return (
     <>
@@ -67,7 +71,10 @@ const ProductAddInformation: FC<IProps> = async ({
         })}
       </ul>
       {currentUrlInfo === ADD_INFORMATION_ROUTES.DESCRIBE && (
-        <ProductDescription productId={String(product.id)} />
+        <ProductDescription
+          productId={String(product.id)}
+          urlToManuals={urlToManuals}
+        />
       )}
 
       {currentUrlInfo === ADD_INFORMATION_ROUTES.INFO && (

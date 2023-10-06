@@ -1,3 +1,9 @@
 .wrapComponent {
   @apply flex flex-col gap-2;
 }
+
+.title {
+  @apply text-title_footer
+    font-title_footer
+    leading-title_footer;
+}

@@ -1,0 +1,10 @@
+.wrapSection {
+  @apply flex flex-col gap-6;
+}
+.wrapReview {
+  @apply w-full 
+  p-6
+  flex
+  gap-6
+  outline outline-1 outline-orange-700;
+}
