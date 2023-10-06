@@ -18,5 +18,5 @@ const ProductAddInfoPage: FC<IProps> = ({ params }) => {
     </section>
   );
 };
-
+export const revalidate = 60;
 export default ProductAddInfoPage;
