@@ -13,12 +13,9 @@ const Layout: FC<IProps> = async ({
   params,
 }): Promise<JSX.Element> => {
   const { slug } = params;
-  const responseProduct = await httpServices.getOneProducts(slug, {
-    cache: "no-store",
-  });
+  const responseProduct = await httpServices.getOneProducts(slug);
   const responseSalesLeaders = await httpServices.getSalesLeaders();
 
-  // You can add any UI inside Loading, including a Skeleton.
   return (
     <>
       <section>
