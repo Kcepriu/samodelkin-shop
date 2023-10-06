@@ -8,3 +8,11 @@
   gap-6
   outline outline-1 outline-orange-700;
 }
+
+.wrapContent {
+  @apply grow;
+}
+.wrapProduct {
+  @apply w-[187px]
+  outline outline-1 outline-orange-700;
+}

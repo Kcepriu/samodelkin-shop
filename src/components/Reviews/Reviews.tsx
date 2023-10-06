@@ -17,13 +17,13 @@ const Reviews: FC<IProps> = ({ reviews }) => {
                 {attributes.lastName}
               </p>
             </div>
-            <div>
+            <div className={style.wrapContent}>
               <p>{attributes.rating}</p>
               <p>{attributes.content}</p>
               <p>{attributes.advantages}</p>
               <p>{attributes.disAdvantages}</p>
             </div>
-            <div>
+            <div className={style.wrapProduct}>
               <p>Product</p>
             </div>
           </div>
