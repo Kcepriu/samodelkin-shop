@@ -78,7 +78,10 @@ class HttpService {
   }
 
   // * get ONE Products
-  async getOneProducts(slug: string): Promise<IResponseProduct | null> {
+  async getOneProducts(
+    slug: string,
+    params: { cache?: string } = {}
+  ): Promise<IResponseProduct | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS}/${slug}`;
 
     try {
