@@ -23,6 +23,7 @@ const Description: FC<IProps> = ({ content, type }) => {
         // * Title
         if (element.__component === TypeArticles.Title) {
           countAfterTitile = 0;
+
           return <TitleDescription key={index} params={element} />;
         }
         // * Content

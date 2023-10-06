@@ -23,7 +23,7 @@ interface IReview {
     updatedAt: string;
     publishedAt: string;
     firstName: any;
-    secondName: any;
+    lastName: any;
     product: IProduct;
     replyReview: IReplyReview[];
   };

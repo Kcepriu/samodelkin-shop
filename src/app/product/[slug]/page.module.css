@@ -3,5 +3,11 @@
 }
 
 .wrapSwiper {
-  @apply w-full;
+  @apply w-full mt-8;
+}
+
+.titleSection {
+  @apply text-title_section
+    font-title_section 
+    leading-title_section;
 }

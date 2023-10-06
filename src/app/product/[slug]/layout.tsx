@@ -28,12 +28,14 @@ const Layout: FC<IProps> = async ({
 
       {responseSalesLeaders && responseSalesLeaders.data.length > 0 && (
         <section className={style.sectionSliderProducts}>
-          <h2>Лідери продажу</h2>
-          <div className={style.wrapSwiper}></div>
-          <SliderProducts
-            productList={responseSalesLeaders.data}
-            slidesPerView={{ desktop: 4, tablet: 2, mobile: 1 }}
-          />
+          <h2 className={style.titleSection}>Лідери продажу</h2>
+
+          <div className={style.wrapSwiper}>
+            <SliderProducts
+              productList={responseSalesLeaders.data}
+              slidesPerView={{ desktop: 4, tablet: 2, mobile: 1 }}
+            />
+          </div>
         </section>
       )}
     </>

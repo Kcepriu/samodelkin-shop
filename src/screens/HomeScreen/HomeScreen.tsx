@@ -6,6 +6,7 @@ import heroImage from "@/assets/hero.jpg";
 // import TypeGames from "@/components/TypeGames/TypeGames";
 import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
+import Reviews from "@/components/Reviews/Reviews";
 import httpServices from "@/services/http";
 
 interface IParams {
@@ -17,6 +18,7 @@ const HomeScreen: FC<IParams> = async ({
   searchParams,
 }): Promise<JSX.Element> => {
   const responseProducts = await httpServices.getSalesLeaders();
+  const responseReviews = await httpServices.getLastReviews();
 
   return (
     <>
@@ -42,7 +44,8 @@ const HomeScreen: FC<IParams> = async ({
 
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
-              <h2>Лідери продажу</h2>
+              <h2 className={style.titleSection}>Лідери продажу</h2>
+
               <div className={style.wrapSwiper}>
                 <SliderProducts
                   productList={responseProducts.data}
@@ -54,7 +57,7 @@ const HomeScreen: FC<IParams> = async ({
 
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
-              <h2>Переглянуті</h2>
+              <h2 className={style.titleSection}>Переглянуті</h2>
               <div className={style.wrapSwiper}>
                 <SliderProducts
                   productList={responseProducts.data}
@@ -64,10 +67,14 @@ const HomeScreen: FC<IParams> = async ({
             </section>
           )}
 
-          <section className={style.section}>
-            <h2>Відгуки</h2>
-            <p>Reviews.</p>
-          </section>
+          {responseReviews && responseReviews.data.length > 0 && (
+            <section className={style.section}>
+              <h2 className={style.titleSection}>Відгуки</h2>
+              <div className={style.wrapReviews}>
+                <Reviews reviews={responseReviews.data} />
+              </div>
+            </section>
+          )}
         </div>
       </div>
       <section className={style.section}>

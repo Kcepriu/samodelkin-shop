@@ -1,5 +1,8 @@
 .listTypesInfo {
-  @apply flex gap-6;
+  @apply flex gap-6
+    text-type_add_info
+    font-type_add_info
+    leading-type_add_info;
 }
 
 .typeInfo {

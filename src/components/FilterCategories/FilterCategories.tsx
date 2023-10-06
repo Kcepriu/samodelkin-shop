@@ -33,7 +33,7 @@ const FilterCategories: FC<IProps> = ({ allCategories, currentCategory }) => {
 
   return (
     <>
-      <h2>Класифікація</h2>
+      <h2 className={style.titleCategory}>Класифікація</h2>
       <ul className={style.listCategory}>
         <li key="allCategories">
           <button

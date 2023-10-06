@@ -1,8 +1,21 @@
 .wrapContent {
   @apply mt-describe_big 
+  text-text_description
+  font-text_description
+  leading-text_description
+  
   data-[after-title=true]:mt-describe_big_after_title
   data-[category=true]:mt-describe
   data-[category=true]:data-[after-title=true]:mt-describe_after_title
   data-[product=true]:mt-describe
-  data-[product=true]:data-[after-title=true]:mt-describe_after_title;
+  data-[product=true]:data-[after-title=true]:mt-describe_after_title
+  
+  data-[about-us=true]:text-text_description_home
+  data-[about-us=true]:font-text_description_home
+  data-[about-us=true]:leading-text_description_home;
+}
+.wrapTitle {
+  @apply text-text_description_home 
+  font-text_description_home
+  leading-text_description_home;
 }

@@ -1,0 +1,5 @@
+.title {
+  @apply text-text_description_home
+   font-text_description_home
+   leading-text_description_home;
+}
