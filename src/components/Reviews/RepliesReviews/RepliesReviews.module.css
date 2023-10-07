@@ -1,0 +1,5 @@
+.wrapReplies {
+  @apply ml-28
+  flex flex-col gap-6
+  outline outline-1 outline-orange-700;
+}

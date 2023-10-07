@@ -22,9 +22,9 @@ interface IReview {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    firstName: any;
-    lastName: any;
-    product: IProduct;
+    firstName: string;
+    lastName: string;
+    product: { data: IProduct };
     replyReview: IReplyReview[];
   };
 }
@@ -47,6 +47,18 @@ interface IReplyReview {
   content: string;
   date: string;
   isPublication: boolean;
-  firstName: any;
-  secondName: any;
+  firstName: string;
+  lastName: string;
+}
+
+interface ICreateReview {
+  data: {
+    firstName: string;
+    secondName: string;
+    content: string;
+    advantages: string;
+    disAdvantages: string;
+    rating: number;
+    product: number;
+  };
 }

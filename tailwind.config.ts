@@ -14,6 +14,11 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        main_background: "#D9D9D9",
+        review_background: "#E4E4E4",
+        button_background: "#B3B2B3",
+      },
       screens: {
         xs: "320px",
         // => @media (min-width: 320px) { ... }
@@ -46,6 +51,7 @@ const config: Config = {
         review_content: "18px",
         review_text: "14px",
         review_title: "18px",
+        button_add_review: "20px",
       },
       fontWeight: {
         title_section: "400",
@@ -60,6 +66,7 @@ const config: Config = {
         review_content: "300",
         review_text: "300",
         review_title: "500",
+        button_add_review: "300",
       },
       lineHeight: {
         title_section: "1.16",
@@ -74,6 +81,7 @@ const config: Config = {
         review_content: "1.28",
         review_text: "1.29",
         review_title: "1.28",
+        button_add_review: "1.15",
       },
     },
   },

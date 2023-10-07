@@ -1,0 +1,7 @@
+.wrapSection {
+  @apply flex flex-col gap-6 items-center;
+}
+
+.buttonShowHide {
+  @apply w-52 p-2;
+}

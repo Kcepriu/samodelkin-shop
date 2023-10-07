@@ -6,13 +6,50 @@
   p-6
   flex
   gap-6
-  outline outline-1 outline-orange-700;
+  text-review_text
+  font-review_text
+  leading-review_text
+  bg-review_background;
 }
 
 .wrapContent {
-  @apply grow;
+  @apply grow flex flex-col gap-6;
 }
+
+.content {
+  @apply text-review_content
+  font-review_content
+  leading-review_content;
+}
+
 .wrapProduct {
-  @apply w-[187px]
-  outline outline-1 outline-orange-700;
+  @apply w-[187px] min-w-max;
+}
+
+.wrapUser {
+  @apply flex flex-col gap-2 
+  items-center
+  w-[116px] 
+  min-w-[116px];
+}
+
+.userName {
+  @apply block w-full text-center overflow-hidden;
+}
+
+.wrapImgPerson {
+  @apply rounded-[50%]
+  overflow-hidden
+  w-20
+  h-20;
+}
+
+.titleField {
+  @apply text-review_title
+  font-review_title
+  leading-review_title;
+}
+
+.image {
+  @apply block;
 }

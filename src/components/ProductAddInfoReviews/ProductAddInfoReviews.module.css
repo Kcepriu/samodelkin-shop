@@ -1,3 +1,7 @@
 .wrapSection {
   @apply mt-6;
 }
+
+.wrapReviews {
+  @apply mt-6;
+}

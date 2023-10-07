@@ -30,12 +30,16 @@ const ProductAddInformation: FC<IProps> = async ({
   const responseProduct = await httpServices.getOneProducts(slug);
 
   if (!responseProduct || responseProduct.data.length === 0) return <></>;
-
   const product = responseProduct.data[0];
+  const responseReviews = await httpServices.getProductReviews(
+    String(product.id)
+  );
+
   const videos = product.attributes.videos;
-  const reviews = ["first"];
+  const reviews = responseReviews?.data;
   const countVideos = videos.length > 0 ? String(videos.length) : "";
-  const countReviews = reviews.length > 0 ? String(reviews.length) : "";
+  const countReviews =
+    reviews && reviews.length > 0 ? String(reviews.length) : "";
   const urlToManuals = getUrlAddInformation(
     ADD_INFORMATION_ROUTES.MANUALS,
     slug
@@ -82,7 +86,7 @@ const ProductAddInformation: FC<IProps> = async ({
       )}
 
       {currentUrlInfo === ADD_INFORMATION_ROUTES.REVIEWS && (
-        <ProductAddInfoReviews product={product} />
+        <ProductAddInfoReviews product={product} reviews={reviews} />
       )}
 
       {currentUrlInfo === ADD_INFORMATION_ROUTES.VIDEOS && (
