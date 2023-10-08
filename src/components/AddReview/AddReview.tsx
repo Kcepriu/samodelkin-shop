@@ -3,14 +3,16 @@ import { FC, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Image from "next/image";
 import ReviewCreateUpdate from "../ReviewCreateUpdate/ReviewCreateUpdate";
-import httpServices from "@/services/http";
+import { createProductReviews } from "@/services/httpClient";
+
 import imgAddReview from "@/assets/icons/add_review.svg";
-import style from "./ButtonsAddReview.module.css";
+import style from "./AddReview.module.css";
 
 interface IProps {
   product: IProduct;
 }
-const ButtonsAddReview: FC<IProps> = ({ product }) => {
+
+const AddReview: FC<IProps> = ({ product }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleAddRevies = () => {
@@ -20,25 +22,26 @@ const ButtonsAddReview: FC<IProps> = ({ product }) => {
     setShowModal(false);
   };
 
-  const handlerCreatedReview = async () => {
+  const handlerCreatedReview = async (values: IValuesFormCreateReview) => {
     const newReview = {
       data: {
-        firstName: "Serhii",
-        secondName: "Kostiuchenko",
-        content:
-          "Monopoly is a classic board game that has been enjoyed by players of all ages for generations. It was first introduced in the early 20th century and has since become one of the most iconic and recognizable board games in the world. ",
-        advantages: "Швидка доставка, якісний товар",
-        disAdvantages: "Не виявлено",
-        rating: 4,
+        firstName: values.userName,
+        secondName: values.userName,
+        content: values.content,
+        advantages: values.advantages,
+        disAdvantages: values.disAdvantages,
+        rating: values.rating,
         product: product.id,
       },
     };
-    const result = await httpServices.createProductReviews(newReview);
-    console.log("🚀 ~ result:", result);
 
-    alert(
-      result ? "Відгук відправлено на модерацію" : "Не вдалося створити відгук"
-    );
+    const result = await createProductReviews(newReview);
+
+    if (!result) {
+      alert("Не вдалося створити відгук");
+      return;
+    }
+    alert(`Відгук відправлено на модерацію id - ${result.data.id}`);
     setShowModal(false);
   };
 
@@ -69,4 +72,4 @@ const ButtonsAddReview: FC<IProps> = ({ product }) => {
   );
 };
 
-export default ButtonsAddReview;
+export default AddReview;

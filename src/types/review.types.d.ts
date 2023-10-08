@@ -1,3 +1,11 @@
+interface IValuesFormCreateReview {
+  userName: string;
+  rating: number;
+  content: string;
+  advantages: string;
+  disAdvantages: string;
+}
+
 interface IResponseReviews {
   data: IReview[];
   meta: IMeta;

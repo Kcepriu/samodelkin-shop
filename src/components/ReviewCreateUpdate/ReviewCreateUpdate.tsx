@@ -3,19 +3,12 @@ import { FC } from "react";
 import { Formik, Field, Form, FormikHelpers } from "formik";
 import style from "./ReviewCreateUpdate.module.css";
 
-interface Values {
-  userName: string;
-  rating: number;
-  content: string;
-  advantages: string;
-  disAdvantages: string;
-}
-
 interface IProps {
   product: IProduct;
-  handlerOk: () => void;
+  handlerOk: (values: IValuesFormCreateReview) => void;
   handleCancel: () => void;
 }
+
 const ReviewCreateUpdate: FC<IProps> = ({
   product,
   handlerOk,
@@ -33,11 +26,11 @@ const ReviewCreateUpdate: FC<IProps> = ({
           disAdvantages: "",
         }}
         onSubmit={(
-          values: Values,
-          { setSubmitting }: FormikHelpers<Values>
+          values: IValuesFormCreateReview,
+          { setSubmitting }: FormikHelpers<IValuesFormCreateReview>
         ) => {
-          alert(JSON.stringify(values, null, 2));
-          handlerOk();
+          // alert(JSON.stringify(values, null, 2));
+          handlerOk(values);
         }}
         onReset={() => {
           handleCancel();

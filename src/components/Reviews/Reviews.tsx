@@ -22,8 +22,8 @@ const Reviews: FC<IProps> = ({ reviews }) => {
         const urlImage = !images ? ImgNoImage : images.attributes.url;
         const urlProduct = `${FRONTEND_ROUTES.PRODUCT}/${product.attributes.slug}`;
         return (
-          <>
-            <div key={id} className={style.wrapReview}>
+          <div key={id}>
+            <div className={style.wrapReview}>
               <div className={style.wrapUser}>
                 <div className={style.wrapImgPerson}>
                   <Image
@@ -73,7 +73,7 @@ const Reviews: FC<IProps> = ({ reviews }) => {
             {repliesReview.length > 0 && (
               <RepliesReviews repliesReview={repliesReview} />
             )}
-          </>
+          </div>
         );
       })}
     </div>

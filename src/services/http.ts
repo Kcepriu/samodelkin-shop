@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 import { STORAGE_KEYS, BACKEND_ROUTES } from "@/constants/app-keys.const";
 import {
@@ -233,18 +233,17 @@ class HttpService {
   ): Promise<IResponseOneReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}`;
 
-    console.log("🚀 ~ url33333333333:", url);
     try {
       const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "API-Key": "my key",
+          // "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // "API-Key": "my key",
         },
         body: JSON.stringify(review),
       });
-
-      console.log("🚀 ~ res:", res);
 
       if (!res.ok) {
         return null;
