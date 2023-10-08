@@ -1,7 +1,12 @@
 .wrapSection {
   @apply flex flex-col gap-6;
 }
+
 .wrapReview {
+  @apply w-full  flex flex-col gap-6;
+}
+
+.wrapReviewWithReply {
   @apply w-full 
   p-6
   flex
