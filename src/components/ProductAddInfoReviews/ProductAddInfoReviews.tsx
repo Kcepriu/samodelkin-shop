@@ -1,15 +1,18 @@
 import { FC } from "react";
-import ButtonsAddReview from "../ButtonsAddReview/ButtonsAddReview";
+import AddReview from "../AddReview/AddReview";
+import Reviews from "../Reviews/Reviews";
 import style from "./ProductAddInfoReviews.module.css";
 interface IProps {
   product: IProduct;
+  reviews: IReview[] | undefined;
 }
 
-const ProductAddInfoReviews: FC<IProps> = ({ product }) => {
+const ProductAddInfoReviews: FC<IProps> = ({ product, reviews }) => {
   return (
     <div className={style.wrapSection}>
-      <ButtonsAddReview product={product} />
-      <p>Reviews</p>
+      <AddReview product={product} />
+      <div className={style.wrapReviews}></div>
+      {reviews && reviews.length > 0 && <Reviews reviews={reviews} />}
     </div>
   );
 };

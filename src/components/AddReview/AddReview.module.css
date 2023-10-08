@@ -1,0 +1,19 @@
+.button {
+  @apply flex gap-3
+  px-5
+  py-3 
+  border 
+  rounded-lg 
+  bg-main_background
+  text-button_add_review
+  font-button_add_review
+  leading-button_add_review;
+}
+
+.button:hover {
+  @apply shadow-lg shadow-gray-500/80;
+}
+
+/* .image {
+  @apply ml-3;
+} */

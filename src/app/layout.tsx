@@ -21,7 +21,7 @@ const RootLayout: FC<IProps> = ({ children }) => {
     <html lang="ua">
       <body className={inter.className}>
         <div className={style.wrapBody}>
-          <header>
+          <header className={style.header}>
             <div className={style.container}>
               <HeaderPage />
             </div>

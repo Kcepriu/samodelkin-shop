@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 import { STORAGE_KEYS, BACKEND_ROUTES } from "@/constants/app-keys.const";
 import {
@@ -205,7 +205,57 @@ class HttpService {
       return null;
     }
   }
+
+  // * get Product Reviews
+  async getProductReviews(productId: string): Promise<IResponseReviews | null> {
+    const paramsObj: { [key: string]: string } = {
+      "filters[product][id][$eq]": productId,
+    };
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * Create Product Reviews
+  async createProductReviews(
+    review: ICreateReview
+  ): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}`;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // "API-Key": "my key",
+        },
+        body: JSON.stringify(review),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
 }
+// {{URL}}/reviews?filters[product][categories][id][$eq]=5
 
 const httpServices = new HttpService();
 

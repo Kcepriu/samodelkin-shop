@@ -1,0 +1,26 @@
+.reply {
+  @apply flex gap-6
+  p-6
+  w-full
+  
+  text-review_text
+  font-review_text
+  leading-review_text
+  bg-review_background;
+}
+
+.wrapUser {
+  @apply w-[116px] 
+  min-w-[116px]
+  flex flex-col gap-2 items-center;
+}
+
+.userName {
+  @apply block w-full text-center overflow-hidden;
+}
+
+.content {
+  @apply text-review_content
+  font-review_content
+  leading-review_content;
+}

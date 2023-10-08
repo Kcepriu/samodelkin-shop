@@ -8,8 +8,12 @@
   md:max-w-screen-md 
   lg:max-w-screen-lg 
   lg:px-[100px] 
-  bg-gray-300
+ 
   overflow-hidden;
+}
+
+.header {
+  @apply bg-main_background;
 }
 
 .wrapBody {
@@ -21,5 +25,5 @@
 }
 
 .wrapFooter {
-  @apply mt-20;
+  @apply mt-20 bg-main_background;
 }

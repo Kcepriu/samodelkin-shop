@@ -1,0 +1,3 @@
+.wrapRating {
+  @apply flex gap-1;
+}
