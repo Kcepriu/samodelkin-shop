@@ -14,7 +14,7 @@ const RatingStar: FC<IProps> = ({ rating, maxRating = 5 }) => {
       {Array.from({ length: maxRating }, (_, ind) => {
         return ind < rating ? (
           <Image
-            className={style.image}
+            // className={style.image}
             src={imgStar}
             alt="star"
             height={24}
@@ -22,7 +22,7 @@ const RatingStar: FC<IProps> = ({ rating, maxRating = 5 }) => {
           />
         ) : (
           <Image
-            className={style.image}
+            // className={style.image}
             src={imgStarEmpty}
             alt="empty star"
             height={24}
