@@ -10,6 +10,12 @@ export const schemaReview = Joi.object({
   product: Joi.number().min(1).required(),
 });
 
+export const schemaReplyToReview = Joi.object({
+  firstName: Joi.string().max(20).required(),
+  lastName: Joi.string().max(20),
+  content: Joi.string().required(),
+});
+
 export const schemaChangeStatusReview = Joi.object({
   isPublication: Joi.boolean().required(),
 });

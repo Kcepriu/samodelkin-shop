@@ -5,6 +5,11 @@ interface IValuesFormCreateReview {
   advantages: string;
   disAdvantages: string;
 }
+interface IValuesFormCreateReply {
+  firstName: string;
+  lastName: string;
+  content: string;
+}
 
 interface IResponseReviews {
   data: IReview[];
@@ -68,5 +73,22 @@ interface ICreateReview {
     disAdvantages: string;
     rating: number;
     product: number;
+  };
+}
+
+interface ICreateReply {
+  data: IValuesFormCreateReply;
+}
+
+interface IChangeStatusReview {
+  data: {
+    isPublication: boolean;
+  };
+}
+
+interface IChangeReplyToReview {
+  data: {
+    isPublication: boolean;
+    content: string;
   };
 }

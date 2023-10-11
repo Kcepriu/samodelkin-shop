@@ -1,11 +1,13 @@
 import { FC } from "react";
 import { format } from "date-fns";
+
 import style from "./ReplyReviews.module.css";
 
 interface IProps {
   replyReview: IReplyReview;
+  reviewId: number;
 }
-const ReplyReviews: FC<IProps> = ({ replyReview }) => {
+const ReplyReviews: FC<IProps> = ({ replyReview, reviewId }) => {
   return (
     <div className={style.reply}>
       <div className={style.wrapUser}>
@@ -17,6 +19,10 @@ const ReplyReviews: FC<IProps> = ({ replyReview }) => {
       </div>
       <div>
         <p className={style.content}>{replyReview.content}</p>
+        <p className={style.content}>
+          <span>Status:</span>&nbsp;
+          {String(replyReview.isPublication)}
+        </p>
       </div>
     </div>
   );
