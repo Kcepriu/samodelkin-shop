@@ -37,9 +37,9 @@ const ProductAddInformation: FC<IProps> = async ({
 
   const videos = product.attributes.videos;
   const reviews = responseReviews?.data;
+  const paginationReviews = responseReviews?.meta.pagination;
   const countVideos = videos.length > 0 ? String(videos.length) : "";
-  const countReviews =
-    reviews && reviews.length > 0 ? String(reviews.length) : "";
+  const countReviews = paginationReviews ? String(paginationReviews.total) : "";
   const urlToManuals = getUrlAddInformation(
     ADD_INFORMATION_ROUTES.MANUALS,
     slug
@@ -93,7 +93,11 @@ const ProductAddInformation: FC<IProps> = async ({
         <ProductAddInfoVideos videos={videos} />
       )}
 
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.MANUALS && <p>MANUAL</p>}
+      {currentUrlInfo === ADD_INFORMATION_ROUTES.MANUALS && (
+        <div>
+          <p>MANUAL</p>
+        </div>
+      )}
     </>
   );
 };

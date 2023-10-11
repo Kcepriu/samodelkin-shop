@@ -3,9 +3,10 @@ import { FC, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Image from "next/image";
 import ReviewCreateUpdate from "../ReviewCreateUpdate/ReviewCreateUpdate";
-import { createProductReviews } from "@/services/httpClient";
+import httpClientServices from "@/services/httpClient";
 
 import imgAddReview from "@/assets/icons/add_review.svg";
+import { showSuccess, showNotifyFailure } from "@/services/notification";
 import style from "./AddReview.module.css";
 
 interface IProps {
@@ -35,13 +36,17 @@ const AddReview: FC<IProps> = ({ product }) => {
       },
     };
 
-    const result = await createProductReviews(newReview);
+    const result = await httpClientServices.createProductReviews(newReview);
 
     if (!result) {
-      alert("Не вдалося створити відгук");
+      showNotifyFailure("Не вдалося створити відгук");
       return;
     }
-    alert(`Відгук відправлено на модерацію id - ${result.data.id}`);
+    showSuccess(
+      "Відгук створено.",
+      "Дякуємо за відгук. Ваш відгук відправлено на модерацію адміністратору сайту."
+    );
+
     setShowModal(false);
   };
 

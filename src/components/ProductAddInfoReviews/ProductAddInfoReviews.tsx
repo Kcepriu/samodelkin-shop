@@ -11,8 +11,9 @@ const ProductAddInfoReviews: FC<IProps> = ({ product, reviews }) => {
   return (
     <div className={style.wrapSection}>
       <AddReview product={product} />
-      <div className={style.wrapReviews}></div>
-      {reviews && reviews.length > 0 && <Reviews reviews={reviews} />}
+      <div className={style.wrapReviews}>
+        {reviews && reviews.length > 0 && <Reviews reviews={reviews} />}
+      </div>
     </div>
   );
 };

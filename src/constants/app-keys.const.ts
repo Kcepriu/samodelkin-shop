@@ -21,6 +21,7 @@ export const BACKEND_ROUTES = {
   CATEGORY_DESCRIPTION: "/api/category-descriptions",
   PRODUCT_DESCRIPTION: "/api/product-descriptions",
   REVIEWS: "/api/reviews",
+  LAST_REVIEWS: "/api/lastReviews",
   REPLY_TO_REVIEWS: "/api/replyToReview",
   CHANGE_STATUS_REVIEWS: "/api/changeStatusReview",
   CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",

@@ -11,10 +11,12 @@ class HttpService {
   private accessToken: string = "";
   private baseUrl: string = "";
   private countPageOnPage: string = "16";
+  private countReviewsOnPage: string = "4";
 
   constructor() {
     this.baseUrl = process.env.BACKEND_URL || "";
     this.countPageOnPage = process.env.COUNT_PRODUCT_ON_PAGE || "16";
+    this.countReviewsOnPage = process.env.COUNT_REVIEWS_ON_PAGE || "4";
 
     this.setAuthHeader(this.readTokenFromLocalStorage());
   }
@@ -190,11 +192,13 @@ class HttpService {
   }
 
   // * get Last Reviews for HOME page
-  async getLastReviews(): Promise<IResponseReviews | null> {
-    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}`;
+  async getLastReviews(category?: string): Promise<IResponseReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.LAST_REVIEWS}`;
 
+    const filterCategory = category ? `?category=${category}` : "";
+    console.log("🚀 ~ filterCategory:", url + filterCategory);
     try {
-      const res = await fetch(url);
+      const res = await fetch(url + filterCategory);
 
       if (!res.ok) {
         return null;
@@ -207,9 +211,16 @@ class HttpService {
   }
 
   // * get Product Reviews
-  async getProductReviews(productId: string): Promise<IResponseReviews | null> {
+  async getProductReviews(
+    productId: string,
+    page = "1"
+  ): Promise<IResponseReviews | null> {
     const paramsObj: { [key: string]: string } = {
       "filters[product][id][$eq]": productId,
+      "filters[isPublication][$eq]": "true",
+      "pagination[pageSize]": this.countReviewsOnPage,
+      "pagination[page]": page,
+      "sort[0]": "date:desc",
     };
     const params = new URLSearchParams(paramsObj);
     const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
@@ -220,7 +231,6 @@ class HttpService {
       if (!res.ok) {
         return null;
       }
-
       return res.json();
     } catch {
       return null;
@@ -254,8 +264,97 @@ class HttpService {
       return null;
     }
   }
+
+  // * Create Reply To Reviews
+  async createReplyToReviews(
+    reviewId: string,
+    reply: ICreateReply
+  ): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REPLY_TO_REVIEWS}/${reviewId}`;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // "API-Key": "my key",
+        },
+        body: JSON.stringify(reply),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * Change Status Review
+  async changeStatusReview(
+    reviewId: string,
+    review: IChangeStatusReview
+  ): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CHANGE_STATUS_REVIEWS}/${reviewId}`;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // "API-Key": "my key",
+        },
+        body: JSON.stringify(review),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * Change Reply To Review
+  async changeReplyToReview(
+    reviewId: string,
+    replyId: string,
+    reply: IChangeReplyToReview
+  ): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CHANGE_REPLY_TO_REVIEWS}/${reviewId}/${replyId}`;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // "API-Key": "my key",
+        },
+        body: JSON.stringify(reply),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
 }
-// {{URL}}/reviews?filters[product][categories][id][$eq]=5
+
+// CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
 
 const httpServices = new HttpService();
 

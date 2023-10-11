@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import RatingStar from "./RatingStar/RatingStar";
 import RepliesReviews from "./RepliesReviews/RepliesReviews";
+import AddReplyToReview from "../AddReplyToReview/AddReplyToReview";
 import ImgNoImage from "@/assets/no_images.png";
 import imgPerson from "@/assets/icons/person.svg";
 import style from "./Reviews.module.css";
@@ -15,7 +16,8 @@ interface IProps {
 const Reviews: FC<IProps> = ({ reviews }) => {
   return (
     <div className={style.wrapSection}>
-      {reviews.map(({ id, attributes }) => {
+      {reviews.map((review) => {
+        const { id, attributes } = review;
         const repliesReview = attributes.replyReview;
         const product = attributes.product.data;
         const images = product.attributes.images?.data[0];
@@ -23,6 +25,7 @@ const Reviews: FC<IProps> = ({ reviews }) => {
         const urlProduct = `${FRONTEND_ROUTES.PRODUCT}/${product.attributes.slug}`;
         return (
           <div key={id} className={style.wrapReview}>
+            {/* <p key={id}>TEST 1</p> */}
             <div className={style.wrapReviewWithReply}>
               <div className={style.wrapUser}>
                 <div className={style.wrapImgPerson}>
@@ -56,6 +59,14 @@ const Reviews: FC<IProps> = ({ reviews }) => {
                   <span className={style.titleField}>Недоліки:</span>&nbsp;
                   {attributes.disAdvantages}
                 </p>
+
+                <p>
+                  <span className={style.titleField}>Статус:</span>&nbsp;
+                  {String(attributes.isPublication)}
+                </p>
+                <div>
+                  <AddReplyToReview reviewsId={id} />
+                </div>
               </div>
 
               <div className={style.wrapProduct}>
@@ -71,7 +82,7 @@ const Reviews: FC<IProps> = ({ reviews }) => {
               </div>
             </div>
             {repliesReview.length > 0 && (
-              <RepliesReviews repliesReview={repliesReview} />
+              <RepliesReviews reviewId={id} repliesReview={repliesReview} />
             )}
           </div>
         );

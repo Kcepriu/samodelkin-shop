@@ -6,9 +6,10 @@ import style from "./RepliesReviewsSecond.module.css";
 
 interface IProps {
   repliesReview: IReplyReview[];
+  reviewId: number;
 }
 
-const RepliesReviewsSecond: FC<IProps> = ({ repliesReview }) => {
+const RepliesReviewsSecond: FC<IProps> = ({ repliesReview, reviewId }) => {
   const [show, setShow] = useState(false);
 
   const handleShowHide = () => {
@@ -27,7 +28,13 @@ const RepliesReviewsSecond: FC<IProps> = ({ repliesReview }) => {
       {show && (
         <>
           {repliesReview.map((reply) => {
-            return <ReplyReviews key={reply.id} replyReview={reply} />;
+            return (
+              <ReplyReviews
+                key={reply.id}
+                replyReview={reply}
+                reviewId={reviewId}
+              />
+            );
           })}{" "}
         </>
       )}
