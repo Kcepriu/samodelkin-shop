@@ -3,7 +3,7 @@
 import { FC } from "react";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-// import "./Pagination.css";
+import "./Pagination.css";
 
 interface IParams {
   pageCount: number;
@@ -36,8 +36,8 @@ const Pagination: FC<IParams> = ({ pageCount = 1, forcePage }) => {
       breakLabel="..."
       nextLabel="next >"
       onPageChange={handleClickPagination}
-      pageRangeDisplayed={pageCount}
-      pageCount={5}
+      pageRangeDisplayed={5}
+      pageCount={pageCount}
       previousLabel="< previous"
       renderOnZeroPageCount={null}
       forcePage={forcePage - 1}
