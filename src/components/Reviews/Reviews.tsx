@@ -20,8 +20,12 @@ const Reviews: FC<IProps> = ({ reviews }) => {
         const { id, attributes } = review;
         const repliesReview = attributes.replyReview;
         const product = attributes.product.data;
-        const images = product.attributes.images?.data[0];
-        const urlImage = !images ? ImgNoImage : images.attributes.url;
+        console.log("product.attributes.images", product.attributes.images);
+
+        const urlImage = product.attributes.images?.data
+          ? product.attributes.images?.data[0].attributes.url
+          : ImgNoImage;
+
         const urlProduct = `${FRONTEND_ROUTES.PRODUCT}/${product.attributes.slug}`;
         return (
           <div key={id} className={style.wrapReview}>

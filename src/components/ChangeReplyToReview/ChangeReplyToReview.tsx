@@ -2,7 +2,7 @@
 import { FC } from "react";
 import style from "./ChangeReplyToReview.module.css";
 import { showSuccess, showNotifyFailure } from "@/services/notification";
-import httpClientServices from "@/services/httpClient";
+import { changeReplyToReview } from "@/services/serverActionHttp";
 
 interface IProps {
   reviewId: number;
@@ -19,7 +19,7 @@ const ChangeReplyToReview: FC<IProps> = ({ reviewId, replyReview }) => {
       },
     };
 
-    const result = await httpClientServices.changeReplyToReview(
+    const result = await changeReplyToReview(
       String(reviewId),
       String(id),
       newReply

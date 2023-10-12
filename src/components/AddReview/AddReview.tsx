@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Image from "next/image";
 import ReviewCreateUpdate from "../ReviewCreateUpdate/ReviewCreateUpdate";
-import httpClientServices from "@/services/httpClient";
+import { createProductReviews } from "@/services/serverActionHttp";
 
 import imgAddReview from "@/assets/icons/add_review.svg";
 import { showSuccess, showNotifyFailure } from "@/services/notification";
@@ -36,7 +36,7 @@ const AddReview: FC<IProps> = ({ product }) => {
       },
     };
 
-    const result = await httpClientServices.createProductReviews(newReview);
+    const result = await createProductReviews(newReview);
 
     if (!result) {
       showNotifyFailure("Не вдалося створити відгук");

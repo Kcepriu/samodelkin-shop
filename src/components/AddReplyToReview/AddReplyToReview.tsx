@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import ReplyCreateUpdate from "../ReplyCreateUpdate/ReplyCreateUpdate";
 import { showSuccess, showNotifyFailure } from "@/services/notification";
-import httpClientServices from "@/services/httpClient";
+import { createReplyToReviews } from "@/services/serverActionHttp";
 import style from "./AddReplyToReview.module.css";
 
 interface IProps {
@@ -25,10 +25,7 @@ const AddReplyToReview: FC<IProps> = ({ reviewsId }) => {
       data: value,
     };
 
-    const result = await httpClientServices.createReplyForReviews(
-      String(reviewsId),
-      newReply
-    );
+    const result = await createReplyToReviews(String(reviewsId), newReply);
 
     if (!result) {
       showNotifyFailure("Не вдалося створити відповідь");
