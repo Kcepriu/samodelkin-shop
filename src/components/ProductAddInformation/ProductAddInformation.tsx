@@ -39,7 +39,10 @@ const ProductAddInformation: FC<IProps> = async ({
   const reviews = responseReviews?.data;
   const paginationReviews = responseReviews?.meta.pagination;
   const countVideos = videos.length > 0 ? String(videos.length) : "";
-  const countReviews = paginationReviews ? String(paginationReviews.total) : "";
+  const countReviews =
+    paginationReviews && paginationReviews.total > 0
+      ? String(paginationReviews.total)
+      : "";
   const urlToManuals = getUrlAddInformation(
     ADD_INFORMATION_ROUTES.MANUALS,
     slug
