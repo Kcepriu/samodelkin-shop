@@ -3,14 +3,12 @@ import httpServices from "@/services/http";
 import FilterCategories from "../FilterCategories/FilterCategories";
 
 interface IParams {
-  params?: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  categoryId: string;
 }
 
 const FilterPanel: FC<IParams> = async ({
-  searchParams,
+  categoryId,
 }): Promise<JSX.Element> => {
-  const { category = "" } = searchParams;
   const responseCategories = await httpServices.getCategories();
   const allCategories = responseCategories ? responseCategories.data : [];
 
@@ -18,7 +16,7 @@ const FilterPanel: FC<IParams> = async ({
     <>
       <FilterCategories
         allCategories={allCategories}
-        currentCategory={category}
+        currentCategory={categoryId}
       />
     </>
   );
