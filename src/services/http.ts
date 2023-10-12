@@ -196,7 +196,7 @@ class HttpService {
     const url = `${this.baseUrl}${BACKEND_ROUTES.LAST_REVIEWS}`;
 
     const filterCategory = category ? `?category=${category}` : "";
-    console.log("🚀 ~ filterCategory:", url + filterCategory);
+
     try {
       const res = await fetch(url + filterCategory);
 
@@ -217,7 +217,7 @@ class HttpService {
   ): Promise<IResponseReviews | null> {
     const paramsObj: { [key: string]: string } = {
       "filters[product][id][$eq]": productId,
-      "filters[isPublication][$eq]": "true",
+      // "filters[isPublication][$eq]": "true",
       "pagination[pageSize]": this.countReviewsOnPage,
       "pagination[page]": page,
       "sort[0]": "date:desc",
