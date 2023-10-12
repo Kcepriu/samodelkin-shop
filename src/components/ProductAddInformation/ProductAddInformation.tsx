@@ -86,7 +86,11 @@ const ProductAddInformation: FC<IProps> = async ({
       )}
 
       {currentUrlInfo === ADD_INFORMATION_ROUTES.REVIEWS && (
-        <ProductAddInfoReviews product={product} reviews={reviews} />
+        <ProductAddInfoReviews
+          product={product}
+          reviews={reviews}
+          paginationReviews={paginationReviews}
+        />
       )}
 
       {currentUrlInfo === ADD_INFORMATION_ROUTES.VIDEOS && (
