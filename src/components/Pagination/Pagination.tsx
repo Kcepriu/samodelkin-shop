@@ -3,13 +3,13 @@
 import { FC } from "react";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import "./Pagination.css";
+// import "./Pagination.css";
 
 interface IParams {
   pageCount: number;
-  forcePage: string | string[];
+  forcePage: number;
 }
-const Pagination: FC<IParams> = ({ pageCount, forcePage }) => {
+const Pagination: FC<IParams> = ({ pageCount = 1, forcePage }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -36,11 +36,11 @@ const Pagination: FC<IParams> = ({ pageCount, forcePage }) => {
       breakLabel="..."
       nextLabel="next >"
       onPageChange={handleClickPagination}
-      pageRangeDisplayed={5}
-      pageCount={pageCount}
+      pageRangeDisplayed={pageCount}
+      pageCount={5}
       previousLabel="< previous"
       renderOnZeroPageCount={null}
-      forcePage={Number(forcePage) - 1}
+      forcePage={forcePage - 1}
     />
   );
 };

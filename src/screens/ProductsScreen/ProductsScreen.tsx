@@ -1,5 +1,4 @@
 import { FC } from "react";
-import httpServices from "@/services/http";
 import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
@@ -8,44 +7,38 @@ import CategoryDescription from "@/components/CategoryDescription/CategoryDescri
 import style from "./ProductsScreen.module.css";
 
 interface IParams {
-  searchParams: { [key: string]: string | string[] | undefined };
+  products: IProduct[];
+  categoryId: string;
+  pageCount: number;
+  currentPage: number;
 }
 
-const ProductsScreen: FC<IParams> = async ({
-  searchParams,
-}): Promise<JSX.Element> => {
-  const { page = "1", category = "" } = searchParams;
-
-  const responseProducts = await httpServices.getProducts({
-    page: String(page),
-    category: String(category),
-  });
-  const pageCount = responseProducts?.meta?.pagination.pageCount || 1;
-
+const ProductsScreen: FC<IParams> = ({
+  products,
+  pageCount,
+  currentPage,
+  categoryId,
+}) => {
   return (
     <>
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
-          <FilterPanel searchParams={searchParams} />
+          <FilterPanel categoryId={categoryId} />
         </div>
 
         <div className={style.wrapContent}>
-          {responseProducts && responseProducts.data.length > 0 && (
-            <ProductList productList={responseProducts.data} />
-          )}
+          {products.length > 0 && <ProductList productList={products} />}
 
           {pageCount > 1 && (
-            <Pagination pageCount={pageCount} forcePage={page} />
+            <Pagination pageCount={pageCount} forcePage={currentPage} />
           )}
         </div>
       </section>
       <section className={style.wrapSection}>
-        <CategoryDescription categoryId={String(category)} />
+        <CategoryDescription categoryId={categoryId} />
       </section>
     </>
   );
 };
 
 export default ProductsScreen;
-
-export const revalidate = 60;

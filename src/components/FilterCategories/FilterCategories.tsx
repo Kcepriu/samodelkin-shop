@@ -7,7 +7,7 @@ import style from "./FilterCategories.module.css";
 
 interface IProps {
   allCategories: ICategorie[];
-  currentCategory: string | string[];
+  currentCategory: string;
 }
 const FilterCategories: FC<IProps> = ({ allCategories, currentCategory }) => {
   const router = useRouter();

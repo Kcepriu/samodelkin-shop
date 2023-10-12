@@ -17,6 +17,9 @@ interface IParams {
 const HomeScreen: FC<IParams> = async ({
   searchParams,
 }): Promise<JSX.Element> => {
+  const { category = "" } = searchParams;
+  const categoryId = typeof category === "string" ? category : category[0];
+
   const responseProducts = await httpServices.getSalesLeaders();
   const responseReviews = await httpServices.getLastReviews();
 
@@ -24,7 +27,7 @@ const HomeScreen: FC<IParams> = async ({
     <>
       <div className={style.wrapHomePage}>
         <div className={style.wrapFilter}>
-          <FilterPanel searchParams={searchParams} />
+          <FilterPanel categoryId={categoryId} />
         </div>
         <div className={style.wrapContent}>
           <section>
