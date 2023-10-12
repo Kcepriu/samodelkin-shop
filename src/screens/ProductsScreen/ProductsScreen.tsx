@@ -47,3 +47,5 @@ const ProductsScreen: FC<IParams> = async ({
 };
 
 export default ProductsScreen;
+
+export const revalidate = 60;

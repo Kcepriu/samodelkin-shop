@@ -3,7 +3,7 @@ ul.react-paginate {
   margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: content;
+  justify-content: center;
   list-style-type: none;
   padding: 0 5rem;
   gap: 8px;
