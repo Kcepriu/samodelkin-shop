@@ -3,7 +3,7 @@ import { FC } from "react";
 import style from "./ChangeStatusReview.module.css";
 
 import { showSuccess, showNotifyFailure } from "@/services/notification";
-import httpClientServices from "@/services/httpClient";
+import { changeStatusReview } from "@/services/serverActionHttp";
 
 interface IProps {
   review: IReview;
@@ -19,10 +19,7 @@ const ChangeStatusReview: FC<IProps> = ({ review }) => {
       },
     };
 
-    const result = await httpClientServices.changeStatusReview(
-      String(reviewsId),
-      newReply
-    );
+    const result = await changeStatusReview(String(reviewsId), newReply);
 
     if (!result) {
       showNotifyFailure("Не вдалося Змінити статус");
