@@ -37,7 +37,7 @@ interface ILanguage {
   language: "ua" | "ru" | "us";
 }
 
-interface Manual {
+interface IManual {
   id: number;
   description: string;
   file: {

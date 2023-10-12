@@ -1,3 +1,7 @@
 .wrapContent {
-  @apply mt-12;
+  @apply mt-12
+  flex flex-col gap-4
+  text-text_add_info 
+  font-text_add_info 
+  leading-text_add_info;
 }

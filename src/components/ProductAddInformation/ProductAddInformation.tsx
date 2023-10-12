@@ -5,6 +5,7 @@ import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAdd
 import ProductAddInfoCharacteristics from "../ProductAddInfoCharacteristics/ProductAddInfoCharacteristics";
 import ProductDescription from "../ProductDescription/ProductDescription";
 import ProductAddInfoVideos from "../ProductAddInfoVideos/ProductAddInfoVideos";
+import ProductAddInfoManuals from "../ProductAddInfoManuals/ProductAddInfoManuals";
 import {
   FRONTEND_ROUTES,
   ADD_INFORMATION_ROUTES,
@@ -34,7 +35,7 @@ const ProductAddInformation: FC<IProps> = async ({
   const responseReviews = await httpServices.getProductReviews(
     String(product.id)
   );
-
+  const manuals = product.attributes.manual;
   const videos = product.attributes.videos;
   const reviews = responseReviews?.data;
   const paginationReviews = responseReviews?.meta.pagination;
@@ -43,6 +44,7 @@ const ProductAddInformation: FC<IProps> = async ({
     paginationReviews && paginationReviews.total > 0
       ? String(paginationReviews.total)
       : "";
+  const countManuals = manuals.length > 0 ? String(manuals.length) : "";
   const urlToManuals = getUrlAddInformation(
     ADD_INFORMATION_ROUTES.MANUALS,
     slug
@@ -58,6 +60,9 @@ const ProductAddInformation: FC<IProps> = async ({
           }
           if (type_info.url === ADD_INFORMATION_ROUTES.REVIEWS) {
             addTitle = countReviews;
+          }
+          if (type_info.url === ADD_INFORMATION_ROUTES.MANUALS) {
+            addTitle = countManuals;
           }
 
           return (
@@ -101,9 +106,7 @@ const ProductAddInformation: FC<IProps> = async ({
       )}
 
       {currentUrlInfo === ADD_INFORMATION_ROUTES.MANUALS && (
-        <div>
-          <p>MANUAL</p>
-        </div>
+        <ProductAddInfoManuals manuals={manuals} />
       )}
     </>
   );
