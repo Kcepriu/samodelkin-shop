@@ -3,7 +3,6 @@
 import { FC } from "react";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-// TODO - rewrite on module
 import "./Pagination.css";
 
 interface IParams {

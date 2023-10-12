@@ -20,7 +20,6 @@ const Reviews: FC<IProps> = ({ reviews }) => {
         const { id, attributes } = review;
         const repliesReview = attributes.replyReview;
         const product = attributes.product.data;
-        console.log("product.attributes.images", product.attributes.images);
 
         const urlImage = product.attributes.images?.data
           ? product.attributes.images?.data[0].attributes.url
