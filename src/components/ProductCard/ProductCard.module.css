@@ -43,3 +43,7 @@
 .card:hover .appearInformation {
   @apply block;
 }
+
+.wrapImage {
+  @apply relative;
+}

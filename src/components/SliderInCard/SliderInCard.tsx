@@ -61,13 +61,16 @@ const SliderInCard: FC<IProps> = ({ images, title }) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiperInCardSmall"
         >
-          {images.map((element, ind) => {
+          {images.map(({ id, attributes }, ind) => {
+            const urlImage = attributes.formats?.thumbnail
+              ? attributes.formats?.thumbnail.url
+              : attributes.url;
             return (
-              <SwiperSlide key={element.id}>
+              <SwiperSlide key={id}>
                 <Image
                   priority={ind === 0}
                   // className={style.image}
-                  src={element.attributes.url}
+                  src={urlImage}
                   alt={title}
                   height={50}
                   width={50}

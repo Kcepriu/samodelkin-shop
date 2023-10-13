@@ -1,0 +1,7 @@
+.listFlag {
+  @apply flex flex-col gap-2 
+  w-[34px]
+  absolute
+  right-2
+  bottom-2;
+}

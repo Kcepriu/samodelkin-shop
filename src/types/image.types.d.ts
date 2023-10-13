@@ -31,7 +31,10 @@ enum ETypeImages {
 }
 
 interface IFormatsImage {
-  [ETypeImages]: IThumbnail;
+  large?: IThumbnail;
+  small?: IThumbnail;
+  medium?: IThumbnail;
+  thumbnail?: IThumbnail;
 }
 
 interface IThumbnail {

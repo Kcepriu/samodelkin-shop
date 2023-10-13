@@ -4,6 +4,7 @@ import Img from "@/assets/no_images.png";
 import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import ButtonsCardProduct from "../ButtonsCardProduct/ButtonsCardProduct";
+import FlagLanguages from "../FlagLanguages/FlagLanguages";
 import styles from "./ProductCard.module.css";
 
 interface IProps {
@@ -34,17 +35,20 @@ const ProductCard: FC<IProps> = ({ product }) => {
     <div className={styles.wrapCard}>
       <div className={styles.card} key={product.id}>
         <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}`}>
-          <Image
-            className={styles.image}
-            src={urlImage}
-            alt={attributes.title}
-            height={0}
-            width={0}
-            placeholder="blur"
-            blurDataURL={rgbDataURL(19, 41, 177)}
-            // priority={true}
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 100vw"
-          />
+          <div className={styles.wrapImage}>
+            <Image
+              className={styles.image}
+              src={urlImage}
+              alt={attributes.title}
+              height={0}
+              width={0}
+              placeholder="blur"
+              blurDataURL={rgbDataURL(19, 41, 177)}
+              // priority={true}
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 100vw"
+            />
+            <FlagLanguages flags={attributes.languages} />
+          </div>
           <h2 className={styles.title}>{attributes.title}</h2>
         </Link>
 
