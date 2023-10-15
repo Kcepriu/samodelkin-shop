@@ -20,6 +20,8 @@ interface IProduct {
     categories?: IResponseCategories;
     images?: IResponseImages;
     videos: IVideo[];
+    languages: ILanguage[];
+    manual: IManual[];
   };
 }
 
@@ -28,4 +30,17 @@ interface IVideo {
   url: string;
   active: boolean;
   title: string;
+}
+
+interface ILanguage {
+  id: number;
+  language: "ua" | "ru" | "us";
+}
+
+interface IManual {
+  id: number;
+  description: string;
+  file: {
+    data: IFile;
+  };
 }

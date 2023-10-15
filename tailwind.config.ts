@@ -52,6 +52,7 @@ const config: Config = {
         review_text: "14px",
         review_title: "18px",
         button_add_review: "20px",
+        text_add_info: "18px",
       },
       fontWeight: {
         title_section: "400",
@@ -67,6 +68,7 @@ const config: Config = {
         review_text: "300",
         review_title: "500",
         button_add_review: "300",
+        text_add_info: "300",
       },
       lineHeight: {
         title_section: "1.16",
@@ -82,6 +84,7 @@ const config: Config = {
         review_text: "1.29",
         review_title: "1.28",
         button_add_review: "1.15",
+        text_add_info: "1.17",
       },
     },
   },

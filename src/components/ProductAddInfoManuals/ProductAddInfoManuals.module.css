@@ -1,0 +1,14 @@
+.wrapContent {
+  @apply mt-12;
+}
+
+.listManuals {
+  @apply flex flex-col gap-4
+  text-text_add_info 
+  font-text_add_info 
+  leading-text_add_info;
+}
+
+.link:hover {
+  @apply font-title_footer;
+}
