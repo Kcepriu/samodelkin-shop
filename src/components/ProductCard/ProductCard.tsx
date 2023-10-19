@@ -3,8 +3,9 @@ import Image from "next/image";
 import Img from "@/assets/no_images.png";
 import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
-import ButtonsCardProduct from "../ButtonsCardProduct/ButtonsCardProduct";
+import ButtonAddProductToCart from "../ButtonAddProductToCart/ButtonAddProductToCart";
 import FlagLanguages from "../FlagLanguages/FlagLanguages";
+import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddProductToFavorite";
 import styles from "./ProductCard.module.css";
 
 interface IProps {
@@ -48,6 +49,13 @@ const ProductCard: FC<IProps> = ({ product }) => {
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 100vw"
             />
             <FlagLanguages flags={attributes.languages} />
+            <div className={styles.addFavorite}>
+              <ButtonAddProductToFavorite
+                product={product}
+                size={48}
+                sizeIcon={24}
+              />
+            </div>
           </div>
           <h2 className={styles.title}>{attributes.title}</h2>
         </Link>
@@ -58,7 +66,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
           <p>Кількість гравців: {attributes.countPlayers}</p>
         </div>
 
-        <ButtonsCardProduct product={product} />
+        <ButtonAddProductToCart product={product} />
 
         <div className={styles.appearInformation}>
           <p>{attributes.descrition}</p>

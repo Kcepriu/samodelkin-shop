@@ -1,13 +1,16 @@
 .wrapHeader {
-  @apply flex justify-between pt-1 pb-1;
+  @apply flex  items-center  justify-between  py-6
+  text-text_header
+  font-text_header
+  leading-text_header;
 }
 
 .wrapNavigate {
-  @apply flex justify-between gap-32;
+  @apply flex justify-between items-center gap-32;
 }
 
 .wrapButton {
-  @apply flex justify-between gap-12;
+  @apply flex justify-between  items-center gap-12;
 }
 
 .link {
@@ -21,6 +24,13 @@
     stroke-green-700
     stroke-2;
 }
+
 .link .icon {
   @apply hover:bg-indigo-400 hover:text-rose-600;
+}
+
+.logo {
+  @apply text-text_header_logo
+  font-text_header_logo
+  leading-text_header_logo;
 }

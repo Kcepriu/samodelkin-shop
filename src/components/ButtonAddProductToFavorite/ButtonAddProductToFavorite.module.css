@@ -1,0 +1,11 @@
+.button {
+  @apply flex justify-center items-center;
+}
+
+.icon {
+  @apply text-icon_color;
+}
+
+.iconFavorite {
+  @apply text-icon_fill_color;
+}
