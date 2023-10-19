@@ -1,3 +1,10 @@
+.logo {
+  @apply text-text_header_logo
+  font-text_header_logo
+  leading-text_header_logo
+  text-icon_color hover:text-action_color;
+}
+
 .wrapHeader {
   @apply flex  items-center  justify-between  py-6
   text-text_header
@@ -14,23 +21,16 @@
 }
 
 .link {
-  @apply hover:bg-indigo-400;
+  @apply hover:text-action_color;
 }
 
 .icon {
   @apply w-6 h-6
-   text-orange-800 
-   fill-red-800
-    stroke-green-700
-    stroke-2;
+  text-icon_color hover:text-action_color;
 }
 
-.link .icon {
-  @apply hover:bg-indigo-400 hover:text-rose-600;
-}
-
-.logo {
-  @apply text-text_header_logo
-  font-text_header_logo
-  leading-text_header_logo;
-}
+/* 
+  stroke-2
+  fill-red-800
+  stroke-green-700 
+    */

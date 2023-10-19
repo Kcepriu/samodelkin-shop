@@ -20,6 +20,7 @@ const config: Config = {
         button_background: "#B3B2B3",
         icon_color: "#161718",
         icon_fill_color: "#8F5231",
+        action_color: "#F66A23",
       },
       screens: {
         xs: "320px",

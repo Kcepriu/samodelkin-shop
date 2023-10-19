@@ -1,6 +1,7 @@
 "use client";
 import { FC } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useFavorite } from "@/stores/favorite.store";
 import style from "./ButtonAddProductToFavorite.module.css";
 
 interface IProps {
@@ -14,9 +15,18 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
   size = 24,
   sizeIcon = 24,
 }) => {
-  const isFavorite = false;
-  const handleOnClick = () => {
-    console.log("ButtonAddProductToFavorite", product.id);
+  const favorites = useFavorite((state) => state.favorites);
+  const addFavorite = useFavorite((state) => state.addFavorite);
+  const deleteFavorite = useFavorite((state) => state.deleteFavorite);
+
+  const isFavorite = favorites.some((element) => element.id === product.id);
+
+  const handleOnClick = async () => {
+    if (isFavorite) {
+      await deleteFavorite(product);
+    } else {
+      await addFavorite(product);
+    }
   };
 
   return (

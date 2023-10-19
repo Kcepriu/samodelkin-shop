@@ -6,6 +6,14 @@
   @apply text-icon_color;
 }
 
+.icon:hover {
+  @apply text-action_color;
+}
+
 .iconFavorite {
   @apply text-icon_fill_color;
+}
+
+.iconFavorite:hover {
+  @apply text-action_color;
 }
