@@ -3,7 +3,8 @@ import NavigateToBack from "../NavigateToBack/NavigateToBack";
 import SliderInCard from "../SliderInCard/SliderInCard";
 import Image from "next/image";
 import ImgNoImage from "@/assets/no_images.png";
-import ButtonsCardProduct from "../ButtonsCardProduct/ButtonsCardProduct";
+import ButtonAddProductToCart from "../ButtonAddProductToCart/ButtonAddProductToCart";
+import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddProductToFavorite";
 import style from "./Product.module.css";
 
 interface IProps {
@@ -58,7 +59,10 @@ const Product: FC<IProps> = ({ product }) => {
             available: <span>{attributes.available}</span>
           </p>
 
-          <ButtonsCardProduct product={product} />
+          <div>
+            <ButtonAddProductToCart product={product} />
+            <ButtonAddProductToFavorite product={product} size={24} />
+          </div>
         </div>
       </div>
     </>

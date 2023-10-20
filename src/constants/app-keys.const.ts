@@ -32,7 +32,6 @@ export const FRONTEND_ROUTES = {
   HOME: "/",
   PRODUCTS: "/product",
   PRODUCT: "/product",
-  CART: "/cart",
   CHECKOUT: "/checkout",
   CONTACTS: "/contacts",
   FAVORITES: "/favorites",
@@ -70,3 +69,7 @@ export const TYPES_ADD_INFORMATION_PRODUCT = [
     url: ADD_INFORMATION_ROUTES.MANUALS,
   },
 ];
+
+export const KEYS_LOCAL_STORAGE = {
+  FAVORITE: "FAVORITE_PRODUCT",
+};

@@ -1,13 +1,13 @@
 "use client";
 
 import { FC } from "react";
-import { FaCartPlus } from "react-icons/fa";
-import styles from "./ButtonsCardProduct.module.css";
+import { BsCart3 } from "react-icons/bs";
+import styles from "./ButtonAddProductToCart.module.css";
 
 interface IProps {
   product: IProduct;
 }
-const ButtonsCardProduct: FC<IProps> = ({ product }) => {
+const ButtonAddProductToCart: FC<IProps> = ({ product }) => {
   const handleAddToCart = () => {
     console.log("Add to cart product: ", product.id);
   };
@@ -15,10 +15,10 @@ const ButtonsCardProduct: FC<IProps> = ({ product }) => {
   return (
     <div className={styles.wrapButtom} onClick={handleAddToCart}>
       <button type="button">
-        <FaCartPlus size={32} />
+        <BsCart3 size={32} />
       </button>
     </div>
   );
 };
 
-export default ButtonsCardProduct;
+export default ButtonAddProductToCart;

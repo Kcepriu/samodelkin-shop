@@ -18,6 +18,9 @@ const config: Config = {
         main_background: "#D9D9D9",
         review_background: "#E4E4E4",
         button_background: "#B3B2B3",
+        icon_color: "#161718",
+        icon_fill_color: "#8F5231",
+        action_color: "#F66A23",
       },
       screens: {
         xs: "320px",
@@ -53,6 +56,8 @@ const config: Config = {
         review_title: "18px",
         button_add_review: "20px",
         text_add_info: "18px",
+        text_header: "20px",
+        text_header_logo: "32px",
       },
       fontWeight: {
         title_section: "400",
@@ -69,6 +74,8 @@ const config: Config = {
         review_title: "500",
         button_add_review: "300",
         text_add_info: "300",
+        text_header: "400",
+        text_header_logo: "400",
       },
       lineHeight: {
         title_section: "1.16",
@@ -85,6 +92,8 @@ const config: Config = {
         review_title: "1.28",
         button_add_review: "1.15",
         text_add_info: "1.17",
+        text_header: "1.2",
+        text_header_logo: "1.22",
       },
     },
   },

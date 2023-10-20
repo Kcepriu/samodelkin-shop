@@ -47,3 +47,9 @@
 .wrapImage {
   @apply relative;
 }
+
+.addFavorite {
+  @apply absolute 
+  block
+  top-0 right-0;
+}

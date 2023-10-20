@@ -1,0 +1,11 @@
+.wrapElement {
+  @apply relative hover:text-icon_color;
+}
+.textCount {
+  @apply absolute 
+  top-[-10%] right-[-50%]
+  w-3/4 h-3/4
+  block 
+  border rounded-full bg-action_color
+  text-center;
+}

@@ -1,0 +1,11 @@
+.icon {
+  @apply text-icon_color;
+}
+
+.icon:hover {
+  @apply text-action_color;
+}
+
+.link {
+  @apply hover:text-action_color;
+}

@@ -2,66 +2,44 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import IconWithCount from "../IconWithCount/IconWithCount";
+import ButtonOpenCart from "../ButtonOpenCart/ButtonOpenCart";
+import ButtonGoToFavorite from "../ButtonGoToFavorite/ButtonGoToFavorite";
+import { GoPerson } from "react-icons/go";
 
-import iconHeart from "@/assets/icons/heart.svg";
-import iconPerson from "@/assets/icons/person.svg";
-import iconCart from "@/assets/icons/cart.svg";
-// import ShieldCheckIcon from "@/assets/icons.svg";
-
-import styles from "./HeaderPage.module.css";
+import style from "./HeaderPage.module.css";
 
 const HeaderPage: FC = () => {
-  // console.log(ShieldCheckIcon);
-
   return (
-    <div className={styles.wrapHeader}>
-      <Link href="/">Logo</Link>
+    <div className={style.wrapHeader}>
+      <Link href="/" className={style.logo}>
+        Logo
+      </Link>
 
-      <div className={styles.wrapNavigate}>
-        <Link href={`${FRONTEND_ROUTES.CHECKOUT}`}>Оформлення замовлення</Link>
+      <div className={style.wrapNavigate}>
+        <Link className={style.link} href={`${FRONTEND_ROUTES.CHECKOUT}`}>
+          Оформлення замовлення
+        </Link>
 
-        <Link href={`${FRONTEND_ROUTES.CONTACTS}`}>Contacts</Link>
+        <Link className={style.link} href={`${FRONTEND_ROUTES.CONTACTS}`}>
+          Contacts
+        </Link>
 
-        <ul className={styles.wrapButton}>
+        <ul className={style.wrapButton}>
           <li>
-            <Link className={styles.link} href={`${FRONTEND_ROUTES.FAVORITES}`}>
-              {/* <svg className={styles.icon}>
-                <use href={iconHeart} fill="red" />
-              </svg> */}
-
-              <Image
-                className={styles.icon}
-                src={iconHeart}
-                alt="icon"
-                width={24}
-                height={24}
-                priority
+            <ButtonGoToFavorite />
+          </li>
+          <li>
+            <Link className={style.link} href={`${FRONTEND_ROUTES.ACCOUNT}`}>
+              <IconWithCount
+                Icon={GoPerson}
+                sizeIcon={32}
+                className={style.icon}
               />
             </Link>
           </li>
           <li>
-            <Link className={styles.link} href={`${FRONTEND_ROUTES.ACCOUNT}`}>
-              <Image
-                className={styles.icon}
-                src={iconPerson}
-                alt="icon"
-                width={24}
-                height={24}
-                priority
-              />
-            </Link>
-          </li>
-          <li>
-            <Link className={styles.link} href={`${FRONTEND_ROUTES.CART}`}>
-              <Image
-                className={styles.icon}
-                src={iconCart}
-                alt="icon"
-                width={24}
-                height={24}
-                priority
-              />
-            </Link>
+            <ButtonOpenCart />
           </li>
         </ul>
       </div>
