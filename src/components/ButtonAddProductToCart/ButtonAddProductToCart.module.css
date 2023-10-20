@@ -1,3 +1,10 @@
 .wrapButtom {
   @apply flex justify-end pr-5;
 }
+
+.icon {
+  @apply hover:text-action_color
+  data-[in-cart=true]:text-icon_fill_color;
+}
+
+/* @apply text-icon_fill_color; */

@@ -1,0 +1,61 @@
+.wrapCart {
+  @apply pt-3 
+  pr-9 
+  pb-9 
+  pl-7
+  text-text_black;
+}
+
+.title {
+  @apply text-title_section
+  font-title_section 
+  leading-title_section;
+}
+
+.wrapProduct {
+  @apply mt-8 text-text_gray flex flex-col gap-4;
+}
+
+.wrapTotalSum {
+  @apply mt-16 
+  text-right
+  text-text_sum_order
+  font-text_sum_order
+  leading-text_sum_order;
+}
+
+.wrapButton {
+  @apply flex gap-3 justify-between
+  mt-20  
+  text-text_gray
+  text-type_add_info
+  font-type_add_info
+  leading-type_add_info;
+}
+
+.buttonBack {
+  @apply flex gap-3 
+  py-3
+  
+  hover:text-action_color;
+}
+
+.iconBack {
+  @apply text-icon_back_color;
+}
+
+.buttonBack:hover .iconBack {
+  @apply text-action_color;
+}
+
+.wrapButton .buttonAccept {
+  @apply block 
+  py-3
+  px-5
+  rounded-lg 
+  bg-button_dark_background
+  text-white
+  hover:text-action_color
+  hover:shadow-lg 
+  hover:shadow-gray-500/80;
+}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import IconWithCount from "../IconWithCount/IconWithCount";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useFavorite } from "@/stores/favorite.store";
+import useFavorite from "@/stores/favorite.store";
 import useStore from "@/helpers/useStore";
 import style from "./ButtonGoToFavorite.module.css";
 

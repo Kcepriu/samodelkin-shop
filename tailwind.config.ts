@@ -18,9 +18,13 @@ const config: Config = {
         main_background: "#D9D9D9",
         review_background: "#E4E4E4",
         button_background: "#B3B2B3",
+        button_dark_background: "#676568",
         icon_color: "#161718",
         icon_fill_color: "#8F5231",
         action_color: "#F66A23",
+        icon_back_color: "#5E718D",
+        text_black: "#161718",
+        text_gray: "#1C1B1B",
       },
       screens: {
         xs: "320px",
@@ -58,6 +62,7 @@ const config: Config = {
         text_add_info: "18px",
         text_header: "20px",
         text_header_logo: "32px",
+        text_sum_order: "20px",
       },
       fontWeight: {
         title_section: "400",
@@ -76,6 +81,7 @@ const config: Config = {
         text_add_info: "300",
         text_header: "400",
         text_header_logo: "400",
+        text_sum_order: "500",
       },
       lineHeight: {
         title_section: "1.16",
@@ -94,6 +100,7 @@ const config: Config = {
         text_add_info: "1.17",
         text_header: "1.2",
         text_header_logo: "1.22",
+        text_sum_order: "1.15",
       },
     },
   },

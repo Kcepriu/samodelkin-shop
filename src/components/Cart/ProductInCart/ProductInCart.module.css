@@ -1,0 +1,11 @@
+.wrapProduct {
+  @apply flex gap-3 w-full;
+}
+
+.wrapImage {
+  @apply block w-[127px];
+}
+
+.wrapContent {
+  @apply grow;
+}

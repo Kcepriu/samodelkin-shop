@@ -7,13 +7,17 @@
 .modalContainer {
   @apply relative 
   px-5 
-  pt-10 
-  pb-5
+  py-5  
   max-w-[95%] 
   min-w-[250px] 
   bg-gray-100 rounded-lg border shadow-lg overflow-y-auto;
 }
 
 .modalCloseBtn {
-  @apply absolute text-gray-800 top-3 right-3 block w-6 h-6 border-none cursor-pointer hover:scale-110 transition-transform;
+  @apply absolute 
+  text-gray-800 
+  top-3 
+  right-3 
+  block 
+  w-6 h-6 border-none cursor-pointer hover:scale-110 transition-transform;
 }
