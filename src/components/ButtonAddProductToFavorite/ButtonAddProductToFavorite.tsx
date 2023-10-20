@@ -2,6 +2,7 @@
 import { FC } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useFavorite } from "@/stores/favorite.store";
+import useStore from "@/helpers/useStore";
 import style from "./ButtonAddProductToFavorite.module.css";
 
 interface IProps {
@@ -15,11 +16,13 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
   size = 24,
   sizeIcon = 24,
 }) => {
-  const favorites = useFavorite((state) => state.favorites);
-  const addFavorite = useFavorite((state) => state.addFavorite);
-  const deleteFavorite = useFavorite((state) => state.deleteFavorite);
+  const favorites = useStore(useFavorite, (state) => state.favorites);
+  const [addFavorite, deleteFavorite] = useFavorite((state) => [
+    state.addFavorite,
+    state.deleteFavorite,
+  ]);
 
-  const isFavorite = favorites.some((element) => element.id === product.id);
+  const isFavorite = favorites?.some((element) => element.id === product.id);
 
   const handleOnClick = async () => {
     if (isFavorite) {
@@ -35,7 +38,7 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
       type="button"
       onClick={handleOnClick}
     >
-      {isFavorite ? (
+      {!!isFavorite ? (
         <AiFillHeart size={sizeIcon} className={style.iconFavorite} />
       ) : (
         <AiOutlineHeart size={sizeIcon} className={style.icon} />

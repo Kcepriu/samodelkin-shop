@@ -2,6 +2,7 @@
 import { FC, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { Modal } from "@/components/Modal/Modal";
+import IconWithCount from "../IconWithCount/IconWithCount";
 import Cart from "../Cart/Cart";
 import style from "./ButtonOpenCart.module.css";
 
@@ -19,7 +20,12 @@ const ButtonOpenCart: FC = () => {
   return (
     <>
       <button type="button" onClick={handlerOpenCard}>
-        <BsCart3 className={style.icon} size={24} />
+        <IconWithCount
+          Icon={BsCart3}
+          sizeIcon={32}
+          className={style.icon}
+          count={5}
+        />
       </button>
       {showModal && (
         <Modal onClose={handlerCloseCard}>

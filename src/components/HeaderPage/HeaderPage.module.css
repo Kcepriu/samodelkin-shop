@@ -25,8 +25,7 @@
 }
 
 .icon {
-  @apply w-6 h-6
-  text-icon_color hover:text-action_color;
+  @apply text-icon_color hover:text-action_color;
 }
 
 /* 
