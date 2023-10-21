@@ -1,11 +1,52 @@
 .wrapProduct {
-  @apply flex gap-3 w-full;
+  @apply relative
+  flex gap-3 
+  w-full
+  items-center;
 }
 
 .wrapImage {
   @apply block w-[127px];
 }
 
+.image {
+  @apply w-auto object-contain;
+}
+
+.wrapTitle {
+  @apply flex justify-between items-baseline;
+}
+
+.title {
+  @apply text-title_product
+  font-title_product
+  leading-title_product;
+}
+
 .wrapContent {
-  @apply grow;
+  @apply grow h-full
+  pl-16
+  py-12;
+}
+.wrapDetails {
+  @apply flex justify-between
+  mt-2 gap-16;
+}
+
+.totalSum {
+  @apply text-text_sum_order
+  font-text_sum_order
+  leading-text_sum_order;
+}
+
+.buttonDelete {
+  @apply absolute top-2 right-1 p-1;
+}
+
+.icon {
+  @apply text-icon_back_color;
+}
+
+.buttonDelete:hover .icon {
+  @apply text-action_color;
 }

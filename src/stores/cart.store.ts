@@ -8,7 +8,8 @@ interface IStateCart {
   error: boolean | null;
   addToCart: (newRow: ICartRow) => Promise<void>;
   addOneProductToCart: (newProduct: IProduct) => Promise<void>;
-  deleteFromCart: (newProduct: IProduct) => Promise<void>;
+  changeCountProduct: (changeProduct: IProduct, count: number) => Promise<void>;
+  deleteFromCart: (deleteProduct: IProduct) => Promise<void>;
   cleanCart: () => Promise<void>;
 }
 
@@ -34,10 +35,33 @@ const useCart = create<IStateCart>()(
         set((state) => ({ products: [...state.products, newRow] }));
       },
 
-      deleteFromCart: async (newProduct) =>
+      changeCountProduct: async (changeProduct, count) => {
+        const newRow = {
+          id: changeProduct.id,
+          product: changeProduct,
+          count: count,
+          price: changeProduct.attributes.price,
+          sum: changeProduct.attributes.price * count,
+        };
+
+        set((state) => {
+          const products = state.products;
+          const index = products.findIndex(
+            (rowCart) => rowCart.id === changeProduct.id
+          );
+
+          if (index !== -1) products[index] = newRow;
+
+          return {
+            products: [...products],
+          };
+        });
+      },
+
+      deleteFromCart: async (deleteProduct) =>
         set((state) => ({
           products: state.products.filter(
-            (rowCart) => rowCart.product.id !== newProduct.id
+            (rowCart) => rowCart.id !== deleteProduct.id
           ),
         })),
 

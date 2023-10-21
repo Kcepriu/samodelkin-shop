@@ -1,4 +1,6 @@
 import { FC } from "react";
+import Link from "next/link";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import style from "./FooterNavigate.module.css";
 
 const FooterNavigate: FC = () => {
@@ -6,17 +8,21 @@ const FooterNavigate: FC = () => {
     <div className={style.wrapComponent}>
       <div className={style.wrapInfo}>
         <h2 className={style.title}>Назва</h2>
-        <p>Про компанію</p>
-        <p>Contscts</p>
-        <p>Security</p>
-        <p>Catalog</p>
+        <Link className={style.link} href={FRONTEND_ROUTES.ABOUT_US}>
+          Про компанію
+        </Link>
+        <Link className={style.link} href={FRONTEND_ROUTES.PRODUCTS}>
+          Catalog
+        </Link>
       </div>
       <div className={style.wrapInfo}>
         <h2 className={style.title}>Допомога покупцеві</h2>
-        <p>Умови доставки</p>
-        <p>Обмін і повернення</p>
-        <p>Правила користування сайтом</p>
-        <p>Гарантія</p>
+        <Link className={style.link} href={FRONTEND_ROUTES.DELIVERY}>
+          Умови доставки
+        </Link>
+        <Link className={style.link} href={FRONTEND_ROUTES.CHANGE}>
+          Обмін і повернення
+        </Link>
       </div>
     </div>
   );

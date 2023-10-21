@@ -1,9 +1,13 @@
 .wrapCart {
   @apply pt-3 
-  pr-9 
+  pr-24 
   pb-9 
   pl-7
   text-text_black;
+}
+
+.wrapTitle {
+  @apply flex justify-between;
 }
 
 .title {
@@ -13,7 +17,9 @@
 }
 
 .wrapProduct {
-  @apply mt-8 text-text_gray flex flex-col gap-4;
+  @apply mt-8 text-text_gray flex flex-col gap-4
+  max-h-[340px]
+  overflow-y-auto;
 }
 
 .wrapTotalSum {
@@ -58,4 +64,16 @@
   hover:text-action_color
   hover:shadow-lg 
   hover:shadow-gray-500/80;
+}
+
+.buttonClean {
+  @apply p-2;
+}
+
+.icon {
+  @apply text-icon_back_color;
+}
+
+.buttonClean:hover .icon {
+  @apply text-action_color;
 }

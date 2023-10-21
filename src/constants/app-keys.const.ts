@@ -33,9 +33,11 @@ export const FRONTEND_ROUTES = {
   PRODUCTS: "/product",
   PRODUCT: "/product",
   CHECKOUT: "/checkout",
+  ABOUT_US: "/about_us",
   CONTACTS: "/contacts",
   FAVORITES: "/favorites",
-  PAYMENT: "/payment_and_delivery",
+  DELIVERY: "/delivery",
+  CHANGE: "/change",
   ACCOUNT: "/account",
 };
 

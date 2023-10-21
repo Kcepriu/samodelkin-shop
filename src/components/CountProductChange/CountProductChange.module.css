@@ -1,0 +1,13 @@
+.wrapComponent {
+  @apply flex 
+  gap-1
+  justify-between 
+  items-center
+  text-text_black
+
+  w-[74px];
+}
+
+.icon {
+  @apply text-icon_back_color hover:text-action_color;
+}

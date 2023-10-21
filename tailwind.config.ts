@@ -63,6 +63,7 @@ const config: Config = {
         text_header: "20px",
         text_header_logo: "32px",
         text_sum_order: "20px",
+        title_product: "20px",
       },
       fontWeight: {
         title_section: "400",
@@ -82,6 +83,7 @@ const config: Config = {
         text_header: "400",
         text_header_logo: "400",
         text_sum_order: "500",
+        title_product: "400",
       },
       lineHeight: {
         title_section: "1.16",
@@ -101,6 +103,7 @@ const config: Config = {
         text_header: "1.2",
         text_header_logo: "1.22",
         text_sum_order: "1.15",
+        title_product: "1.17",
       },
     },
   },

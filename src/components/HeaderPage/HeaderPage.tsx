@@ -17,12 +17,8 @@ const HeaderPage: FC = () => {
       </Link>
 
       <div className={style.wrapNavigate}>
-        <Link className={style.link} href={`${FRONTEND_ROUTES.CHECKOUT}`}>
-          Оформлення замовлення
-        </Link>
-
-        <Link className={style.link} href={`${FRONTEND_ROUTES.CONTACTS}`}>
-          Contacts
+        <Link className={style.link} href="#contacts">
+          Контакти
         </Link>
 
         <ul className={style.wrapButton}>
