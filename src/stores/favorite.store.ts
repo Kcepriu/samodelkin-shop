@@ -8,7 +8,7 @@ interface IStateFavorite {
   addFavorite: (newProduct: IProduct) => Promise<void>;
   deleteFavorite: (newProduct: IProduct) => Promise<void>;
 }
-export const useFavorite = create<IStateFavorite>()(
+const useFavorite = create<IStateFavorite>()(
   persist(
     (set) => ({
       favorites: [],
@@ -26,3 +26,5 @@ export const useFavorite = create<IStateFavorite>()(
     { name: KEYS_LOCAL_STORAGE.FAVORITE }
   )
 );
+
+export default useFavorite;

@@ -11,3 +11,11 @@
 .wrapInfo {
   @apply flex flex-col gap-2;
 }
+
+.link {
+  @apply text-text_black
+  text-text_footer
+  font-text_footer
+  leading-text_footer
+   hover:text-action_color;
+}

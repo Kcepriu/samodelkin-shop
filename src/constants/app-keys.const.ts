@@ -33,9 +33,11 @@ export const FRONTEND_ROUTES = {
   PRODUCTS: "/product",
   PRODUCT: "/product",
   CHECKOUT: "/checkout",
+  ABOUT_US: "/about_us",
   CONTACTS: "/contacts",
   FAVORITES: "/favorites",
-  PAYMENT: "/payment_and_delivery",
+  DELIVERY: "/delivery",
+  CHANGE: "/change",
   ACCOUNT: "/account",
 };
 
@@ -72,4 +74,5 @@ export const TYPES_ADD_INFORMATION_PRODUCT = [
 
 export const KEYS_LOCAL_STORAGE = {
   FAVORITE: "FAVORITE_PRODUCT",
+  CART: "CART_SHOP",
 };
