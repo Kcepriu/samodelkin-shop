@@ -17,7 +17,9 @@
 }
 
 .wrapProduct {
-  @apply mt-8 text-text_gray flex flex-col gap-4
+  @apply mt-8 
+  text-text_gray 
+  flex flex-col gap-4
   max-h-[340px]
   overflow-y-auto;
 }

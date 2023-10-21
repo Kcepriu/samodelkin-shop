@@ -30,6 +30,7 @@ const Cart: FC<IProps> = ({ onClose }) => {
   const handleDeleteProduct = async (product: IProduct) => {
     await deleteFromCart(product);
   };
+
   return (
     <div className={style.wrapCart}>
       <div className={style.wrapTitle}>

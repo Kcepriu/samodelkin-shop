@@ -1,0 +1,53 @@
+.wrapProduct {
+  @apply relative
+  flex gap-3 
+  w-full
+  items-center;
+}
+
+.wrapImage {
+  @apply block w-[127px];
+}
+
+.image {
+  @apply w-auto object-contain;
+}
+
+.wrapTitle {
+  @apply flex justify-between items-baseline;
+}
+
+.title {
+  @apply text-left
+  text-type_add_info
+  font-type_add_info
+  leading-type_add_info;
+}
+
+.wrapContent {
+  @apply grow h-full
+  pl-3
+  py-2;
+}
+.wrapDetails {
+  @apply flex justify-between
+  mt-4 gap-16;
+}
+
+.totalSum {
+  @apply text-title_second
+  font-title_second
+  leading-text_header;
+}
+
+.buttonDelete {
+  @apply absolute top-2 right-1 p-1;
+}
+
+.icon {
+  @apply text-icon_back_color;
+}
+
+.buttonDelete:hover .icon {
+  @apply text-action_color;
+}
