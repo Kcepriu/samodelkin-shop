@@ -2,7 +2,10 @@
 
 import { FC } from "react";
 import Link from "next/link";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import {
+  FRONTEND_ROUTES,
+  ACCOUNT_ADD_INFORMATION_ROUTES,
+} from "@/constants/app-keys.const";
 import IconWithCount from "../IconWithCount/IconWithCount";
 import { AiOutlineHeart } from "react-icons/ai";
 import useFavorite from "@/stores/favorite.store";
@@ -13,7 +16,10 @@ const ButtonGoToFavorite: FC = () => {
   const favorites = useStore(useFavorite, (state) => state.favorites);
 
   return (
-    <Link className={style.link} href={`${FRONTEND_ROUTES.FAVORITES}`}>
+    <Link
+      className={style.link}
+      href={`${FRONTEND_ROUTES.ACCOUNT}${ACCOUNT_ADD_INFORMATION_ROUTES.FAVORITES}`}
+    >
       <IconWithCount
         Icon={AiOutlineHeart}
         sizeIcon={32}

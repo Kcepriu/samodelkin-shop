@@ -1,0 +1,23 @@
+.listPage {
+  @apply flex flex-col gap-3;
+}
+
+.elementList {
+  /* @apply p-2; */
+}
+
+.link {
+  @apply flex
+  gap-3
+  h-full
+  w-full
+  p-2
+  border
+  border-button_active_page
+  transition hover:bg-indigo-400
+  focus:bg-indigo-400
+   focus:text-gray-100
+   hover:text-gray-100
+   data-[active=true]:hover:bg-indigo-400
+   data-[active=true]:bg-button_active_page;
+}
