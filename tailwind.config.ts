@@ -15,7 +15,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        main_background: "#D9D9D9",
+        main_background: "#E5E5E5",
         review_background: "#E4E4E4",
         button_background: "#B3B2B3",
         button_dark_background: "#676568",
@@ -25,6 +25,7 @@ const config: Config = {
         icon_back_color: "#5E718D",
         text_black: "#161718",
         text_gray: "#1C1B1B",
+        border: "#C1C1C1",
       },
       screens: {
         xs: "320px",
@@ -64,6 +65,8 @@ const config: Config = {
         text_header_logo: "32px",
         text_sum_order: "20px",
         title_product: "20px",
+        title_checkout: "22px",
+        title_second: "16px",
       },
       fontWeight: {
         title_section: "400",
@@ -84,6 +87,8 @@ const config: Config = {
         text_header_logo: "400",
         text_sum_order: "500",
         title_product: "400",
+        title_checkout: "600",
+        title_second: "500",
       },
       lineHeight: {
         title_section: "1.16",
@@ -104,6 +109,8 @@ const config: Config = {
         text_header_logo: "1.22",
         text_sum_order: "1.15",
         title_product: "1.17",
+        title_checkout: "1.6",
+        title_second: "1.75",
       },
     },
   },

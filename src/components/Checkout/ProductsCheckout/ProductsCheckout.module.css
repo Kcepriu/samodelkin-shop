@@ -1,0 +1,52 @@
+.wrapComponent {
+  @apply bg-main_background
+  py-7 pl-6 pr-4;
+}
+
+.wrapTitle {
+  @apply flex justify-between;
+}
+
+.title {
+  @apply text-title_section
+  font-title_section 
+  leading-title_section;
+}
+
+.icon {
+  @apply text-icon_back_color;
+}
+
+.buttonClean:hover .icon {
+  @apply text-action_color;
+}
+
+.wrapProduct {
+  @apply mt-5 
+  text-text_gray 
+  flex flex-col gap-4
+  max-h-[340px]
+  overflow-y-auto;
+}
+
+.wrapDelivery {
+  @apply mt-6 
+  flex justify-between 
+  
+  text-review_text
+  font-review_text
+  leading-review_text;
+}
+.wrapTotal {
+  @apply mt-7
+  flex justify-between
+  text-review_text
+  font-review_text
+  leading-review_text;
+}
+
+.textAccent {
+  @apply text-title_second
+  font-title_second
+  leading-text_header;
+}

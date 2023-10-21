@@ -1,5 +1,5 @@
 .wrapFooter {
-  @apply pt-1 pb-2 
+  @apply pt-12 pb-6 
   text-text_footer
   font-text_footer
   leading-text_footer;
