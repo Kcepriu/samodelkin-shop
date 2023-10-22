@@ -35,13 +35,12 @@ export const FRONTEND_ROUTES = {
   CHECKOUT: "/checkout",
   ABOUT_US: "/about_us",
   CONTACTS: "/contacts",
-  FAVORITES: "/favorites",
   DELIVERY: "/delivery",
   CHANGE: "/change",
   ACCOUNT: "/account",
 };
 
-export const ADD_INFORMATION_ROUTES = {
+export const PRODUCT_ADD_INFORMATION_ROUTES = {
   DESCRIBE: "",
   INFO: "/info",
   REVIEWS: "/reviews",
@@ -49,26 +48,26 @@ export const ADD_INFORMATION_ROUTES = {
   MANUALS: "/manuals",
 };
 
-export const TYPES_ADD_INFORMATION_PRODUCT = [
+export const TYPES_PRODUCT_ADD_INFORMATION = [
   {
     title: "Опис",
-    url: ADD_INFORMATION_ROUTES.DESCRIBE,
+    url: PRODUCT_ADD_INFORMATION_ROUTES.DESCRIBE,
   },
   {
     title: "Характеристики",
-    url: ADD_INFORMATION_ROUTES.INFO,
+    url: PRODUCT_ADD_INFORMATION_ROUTES.INFO,
   },
   {
     title: "Відгуки",
-    url: ADD_INFORMATION_ROUTES.REVIEWS,
+    url: PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS,
   },
   {
     title: "Відео",
-    url: ADD_INFORMATION_ROUTES.VIDEOS,
+    url: PRODUCT_ADD_INFORMATION_ROUTES.VIDEOS,
   },
   {
     title: "Інструкції",
-    url: ADD_INFORMATION_ROUTES.MANUALS,
+    url: PRODUCT_ADD_INFORMATION_ROUTES.MANUALS,
   },
 ];
 
@@ -76,3 +75,34 @@ export const KEYS_LOCAL_STORAGE = {
   FAVORITE: "FAVORITE_PRODUCT",
   CART: "CART_SHOP",
 };
+
+export const ACCOUNT_ADD_INFORMATION_ROUTES = {
+  INFORMATION: "/information",
+  ORDERS: "/",
+  FAVORITES: "/favorites",
+  REVIEWS: "/reviews",
+  DEFAULT_FROM_GUEST: "/favorites",
+};
+
+export const TYPES_ACCOUNT_ADD_INFORMATION = [
+  {
+    title: "Мої замовлення",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.ORDERS,
+    onlyAuth: true,
+  },
+  {
+    title: "Список бажань",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.FAVORITES,
+    onlyAuth: false,
+  },
+  {
+    title: "Мої відгуки",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS,
+    onlyAuth: true,
+  },
+  {
+    title: "Моя інформація",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.INFORMATION,
+    onlyAuth: true,
+  },
+];

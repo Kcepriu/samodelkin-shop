@@ -26,6 +26,7 @@ const config: Config = {
         text_black: "#161718",
         text_gray: "#1C1B1B",
         border: "#C1C1C1",
+        button_active_page: "#DDDDDD",
       },
       screens: {
         xs: "320px",
@@ -67,6 +68,7 @@ const config: Config = {
         title_product: "20px",
         title_checkout: "22px",
         title_second: "16px",
+        text_user_info: "14px",
       },
       fontWeight: {
         title_section: "400",
@@ -89,6 +91,7 @@ const config: Config = {
         title_product: "400",
         title_checkout: "600",
         title_second: "500",
+        text_user_info: "500",
       },
       lineHeight: {
         title_section: "1.16",
@@ -111,6 +114,7 @@ const config: Config = {
         title_product: "1.17",
         title_checkout: "1.6",
         title_second: "1.75",
+        text_user_info: "1.71",
       },
     },
   },

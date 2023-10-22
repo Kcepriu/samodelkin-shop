@@ -1,7 +1,7 @@
 .listCard {
   @apply flex
   flex-wrap
-  justify-between
+  justify-start
   gap-6;
 }
 

@@ -10,6 +10,8 @@ interface IUser {
   provider: string;
   confirmed: boolean;
   blocked: boolean;
-  createdAt: string;
-  updatedAt: string;
+  fullName: string;
+  isAdmin?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }

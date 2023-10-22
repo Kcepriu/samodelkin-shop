@@ -8,8 +8,8 @@ import ProductAddInfoVideos from "../ProductAddInfoVideos/ProductAddInfoVideos";
 import ProductAddInfoManuals from "../ProductAddInfoManuals/ProductAddInfoManuals";
 import {
   FRONTEND_ROUTES,
-  ADD_INFORMATION_ROUTES,
-  TYPES_ADD_INFORMATION_PRODUCT,
+  PRODUCT_ADD_INFORMATION_ROUTES,
+  TYPES_PRODUCT_ADD_INFORMATION,
 } from "@/constants/app-keys.const";
 
 import style from "./ProductAddInformation.module.css";
@@ -46,22 +46,22 @@ const ProductAddInformation: FC<IProps> = async ({
       : "";
   const countManuals = manuals.length > 0 ? String(manuals.length) : "";
   const urlToManuals = getUrlAddInformation(
-    ADD_INFORMATION_ROUTES.MANUALS,
+    PRODUCT_ADD_INFORMATION_ROUTES.MANUALS,
     slug
   );
 
   return (
     <>
       <ul className={style.listTypesInfo}>
-        {TYPES_ADD_INFORMATION_PRODUCT.map((type_info, ind) => {
+        {TYPES_PRODUCT_ADD_INFORMATION.map((type_info, ind) => {
           let addTitle = "";
-          if (type_info.url === ADD_INFORMATION_ROUTES.VIDEOS) {
+          if (type_info.url === PRODUCT_ADD_INFORMATION_ROUTES.VIDEOS) {
             addTitle = countVideos;
           }
-          if (type_info.url === ADD_INFORMATION_ROUTES.REVIEWS) {
+          if (type_info.url === PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS) {
             addTitle = countReviews;
           }
-          if (type_info.url === ADD_INFORMATION_ROUTES.MANUALS) {
+          if (type_info.url === PRODUCT_ADD_INFORMATION_ROUTES.MANUALS) {
             addTitle = countManuals;
           }
 
@@ -82,18 +82,18 @@ const ProductAddInformation: FC<IProps> = async ({
           );
         })}
       </ul>
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.DESCRIBE && (
+      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.DESCRIBE && (
         <ProductDescription
           productId={String(product.id)}
           urlToManuals={urlToManuals}
         />
       )}
 
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.INFO && (
+      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.INFO && (
         <ProductAddInfoCharacteristics product={product} />
       )}
 
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.REVIEWS && (
+      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS && (
         <ProductAddInfoReviews
           product={product}
           reviews={reviews}
@@ -101,11 +101,11 @@ const ProductAddInformation: FC<IProps> = async ({
         />
       )}
 
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.VIDEOS && (
+      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.VIDEOS && (
         <ProductAddInfoVideos videos={videos} />
       )}
 
-      {currentUrlInfo === ADD_INFORMATION_ROUTES.MANUALS && (
+      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.MANUALS && (
         <ProductAddInfoManuals manuals={manuals} />
       )}
     </>
