@@ -37,7 +37,7 @@ const PageAccount: FC<IProps> = ({ params }) => {
   const { info } = params;
   const currentPage = !info ? "" : info[0];
 
-  const authUser = tempGetAuthUser(false);
+  const authUser = tempGetAuthUser(true);
 
   const emailUser = !!authUser ? authUser.email : "";
   const userName = !!authUser ? authUser.fullName : "Гість";
