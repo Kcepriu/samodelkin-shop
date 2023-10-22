@@ -1,7 +1,7 @@
 import { FC } from "react";
-import AddReview from "../AddReview/AddReview";
-import Reviews from "../Reviews/Reviews";
-import ReviewsLoadMore from "../ReviewsLoadMore/ReviewsLoadMore";
+import AddReview from "@/components/AddReview/AddReview";
+import Reviews from "@/components/Reviews/Reviews";
+import ReviewsLoadMore from "@/components/ReviewsLoadMore/ReviewsLoadMore";
 import style from "./ProductAddInfoReviews.module.css";
 interface IProps {
   product: IProduct;
@@ -22,7 +22,7 @@ const ProductAddInfoReviews: FC<IProps> = ({
           <>
             <Reviews reviews={reviews} />
             <ReviewsLoadMore
-              product={product}
+              owner={product}
               paginationReviews={paginationReviews}
             />
           </>

@@ -10,6 +10,13 @@ export const getProductReviews = async (
   return await httpServices.getProductReviews(productId, page);
 };
 
+export const getUserReviews = async (
+  userId: string,
+  page = "1"
+): Promise<IResponseReviews | null> => {
+  return await httpServices.getUserReviews(userId, page);
+};
+
 export const createProductReviews = async (
   review: ICreateReview
 ): Promise<IResponseOneReviews | null> => {

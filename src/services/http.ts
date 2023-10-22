@@ -217,6 +217,35 @@ class HttpService {
   ): Promise<IResponseReviews | null> {
     const paramsObj: { [key: string]: string } = {
       "filters[product][id][$eq]": productId,
+      //TODO Enable filter
+      // "filters[isPublication][$eq]": "true",
+      "pagination[pageSize]": this.countReviewsOnPage,
+      "pagination[page]": page,
+      "sort[0]": "date:desc",
+    };
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get getUser Reviews
+  async getUserReviews(
+    userId: string,
+    page = "1"
+  ): Promise<IResponseReviews | null> {
+    const paramsObj: { [key: string]: string } = {
+      //TODO add filter USER
+      // "filters[product][id][$eq]": productId,
       // "filters[isPublication][$eq]": "true",
       "pagination[pageSize]": this.countReviewsOnPage,
       "pagination[page]": page,

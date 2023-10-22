@@ -50,23 +50,20 @@ const Reviews: FC<IProps> = ({ reviews }) => {
 
               <div className={style.wrapContent}>
                 <RatingStar rating={attributes.rating} />
-
                 <p className={style.content}>{attributes.content}</p>
-
                 <p>
                   <span className={style.titleField}>Переваги:</span>&nbsp;
                   {attributes.advantages}
                 </p>
-
                 <p>
                   <span className={style.titleField}>Недоліки:</span>&nbsp;
                   {attributes.disAdvantages}
                 </p>
-
                 <p>
                   <span className={style.titleField}>Статус:</span>&nbsp;
                   {String(attributes.isPublication)}
                 </p>
+                {/*TODO show only administrator */}
                 <div>
                   <AddReplyToReview reviewsId={id} />
                 </div>
