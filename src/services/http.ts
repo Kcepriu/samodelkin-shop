@@ -49,6 +49,34 @@ class HttpService {
     await this.saveTokenToLocalStorage(this.accessToken);
   };
 
+  async logIn(
+    identifier: string,
+    password: string
+  ): Promise<IResponseAuth | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.LOGIN}`;
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+        body: JSON.stringify({
+          identifier,
+          password,
+        }),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
   // * get Products
   async getProducts({
     page = "1",

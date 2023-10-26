@@ -1,16 +1,3 @@
-.wrapUserInfo {
-  @apply flex gap-3
-  items-center
-  pb-3
-  border-b
-  border-b-text_black
-  w-[226px] 
-  h-16
-  text-text_user_info
-  font-text_user_info
-  leading-text_user_info;
-}
-
 .wrapPage {
   @apply mt-3 flex gap-20;
 }

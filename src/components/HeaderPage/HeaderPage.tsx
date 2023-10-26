@@ -1,11 +1,9 @@
 import { FC } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
-import IconWithCount from "../IconWithCount/IconWithCount";
+
 import ButtonOpenCart from "../ButtonOpenCart/ButtonOpenCart";
 import ButtonGoToFavorite from "../ButtonGoToFavorite/ButtonGoToFavorite";
-import { GoPerson } from "react-icons/go";
+import ButtonGoToAccount from "../ButtonGoToAccount/ButtonGoToAccount";
 
 import style from "./HeaderPage.module.css";
 
@@ -26,13 +24,7 @@ const HeaderPage: FC = () => {
             <ButtonGoToFavorite />
           </li>
           <li>
-            <Link className={style.link} href={`${FRONTEND_ROUTES.ACCOUNT}`}>
-              <IconWithCount
-                Icon={GoPerson}
-                sizeIcon={32}
-                className={style.icon}
-              />
-            </Link>
+            <ButtonGoToAccount />
           </li>
           <li>
             <ButtonOpenCart />

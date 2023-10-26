@@ -38,6 +38,7 @@ export const FRONTEND_ROUTES = {
   DELIVERY: "/delivery",
   CHANGE: "/change",
   ACCOUNT: "/account",
+  SIGNIN: "/api/auth/signin",
 };
 
 export const PRODUCT_ADD_INFORMATION_ROUTES = {
