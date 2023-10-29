@@ -400,7 +400,46 @@ class HttpService {
   }
 
   // * getFavorites
-  async getFavorites(): Promise<IResponseFavorite | null> {
+  async getFavorites(): Promise<IResponseFavoriteWithCode> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseFavoriteWithCode;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      result.data = (await res.json()) as IResponseFavorite;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  // * save Favorites
+  async saveFavorites(
+    favorites: IFavoriteForCreate
+  ): Promise<IResponseFavorite | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
 
     const session = await getServerSession(authConfigs);
@@ -409,41 +448,11 @@ class HttpService {
 
     try {
       const res = await fetch(url, {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
           Authorization: Authorization,
-        },
-      });
-
-      if (!res.ok) {
-        return null;
-      }
-
-      return res.json();
-    } catch {
-      return null;
-    }
-  }
-
-  // * save Favorites
-  async saveFavorites(
-    favorites: ICreateReview
-  ): Promise<IResponseOneReviews | null> {
-    const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
-
-    const session = await getServerSession(authConfigs);
-    const accessToken = (session as any)?.jwt;
-
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // "Access-Control-Allow-Headers": "*",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          // "API-Key": "my key",
         },
         body: JSON.stringify(favorites),
       });

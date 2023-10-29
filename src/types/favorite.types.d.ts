@@ -14,3 +14,14 @@ interface IFavorite {
     };
   };
 }
+
+interface IFavoriteForCreate {
+  data: {
+    products: Number[];
+  };
+}
+
+interface IResponseFavoriteWithCode {
+  code: number;
+  data: IResponseFavorite | null;
+}
