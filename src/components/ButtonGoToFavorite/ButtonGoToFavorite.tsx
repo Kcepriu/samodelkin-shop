@@ -14,6 +14,7 @@ import style from "./ButtonGoToFavorite.module.css";
 
 const ButtonGoToFavorite: FC = () => {
   const favorites = useStore(useFavorite, (state) => state.favorites);
+  console.log("🚀 ~ favorites 55555:", favorites);
 
   return (
     <Link

@@ -25,6 +25,7 @@ export const BACKEND_ROUTES = {
   REPLY_TO_REVIEWS: "/api/replyToReview",
   CHANGE_STATUS_REVIEWS: "/api/changeStatusReview",
   CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
+  FAVORITES: "/api/favorites",
 };
 
 // Frontend routes

@@ -52,9 +52,10 @@ export const authConfigs: AuthOptions = {
   callbacks: {
     session: async ({ session, token, user }) => {
       if (token) {
-        session.user.id = (token?.id as string) || "";
-        session.user.fullName = (token?.fullName as string) || "";
-        session.user.isAdmin = (token?.isAdmin as boolean) || false;
+        session.user.id = token.id || "";
+        session.user.fullName = token.fullName || "";
+        session.user.isAdmin = token.isAdmin || false;
+        session.user.jwt = token.jwt;
       }
 
       return session;
@@ -63,8 +64,8 @@ export const authConfigs: AuthOptions = {
     jwt: async ({ token, user, account, profile }) => {
       if (user) {
         if (account?.provider === "credentials") {
-          token.jwt = (user as any).jwt;
-          token.fullName = (user as any).fullName;
+          token.jwt = user.jwt;
+          token.fullName = user.fullName;
           token.id = user.id;
         } else {
           const response = await fetch(
@@ -80,6 +81,18 @@ export const authConfigs: AuthOptions = {
       }
 
       return Promise.resolve(token);
+    },
+  },
+  // TODO Delete
+  events: {
+    signIn: async ({ user, account, profile }) => {
+      // console.log("signIn", user);
+    },
+    signOut: async ({ token, session }) => {
+      // console.log("signOut", token);
+    },
+    session: async ({ token, session }) => {
+      // console.log("Change Session EVENTS", token);
     },
   },
 };

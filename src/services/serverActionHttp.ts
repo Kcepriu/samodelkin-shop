@@ -44,3 +44,8 @@ export const changeReplyToReview = async (
 ): Promise<IResponseOneReviews | null> => {
   return await httpServices.changeReplyToReview(reviewId, replyId, reply);
 };
+
+export const getFavorites = async (): Promise<IResponseFavorite | null> => {
+  return await httpServices.getFavorites();
+  // return null;
+};

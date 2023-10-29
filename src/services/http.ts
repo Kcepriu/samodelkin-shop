@@ -1,6 +1,7 @@
-// import { cookies } from "next/headers";
+import { BACKEND_ROUTES } from "@/constants/app-keys.const";
+import { getServerSession } from "next-auth";
+import { authConfigs } from "@/configs/authConfigs";
 
-import { STORAGE_KEYS, BACKEND_ROUTES } from "@/constants/app-keys.const";
 import {
   IResponseAboutUs,
   IResponseCategoryDescription,
@@ -17,8 +18,6 @@ class HttpService {
     this.baseUrl = process.env.BACKEND_URL || "";
     this.countPageOnPage = process.env.COUNT_PRODUCT_ON_PAGE || "16";
     this.countReviewsOnPage = process.env.COUNT_REVIEWS_ON_PAGE || "4";
-
-    this.setAuthHeader(this.readTokenFromLocalStorage());
   }
 
   private readTokenFromLocalStorage(): string {
@@ -38,16 +37,6 @@ class HttpService {
       return "";
     }
   }
-
-  private async saveTokenToLocalStorage(token: string) {
-    // localStorage.setItem(STORAGE_KEYS.JWT_TOKEN_AUTH, token);
-    // cookies().set(STORAGE_KEYS.JWT_TOKEN_AUTH, "token", { secure: true });
-  }
-
-  setAuthHeader = async (accessToken: string) => {
-    this.accessToken = accessToken;
-    await this.saveTokenToLocalStorage(this.accessToken);
-  };
 
   async logIn(
     identifier: string,
@@ -409,9 +398,66 @@ class HttpService {
       return null;
     }
   }
-}
 
-// CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
+  // * getFavorites
+  async getFavorites(): Promise<IResponseFavorite | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * save Favorites
+  async saveFavorites(
+    favorites: ICreateReview
+  ): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = (session as any)?.jwt;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          // "API-Key": "my key",
+        },
+        body: JSON.stringify(favorites),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+}
 
 const httpServices = new HttpService();
 
