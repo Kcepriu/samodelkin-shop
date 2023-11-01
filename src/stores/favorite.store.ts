@@ -1,9 +1,9 @@
 "use client";
 
 import { create } from "zustand";
-import { KEYS_LOCAL_STORAGE } from "@/constants/app-keys.const";
-import { getFavorites, saveFavorites } from "@/services/serverActionHttp";
 import { signOut } from "next-auth/react";
+import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
+import { getMarkProduct, saveMarkProduct } from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
@@ -24,7 +24,7 @@ interface IStateFavorite extends IStateFavoriteData {
 
 const convertFavoritesToCreate = (
   favorites: IProduct[]
-): IFavoriteForCreate => {
+): IMarkProductForCreate => {
   const products = favorites.map((element) => element.id);
   return {
     data: { products },
@@ -37,7 +37,10 @@ const saveFavoriteToStorage = async (
   isRemoteStorage: boolean
 ) => {
   if (isRemoteStorage) {
-    const { isAuth } = await saveFavorites(convertFavoritesToCreate(favorite));
+    const { isAuth } = await saveMarkProduct(
+      convertFavoritesToCreate(favorite),
+      BACKEND_ROUTES.FAVORITES
+    );
     if (!isAuth) await signOut();
     return { isAuth };
   }
@@ -51,7 +54,9 @@ const saveFavoriteToStorage = async (
 // * fetch Favorites From Storage
 const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   if (isRemoteStorage) {
-    const { isAuth, favorites } = await getFavorites();
+    const { isAuth, markProduct: favorites } = await getMarkProduct(
+      BACKEND_ROUTES.FAVORITES
+    );
     if (!isAuth) await signOut();
     return { isAuth, favorites };
   }

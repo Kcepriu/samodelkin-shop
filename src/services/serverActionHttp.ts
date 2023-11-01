@@ -45,36 +45,43 @@ export const changeReplyToReview = async (
   return await httpServices.changeReplyToReview(reviewId, replyId, reply);
 };
 
-export const getFavorites = async (): Promise<{
+export const getMarkProduct = async (
+  typeMarkProduct: string
+): Promise<{
   isAuth: boolean;
-  favorites: IProduct[];
+  markProduct: IProduct[];
 }> => {
-  const { code, data: response } = await httpServices.getFavorites();
+  // {BACKEND_ROUTES.FAVORITES}
+  const { code, data: response } = await httpServices.getMarkProduct(
+    typeMarkProduct
+  );
 
-  const favorites =
+  const markProduct =
     code === 200 && !!response ? response.data[0].attributes.products.data : [];
 
   return {
     isAuth: code === 200,
-    favorites,
+    markProduct,
   };
 };
 
-export const saveFavorites = async (
-  favoritesToCreate: IFavoriteForCreate
+export const saveMarkProduct = async (
+  markProductsToCreate: IMarkProductForCreate,
+  typeMarkProduct: string
 ): Promise<{
   isAuth: boolean;
-  favorites: IProduct[];
+  markProducts: IProduct[];
 }> => {
-  const { code, data: response } = await httpServices.saveFavorites(
-    favoritesToCreate
+  const { code, data: response } = await httpServices.saveMarkProduct(
+    markProductsToCreate,
+    typeMarkProduct
   );
 
-  const favorites =
+  const markProducts =
     code === 200 && !!response ? response.data.attributes.products.data : [];
 
   return {
     isAuth: code === 200,
-    favorites,
+    markProducts,
   };
 };

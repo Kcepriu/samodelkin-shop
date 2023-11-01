@@ -26,6 +26,7 @@ export const BACKEND_ROUTES = {
   CHANGE_STATUS_REVIEWS: "/api/changeStatusReview",
   CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
   FAVORITES: "/api/favorites",
+  REVISED: "/api/reviseds",
 };
 
 // Frontend routes
@@ -76,6 +77,7 @@ export const TYPES_PRODUCT_ADD_INFORMATION = [
 export const KEYS_LOCAL_STORAGE = {
   FAVORITE: "FAVORITE_PRODUCT",
   CART: "CART_SHOP",
+  REVISED: "REVISED_PRODUCT",
 };
 
 export const ACCOUNT_ADD_INFORMATION_ROUTES = {

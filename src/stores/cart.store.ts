@@ -19,6 +19,7 @@ const useCart = create<IStateCart>()(
       products: [],
       loading: false,
       error: null,
+
       addToCart: async (newRow) => {
         newRow.sum = newRow.count * newRow.price;
         set((state) => ({ products: [...state.products, newRow] }));

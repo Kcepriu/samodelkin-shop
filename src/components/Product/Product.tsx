@@ -5,6 +5,7 @@ import Image from "next/image";
 import ImgNoImage from "@/assets/no_images.png";
 import ButtonAddProductToCart from "../ButtonAddProductToCart/ButtonAddProductToCart";
 import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddProductToFavorite";
+import AddToRevised from "./AddToRevised/AddToRevised";
 import style from "./Product.module.css";
 
 interface IProps {
@@ -64,6 +65,7 @@ const Product: FC<IProps> = ({ product }) => {
             <ButtonAddProductToFavorite product={product} size={24} />
           </div>
         </div>
+        <AddToRevised product={product} />
       </div>
     </>
   );

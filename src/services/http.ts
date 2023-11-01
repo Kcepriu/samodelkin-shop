@@ -399,9 +399,11 @@ class HttpService {
     }
   }
 
-  // * getFavorites
-  async getFavorites(): Promise<IResponseFavoriteWithCode> {
-    const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
+  // * get Mark Product
+  async getMarkProduct(
+    typeMarkProduct: string
+  ): Promise<IResponseMarkProductWithCode> {
+    const url = `${this.baseUrl}${typeMarkProduct}`;
 
     const session = await getServerSession(authConfigs);
     const accessToken = session?.user.jwt;
@@ -410,7 +412,7 @@ class HttpService {
     const result = {
       code: 401,
       data: null,
-    } as IResponseFavoriteWithCode;
+    } as IResponseMarkProductWithCode;
 
     try {
       const res = await fetch(url, {
@@ -428,7 +430,7 @@ class HttpService {
         return result;
       }
 
-      result.data = (await res.json()) as IResponseFavorite;
+      result.data = (await res.json()) as IResponseMarkProduct;
 
       return result;
     } catch {
@@ -437,10 +439,11 @@ class HttpService {
   }
 
   // * save Favorites
-  async saveFavorites(
-    favorites: IFavoriteForCreate
-  ): Promise<IResponseCreateFavoriteWithCode> {
-    const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
+  async saveMarkProduct(
+    markProducts: IMarkProductForCreate,
+    typeMarkProduct: string
+  ): Promise<IResponseCreateMarkProductWithCode> {
+    const url = `${this.baseUrl}${typeMarkProduct}`;
 
     const session = await getServerSession(authConfigs);
     const accessToken = session?.user.jwt;
@@ -449,7 +452,7 @@ class HttpService {
     const result = {
       code: 401,
       data: null,
-    } as IResponseCreateFavoriteWithCode;
+    } as IResponseCreateMarkProductWithCode;
 
     try {
       const res = await fetch(url, {
@@ -459,7 +462,7 @@ class HttpService {
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
           Authorization: Authorization,
         },
-        body: JSON.stringify(favorites),
+        body: JSON.stringify(markProducts),
       });
 
       result.code = res.status;
@@ -468,7 +471,7 @@ class HttpService {
         return result;
       }
 
-      result.data = (await res.json()) as IResponseCreateFavorite;
+      result.data = (await res.json()) as IResponseCreateMarkProduct;
 
       return result;
     } catch {
