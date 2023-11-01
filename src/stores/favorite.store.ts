@@ -2,8 +2,9 @@
 
 import { create } from "zustand";
 import { KEYS_LOCAL_STORAGE } from "@/constants/app-keys.const";
-import { getFavorites } from "@/services/serverActionHttp";
+import { getFavorites, saveFavorites } from "@/services/serverActionHttp";
 import { signOut } from "next-auth/react";
+
 import {
   saveDataToLocalStorage,
   loadDataFromLocalStorage,
@@ -21,31 +22,38 @@ interface IStateFavorite extends IStateFavoriteData {
   fetchFavorites: (isRemoteStorage: boolean) => Promise<void>;
 }
 
+const convertFavoritesToCreate = (
+  favorites: IProduct[]
+): IFavoriteForCreate => {
+  const products = favorites.map((element) => element.id);
+  return {
+    data: { products },
+  };
+};
+
+// * Save Favorite to Storage
+const saveFavoriteToStorage = async (
+  favorite: IProduct[],
+  isRemoteStorage: boolean
+) => {
+  if (isRemoteStorage) {
+    const { isAuth } = await saveFavorites(convertFavoritesToCreate(favorite));
+    if (!isAuth) await signOut();
+    return { isAuth };
+  }
+
+  saveDataToLocalStorage(favorite, KEYS_LOCAL_STORAGE.FAVORITE);
+  return {
+    isAuth: false,
+  };
+};
+
+// * fetch Favorites From Storage
 const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   if (isRemoteStorage) {
-    // TODO Винести дві чстини в окремі функції.
-    // Оцю частину передавати як callBac функцію
-    // Також треб отут робити логоут, якщо прийде код не 200
-    // Глянь що буде, якщо ти розголінитись. Можливо запуститься зчитування даних,
-
-    const { code, data: response } = await getFavorites();
-
-    if (code === 200) {
-      const favorites = !response
-        ? []
-        : response.data[0].attributes.products.data;
-
-      return {
-        isAuth: true,
-        favorites,
-      };
-    } else {
-      await signOut();
-      return {
-        isAuth: false,
-        favorites: [],
-      };
-    }
+    const { isAuth, favorites } = await getFavorites();
+    if (!isAuth) await signOut();
+    return { isAuth, favorites };
   }
 
   const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
@@ -55,28 +63,34 @@ const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   };
 };
 
+// * Create Store
 const useFavorite = create<IStateFavorite>()((set, get) => ({
   favorites: [],
   loading: false,
   isAuth: false,
   error: null,
   addFavorite: async (newProduct) => {
-    console.log("Set state", get().isAuth);
-
     const newFavorites = [...get().favorites, newProduct];
-    saveDataToLocalStorage(newFavorites, KEYS_LOCAL_STORAGE.FAVORITE);
+    const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
 
     return set((state) => ({
       favorites: newFavorites,
+      isAuth: isAuth,
     }));
   },
 
-  deleteFavorite: async (newProduct) =>
-    set((state) => ({
-      favorites: state.favorites.filter(
-        (product) => product.id !== newProduct.id
-      ),
-    })),
+  deleteFavorite: async (newProduct) => {
+    const newFavorites = get().favorites.filter(
+      (product) => product.id !== newProduct.id
+    );
+
+    const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
+
+    return set((state) => ({
+      favorites: newFavorites,
+      isAuth: isAuth,
+    }));
+  },
 
   fetchFavorites: async (isRemoteStorage) => {
     const { isAuth, favorites } = await fetchFavoritesFromStorage(

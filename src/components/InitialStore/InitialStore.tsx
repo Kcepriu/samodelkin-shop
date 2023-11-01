@@ -17,7 +17,7 @@ const InitialStore: FC<IProps> = ({ children }) => {
 
   useEffect(() => {
     const rehydrate = async () => {
-      await fetchFavorites(!user);
+      await fetchFavorites(!!user);
     };
 
     rehydrate();

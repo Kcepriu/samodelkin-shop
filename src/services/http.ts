@@ -418,7 +418,7 @@ class HttpService {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          // Authorization: Authorization,
+          Authorization: Authorization,
         },
       });
 
@@ -439,12 +439,17 @@ class HttpService {
   // * save Favorites
   async saveFavorites(
     favorites: IFavoriteForCreate
-  ): Promise<IResponseFavorite | null> {
+  ): Promise<IResponseCreateFavoriteWithCode> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.FAVORITES}`;
 
     const session = await getServerSession(authConfigs);
     const accessToken = session?.user.jwt;
     const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCreateFavoriteWithCode;
 
     try {
       const res = await fetch(url, {
@@ -457,13 +462,17 @@ class HttpService {
         body: JSON.stringify(favorites),
       });
 
+      result.code = res.status;
+
       if (!res.ok) {
-        return null;
+        return result;
       }
 
-      return res.json();
+      result.data = (await res.json()) as IResponseCreateFavorite;
+
+      return result;
     } catch {
-      return null;
+      return result;
     }
   }
 }

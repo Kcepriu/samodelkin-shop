@@ -45,7 +45,36 @@ export const changeReplyToReview = async (
   return await httpServices.changeReplyToReview(reviewId, replyId, reply);
 };
 
-export const getFavorites = async (): Promise<IResponseFavoriteWithCode> => {
-  return await httpServices.getFavorites();
-  // return null;
+export const getFavorites = async (): Promise<{
+  isAuth: boolean;
+  favorites: IProduct[];
+}> => {
+  const { code, data: response } = await httpServices.getFavorites();
+
+  const favorites =
+    code === 200 && !!response ? response.data[0].attributes.products.data : [];
+
+  return {
+    isAuth: code === 200,
+    favorites,
+  };
+};
+
+export const saveFavorites = async (
+  favoritesToCreate: IFavoriteForCreate
+): Promise<{
+  isAuth: boolean;
+  favorites: IProduct[];
+}> => {
+  const { code, data: response } = await httpServices.saveFavorites(
+    favoritesToCreate
+  );
+
+  const favorites =
+    code === 200 && !!response ? response.data.attributes.products.data : [];
+
+  return {
+    isAuth: code === 200,
+    favorites,
+  };
 };

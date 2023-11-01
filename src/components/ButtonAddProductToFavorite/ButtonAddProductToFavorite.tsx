@@ -1,5 +1,5 @@
 "use client";
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import useFavorite from "@/stores/favorite.store";
 import useStore from "@/helpers/useStore";
@@ -25,7 +25,7 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
   const isFavorite =
     favorites?.some((element) => element.id === product.id) || false;
 
-  const handleOnClick = async () => {
+  const handleOnClick = async (e: MouseEvent<HTMLButtonElement>) => {
     if (isFavorite) {
       await deleteFavorite(product);
     } else {

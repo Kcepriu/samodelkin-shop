@@ -35,6 +35,13 @@ const ProductCard: FC<IProps> = ({ product }) => {
   return (
     <div className={styles.wrapCard}>
       <div className={styles.card} key={product.id}>
+        <div className={styles.addFavorite}>
+          <ButtonAddProductToFavorite
+            product={product}
+            size={48}
+            sizeIcon={24}
+          />
+        </div>
         <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}`}>
           <div className={styles.wrapImage}>
             <Image
@@ -49,13 +56,6 @@ const ProductCard: FC<IProps> = ({ product }) => {
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 100vw"
             />
             <FlagLanguages flags={attributes.languages} />
-            <div className={styles.addFavorite}>
-              <ButtonAddProductToFavorite
-                product={product}
-                size={48}
-                sizeIcon={24}
-              />
-            </div>
           </div>
           <h2 className={styles.title}>{attributes.title}</h2>
         </Link>

@@ -4,6 +4,12 @@ interface IResponseFavorite {
   error?: IError;
 }
 
+interface IResponseCreateFavorite {
+  data: IFavorite;
+  meta?: IMeta;
+  error?: IError;
+}
+
 interface IFavorite {
   id: number;
   attributes: {
@@ -24,4 +30,9 @@ interface IFavoriteForCreate {
 interface IResponseFavoriteWithCode {
   code: number;
   data: IResponseFavorite | null;
+}
+
+interface IResponseCreateFavoriteWithCode {
+  code: number;
+  data: IResponseCreateFavorite | null;
 }

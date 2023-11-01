@@ -27,6 +27,7 @@ const config: Config = {
         text_gray: "#1C1B1B",
         border: "#C1C1C1",
         button_active_page: "#DDDDDD",
+        button_background_favorite: "#ffffffb3",
       },
       screens: {
         xs: "320px",
