@@ -9,12 +9,10 @@ interface IProps {
 
 const AddToRevised: FC<IProps> = ({ product }) => {
   const revised = useStore(useRevised, (state) => state.revised);
-  console.log("🚀 ~ revised:", revised);
   const addRevised = useRevised((state) => state.addRevised);
 
   useEffect(() => {
     const addToRevised = async () => {
-      console.log("AddToRevised ");
       await addRevised(product);
     };
 

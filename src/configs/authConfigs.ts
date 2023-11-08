@@ -5,10 +5,10 @@ import httpServices from "@/services/http";
 
 export const authConfigs: AuthOptions = {
   providers: [
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_CLIENT_ID || "",
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
     Credentials({
       credentials: {
         email: { label: "email", type: "email", required: true },
@@ -33,6 +33,7 @@ export const authConfigs: AuthOptions = {
           name: user.username,
           email: credentials.email,
           jwt: jwt,
+          forceLogOut: false,
         } as User;
       },
     }),
@@ -92,7 +93,8 @@ export const authConfigs: AuthOptions = {
       // console.log("signOut", token);
     },
     session: async ({ token, session }) => {
-      // console.log("Change Session EVENTS", token);
+      // console.log("🚀 ~ token:", token);
+      // console.log("🚀 ~ session:", session);
     },
   },
 };

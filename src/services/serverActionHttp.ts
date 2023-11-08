@@ -45,6 +45,7 @@ export const changeReplyToReview = async (
   return await httpServices.changeReplyToReview(reviewId, replyId, reply);
 };
 
+// * Mark Product
 export const getMarkProduct = async (
   typeMarkProduct: string
 ): Promise<{
@@ -83,5 +84,36 @@ export const saveMarkProduct = async (
   return {
     isAuth: code === 200,
     markProducts,
+  };
+};
+
+// * Cart
+export const getCart = async (): Promise<{
+  isAuth: boolean;
+  products: ICartRow[];
+}> => {
+  const { code, data: response } = await httpServices.getCart();
+
+  const saveProducts = code === 200 && !!response ? response : [];
+
+  return {
+    isAuth: code === 200,
+    products: saveProducts,
+  };
+};
+
+export const saveCart = async (
+  products: ICartRowForSave
+): Promise<{
+  isAuth: boolean;
+  products: ICartRow[];
+}> => {
+  const { code, data: response } = await httpServices.saveCart(products);
+
+  const saveProducts = code === 200 && !!response ? response : [];
+
+  return {
+    isAuth: code === 200,
+    products: saveProducts,
   };
 };

@@ -1,6 +1,8 @@
-import { BACKEND_ROUTES } from "@/constants/app-keys.const";
+import { BACKEND_ROUTES, FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
+import { getCsrfToken } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 import {
   IResponseAboutUs,
@@ -9,33 +11,17 @@ import {
 } from "@/types/articles.type";
 
 class HttpService {
-  private accessToken: string = "";
   private baseUrl: string = "";
+  private frontUrl: string = "";
+
   private countPageOnPage: string = "16";
   private countReviewsOnPage: string = "4";
 
   constructor() {
     this.baseUrl = process.env.BACKEND_URL || "";
+    this.frontUrl = process.env.NEXTAUTH_URL || "";
     this.countPageOnPage = process.env.COUNT_PRODUCT_ON_PAGE || "16";
     this.countReviewsOnPage = process.env.COUNT_REVIEWS_ON_PAGE || "4";
-  }
-
-  private readTokenFromLocalStorage(): string {
-    try {
-      const data: string = "";
-      // const cookieStore = cookies();
-
-      // cookies().set(STORAGE_KEYS.JWT_TOKEN_AUTH, "token", { secure: true });
-
-      // const dataCoock = cookieStore.get(STORAGE_KEYS.JWT_TOKEN_AUTH);
-      // console.log("🚀 ~ dataCoock:", dataCoock);
-
-      // const data: string =
-      //   localStorage.getItem(STORAGE_KEYS.JWT_TOKEN_AUTH) || "";
-      return data;
-    } catch {
-      return "";
-    }
   }
 
   async logIn(
@@ -61,6 +47,71 @@ class HttpService {
       }
 
       return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  //TODO Delete this function
+  async localSignOut() {
+    console.log("222222222222");
+    // const url = `${this.frontUrl}${FRONTEND_ROUTES.SIGNOUT}?csrf=true`;
+    const url = "http://localhost:3000/api/auth/signout?csrf=true";
+    // const url = "http://localhost:3000/api/test";
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    // Accept: "application/json",
+    // Authorization: Authorization,
+    // csrfToken: await getCsrfToken(),
+    try {
+      // const res = await fetch(url, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //     "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      //     Authorization: Authorization,
+      //   },
+      //   // @ts-expect-error
+      //   body: new URLSearchParams({
+      //     // csrfToken: await getCsrfToken(),
+      //     csrfToken:
+      //       "a558a3fffa64a68bd9d2740a0b035dc9f04d0e1658f38979127a7c977c2b9465",
+      //     callbackUrl: "/",
+      //     json: true,
+      //   }),
+      // });
+
+      // console.log("🚀 ~ res:", res.status);
+
+      // const data = await res.json();
+      // console.log("🚀 ~ data:", data);
+
+      // const fetchOptions = {
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      //   // @ts-expect-error
+      //   body: new URLSearchParams({
+      //     csrfToken: await getCsrfToken(),
+      //     json: true,
+      //   }),
+      // };
+
+      // const res = await fetch(url, fetchOptions);
+
+      // console.log("Before");
+      // const data = await res.json();
+      // console.log("🚀 ~ data:", data);
+
+      // if (!res.ok) {
+      //   return null;
+      // }
+
+      return "OK";
     } catch {
       return null;
     }
@@ -256,10 +307,15 @@ class HttpService {
   }
 
   // * get getUser Reviews
+  // ! Add auth
   async getUserReviews(
     userId: string,
     page = "1"
   ): Promise<IResponseReviews | null> {
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
     const paramsObj: { [key: string]: string } = {
       //TODO add filter USER
       // "filters[product][id][$eq]": productId,
@@ -272,7 +328,14 @@ class HttpService {
     const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
 
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
 
       if (!res.ok) {
         return null;
@@ -284,19 +347,23 @@ class HttpService {
   }
 
   // * Create Product Reviews
+  // ! Add auth
   async createProductReviews(
     review: ICreateReview
   ): Promise<IResponseOneReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
 
     try {
       const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          // "API-Key": "my key",
+          Authorization: Authorization,
         },
         body: JSON.stringify(review),
       });
@@ -312,20 +379,24 @@ class HttpService {
   }
 
   // * Create Reply To Reviews
+  // ! Add auth
   async createReplyToReviews(
     reviewId: string,
     reply: ICreateReply
   ): Promise<IResponseOneReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.REPLY_TO_REVIEWS}/${reviewId}`;
 
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
     try {
       const res = await fetch(url, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          // "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          // "API-Key": "my key",
+          Authorization: Authorization,
         },
         body: JSON.stringify(reply),
       });
@@ -341,20 +412,24 @@ class HttpService {
   }
 
   // * Change Status Review
+  // ! Add auth
   async changeStatusReview(
     reviewId: string,
     review: IChangeStatusReview
   ): Promise<IResponseOneReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.CHANGE_STATUS_REVIEWS}/${reviewId}`;
 
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
     try {
       const res = await fetch(url, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          // "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          // "API-Key": "my key",
+          Authorization: Authorization,
         },
         body: JSON.stringify(review),
       });
@@ -370,6 +445,7 @@ class HttpService {
   }
 
   // * Change Reply To Review
+  // ! Add auth
   async changeReplyToReview(
     reviewId: string,
     replyId: string,
@@ -377,14 +453,17 @@ class HttpService {
   ): Promise<IResponseOneReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.CHANGE_REPLY_TO_REVIEWS}/${reviewId}/${replyId}`;
 
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
     try {
       const res = await fetch(url, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          // "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          // "API-Key": "my key",
+          Authorization: Authorization,
         },
         body: JSON.stringify(reply),
       });
@@ -472,6 +551,83 @@ class HttpService {
       }
 
       result.data = (await res.json()) as IResponseCreateMarkProduct;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  // ! CART
+  // * get Cart
+  async getCart(): Promise<IResponseCartWithCode> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CART}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCartWithCode;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IResponseCart;
+
+      result.data = response.data[0].attributes.products || [];
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  // * save Cart
+  async saveCart(products: ICartRowForSave): Promise<IResponseCartWithCode> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CART}`;
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: [],
+    } as IResponseCartWithCode;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+        body: JSON.stringify(products),
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+      const response = (await res.json()) as IResponseSaveCart;
+      result.data = response.data.attributes.products || [];
 
       return result;
     } catch {

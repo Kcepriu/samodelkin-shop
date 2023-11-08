@@ -14,9 +14,10 @@ interface IProps {
   deleteProduct: (product: IProduct) => void;
 }
 const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
+  console.log("🚀 ~ rowCart:", rowCart);
   const router = useRouter();
   const { product } = rowCart;
-  const attributes = product.attributes;
+  const attributes = product.data.attributes;
   const images = attributes.images?.data;
   const urlImage = images ? images[0].attributes.url : Img;
 
@@ -41,13 +42,13 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
       <div className={style.wrapContent}>
         <div className={style.wrapTitle}>
           <button type="button" onClick={handleToProduct}>
-            <h2 className={style.title}> {product.attributes.title}</h2>
+            <h2 className={style.title}> {attributes.title}</h2>
           </button>
 
           <button
             className={style.buttonDelete}
             type="button"
-            onClick={async () => await deleteProduct(product)}
+            onClick={async () => await deleteProduct(product.data)}
           >
             <RiDeleteBin2Line className={style.icon} size={18} />
           </button>
