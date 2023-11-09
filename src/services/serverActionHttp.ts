@@ -58,7 +58,9 @@ export const getMarkProduct = async (
   );
 
   const markProduct =
-    code === 200 && !!response ? response.data[0].attributes.products.data : [];
+    code === 200 && !!response?.data && response?.data.length > 0
+      ? response.data[0].attributes.products.data
+      : [];
 
   return {
     isAuth: code === 200,

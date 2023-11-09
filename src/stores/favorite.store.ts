@@ -36,6 +36,8 @@ const saveFavoriteToStorage = async (
   favorite: IProduct[],
   isRemoteStorage: boolean
 ) => {
+  console.log("isRemoteStorage", isRemoteStorage);
+
   if (isRemoteStorage) {
     const { isAuth } = await saveMarkProduct(
       convertFavoritesToCreate(favorite),
@@ -75,6 +77,7 @@ const useFavorite = create<IStateFavorite>()((set, get) => ({
   isAuth: false,
   error: null,
   addFavorite: async (newProduct) => {
+    console.log("addFavorite");
     const newFavorites = [...get().favorites, newProduct];
     const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
 

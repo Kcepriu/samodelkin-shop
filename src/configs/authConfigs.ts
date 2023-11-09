@@ -70,14 +70,17 @@ export const authConfigs: AuthOptions = {
           token.id = user.id;
         } else {
           const response = await fetch(
-            `${process.env.BACKEND_URL}/auth/${
+            `${process.env.BACKEND_URL}/api/auth/${
               account?.provider || "google"
             }/callback?access_token=${account?.access_token}`
           );
 
           const data = await response.json();
+          console.log("🚀 ~ data:", data);
+
           token.jwt = data.jwt;
           token.id = data.user.id;
+          token.fullName = data.user.username;
         }
       }
 
