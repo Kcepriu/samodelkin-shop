@@ -19,7 +19,7 @@ const CountProductChange: FC<IProps> = ({ rowCart }) => {
   }, [rowCart]);
 
   const debouncedChangeCount = useDebouncedCallback((value: number) => {
-    changeCountProduct(rowCart.product, value);
+    changeCountProduct(rowCart.product.data, value);
   }, 1000);
 
   const handleChangeCount = (delta: number) => {

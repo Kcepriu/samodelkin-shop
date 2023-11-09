@@ -10,7 +10,8 @@
 }
 
 .card {
-  @apply flex flex-col p-3  
+  @apply relative
+  flex flex-col p-3  
   w-full 
   max-h-full
   h-[550px] 
@@ -21,7 +22,10 @@
 }
 
 .card:hover {
-  @apply absolute max-h-max h-auto z-10 shadow-lg shadow-gray-500/80;
+  @apply absolute 
+  max-h-max h-auto 
+  z-20 
+  shadow-lg shadow-gray-500/80;
 }
 
 .image {
@@ -50,6 +54,10 @@
 
 .addFavorite {
   @apply absolute 
+  p-1
+  rounded-md
+  bg-button_background_favorite
   block
-  top-0 right-0;
+  top-3 right-3
+  z-10;
 }

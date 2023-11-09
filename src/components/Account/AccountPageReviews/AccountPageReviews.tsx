@@ -5,12 +5,12 @@ import ReviewsLoadMore from "@/components/ReviewsLoadMore/ReviewsLoadMore";
 import style from "./AccountPageReviews.module.css";
 
 interface IProps {
-  user: IUser;
+  userId: string;
 }
 const AccountPageReviews: FC<IProps> = async ({
-  user,
+  userId,
 }): Promise<JSX.Element> => {
-  const responseReviews = await httpServices.getUserReviews(String(user.id));
+  const responseReviews = await httpServices.getUserReviews(userId);
   const reviews = responseReviews?.data;
   const paginationReviews = responseReviews?.meta.pagination;
 
@@ -19,7 +19,10 @@ const AccountPageReviews: FC<IProps> = async ({
       {reviews && reviews.length > 0 && (
         <>
           <Reviews reviews={reviews} />
-          <ReviewsLoadMore owner={user} paginationReviews={paginationReviews} />
+          <ReviewsLoadMore
+            owner={{ id: userId }}
+            paginationReviews={paginationReviews}
+          />
         </>
       )}
     </div>

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { notFound, redirect } from "next/navigation";
+import { User } from "next-auth";
 
 import AccountPageOrders from "../AccountPageOrders/AccountPageOrders";
 import AccountPageInformation from "../AccountPageInformation/AccountPageInformation";
@@ -13,35 +14,34 @@ import {
 
 interface IProps {
   currentPage: string;
-  user: IUser;
+  user: User | undefined;
 }
 
-const RouterPageAccount: FC<IProps> = ({ currentPage, user }) => {
-  const getUrlPageFromAccess = (currentUrl: string, user: IUser) => {
-    // Шукаємо  TYPES_ACCOUNT_ADD_INFORMATION, якщо там нема то 404
-    // Перевіряємо чи треба права. Якщо треба і в нас є , то переходимо по урлу
-
-    // Якщо нема, то шукаємо DEFAULT_FROM_GUEST в TYPES_ACCOUNT_ADD_INFORMATION
-    // якщо знайшли і йому не треба прав, то переходимо по DEFAULT_FROM_GUEST
-    //Інакше  помилка
+const RouterPageAccount: FC<IProps> = async ({ currentPage, user }) => {
+  const getUrlPageFromAccess = (currentUrl: string, user: User | undefined) => {
     const nextUrl = TYPES_ACCOUNT_ADD_INFORMATION.find(
       (element) => element.url === currentUrl
     );
 
+    // * 1
     if (!nextUrl) return "";
+    // * 2
     if (!nextUrl.onlyAuth) return nextUrl.url;
-    if (nextUrl.onlyAuth && !user.blocked) return nextUrl.url;
+    // * 3
+    if (nextUrl.onlyAuth && !!user) return nextUrl.url;
 
     const defaultUrl = TYPES_ACCOUNT_ADD_INFORMATION.find(
       (element) =>
         element.url === ACCOUNT_ADD_INFORMATION_ROUTES.DEFAULT_FROM_GUEST
     );
-
+    // * 4
     if (!defaultUrl || defaultUrl.onlyAuth) return "";
+    // * 5
     return defaultUrl.url;
   };
 
   const nextUrl = getUrlPageFromAccess(`/${currentPage}`, user);
+
   if (!nextUrl) return <>{notFound()}</>;
 
   if (`/${currentPage}` !== nextUrl)
@@ -54,7 +54,7 @@ const RouterPageAccount: FC<IProps> = ({ currentPage, user }) => {
   if (nextUrl === ACCOUNT_ADD_INFORMATION_ROUTES.FAVORITES)
     return <AccountPageFavorites user={user} />;
   if (nextUrl === ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS)
-    return <AccountPageReviews user={user} />;
+    return <AccountPageReviews userId={user?.id || ""} />;
 
   return <>{notFound()}</>;
 };

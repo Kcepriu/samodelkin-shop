@@ -1,0 +1,16 @@
+.wrapUserInfo {
+  @apply flex gap-3 justify-between
+  items-center
+  pb-3
+  border-b
+  border-b-text_black
+  w-[226px] 
+  h-16
+  text-text_user_info
+  font-text_user_info
+  leading-text_user_info;
+}
+
+.wrapImageFromName {
+  @apply flex gap-3 items-center;
+}

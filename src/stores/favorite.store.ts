@@ -1,30 +1,115 @@
+"use client";
+
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { KEYS_LOCAL_STORAGE } from "@/constants/app-keys.const";
-interface IStateFavorite {
+import { signOut } from "next-auth/react";
+import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
+import { getMarkProduct, saveMarkProduct } from "@/services/serverActionHttp";
+
+import {
+  saveDataToLocalStorage,
+  loadDataFromLocalStorage,
+} from "@/helpers/localStorage";
+
+interface IStateFavoriteData {
   favorites: IProduct[];
+  isAuth: boolean;
   loading: boolean;
   error: boolean | null;
+}
+interface IStateFavorite extends IStateFavoriteData {
   addFavorite: (newProduct: IProduct) => Promise<void>;
   deleteFavorite: (newProduct: IProduct) => Promise<void>;
+  fetchFavorites: (isRemoteStorage: boolean) => Promise<void>;
 }
-const useFavorite = create<IStateFavorite>()(
-  persist(
-    (set) => ({
-      favorites: [],
-      loading: false,
-      error: null,
-      addFavorite: async (newProduct) =>
-        set((state) => ({ favorites: [...state.favorites, newProduct] })),
-      deleteFavorite: async (newProduct) =>
-        set((state) => ({
-          favorites: state.favorites.filter(
-            (product) => product.id !== newProduct.id
-          ),
-        })),
-    }),
-    { name: KEYS_LOCAL_STORAGE.FAVORITE }
-  )
-);
+
+const convertFavoritesToCreate = (
+  favorites: IProduct[]
+): IMarkProductForCreate => {
+  const products = favorites.map((element) => element.id);
+  return {
+    data: { products },
+  };
+};
+
+// * Save Favorite to Storage
+const saveFavoriteToStorage = async (
+  favorite: IProduct[],
+  isRemoteStorage: boolean
+) => {
+  console.log("isRemoteStorage", isRemoteStorage);
+
+  if (isRemoteStorage) {
+    const { isAuth } = await saveMarkProduct(
+      convertFavoritesToCreate(favorite),
+      BACKEND_ROUTES.FAVORITES
+    );
+    if (!isAuth) await signOut();
+    return { isAuth };
+  }
+
+  saveDataToLocalStorage(favorite, KEYS_LOCAL_STORAGE.FAVORITE);
+  return {
+    isAuth: false,
+  };
+};
+
+// * fetch Favorites From Storage
+const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
+  if (isRemoteStorage) {
+    const { isAuth, markProduct: favorites } = await getMarkProduct(
+      BACKEND_ROUTES.FAVORITES
+    );
+    if (!isAuth) await signOut();
+    return { isAuth, favorites };
+  }
+
+  const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
+  return {
+    isAuth: false,
+    favorites,
+  };
+};
+
+// * Create Store
+const useFavorite = create<IStateFavorite>()((set, get) => ({
+  favorites: [],
+  loading: false,
+  isAuth: false,
+  error: null,
+  addFavorite: async (newProduct) => {
+    console.log("addFavorite");
+    const newFavorites = [...get().favorites, newProduct];
+    const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
+
+    return set((state) => ({
+      favorites: newFavorites,
+      isAuth: isAuth,
+    }));
+  },
+
+  deleteFavorite: async (newProduct) => {
+    const newFavorites = get().favorites.filter(
+      (product) => product.id !== newProduct.id
+    );
+
+    const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
+
+    return set((state) => ({
+      favorites: newFavorites,
+      isAuth: isAuth,
+    }));
+  },
+
+  fetchFavorites: async (isRemoteStorage) => {
+    const { isAuth, favorites } = await fetchFavoritesFromStorage(
+      isRemoteStorage
+    );
+
+    return set((state) => ({
+      favorites: [...favorites],
+      isAuth: isAuth,
+    }));
+  },
+}));
 
 export default useFavorite;

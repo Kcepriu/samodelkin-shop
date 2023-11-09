@@ -1,76 +1,188 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { signOut } from "next-auth/react";
+import { getCart, saveCart } from "@/services/serverActionHttp";
 import { KEYS_LOCAL_STORAGE } from "@/constants/app-keys.const";
+import {
+  saveDataToLocalStorage,
+  loadDataFromLocalStorage,
+} from "@/helpers/localStorage";
+import { nanoid } from "nanoid";
 
 interface IStateCart {
   products: ICartRow[];
+  isAuth: boolean;
   loading: boolean;
   error: boolean | null;
-  addToCart: (newRow: ICartRow) => Promise<void>;
   addOneProductToCart: (newProduct: IProduct) => Promise<void>;
   changeCountProduct: (changeProduct: IProduct, count: number) => Promise<void>;
   deleteFromCart: (deleteProduct: IProduct) => Promise<void>;
   cleanCart: () => Promise<void>;
+  fetchCart: (isRemoteStorage: boolean) => Promise<void>;
 }
+const getMissingProducts = (
+  productsFrom: ICartRow[],
+  productsTo: ICartRow[]
+): ICartRow[] => {
+  const resultArr = [] as ICartRow[];
 
-const useCart = create<IStateCart>()(
-  persist(
-    (set) => ({
-      products: [],
-      loading: false,
-      error: null,
-      addToCart: async (newRow) => {
-        newRow.sum = newRow.count * newRow.price;
-        set((state) => ({ products: [...state.products, newRow] }));
-      },
+  productsFrom.forEach((rowCartFrom) => {
+    const isFound = productsTo.find(
+      (rowCartTo) => rowCartFrom.product.data.id === rowCartTo.product.data.id
+    );
 
-      addOneProductToCart: async (newProduct) => {
-        const newRow = {
-          id: newProduct.id,
-          product: newProduct,
-          count: 1,
-          price: newProduct.attributes.price,
-          sum: newProduct.attributes.price,
-        };
-        set((state) => ({ products: [...state.products, newRow] }));
-      },
+    if (isFound) return;
+    resultArr.push(rowCartFrom);
+  });
 
-      changeCountProduct: async (changeProduct, count) => {
-        const newRow = {
-          id: changeProduct.id,
-          product: changeProduct,
-          count: count,
-          price: changeProduct.attributes.price,
-          sum: changeProduct.attributes.price * count,
-        };
+  return resultArr;
+};
 
-        set((state) => {
-          const products = state.products;
-          const index = products.findIndex(
-            (rowCart) => rowCart.id === changeProduct.id
-          );
+const convertCartToCreate = (products: ICartRow[]): ICartRowForSave => {
+  const convertProducts = products.map(({ id, ...row }) => ({
+    ...row,
+    product: row.product.data.id,
+  }));
+  return {
+    data: { products: convertProducts },
+  };
+};
 
-          if (index !== -1) products[index] = newRow;
+// * Save Favorite to Storage
+const saveCartToStorage = async (
+  products: ICartRow[],
+  isRemoteStorage: boolean
+) => {
+  if (isRemoteStorage) {
+    const { isAuth } = await saveCart(convertCartToCreate(products));
+    if (!isAuth) await signOut();
+    return { isAuth };
+  }
 
-          return {
-            products: [...products],
-          };
-        });
-      },
+  saveDataToLocalStorage(products, KEYS_LOCAL_STORAGE.CART);
+  return {
+    isAuth: false,
+  };
+};
 
-      deleteFromCart: async (deleteProduct) =>
-        set((state) => ({
-          products: state.products.filter(
-            (rowCart) => rowCart.id !== deleteProduct.id
-          ),
-        })),
+// * fetch Favorites From Storage
+const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
+  const productsFromLocalStorage = loadDataFromLocalStorage(
+    KEYS_LOCAL_STORAGE.CART,
+    []
+  );
 
-      cleanCart: async () => {
-        set((state) => ({ products: [] }));
-      },
-    }),
-    { name: KEYS_LOCAL_STORAGE.CART }
-  )
-);
+  if (isRemoteStorage) {
+    let { isAuth, products } = await getCart();
+    if (!isAuth) {
+      await signOut();
+      return { isAuth, products };
+    }
+
+    const missingProducts = getMissingProducts(
+      productsFromLocalStorage,
+      products
+    );
+
+    if (missingProducts.length > 0) {
+      products = [...products, ...missingProducts];
+      await saveCartToStorage([], false);
+      await saveCartToStorage(products, true);
+    }
+
+    return { isAuth, products };
+  }
+
+  const products = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.CART, []);
+  return {
+    isAuth: false,
+    products,
+  };
+};
+
+const useCart = create<IStateCart>()((set, get) => ({
+  products: [],
+  loading: false,
+  isAuth: false,
+  error: null,
+
+  // ! ERR
+  addOneProductToCart: async (newProduct) => {
+    const newProducts = [...get().products];
+
+    const index = newProducts.findIndex(
+      (rowCart) => rowCart.product.data.id === newProduct.id
+    );
+
+    if (index !== -1) {
+      const changeRow = newProducts[index];
+      changeRow.count = +1;
+      changeRow.sum = changeRow.count * changeRow.price;
+    } else {
+      newProducts.push({
+        id: nanoid(),
+        product: { data: newProduct },
+        count: 1,
+        price: newProduct.attributes.price,
+        sum: newProduct.attributes.price,
+      });
+    }
+
+    const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
+
+    return set((state) => ({ products: newProducts, isAuth: isAuth }));
+  },
+
+  // * Change Count Product
+  changeCountProduct: async (changeProduct, count) => {
+    const newProducts = [...get().products];
+
+    const index = newProducts.findIndex(
+      (rowCart) => rowCart.product.data.id === changeProduct.id
+    );
+
+    if (index !== -1) {
+      const changeRow = newProducts[index];
+      changeRow.count = count;
+      changeRow.sum = changeRow.count * changeRow.price;
+    }
+
+    const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
+
+    return set((state) => ({
+      products: newProducts,
+      isAuth: isAuth,
+    }));
+  },
+
+  // * Delete From Cart
+  deleteFromCart: async (deleteProduct) => {
+    const newProducts = get().products.filter(
+      (rowCart) => rowCart.product.data.id !== deleteProduct.id
+    );
+
+    const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
+
+    return set((state) => ({
+      products: newProducts,
+      isAuth: isAuth,
+    }));
+  },
+
+  // * Clean Cart
+  cleanCart: async () => {
+    const { isAuth } = await saveCartToStorage([], get().isAuth);
+    return set((state) => ({ products: [], isAuth: isAuth }));
+  },
+
+  // * Fetch Cart
+  fetchCart: async (isRemoteStorage) => {
+    const { isAuth, products } = await fetchCartFromStorage(isRemoteStorage);
+
+    return set((state) => ({
+      products: [...products],
+      isAuth: isAuth,
+    }));
+  },
+}));
 
 export default useCart;

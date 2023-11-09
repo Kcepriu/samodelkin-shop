@@ -22,7 +22,7 @@ const ProductAddInfoReviews: FC<IProps> = ({
           <>
             <Reviews reviews={reviews} />
             <ReviewsLoadMore
-              owner={product}
+              owner={{ isProduct: true, id: String(product.id) }}
               paginationReviews={paginationReviews}
             />
           </>

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 
 import styles from "./MainNav.module.css";
 
+// TODO I don't use this component
 const MainNav: FC = () => {
   const pathname = usePathname();
 

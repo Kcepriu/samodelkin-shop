@@ -7,6 +7,7 @@ import heroImage from "@/assets/hero.jpg";
 import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
+import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
 import httpServices from "@/services/http";
 
 interface IParams {
@@ -58,17 +59,9 @@ const HomeScreen: FC<IParams> = async ({
             </section>
           )}
 
-          {responseProducts && responseProducts.data.length > 0 && (
-            <section className={style.section}>
-              <h2 className={style.titleSection}>Переглянуті</h2>
-              <div className={style.wrapSwiper}>
-                <SliderProducts
-                  productList={responseProducts.data}
-                  slidesPerView={{ desktop: 3, tablet: 2, mobile: 1 }}
-                />
-              </div>
-            </section>
-          )}
+          <section className={style.section}>
+            <RevisedProducts />
+          </section>
 
           {responseReviews && responseReviews.data.length > 0 && (
             <section className={style.section}>

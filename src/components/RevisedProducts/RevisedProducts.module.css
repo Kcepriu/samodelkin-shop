@@ -1,0 +1,14 @@
+.titleSection {
+  @apply text-title_section
+  font-title_section 
+  leading-title_section;
+}
+
+.wrapSwiper {
+  @apply mt-8
+  
+  w-full 
+  sm:max-w-screen-sm 
+  md:max-w-screen-md 
+  lg:max-w-[924px];
+}

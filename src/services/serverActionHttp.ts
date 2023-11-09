@@ -44,3 +44,78 @@ export const changeReplyToReview = async (
 ): Promise<IResponseOneReviews | null> => {
   return await httpServices.changeReplyToReview(reviewId, replyId, reply);
 };
+
+// * Mark Product
+export const getMarkProduct = async (
+  typeMarkProduct: string
+): Promise<{
+  isAuth: boolean;
+  markProduct: IProduct[];
+}> => {
+  // {BACKEND_ROUTES.FAVORITES}
+  const { code, data: response } = await httpServices.getMarkProduct(
+    typeMarkProduct
+  );
+
+  const markProduct =
+    code === 200 && !!response?.data && response?.data.length > 0
+      ? response.data[0].attributes.products.data
+      : [];
+
+  return {
+    isAuth: code === 200,
+    markProduct,
+  };
+};
+
+export const saveMarkProduct = async (
+  markProductsToCreate: IMarkProductForCreate,
+  typeMarkProduct: string
+): Promise<{
+  isAuth: boolean;
+  markProducts: IProduct[];
+}> => {
+  const { code, data: response } = await httpServices.saveMarkProduct(
+    markProductsToCreate,
+    typeMarkProduct
+  );
+
+  const markProducts =
+    code === 200 && !!response ? response.data.attributes.products.data : [];
+
+  return {
+    isAuth: code === 200,
+    markProducts,
+  };
+};
+
+// * Cart
+export const getCart = async (): Promise<{
+  isAuth: boolean;
+  products: ICartRow[];
+}> => {
+  const { code, data: response } = await httpServices.getCart();
+
+  const saveProducts = code === 200 && !!response ? response : [];
+
+  return {
+    isAuth: code === 200,
+    products: saveProducts,
+  };
+};
+
+export const saveCart = async (
+  products: ICartRowForSave
+): Promise<{
+  isAuth: boolean;
+  products: ICartRow[];
+}> => {
+  const { code, data: response } = await httpServices.saveCart(products);
+
+  const saveProducts = code === 200 && !!response ? response : [];
+
+  return {
+    isAuth: code === 200,
+    products: saveProducts,
+  };
+};

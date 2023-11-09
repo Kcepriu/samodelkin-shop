@@ -4,7 +4,10 @@ import Reviews from "../Reviews/Reviews";
 import { getProductReviews, getUserReviews } from "@/services/serverActionHttp";
 
 interface IProps {
-  owner: IProduct | IUser;
+  owner: {
+    isProduct?: boolean;
+    id: string;
+  };
   paginationReviews: IPagination | undefined;
 }
 const ReviewsLoadMore: FC<IProps> = ({ owner, paginationReviews }) => {
@@ -19,11 +22,9 @@ const ReviewsLoadMore: FC<IProps> = ({ owner, paginationReviews }) => {
   const handleLoadMore = async () => {
     const nextPage = currentPage + 1;
 
-    const newReviews =
-      "username" in owner
-        ? await getUserReviews(String(owner.id), String(nextPage))
-        : await getProductReviews(String(owner.id), String(nextPage));
-
+    const newReviews = owner?.isProduct
+      ? await getProductReviews(owner.id, String(nextPage))
+      : await getUserReviews(owner.id, String(nextPage));
     if (newReviews) {
       setReviews((prevReviews: IReview[]) => [
         ...prevReviews,

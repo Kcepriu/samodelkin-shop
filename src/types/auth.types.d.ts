@@ -14,4 +14,5 @@ interface IUser {
   isAdmin?: boolean;
   createdAt?: string;
   updatedAt?: string;
+  jwt?: string;
 }

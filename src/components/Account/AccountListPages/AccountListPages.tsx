@@ -1,5 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
+import { User } from "next-auth";
+
 import IconAccountPage from "../IconAccountPage/IconAccountPage";
 
 import {
@@ -11,14 +13,14 @@ import style from "./AccountListPages.module.css";
 
 interface IProps {
   currentPage: string;
-  user: IUser;
+  user: User | undefined;
 }
 
 const AccountListPages: FC<IProps> = ({ currentPage, user }) => {
   return (
     <ul className={style.listPage}>
       {TYPES_ACCOUNT_ADD_INFORMATION.map((element) => {
-        if (element.onlyAuth && user.blocked) return null;
+        if (element.onlyAuth && !user) return null;
 
         return (
           <li key={element.url} className={style.elementList}>

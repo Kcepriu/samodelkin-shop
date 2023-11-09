@@ -1,0 +1,10 @@
+// import {
+//   TYPES_ACCOUNT_ADD_INFORMATION,
+//   FRONTEND_ROUTES,
+// } from "./constants/app-keys.const";
+
+// export { default } from "next-auth/middleware";
+
+// export const config = {
+//   matcher: ["/account/favorites"],
+// };
