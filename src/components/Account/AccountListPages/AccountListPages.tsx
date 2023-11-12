@@ -1,6 +1,8 @@
+"use client";
 import { FC } from "react";
 import Link from "next/link";
 import { User } from "next-auth";
+import { usePathname } from "next/navigation";
 
 import IconAccountPage from "../IconAccountPage/IconAccountPage";
 
@@ -12,11 +14,11 @@ import {
 import style from "./AccountListPages.module.css";
 
 interface IProps {
-  currentPage: string;
   user: User | undefined;
 }
 
-const AccountListPages: FC<IProps> = ({ currentPage, user }) => {
+const AccountListPages: FC<IProps> = ({ user }) => {
+  const pathname = usePathname();
   return (
     <ul className={style.listPage}>
       {TYPES_ACCOUNT_ADD_INFORMATION.map((element) => {
@@ -26,7 +28,9 @@ const AccountListPages: FC<IProps> = ({ currentPage, user }) => {
           <li key={element.url} className={style.elementList}>
             <Link
               className={style.link}
-              data-active={element.url === `/${currentPage}`}
+              data-active={
+                `${FRONTEND_ROUTES.ACCOUNT}${element.url}` === `${pathname}`
+              }
               href={`${FRONTEND_ROUTES.ACCOUNT}${element.url}`}
             >
               <IconAccountPage urlPage={element.url} />

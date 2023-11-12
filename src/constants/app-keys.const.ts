@@ -84,10 +84,10 @@ export const KEYS_LOCAL_STORAGE = {
 
 export const ACCOUNT_ADD_INFORMATION_ROUTES = {
   INFORMATION: "/information",
-  ORDERS: "/",
+  ORDERS: "/orders",
   FAVORITES: "/favorites",
   REVIEWS: "/reviews",
-  DEFAULT_FROM_GUEST: "/favorites",
+  REVISED: "/revised",
 };
 
 export const TYPES_ACCOUNT_ADD_INFORMATION = [
@@ -99,6 +99,11 @@ export const TYPES_ACCOUNT_ADD_INFORMATION = [
   {
     title: "Список бажань",
     url: ACCOUNT_ADD_INFORMATION_ROUTES.FAVORITES,
+    onlyAuth: false,
+  },
+  {
+    title: "Переглянуті",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.REVISED,
     onlyAuth: false,
   },
   {
