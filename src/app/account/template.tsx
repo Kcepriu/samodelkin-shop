@@ -19,7 +19,6 @@ const Layout: FC<IProps> = async ({ children }): Promise<JSX.Element> => {
 
       <div className={style.wrapPage}>
         <div className={style.wrapListPage}>
-          <p>List</p>
           <AccountListPages user={user} />
         </div>
         <div className={style.wrapContentPage}>{children}</div>

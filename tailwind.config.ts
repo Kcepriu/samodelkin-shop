@@ -26,6 +26,9 @@ const config: Config = {
         text_black: "#161718",
         text_gray: "#1C1B1B",
         border: "#C1C1C1",
+        light_blue: "#D8E6FB",
+        dark_blue: "#243650",
+
         button_active_page: "#DDDDDD",
         button_background_favorite: "#ffffffb3",
       },

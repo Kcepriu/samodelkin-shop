@@ -1,15 +1,18 @@
 import { FC } from "react";
 import httpServices from "@/services/http";
+import { getServerSession } from "next-auth";
+import { authConfigs } from "@/configs/authConfigs";
+
 import Reviews from "@/components/Reviews/Reviews";
 import ReviewsLoadMore from "@/components/ReviewsLoadMore/ReviewsLoadMore";
+
 import style from "./AccountPageReviews.module.css";
 
-interface IProps {
-  userId: string;
-}
-const AccountPageReviews: FC<IProps> = async ({
-  userId,
-}): Promise<JSX.Element> => {
+const AccountPageReviews: FC = async (): Promise<JSX.Element> => {
+  const session = await getServerSession(authConfigs);
+  const user = session?.user;
+  const userId = user?.id || "";
+
   const responseReviews = await httpServices.getUserReviews(userId);
   const reviews = responseReviews?.data;
   const paginationReviews = responseReviews?.meta.pagination;

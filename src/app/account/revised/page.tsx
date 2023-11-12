@@ -1,11 +1,8 @@
 import { FC } from "react";
-import { getServerSession } from "next-auth";
-import { authConfigs } from "@/configs/authConfigs";
+import AccountPageRevised from "@/components/Account/AccountPageRevised/AccountPageRevised";
 
-const Revised: FC = async (): Promise<JSX.Element> => {
-  const session = await getServerSession(authConfigs);
-  const user = session?.user;
-  return <p>Revised</p>;
+const Revised: FC = () => {
+  return <AccountPageRevised />;
 };
 
 export default Revised;
