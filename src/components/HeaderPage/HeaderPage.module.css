@@ -6,7 +6,8 @@
 }
 
 .wrapHeader {
-  @apply flex  items-center  justify-between  py-6
+  @apply flex  items-center  justify-between  
+  text-text_white
   text-text_header
   font-text_header
   leading-text_header;
@@ -21,11 +22,11 @@
 }
 
 .link {
-  @apply hover:text-action_color;
+  @apply text-text_white hover:text-action_color;
 }
 
 .icon {
-  @apply text-icon_color hover:text-action_color;
+  @apply text-text_white hover:text-action_color;
 }
 
 /* 

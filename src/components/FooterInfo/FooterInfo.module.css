@@ -10,7 +10,7 @@
 
 .link {
   @apply flex gap-1
-  text-text_black
+  text-text_white
   text-text_footer
   font-text_footer
   leading-text_footer

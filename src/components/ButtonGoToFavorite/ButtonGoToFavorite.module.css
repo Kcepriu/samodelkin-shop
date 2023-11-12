@@ -1,5 +1,5 @@
 .icon {
-  @apply text-icon_color;
+  @apply text-text_white;
 }
 
 .icon:hover {
