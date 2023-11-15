@@ -1,7 +1,11 @@
 import { FC } from "react";
+import ProductList from "@/components/ProductList/ProductList";
+import Pagination from "@/components/Pagination/Pagination";
+import FilterPanel from "@/components/FilterPanel/FilterPanel";
+import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
 
-import ProductsScreen from "@/screens/ProductsScreen/ProductsScreen";
 import httpServices from "@/services/http";
+import style from "./pageProducts.module.css";
 
 interface IParams {
   params?: { slug: string };
@@ -28,12 +32,24 @@ const Products: FC<IParams> = async ({
   const pageCount = responseProducts?.meta?.pagination.pageCount || 1;
 
   return (
-    <ProductsScreen
-      products={products}
-      currentPage={Number(currentPage)}
-      categoryId={categoryId}
-      pageCount={pageCount}
-    />
+    <>
+      <section className={style.wrapPage}>
+        <div className={style.wrapFilter}>
+          <FilterPanel categoryId={categoryId} />
+        </div>
+
+        <div className={style.wrapContent}>
+          {products.length > 0 && <ProductList productList={products} />}
+
+          {pageCount > 1 && (
+            <Pagination pageCount={pageCount} forcePage={Number(currentPage)} />
+          )}
+        </div>
+      </section>
+      <section className={style.wrapSection}>
+        <CategoryDescription categoryId={categoryId} />
+      </section>
+    </>
   );
 };
 

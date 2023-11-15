@@ -1,8 +1,21 @@
 import { FC } from "react";
-import Checkout from "@/screens/Checkout/Checkout";
+import ContactInformation from "@/components/Checkout/ContactInformation/ContactInformation";
+import ProductsCheckout from "@/components/Checkout/ProductsCheckout/ProductsCheckout";
 
-const PageCheckout:FC = () => {
-  return <Checkout/>;
+import style from "./pageCheckout.module.css";
+
+const PageCheckout: FC = () => {
+  return (
+    <div className={style.wrapComponent}>
+      <div className={style.wrapContactInformation}>
+        <ContactInformation />
+      </div>
+
+      <div className={style.wrapProducts}>
+        <ProductsCheckout />
+      </div>
+    </div>
+  );
 };
 
 export default PageCheckout;
