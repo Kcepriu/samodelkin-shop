@@ -1,7 +1,12 @@
 .overlay {
   @apply fixed 
   bottom-0 
-  left-0 top-0 right-0 mx-auto flex justify-center items-center z-50 bg-gray-500 bg-opacity-50;
+  left-0 top-0 right-0 
+  mx-auto 
+  flex justify-center 
+  items-center z-50  
+  bg-opacity-95
+  bg-dark_blue;
 }
 
 .modalContainer {
@@ -10,14 +15,19 @@
   py-5  
   max-w-[95%] 
   min-w-[250px] 
-  bg-gray-100 rounded-lg border shadow-lg overflow-y-auto;
+  rounded-lg 
+  border 
+  shadow-lg 
+  overflow-y-auto
+  bg-white;
 }
 
 .modalCloseBtn {
-  @apply absolute 
-  text-gray-800 
+  @apply absolute   
   top-3 
   right-3 
   block 
-  w-6 h-6 border-none cursor-pointer hover:scale-110 transition-transform;
+  w-6 h-6 border-none cursor-pointer 
+  transition
+  hover:scale-110;
 }

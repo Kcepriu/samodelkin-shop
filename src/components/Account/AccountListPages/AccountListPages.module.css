@@ -14,7 +14,8 @@
   p-2
   border
   border-button_active_page
-  transition hover:bg-indigo-400
+  transition 
+  hover:bg-indigo-400
   focus:bg-indigo-400
    focus:text-gray-100
    hover:text-gray-100

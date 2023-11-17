@@ -1,5 +1,5 @@
 .icon {
-  @apply text-text_white;
+  @apply text-text_white transition;
 }
 
 .icon:hover {
@@ -7,5 +7,5 @@
 }
 
 .link {
-  @apply hover:text-action_color;
+  @apply transition hover:text-action_color;
 }

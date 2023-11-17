@@ -6,7 +6,7 @@
 }
 
 .wrapImage {
-  @apply block w-[127px];
+  @apply block w-[127px] min-w-[127px];
 }
 
 .image {
@@ -14,7 +14,8 @@
 }
 
 .wrapTitle {
-  @apply flex justify-between items-baseline;
+  @apply flex justify-between items-baseline
+  pr-6;
 }
 
 .title {

@@ -14,5 +14,6 @@
   text-text_footer
   font-text_footer
   leading-text_footer
+  transition
    hover:text-action_color;
 }

@@ -18,9 +18,10 @@
 
 .wrapProduct {
   @apply mt-8 
+  pr-5
+  max-h-[360px]
   text-text_gray 
   flex flex-col gap-4
-  max-h-[340px]
   overflow-y-auto;
 }
 
@@ -44,12 +45,12 @@
 .buttonBack {
   @apply flex gap-3 
   py-3
-  
+  transition
   hover:text-action_color;
 }
 
 .iconBack {
-  @apply text-icon_back_color;
+  @apply text-icon_back_color transition;
 }
 
 .buttonBack:hover .iconBack {
@@ -63,9 +64,9 @@
   rounded-lg 
   bg-button_dark_background
   text-white
+  transition
   hover:text-action_color
-  hover:shadow-lg 
-  hover:shadow-gray-500/80;
+  hover:shadow-lg;
 }
 
 .buttonClean {
@@ -73,7 +74,7 @@
 }
 
 .icon {
-  @apply text-icon_back_color;
+  @apply text-icon_back_color transition;
 }
 
 .buttonClean:hover .icon {

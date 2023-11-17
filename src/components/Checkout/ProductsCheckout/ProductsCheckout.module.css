@@ -1,6 +1,8 @@
 .wrapComponent {
-  @apply bg-main_background
-  py-7 pl-6 pr-4;
+  @apply py-7 pl-6 pr-4 
+  border-2 
+  rounded-lg 
+  border-light_blue;
 }
 
 .wrapTitle {
@@ -23,9 +25,10 @@
 
 .wrapProduct {
   @apply mt-5 
+  pr-5
   text-text_gray 
   flex flex-col gap-4
-  max-h-[340px]
+  max-h-[360px]
   overflow-y-auto;
 }
 

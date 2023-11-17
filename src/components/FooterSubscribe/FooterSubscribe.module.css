@@ -7,15 +7,19 @@
 }
 
 .button {
-  @apply border rounded 
+  @apply rounded-lg 
   w-full 
   px-4 
   py-2 
  
   text-button_footer
   font-button_footer
-  leading-button_footer;
+  leading-button_footer
+  transition;
 }
 .form .button {
-  @apply bg-slate-400;
+  @apply bg-blue_action
+  hover:bg-blue_action_button
+  hover:shadow-gray-500/80
+  hover:shadow-lg;
 }

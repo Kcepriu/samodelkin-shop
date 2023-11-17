@@ -9,5 +9,6 @@
   rounded-lg  
   border
   border-light_blue
+  transition
   hover:border-dark_blue;
 }

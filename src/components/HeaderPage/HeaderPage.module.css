@@ -2,6 +2,7 @@
   @apply text-text_header_logo
   font-text_header_logo
   leading-text_header_logo
+  transition
   text-icon_color hover:text-action_color;
 }
 
@@ -22,11 +23,11 @@
 }
 
 .link {
-  @apply text-text_white hover:text-action_color;
+  @apply text-text_white transition hover:text-action_color;
 }
 
 .icon {
-  @apply text-text_white hover:text-action_color;
+  @apply text-text_white transition hover:text-action_color;
 }
 
 /* 

@@ -9,5 +9,7 @@
 }
 
 .icon {
-  @apply text-icon_back_color hover:text-action_color;
+  @apply text-icon_back_color
+  transition
+   hover:text-action_color;
 }
