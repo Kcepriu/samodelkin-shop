@@ -10,6 +10,8 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 
+import { convertRevisedToCreate } from "@/helpers/convertStructuresToBac";
+
 interface IStateRevisedData {
   revised: IProduct[];
   isAuth: boolean;
@@ -21,13 +23,6 @@ interface IStateRevised extends IStateRevisedData {
   deleteRevised: (newProduct: IProduct) => Promise<void>;
   fetchRevised: (isRemoteStorage: boolean) => Promise<void>;
 }
-
-const convertRevisedToCreate = (revised: IProduct[]): IMarkProductForCreate => {
-  const products = revised.map((element) => element.id);
-  return {
-    data: { products },
-  };
-};
 
 // * Save Revised to Storage
 const saveRevisedToStorage = async (

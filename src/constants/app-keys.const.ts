@@ -117,3 +117,11 @@ export const TYPES_ACCOUNT_ADD_INFORMATION = [
     onlyAuth: true,
   },
 ];
+
+export const TAGS_DATA = {
+  INFORMATION: "/information",
+  ORDERS: "/orders",
+  FAVORITES: "/favorites",
+  REVIEWS: "/reviews",
+  REVISED: "/revised",
+};

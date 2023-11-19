@@ -45,7 +45,10 @@
 }
 
 .inputFields {
-  @apply flex flex-col w-[320px];
+  @apply w-[320px];
+}
+.inputComment {
+  @apply w-full;
 }
 
 .input {

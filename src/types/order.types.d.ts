@@ -26,19 +26,21 @@ interface IOrder {
   };
 }
 
+interface ICustomersContact {
+  numberPhone: string;
+  email: string;
+  name: string;
+  comment: string;
+}
 interface IOrderFromCreate {
-  id: number;
-  attributes: {
-    date: string;
+  data: {
     totalSum: number;
-    createdAt: string;
-    updatedAt: string;
     numberPhone: string;
     email: string;
     name: string;
     comment: string;
     products: IProductOrderCreate[];
-    addressDelivery?: IAddressDeliveryForCreate;
+    addressDelivery: IAddressDeliveryForCreate;
   };
 }
 
@@ -53,9 +55,8 @@ interface IProductOrder {
 }
 
 interface IProductOrderCreate {
-  id: number;
-  count: number;
-  sum: number;
-  price: number;
   product: number;
+  count: number;
+  price: number;
+  sum: number;
 }

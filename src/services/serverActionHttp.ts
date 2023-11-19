@@ -1,6 +1,8 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import httpServices from "./http";
+import { TAGS_DATA } from "@/constants/app-keys.const";
 
 // * get Product Reviews
 export const getProductReviews = async (
@@ -117,5 +119,21 @@ export const saveCart = async (
   return {
     isAuth: code === 200,
     products: saveProducts,
+  };
+};
+
+// * Order
+export const createOrder = async (
+  order: IOrderFromCreate
+): Promise<{
+  order: IOrder | null;
+}> => {
+  const { code, data: response } = await httpServices.createOrder(order);
+
+  const createdOrder = code === 200 ? response : null;
+
+  if (code === 200) revalidateTag(TAGS_DATA.ORDERS);
+  return {
+    order: createdOrder,
   };
 };

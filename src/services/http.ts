@@ -1,6 +1,7 @@
 import { BACKEND_ROUTES, FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
+import { TAGS_DATA } from "@/constants/app-keys.const";
 
 import {
   IResponseAboutUs,
@@ -684,6 +685,7 @@ class HttpService {
           Authorization: Authorization,
         },
         body: JSON.stringify(order),
+        next: { tags: [TAGS_DATA.ORDERS] },
       });
 
       result.code = res.status;
@@ -702,9 +704,10 @@ class HttpService {
   }
 
   // * Update ORDER
-  async updateOrder(order: IOrderFromCreate): Promise<IResponseCreateOrder> {
-    const { id } = order;
-
+  async updateOrder(
+    id: number,
+    order: IOrderFromCreate
+  ): Promise<IResponseCreateOrder> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}/${id}`;
 
     const session = await getServerSession(authConfigs);

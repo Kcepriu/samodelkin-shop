@@ -5,14 +5,14 @@ import { AiOutlineClear } from "react-icons/ai";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
 import ProductInCheckout from "../ProductInCheckout/ProductInCheckout";
+import { getTotalSumCart } from "@/helpers/convertStructuresToBac";
 import style from "./ProductsCheckout.module.css";
 
 const ProductsCheckout: FC = () => {
   const cart = useStore(useCart, (state) => state.products) || [];
   const cleanCart = useCart((state) => state.cleanCart);
   const deleteFromCart = useCart((state) => state.deleteFromCart);
-  const totalSum =
-    cart?.reduce((totalSum, product) => totalSum + product.sum, 0) || 0;
+  const totalSum = getTotalSumCart(cart);
 
   const handleDeleteProduct = async (product: IProduct) => {
     await deleteFromCart(product);

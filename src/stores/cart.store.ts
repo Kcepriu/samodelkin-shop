@@ -7,6 +7,7 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 import { nanoid } from "nanoid";
+import { convertCartToCreate } from "@/helpers/convertStructuresToBac";
 
 interface IStateCart {
   products: ICartRow[];
@@ -35,16 +36,6 @@ const getMissingProducts = (
   });
 
   return resultArr;
-};
-
-const convertCartToCreate = (products: ICartRow[]): ICartRowForSave => {
-  const convertProducts = products.map(({ id, ...row }) => ({
-    ...row,
-    product: row.product.data.id,
-  }));
-  return {
-    data: { products: convertProducts },
-  };
 };
 
 // * Save Favorite to Storage

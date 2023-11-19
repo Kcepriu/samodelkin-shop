@@ -27,12 +27,7 @@ interface ICartRow {
 
 interface ICartRowForSave {
   data: {
-    products: {
-      product: number;
-      count: number;
-      price: number;
-      sum: number;
-    }[];
+    products: IProductOrderCreate[];
   };
 }
 

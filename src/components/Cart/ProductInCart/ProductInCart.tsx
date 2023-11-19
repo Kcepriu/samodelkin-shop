@@ -14,7 +14,6 @@ interface IProps {
   deleteProduct: (product: IProduct) => void;
 }
 const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
-  console.log("🚀 ~ rowCart:", rowCart);
   const router = useRouter();
   const { product } = rowCart;
   const attributes = product.data.attributes;

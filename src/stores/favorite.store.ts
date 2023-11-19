@@ -9,6 +9,7 @@ import {
   saveDataToLocalStorage,
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
+import { convertFavoritesToCreate } from "@/helpers/convertStructuresToBac";
 
 interface IStateFavoriteData {
   favorites: IProduct[];
@@ -21,15 +22,6 @@ interface IStateFavorite extends IStateFavoriteData {
   deleteFavorite: (newProduct: IProduct) => Promise<void>;
   fetchFavorites: (isRemoteStorage: boolean) => Promise<void>;
 }
-
-const convertFavoritesToCreate = (
-  favorites: IProduct[]
-): IMarkProductForCreate => {
-  const products = favorites.map((element) => element.id);
-  return {
-    data: { products },
-  };
-};
 
 // * Save Favorite to Storage
 const saveFavoriteToStorage = async (
