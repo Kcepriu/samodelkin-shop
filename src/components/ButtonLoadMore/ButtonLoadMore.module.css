@@ -1,0 +1,7 @@
+.button {
+  @apply font-roboto;
+}
+
+.text {
+  @apply font-robotoSerif;
+}

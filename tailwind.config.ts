@@ -58,6 +58,11 @@ const config: Config = {
         describe: "32px",
         describe_after_title: "32px",
       },
+      fontFamily: {
+        roboto: [`var(--font-roboto)`],
+        inter: [`var(--font-inter)`],
+        robotoSerif: [`var(--font-roboto_serif)`],
+      },
       fontSize: {
         title_section: "32px",
         title_filter: "20px",

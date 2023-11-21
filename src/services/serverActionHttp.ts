@@ -137,3 +137,11 @@ export const createOrder = async (
     order: createdOrder,
   };
 };
+
+export const getOrders = async (page = "1") => {
+  const { code, data: response } = await httpServices.getOrders(page);
+
+  const orders = code === 200 ? response : null;
+
+  return orders;
+};

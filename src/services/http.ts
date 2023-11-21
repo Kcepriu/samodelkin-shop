@@ -589,6 +589,7 @@ class HttpService {
   async getOrders(page = "1"): Promise<IResponseOrder> {
     const paramsObj: { [key: string]: string } = {
       "pagination[page]": page,
+      "pagination[pageSize]": this.countReviewsOnPage,
     };
     const params = new URLSearchParams(paramsObj);
     const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}?${params}`;

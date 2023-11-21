@@ -1,10 +1,19 @@
 import { FC } from "react";
 import httpServices from "@/services/http";
-import AccountPageOrders from "@/components/Account/AccountPageOrders/AccountPageOrders";
+import Orders from "@/components/Orders/Orders";
+import OrdersLoadMore from "@/components/OrdersLoadMore/OrdersLoadMore";
 
 const Order: FC = async () => {
-  const { data: orders } = await httpServices.getOrders();
-  return <AccountPageOrders orders={orders || []} />;
+  const responseOrders = await httpServices.getOrders();
+  const orders = responseOrders?.data;
+  const pagination = responseOrders?.meta?.pagination;
+
+  return (
+    <>
+      <Orders orders={orders || []} />
+      <OrdersLoadMore pagination={pagination} />
+    </>
+  );
 };
 
 export default Order;
