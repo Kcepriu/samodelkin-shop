@@ -1,20 +1,30 @@
 .form {
-  @apply max-w-[402px] flex flex-col gap-6;
+  @apply max-w-[402px] flex flex-col gap-6
+    text-text_white
+  text-size_16 
+  font-weight_300 
+  leading-line_height_15;
 }
 
 .input {
-  @apply px-2 py-1;
+  @apply p-4
+  text-black
+  font-inter
+  text-size_16 
+  font-weight_500 
+  leading-line_height_24
+  placeholder:text-gray_our;
 }
 
 .button {
   @apply rounded-lg 
   w-full 
-  px-4 
-  py-2 
+  p-4
  
-  text-button_footer
-  font-button_footer
-  leading-button_footer
+  font-inter
+  text-size_20
+  font-weight_500 
+  leading-line_height_20
   transition;
 }
 .form .button {

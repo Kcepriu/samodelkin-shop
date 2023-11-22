@@ -18,6 +18,7 @@ export const BACKEND_ROUTES = {
   DELIVERY_SERVICES: "/api/delivery-services",
   ORDERS: "/api/orders",
   ABOUT_US: "/api/about-us-section",
+  MAIN_PAGE: "/api/main-page",
   CATEGORY_DESCRIPTION: "/api/category-descriptions",
   PRODUCT_DESCRIPTION: "/api/product-descriptions",
   REVIEWS: "/api/reviews",

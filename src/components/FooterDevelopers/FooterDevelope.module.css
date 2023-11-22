@@ -1,3 +1,40 @@
+.wrapMain {
+  @apply before:ml-auto
+  before:mr-auto
+  before:mb-6
+  before:block
+  before:w-[80%]
+  before:h-3
+  before:border-b
+  before:border-gray_our;
+}
+
 .wrapDevelopers {
-  @apply flex  gap-20 justify-center;
+  @apply flex  gap-14 justify-end  items-baseline
+  pr-48;
+}
+
+.wrapInformation {
+  @apply flex gap-2  items-center;
+}
+
+.link {
+  @apply flex gap-2  items-center
+  hover:text-action_color;
+}
+
+.author {
+  @apply font-inter 
+  text-text_white
+  text-size_16 
+  font-weight_700 
+  leading-line_height_15;
+}
+
+.link:hover .author {
+  @apply text-action_color;
+}
+
+.link:hover img {
+  @apply shadow-lg;
 }

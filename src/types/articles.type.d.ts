@@ -10,6 +10,18 @@ interface IResponseAboutUs {
   };
 }
 
+// * MainPage
+interface IResponseMainPage {
+  data: {
+    id: number;
+    attributes: {
+      banner: {
+        data: IImage[] | null;
+      };
+    };
+  };
+}
+
 // * Category Description;
 interface IResponseCategoryDescription {
   data: ICategoryDescription[];

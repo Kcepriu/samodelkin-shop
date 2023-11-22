@@ -1,12 +1,27 @@
 .reply {
-  @apply flex gap-6
+  @apply relative
+  flex gap-6
   p-6
   w-full
   
-  text-review_text
-  font-review_text
-  leading-review_text
-  bg-review_background;
+   font-inter 
+  text-size_14 
+  font-weight_300 
+  leading-line_height_29
+  
+  bg-blue_100
+  border
+  rounded-lg;
+}
+.icon {
+  @apply absolute top-0 -left-12;
+}
+
+.data {
+  @apply font-roboto
+  text-size_14 
+  font-weight_300
+  leading-line_height_28;
 }
 
 .wrapUser {
@@ -16,11 +31,16 @@
 }
 
 .userName {
-  @apply block w-full text-center overflow-hidden;
+  @apply block w-full text-center overflow-hidden
+  font-inter 
+  text-size_14 
+  font-weight_400 
+  leading-line_height_28;
 }
 
 .content {
-  @apply text-review_content
-  font-review_content
-  leading-review_content;
+  @apply font-inter 
+  text-size_18 
+  font-weight_300 
+  leading-line_height_31;
 }

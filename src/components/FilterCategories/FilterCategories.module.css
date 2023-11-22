@@ -1,7 +1,9 @@
 .titleCategory {
-  @apply text-title_filter
-  font-title_filter 
-  leading-title_filter;
+  @apply text-black
+  font-inter
+  text-size_20
+  font-weight_600
+  leading-line_height_15;
 }
 
 .listCategory {
@@ -12,20 +14,25 @@
   @apply px-4 
   py-2
   w-full 
-  text-start 
+  text-center
+
+  text-black
+  font-inter
+  text-size_18
+  font-weight_400
+  leading-line_height_21
+
+  border
   rounded-lg
-
-  text-text_filter
-  font-text_filter
-  leading-text_filter
-
-
+  border-dark_blue
   transition
-  hover:bg-indigo-400
-   focus:bg-indigo-400
-   
-   focus:text-gray-100
-   hover:text-gray-100
   
-  data-[active=true]:bg-indigo-500;
+  
+  hover:text-blue_action_button
+  hover:border-blue_action_button
+  focus:text-blue_action_button
+  focus:border-blue_action_button
+  hover:shadow-lg
+  
+  data-[active=true]:bg-light_blue;
 }

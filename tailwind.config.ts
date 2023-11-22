@@ -35,6 +35,7 @@ const config: Config = {
         dark_blue: "#243650",
         blue_action: "#4488ED",
         blue_action_button: "#1673FF",
+        blue_100: "#EDF5FF",
 
         button_active_page: "#DDDDDD",
         button_background_favorite: "#ffffffb3",
@@ -98,6 +99,7 @@ const config: Config = {
         weight_400: "400",
         weight_500: "500",
         weight_600: "600",
+        weight_700: "700",
 
         title_section: "400",
         title_filter: "600",
@@ -126,7 +128,9 @@ const config: Config = {
         line_height_16: "1.16",
         line_height_17: "1.17",
         line_height_20: "1.2",
+        line_height_21: "1.21",
         line_height_22: "1.22",
+        line_height_24: "1.24",
         line_height_28: "1.28",
         line_height_29: "1.29",
         line_height_31: "1.31",

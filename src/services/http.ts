@@ -7,6 +7,7 @@ import {
   IResponseAboutUs,
   IResponseCategoryDescription,
   IResponseProductDescription,
+  IResponseMainPage,
 } from "@/types/articles.type";
 
 class HttpService {
@@ -188,6 +189,23 @@ class HttpService {
     productId: string
   ): Promise<IResponseProductDescription | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCT_DESCRIPTION}/${productId}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get PAGE Main Page
+  async getMainPage(): Promise<IResponseMainPage | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.MAIN_PAGE}`;
 
     try {
       const res = await fetch(url);

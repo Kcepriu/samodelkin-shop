@@ -21,6 +21,12 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
 
   const responseProducts = await httpServices.getSalesLeaders();
   const responseReviews = await httpServices.getLastReviews();
+  const responseMainPage = await httpServices.getMainPage();
+
+  const banner =
+    !!responseMainPage && !!responseMainPage.data.attributes.banner.data
+      ? responseMainPage.data.attributes.banner.data[0].attributes.url
+      : heroImage;
 
   return (
     <>
@@ -32,17 +38,13 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           <section>
             <Image
               className={style.imageHero}
-              src={heroImage}
+              src={banner}
               alt="Hero image"
               width={924}
               height={511}
               priority
             />
           </section>
-
-          {/* <section className={style.sectionTypeGames}>
-          <TypeGames />
-        </section> */}
 
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
@@ -58,6 +60,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           )}
 
           <section className={style.section}>
+            {/* moved to a separate component as the data is only available with the client */}
             <RevisedProducts />
           </section>
 

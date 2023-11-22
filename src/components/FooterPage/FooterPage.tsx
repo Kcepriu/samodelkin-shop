@@ -13,7 +13,7 @@ const FooterPage: FC = () => {
         <FooterNavigate />
         <FooterInfo />
       </div>
-      <div className={style.wrapBottomRow}>
+      <div className={style.wrapDevelopers}>
         <FooterDevelopers />
       </div>
     </div>

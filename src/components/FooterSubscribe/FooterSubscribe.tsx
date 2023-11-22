@@ -5,7 +5,8 @@ const FooterSubscribe: FC = () => {
   return (
     <form name="subscrabe" className={style.form}>
       <label htmlFor="email">
-        Оформіть підписку, щоб отримати знижку 10% на першу покупку
+        Хочете дізнаватися першим про акції і знижки? Підпишіться на нашу
+        розсилку
       </label>
       <input
         className={style.input}

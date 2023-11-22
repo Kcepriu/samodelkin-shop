@@ -3,17 +3,17 @@
 }
 
 .icon {
-  @apply text-icon_color;
+  @apply text-icon_color transition;
 }
 
 .icon:hover {
-  @apply text-action_color;
+  @apply text-blue_action_button;
 }
 
 .iconFavorite {
-  @apply text-icon_fill_color;
+  @apply text-blue_action;
 }
 
 .iconFavorite:hover {
-  @apply text-action_color;
+  @apply text-blue_action_button;
 }
