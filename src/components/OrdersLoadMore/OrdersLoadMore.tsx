@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from "react";
 import Orders from "../Orders/Orders";
 import ButtonLoadMore from "../ButtonLoadMore/ButtonLoadMore";
 import { getOrders } from "@/services/serverActionHttp";
+import style from "./OrdersLoadMore.module.css";
 
 interface IProps {
   pagination: IPagination | undefined;
@@ -32,9 +33,14 @@ const OrdersLoadMore: FC<IProps> = ({ pagination }) => {
   return (
     <>
       <Orders orders={orders} />
-      {currentPage < countTotalPage && (
-        <ButtonLoadMore handleLoadMore={handleLoadMore} text="Завантажити ще" />
-      )}
+      <div className={style.wrapButton}>
+        {currentPage < countTotalPage && (
+          <ButtonLoadMore
+            handleLoadMore={handleLoadMore}
+            text="Завантажити ще"
+          />
+        )}
+      </div>
     </>
   );
 };

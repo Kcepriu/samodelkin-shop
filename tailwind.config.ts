@@ -64,6 +64,13 @@ const config: Config = {
         robotoSerif: [`var(--font-roboto_serif)`],
       },
       fontSize: {
+        size_14: "14px",
+        size_16: "16px",
+        size_18: "18px",
+        size_20: "20px",
+        size_22: "22px",
+        size_32: "32px",
+
         title_section: "32px",
         title_filter: "20px",
         text_filter: "18px",
@@ -87,6 +94,11 @@ const config: Config = {
         text_user_info: "14px",
       },
       fontWeight: {
+        weight_300: "300",
+        weight_400: "400",
+        weight_500: "500",
+        weight_600: "600",
+
         title_section: "400",
         title_filter: "600",
         text_filter: "400",
@@ -110,6 +122,19 @@ const config: Config = {
         text_user_info: "500",
       },
       lineHeight: {
+        line_height_15: "1.15",
+        line_height_16: "1.16",
+        line_height_17: "1.17",
+        line_height_20: "1.2",
+        line_height_22: "1.22",
+        line_height_28: "1.28",
+        line_height_29: "1.29",
+        line_height_31: "1.31",
+        line_height_50: "1.5",
+        line_height_60: "1.6",
+        line_height_71: "1.71",
+        line_height_75: "1.75",
+
         title_section: "1.16",
         title_filter: "1.2",
         text_filter: "1.22",

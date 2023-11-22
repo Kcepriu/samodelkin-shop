@@ -11,7 +11,6 @@ const ButtonLoadMore: FC<IProps> = ({ handleLoadMore, text }) => {
       <button className={style.button} type="button" onClick={handleLoadMore}>
         {text}
       </button>
-      <p className={style.text}>{text}</p>
     </>
   );
 };

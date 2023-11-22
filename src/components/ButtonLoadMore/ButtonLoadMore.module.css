@@ -1,7 +1,7 @@
 .button {
-  @apply font-roboto;
-}
-
-.text {
-  @apply font-robotoSerif;
+  @apply font-roboto 
+  font-weight_300
+  text-size_18 leading-line_height_17
+  underline
+  underline-offset-1;
 }
