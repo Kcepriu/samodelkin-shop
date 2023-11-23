@@ -15,12 +15,18 @@ const Layout: FC<IProps> = async ({
   const { slug } = params;
   const responseProduct = await httpServices.getOneProducts(slug);
   const responseSalesLeaders = await httpServices.getSalesLeaders();
+  const rating = 3;
+  const countReview = 10;
 
   return (
     <>
       <section>
         {responseProduct && responseProduct.data.length > 0 && (
-          <Product product={responseProduct.data[0]} />
+          <Product
+            product={responseProduct.data[0]}
+            rating={rating}
+            countReview={countReview}
+          />
         )}
       </section>
 

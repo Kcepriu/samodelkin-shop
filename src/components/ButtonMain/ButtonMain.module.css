@@ -1,0 +1,12 @@
+.button {
+  @apply p-2 
+  text-text_white
+  w-full
+  font-inter
+  text-size_20
+  font-weight_500
+  rounded-lg
+  leading-line_height_21
+  bg-blue_action
+  hover:bg-blue_action_button;
+}

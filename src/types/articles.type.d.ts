@@ -1,7 +1,7 @@
 import { TypeArticles } from "./generalTypes/articles.type";
 
 // * About Us
-interface IResponseAboutUs {
+interface IResponseGeneralPage {
   data: {
     id: number;
     attributes: {

@@ -7,5 +7,3 @@
   transition
   data-[in-cart=true]:text-icon_fill_color;
 }
-
-/* @apply text-icon_fill_color; */

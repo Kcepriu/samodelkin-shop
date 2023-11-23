@@ -2,19 +2,21 @@
 
 import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
-import Cart from "../Cart/Cart";
-import { Modal } from "../Modal/Modal";
 import { BsCart3 } from "react-icons/bs";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
+import Cart from "../Cart/Cart";
+import { Modal } from "../Modal/Modal";
+import ButtonMain from "../ButtonMain/ButtonMain";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 
 import style from "./ButtonAddProductToCart.module.css";
 
 interface IProps {
   product: IProduct;
+  bigButton?: boolean;
 }
-const ButtonAddProductToCart: FC<IProps> = ({ product }) => {
+const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const cart = useStore(useCart, (state) => state.products);
@@ -38,11 +40,15 @@ const ButtonAddProductToCart: FC<IProps> = ({ product }) => {
 
   return (
     <>
-      <div className={style.wrapButtom}>
+      {!bigButton && (
         <button type="button" onClick={handleAddToCart}>
           <BsCart3 size={32} className={style.icon} data-in-cart={isInCart} />
         </button>
-      </div>
+      )}
+
+      {!!bigButton && (
+        <ButtonMain text="Купити" handlerButton={handleAddToCart} />
+      )}
 
       {showModal && (
         <Modal onClose={handlerCloseCart}>

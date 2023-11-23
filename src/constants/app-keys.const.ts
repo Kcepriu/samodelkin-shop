@@ -29,6 +29,8 @@ export const BACKEND_ROUTES = {
   FAVORITES: "/api/favorites",
   REVISED: "/api/reviseds",
   CART: "/api/carts",
+  DELIVERY_AND_PAYMENT: "/api/delivery-and-payment",
+  CHANGE_AND_RETURN: "/api/exchange-and-return",
 };
 
 // Frontend routes

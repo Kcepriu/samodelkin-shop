@@ -36,6 +36,7 @@ const config: Config = {
         blue_action: "#4488ED",
         blue_action_button: "#1673FF",
         blue_100: "#EDF5FF",
+        green_main: "#398F3D",
 
         button_active_page: "#DDDDDD",
         button_background_favorite: "#ffffffb3",
@@ -71,6 +72,7 @@ const config: Config = {
         size_20: "20px",
         size_22: "22px",
         size_32: "32px",
+        size_40: "40px",
 
         title_section: "32px",
         title_filter: "20px",

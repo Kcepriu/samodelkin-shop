@@ -4,14 +4,15 @@
   p-6
   w-full
   
-   font-inter 
+  font-inter 
   text-size_14 
   font-weight_300 
   leading-line_height_29
   
   bg-blue_100
   border
-  rounded-lg;
+  rounded-lg
+  border-blue_100;
 }
 .icon {
   @apply absolute top-0 -left-12;

@@ -16,6 +16,7 @@
   leading-review_text
   bg-blue_100
   border
+  border-blue_100
   rounded-lg;
 }
 
@@ -77,5 +78,6 @@
 .image {
   @apply block
   border
-  rounded-lg;
+  rounded-lg
+  border-blue_100;
 }

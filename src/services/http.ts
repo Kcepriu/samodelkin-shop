@@ -4,7 +4,7 @@ import { authConfigs } from "@/configs/authConfigs";
 import { TAGS_DATA } from "@/constants/app-keys.const";
 
 import {
-  IResponseAboutUs,
+  IResponseGeneralPage,
   IResponseCategoryDescription,
   IResponseProductDescription,
   IResponseMainPage,
@@ -149,8 +149,40 @@ class HttpService {
   // * PAGES
   // * ------------
   // * get PAGE About Us
-  async getAboutUs(): Promise<IResponseAboutUs | null> {
+  async getAboutUs(): Promise<IResponseGeneralPage | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_US}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  async getPageDeliveryAndPayment(): Promise<IResponseGeneralPage | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.DELIVERY_AND_PAYMENT}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  async getPageChangeAndReturn(): Promise<IResponseGeneralPage | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CHANGE_AND_RETURN}`;
 
     try {
       const res = await fetch(url);

@@ -2,13 +2,9 @@
   @apply mt-12;
 }
 
-.listManuals {
-  @apply flex flex-col gap-6
-  pl-2;
-}
-
 .link {
-  @apply flex gap-2
+  @apply mt-6
+  flex gap-2
     font-inter 
     text-size_18 
     font-weight_500

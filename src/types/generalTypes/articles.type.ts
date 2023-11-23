@@ -6,7 +6,7 @@ export enum TypeArticles {
 }
 
 export enum TypeDescription {
-  AboutUs = "aboutUs",
+  GeneralPage = "general-page",
   Product = "product",
   Category = "category",
 }
