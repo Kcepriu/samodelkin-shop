@@ -15,3 +15,8 @@
   data-[about-us=true]:font-weight_400
   data-[about-us=true]:leading-line_height_28;
 }
+
+.wrapContent ul {
+  @apply list-disc
+  pl-10;
+}

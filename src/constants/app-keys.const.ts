@@ -22,15 +22,16 @@ export const BACKEND_ROUTES = {
   CATEGORY_DESCRIPTION: "/api/category-descriptions",
   PRODUCT_DESCRIPTION: "/api/product-descriptions",
   REVIEWS: "/api/reviews",
-  LAST_REVIEWS: "/api/lastReviews",
-  REPLY_TO_REVIEWS: "/api/replyToReview",
-  CHANGE_STATUS_REVIEWS: "/api/changeStatusReview",
-  CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
+  LAST_REVIEWS: "/api/last-reviews",
+  REPLY_TO_REVIEWS: "/api/reply-to-review",
+  CHANGE_STATUS_REVIEWS: "/api/change-status-review",
+  CHANGE_REPLY_TO_REVIEWS: "/api/change-reply-to-review",
   FAVORITES: "/api/favorites",
   REVISED: "/api/reviseds",
   CART: "/api/carts",
   DELIVERY_AND_PAYMENT: "/api/delivery-and-payment",
   CHANGE_AND_RETURN: "/api/exchange-and-return",
+  INFO_PRODUCT_REVIEW: "/api/get-info-product-review",
 };
 
 // Frontend routes

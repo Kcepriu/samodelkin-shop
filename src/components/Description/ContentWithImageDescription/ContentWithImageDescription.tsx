@@ -1,6 +1,8 @@
 import { IContentImageArticle } from "@/types/articles.type";
 import { FC } from "react";
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
+// import Markdown from "markdown-to-jsx";
+
 import Image from "next/image";
 import style from "./ContentWithImageDescription.module.css";
 
@@ -17,7 +19,7 @@ const ContentWithImageDescription: FC<IProps> = ({ params }) => {
         className={style.wrapText}
         style={{ width: `${100 - params.percentImage}%` }}
       >
-        <ReactMarkdown>{params.content}</ReactMarkdown>
+        <Markdown>{params.content}</Markdown>
       </div>
       <div
         className={style.wrapImage}

@@ -280,14 +280,32 @@ class HttpService {
   ): Promise<IResponseReviews | null> {
     const paramsObj: { [key: string]: string } = {
       "filters[product][id][$eq]": productId,
-      //TODO Enable filter
-      // "filters[isPublication][$eq]": "true",
+      "filters[isPublication][$eq]": "true",
       "pagination[pageSize]": this.countReviewsOnPage,
       "pagination[page]": page,
       "sort[0]": "date:desc",
     };
+
     const params = new URLSearchParams(paramsObj);
     const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get Info Product Review
+  async getInfoProductReview(
+    productId: string
+  ): Promise<IInfoProductReview | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.INFO_PRODUCT_REVIEW}/${productId}`;
 
     try {
       const res = await fetch(url);

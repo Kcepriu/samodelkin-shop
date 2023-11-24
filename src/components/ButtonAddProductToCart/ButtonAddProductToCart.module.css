@@ -5,5 +5,5 @@
 .icon {
   @apply hover:text-action_color
   transition
-  data-[in-cart=true]:text-icon_fill_color;
+  data-[in-cart=true]:text-blue_action_button;
 }

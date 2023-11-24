@@ -28,8 +28,6 @@ const saveFavoriteToStorage = async (
   favorite: IProduct[],
   isRemoteStorage: boolean
 ) => {
-  console.log("isRemoteStorage", isRemoteStorage);
-
   if (isRemoteStorage) {
     const { isAuth } = await saveMarkProduct(
       convertFavoritesToCreate(favorite),

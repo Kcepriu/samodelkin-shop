@@ -92,3 +92,15 @@ interface IChangeReplyToReview {
     content: string;
   };
 }
+
+interface IInfoProductReview {
+  data: [
+    {
+      attributes: {
+        count: number;
+        sum: number;
+        avg: number;
+      };
+    }
+  ];
+}
