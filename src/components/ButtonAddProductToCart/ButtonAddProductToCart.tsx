@@ -16,6 +16,8 @@ interface IProps {
   product: IProduct;
   bigButton?: boolean;
 }
+const defaultLanguage = { language: "ua" };
+
 const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
@@ -26,12 +28,19 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
     cart?.some((element) => element.product.data.id === product.id) || false;
 
   const handleAddToCart = async () => {
-    if (!isInCart) {
-      await addOneProductToCart(product);
-      setShowModal(true);
+    if (isInCart) {
+      router.push(FRONTEND_ROUTES.CHECKOUT);
       return;
     }
-    router.push(FRONTEND_ROUTES.CHECKOUT);
+
+    await addOneProductToCart(
+      product,
+      product.attributes?.languages && product.attributes?.languages.length > 0
+        ? product.attributes.languages[0]
+        : defaultLanguage
+    );
+    setShowModal(true);
+    return;
   };
 
   const handlerCloseCart = () => {

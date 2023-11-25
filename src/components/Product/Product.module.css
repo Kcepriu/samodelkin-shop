@@ -97,6 +97,7 @@
 .wrapGeneralInformation {
   @apply grow
   flex flex-col justify-end gap-6
+  mt-6
   font-roboto
   text-size_16
   font-weight_300

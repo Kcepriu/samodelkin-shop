@@ -71,6 +71,7 @@ const config: Config = {
         size_18: "18px",
         size_20: "20px",
         size_22: "22px",
+        size_24: "24px",
         size_32: "32px",
         size_40: "40px",
 

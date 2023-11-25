@@ -1,11 +1,13 @@
 import { FC } from "react";
-import { useRouter } from "next/navigation";
-
 import Image from "next/image";
-import Img from "@/assets/no_images.png";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
-import CountProductChange from "@/components/CountProductChange/CountProductChange";
+import { useRouter } from "next/navigation";
 import { RiDeleteBin2Line } from "react-icons/ri";
+
+import Img from "@/assets/no_images.png";
+import ChangeLanguage from "@/components/ChangeLanguage/ChangeLanguage";
+import CountProductChange from "@/components/CountProductChange/CountProductChange";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import { formatPrice } from "@/helpers/formatNumber";
 import style from "./ProductInCart.module.css";
 
 interface IProps {
@@ -17,6 +19,7 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
   const router = useRouter();
   const { product } = rowCart;
   const attributes = product.data.attributes;
+
   const images = attributes.images?.data;
   const urlImage = images ? images[0].attributes.url : Img;
 
@@ -54,9 +57,13 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
         </div>
 
         <div className={style.wrapDetails}>
-          <p>Ціна: {rowCart.price} грн</p>
+          <ChangeLanguage
+            currentLanguages={attributes.languages[0]}
+            availableLanguages={attributes.languages}
+          />
+          <p>Ціна: {formatPrice(rowCart.price)} грн</p>
           <CountProductChange rowCart={rowCart} />
-          <p className={style.totalSum}>{rowCart.sum} грн</p>
+          <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
         </div>
       </div>
     </div>

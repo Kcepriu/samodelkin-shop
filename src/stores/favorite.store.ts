@@ -3,13 +3,20 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import { getMarkProduct, saveMarkProduct } from "@/services/serverActionHttp";
+import {
+  getMarkProduct,
+  saveMarkProduct,
+  getProductsByList,
+} from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
-import { convertFavoritesToCreate } from "@/helpers/convertStructuresToBac";
+import {
+  convertFavoritesToCreate,
+  convertProductToArrayId,
+} from "@/helpers/convertStructuresToBac";
 
 interface IStateFavoriteData {
   favorites: IProduct[];
@@ -54,9 +61,12 @@ const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   }
 
   const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
+  const productsID = convertProductToArrayId(favorites);
+  const responseFavorites = await getProductsByList(productsID);
+
   return {
     isAuth: false,
-    favorites,
+    favorites: !!responseFavorites ? responseFavorites.data : favorites,
   };
 };
 
@@ -67,7 +77,6 @@ const useFavorite = create<IStateFavorite>()((set, get) => ({
   isAuth: false,
   error: null,
   addFavorite: async (newProduct) => {
-    console.log("addFavorite");
     const newFavorites = [...get().favorites, newProduct];
     const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
 

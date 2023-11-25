@@ -4,6 +4,13 @@ import { revalidateTag } from "next/cache";
 import httpServices from "./http";
 import { TAGS_DATA } from "@/constants/app-keys.const";
 
+// * get Product By List
+export const getProductsByList = async (
+  productsID: number[]
+): Promise<IResponseProduct | null> => {
+  return await httpServices.getProductsByList(productsID);
+};
+
 // * get Product Reviews
 export const getProductReviews = async (
   productId: string,

@@ -2,7 +2,9 @@
 
 import React, { FC, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { AiOutlineClose } from "react-icons/ai";
+
+import { PiXSquare } from "react-icons/pi";
+
 import styles from "./Modal.module.css";
 
 type Props = {
@@ -42,7 +44,7 @@ export const Modal: FC<Props> = ({ children, onClose }) => {
       <div className={styles.overlay} onClick={handleOverlayClick}>
         <div className={styles.modalContainer}>
           <button className={styles.modalCloseBtn} onClick={onClose}>
-            <AiOutlineClose size="24px" />
+            <PiXSquare size="24px" />
           </button>
           {children}
         </div>

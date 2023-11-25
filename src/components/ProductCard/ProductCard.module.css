@@ -21,20 +21,20 @@
 }
 
 .card:hover {
-  @apply absolute 
-  min-h-[550px] 
+  /* absolute  */
+  @apply min-h-[550px] 
   max-h-max 
-  h-auto 
-  z-20 
+  /* h-auto 
+  z-20  */
   shadow-lg 
   shadow-gray-500/80;
 }
 .wrapTop {
-  @apply relative
-  
+  @apply relative  
   h-[340px]
   min-h-[340px];
 }
+
 .wrapBottom {
   @apply flex 
   flex-col justify-between

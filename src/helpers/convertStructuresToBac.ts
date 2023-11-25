@@ -56,3 +56,8 @@ export const convertOrderToCreate = ({
     },
   };
 };
+
+export const convertProductToArrayId = (favorites: IProduct[]): number[] => {
+  const products = favorites.map((element) => element.id);
+  return products;
+};

@@ -49,6 +49,7 @@ interface IProductOrder {
   count: number;
   sum: number;
   price: number;
+  language: ILanguage;
   product: {
     data: IProduct;
   };

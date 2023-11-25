@@ -14,6 +14,7 @@ export const BACKEND_ROUTES = {
   // LOGOUT: "/user/logout",
   CATEGORIES: "/api/categories",
   PRODUCTS: "/api/products",
+  PRODUCTS_BY_LIST: "/api/products-by-list",
   COLORS: "/api/colors",
   DELIVERY_SERVICES: "/api/delivery-services",
   ORDERS: "/api/orders",

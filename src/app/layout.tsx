@@ -59,6 +59,7 @@ const RootLayout: FC<IProps> = ({ children }) => {
             </footer>
 
             <div id="modal-root"></div>
+            <div id="modal-button-root"></div>
           </div>
         </Providers>
       </body>

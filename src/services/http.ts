@@ -127,6 +127,31 @@ class HttpService {
     }
   }
 
+  async getProductsByList(
+    productsID: number[]
+  ): Promise<IResponseProduct | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS_BY_LIST}`;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+        body: JSON.stringify(productsID),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
   // * CATEGORIES
   // * ------------
   // * get Categories

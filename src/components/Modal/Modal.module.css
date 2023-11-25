@@ -11,8 +11,8 @@
 
 .modalContainer {
   @apply relative 
-  px-5 
-  py-5  
+  /* px-5 
+  py-5   */
   max-w-[95%] 
   min-w-[250px] 
   rounded-lg 
@@ -24,10 +24,11 @@
 
 .modalCloseBtn {
   @apply absolute   
-  top-3 
-  right-3 
+  top-6 
+  right-6 
   block 
   w-6 h-6 border-none cursor-pointer 
   transition
-  hover:scale-110;
+  hover:scale-110
+  hover:text-blue_action;
 }

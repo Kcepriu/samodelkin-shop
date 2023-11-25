@@ -1,9 +1,14 @@
 .wrapProduct {
   @apply relative
-  flex gap-3 
-  w-full
-  
-  items-center;
+  flex gap-6 
+  w-full  
+  items-center
+  /* border
+  rounded-lg
+  border-inherit
+  hover:border
+  hover:border-gray_our
+  hover:rounded-lg; */;
 }
 
 .wrapImage {
@@ -14,30 +19,34 @@
   @apply w-auto object-contain;
 }
 
+.wrapContent {
+  @apply grow h-full
+  py-8;
+}
+
 .wrapTitle {
   @apply flex justify-between items-baseline;
 }
 
 .title {
-  @apply text-title_product
-  font-title_product
-  leading-title_product;
+  @apply font-inter
+  text-size_18  
+  font-weight_700
+  leading-line_height_21;
 }
 
-.wrapContent {
-  @apply grow h-full
-  pl-16
-  py-12;
-}
 .wrapDetails {
   @apply flex justify-between
-  mt-2 gap-16;
+  gap-16
+  mt-8 
+  font-roboto
+  text-size_20  
+  font-weight_300
+  leading-line_height_17;
 }
 
 .totalSum {
-  @apply text-text_sum_order
-  font-text_sum_order
-  leading-text_sum_order;
+  @apply font-weight_500;
 }
 
 .buttonDelete {
