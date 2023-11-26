@@ -1,14 +1,12 @@
 "use client";
 
-import { FC, useState } from "react";
-import { useRouter } from "next/navigation";
+import { FC } from "react";
 import { BsCart3 } from "react-icons/bs";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
-import Cart from "../Cart/Cart";
-import { Modal } from "../Modal/Modal";
 import ButtonMain from "../ButtonMain/ButtonMain";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import useCartComponent from "@/hooks/useCartComponent";
+import { defaultLanguage } from "@/constants/defaultValue";
 
 import style from "./ButtonAddProductToCart.module.css";
 
@@ -16,12 +14,11 @@ interface IProps {
   product: IProduct;
   bigButton?: boolean;
 }
-const defaultLanguage = { language: "ua" };
 
 const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
-  const [showModal, setShowModal] = useState(false);
-  const router = useRouter();
   const cart = useStore(useCart, (state) => state.products);
+  const { CartComponent, setShowModal } = useCartComponent();
+
   const addOneProductToCart = useCart((state) => state.addOneProductToCart);
 
   const isInCart =
@@ -30,7 +27,6 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
   const handleAddToCart = async () => {
     if (isInCart) {
       setShowModal(true);
-      // router.push(FRONTEND_ROUTES.CHECKOUT);
       return;
     }
 
@@ -42,10 +38,6 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
     );
     setShowModal(true);
     return;
-  };
-
-  const handlerCloseCart = () => {
-    setShowModal(false);
   };
 
   return (
@@ -60,11 +52,7 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
         <ButtonMain text="Купити" handlerButton={handleAddToCart} />
       )}
 
-      {showModal && (
-        <Modal onClose={handlerCloseCart}>
-          <Cart onClose={handlerCloseCart} />
-        </Modal>
-      )}
+      {CartComponent}
     </>
   );
 };

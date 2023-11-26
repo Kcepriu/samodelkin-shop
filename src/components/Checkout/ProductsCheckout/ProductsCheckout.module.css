@@ -10,9 +10,10 @@
 }
 
 .title {
-  @apply text-title_section
-  font-title_section 
-  leading-title_section;
+  @apply font-robotoSerif
+  text-size_32 
+  font-weight_400 
+  leading-line_height_17;
 }
 
 .icon {
@@ -24,8 +25,7 @@
 }
 
 .wrapProduct {
-  @apply mt-5 
-  pr-5
+  @apply mt-5   
   text-text_gray 
   flex flex-col gap-4
   max-h-[360px]
