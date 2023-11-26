@@ -35,14 +35,31 @@
   leading-line_height_21;
 }
 
-.wrapDetails {
-  @apply flex justify-between
-  gap-16
-  mt-8 
+.wrapChangeLanguage {
+  @apply flex gap-2 items-center
+  mt-4
   font-roboto
   text-size_20  
   font-weight_300
   leading-line_height_17;
+}
+
+.wrapDetails {
+  @apply flex 
+  gap-5
+  mt-4
+  items-center
+  font-roboto
+  text-size_20  
+  font-weight_300
+  leading-line_height_17;
+}
+.wrapPrice {
+  @apply flex 
+  gap-16 
+  justify-between
+  items-center
+  grow;
 }
 
 .totalSum {
@@ -50,7 +67,8 @@
 }
 
 .buttonDelete {
-  @apply absolute top-2 right-1 p-1;
+  /* @apply absolute top-2 right-1 p-1; */
+  @apply p-1;
 }
 
 .icon {

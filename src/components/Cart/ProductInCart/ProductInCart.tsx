@@ -46,7 +46,19 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
           <button type="button" onClick={handleToProduct}>
             <h2 className={style.title}> {attributes.title}</h2>
           </button>
+        </div>
 
+        <div className={style.wrapChangeLanguage}>
+          Доступні мови:
+          <ChangeLanguage rowCart={rowCart} />
+        </div>
+
+        <div className={style.wrapDetails}>
+          <div className={style.wrapPrice}>
+            <p>Ціна: {formatPrice(rowCart.price)} грн</p>
+            <CountProductChange rowCart={rowCart} />
+            <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+          </div>
           <button
             className={style.buttonDelete}
             type="button"
@@ -54,16 +66,6 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
           >
             <RiDeleteBin2Line className={style.icon} size={18} />
           </button>
-        </div>
-
-        <div className={style.wrapDetails}>
-          <ChangeLanguage
-            currentLanguages={attributes.languages[0]}
-            availableLanguages={attributes.languages}
-          />
-          <p>Ціна: {formatPrice(rowCart.price)} грн</p>
-          <CountProductChange rowCart={rowCart} />
-          <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
         </div>
       </div>
     </div>

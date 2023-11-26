@@ -29,7 +29,8 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
 
   const handleAddToCart = async () => {
     if (isInCart) {
-      router.push(FRONTEND_ROUTES.CHECKOUT);
+      setShowModal(true);
+      // router.push(FRONTEND_ROUTES.CHECKOUT);
       return;
     }
 

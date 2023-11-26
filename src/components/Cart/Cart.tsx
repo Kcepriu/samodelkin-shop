@@ -16,6 +16,7 @@ interface IProps {
 const Cart: FC<IProps> = ({ onClose }) => {
   const router = useRouter();
   const cart = useStore(useCart, (state) => state.products) || [];
+
   const deleteFromCart = useCart((state) => state.deleteFromCart);
 
   const totalSum =

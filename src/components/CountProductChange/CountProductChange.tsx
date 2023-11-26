@@ -13,7 +13,6 @@ interface IProps {
 const CountProductChange: FC<IProps> = ({ rowCart }) => {
   const [count, setCount] = useState(rowCart.count);
   const changeCountProduct = useCart((state) => state.changeCountProduct);
-  // changeLanguageProduct
 
   useEffect(() => {
     setCount(rowCart.count);

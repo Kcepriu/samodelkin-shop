@@ -19,7 +19,7 @@
 .wrapProduct {
   @apply mt-8 
   
-  max-h-[360px]
+  max-h-[370px]
   text-text_gray 
   flex flex-col gap-4
   overflow-y-auto;
@@ -27,6 +27,7 @@
 
 .wrapTotalSum {
   @apply mt-6 
+  pr-11
   text-right
   font-roboto
   text-size_24  

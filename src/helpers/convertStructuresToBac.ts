@@ -2,6 +2,7 @@ export const convertCartToCreate = (products: ICartRow[]): ICartRowForSave => {
   const convertProducts = products.map(({ id, ...row }) => ({
     ...row,
     product: row.product.data.id,
+    language: { language: row.language.language },
   }));
   return {
     data: { products: convertProducts },

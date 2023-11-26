@@ -144,6 +144,7 @@ const useCart = create<IStateCart>()((set, get) => ({
       const changeRow = newProducts[index];
       changeRow.count = count;
       changeRow.sum = changeRow.count * changeRow.price;
+      newProducts[index] = { ...changeRow };
     }
 
     const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
@@ -167,10 +168,10 @@ const useCart = create<IStateCart>()((set, get) => ({
     if (index !== -1) {
       const changeRow = newProducts[index];
       changeRow.language = language;
+      newProducts[index] = { ...changeRow };
     }
 
     const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
-
     return set((state) => ({
       products: newProducts,
       isAuth: isAuth,
