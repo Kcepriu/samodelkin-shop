@@ -4,13 +4,14 @@ import { FC, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FormikHelpers, useFormik } from "formik";
-import TextField from "@mui/material/TextField";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import TextField from "@mui/material/TextField";
 import { validationSchema } from "./validationSchema";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
 import { convertOrderToCreate } from "@/helpers/convertStructuresToBac";
 import { createOrder } from "@/services/serverActionHttp";
+import ChoiceDelivery from "../ChoiceDelivery/ChoiceDelivery";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import style from "./ContactInformation.module.css";
 
@@ -22,6 +23,7 @@ interface Values {
   city: string;
   postOffice: string;
   comment: string;
+  deliveryServicesId: number;
 }
 
 const emptyValues = {
@@ -32,14 +34,21 @@ const emptyValues = {
   city: "",
   postOffice: "",
   comment: "",
+  deliveryServicesId: 0,
 };
 
-const ContactInformation: FC = () => {
+interface IProps {
+  deliveryServices: IDeliveryServices[];
+}
+
+const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   const router = useRouter();
   const cart = useStore(useCart, (state) => state.products) || [];
+
   const cleanCart = useCart((state) => state.cleanCart);
 
   const { data: session } = useSession();
+
   const user = session?.user;
 
   const handleGoToBach = () => {
@@ -54,7 +63,7 @@ const ContactInformation: FC = () => {
       city: values.city,
       branchNumber: values.postOffice,
       street: "",
-      delivery_service: 1,
+      delivery_service: values.deliveryServicesId,
     };
 
     const contacts = {
@@ -64,12 +73,13 @@ const ContactInformation: FC = () => {
       comment: values.comment,
     };
 
-    const converData = convertOrderToCreate({
+    const convertData = convertOrderToCreate({
       products: cart,
       contacts,
       addressDelivery,
     });
-    const { order } = await createOrder(converData);
+
+    const { order } = await createOrder(convertData);
 
     if (!!order) {
       await cleanCart();
@@ -92,11 +102,22 @@ const ContactInformation: FC = () => {
   });
 
   useEffect(() => {
-    // console.log("user", user);
     if (!values.firstName && user?.fullName)
       setFieldValue("firstName", user.fullName);
     if (!values.email && user?.email) setFieldValue("email", user.email);
   }, [user, values, setFieldValue]);
+
+  useEffect(() => {
+    if (deliveryServices.length > 0)
+      setFieldValue("deliveryServicesId", deliveryServices[0].id || 0);
+  }, [deliveryServices, setFieldValue]);
+
+  const handleChangeDelivery = (deliveryServicesId: number) => {
+    // TODO Here need change API delivery cervices
+    setFieldValue("deliveryServicesId", deliveryServicesId);
+    setFieldValue("city", "");
+    setFieldValue("postOffice", "");
+  };
 
   return (
     <>
@@ -163,6 +184,15 @@ const ContactInformation: FC = () => {
             />
           </div>
         </div>
+
+        <div className={style.wrapDeliveryService}>
+          <ChoiceDelivery
+            deliveryServices={deliveryServices}
+            handleChoseDelivery={handleChangeDelivery}
+            activeDeliveryServicesId={values.deliveryServicesId}
+          />
+        </div>
+
         {/* Delivery */}
         <div className={style.wrapDelivery}>
           <div className={style.lineContacts}>

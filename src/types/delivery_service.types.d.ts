@@ -1,20 +1,19 @@
-interface IResponseDeliveryStatus {
-  data: IDeliveryStatus[];
+interface IResponseDeliveryServices {
+  data: IDeliveryServices[];
   meta?: IMeta;
   error?: IError;
 }
 
-interface IDeliveryStatus {
+interface IDeliveryServices {
   id: number;
-  attributes: IAttributesDeliveryStatus;
-}
-
-interface IAttributesDeliveryStatus {
-  title: string;
-  slug: string;
-  active: boolean;
-  createdAt: string;
-  updatedAt: string;
-  homeDelivery: boolean;
-  postOfficeDelivery: boolean;
+  attributes: {
+    title: string;
+    slug: string;
+    active: boolean;
+    createdAt: string;
+    updatedAt: string;
+    homeDelivery: boolean;
+    postOfficeDelivery: boolean;
+    logo: { data: IImage };
+  };
 }

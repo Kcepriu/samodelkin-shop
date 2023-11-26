@@ -88,6 +88,11 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
             </p>
           </div>
 
+          <div className={style.wrapLanguages}>
+            Доступні мови:
+            <FlagLanguages flags={attributes.languages} />
+          </div>
+
           <p className={style.price}>
             {formatPrice(attributes.price)}
             <span className={style.currency}>₴</span>
@@ -107,9 +112,6 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
             </div>
 
             <ButtonAddProductToFavorite product={product} size={24} />
-          </div>
-          <div className={style.flags}>
-            <FlagLanguages flags={attributes.languages} />
           </div>
 
           <div className={style.wrapGeneralInformation}>

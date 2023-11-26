@@ -1,4 +1,4 @@
-import { BACKEND_ROUTES, FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
 import { TAGS_DATA } from "@/constants/app-keys.const";
@@ -874,6 +874,29 @@ class HttpService {
       return response;
     } catch {
       return result;
+    }
+  }
+
+  // * Get Delivery Services
+  async getDeliveryServices(): Promise<IDeliveryServices[]> {
+    const paramsObj: { [key: string]: string } = {
+      "filters[active][$eq]": "true",
+      "sort[0]": "id:desc",
+    };
+
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.DELIVERY_SERVICES}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return [];
+      }
+      const result = await res.json();
+      return result.data;
+    } catch {
+      return [];
     }
   }
 }

@@ -31,6 +31,10 @@
   leading-text_user_info;
 }
 
+.wrapDeliveryService {
+  @apply mt-5;
+}
+
 .wrapDelivery {
   @apply mt-5
   flex flex-col gap-3

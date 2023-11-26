@@ -59,8 +59,10 @@
    data-[additions=true]:bg-light_blue;
 }
 
-.flags {
-  @apply mt-6;
+.wrapLanguages {
+  @apply flex gap-3 
+  items-center
+  mt-6;
 }
 
 .price {
