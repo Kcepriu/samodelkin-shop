@@ -2,6 +2,7 @@
 
 import { FC, useState } from "react";
 import ReplyReviews from "../ReplyReviews/ReplyReviews";
+import ButtonLoadMore from "@/components/ButtonLoadMore/ButtonLoadMore";
 import style from "./RepliesReviewsSecond.module.css";
 
 interface IProps {
@@ -17,13 +18,10 @@ const RepliesReviewsSecond: FC<IProps> = ({ repliesReview, reviewId }) => {
   };
   return (
     <div className={style.wrapSection}>
-      <button
-        type="button"
-        onClick={handleShowHide}
-        className={style.buttonShowHide}
-      >
-        {show ? "Приховати" : "Показати більше"}
-      </button>
+      <ButtonLoadMore
+        handleLoadMore={handleShowHide}
+        text={show ? "Приховати" : "Показати більше"}
+      />
 
       {show && (
         <>
@@ -35,7 +33,7 @@ const RepliesReviewsSecond: FC<IProps> = ({ repliesReview, reviewId }) => {
                 reviewId={reviewId}
               />
             );
-          })}{" "}
+          })}
         </>
       )}
     </div>

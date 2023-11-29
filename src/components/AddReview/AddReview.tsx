@@ -1,11 +1,10 @@
 "use client";
 import { FC, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
-import Image from "next/image";
 import ReviewCreateUpdate from "../ReviewCreateUpdate/ReviewCreateUpdate";
 import { createProductReviews } from "@/services/serverActionHttp";
 
-import imgAddReview from "@/assets/icons/add_review.svg";
+import { PiChatDotsLight } from "react-icons/pi";
 import { showSuccess, showNotifyFailure } from "@/services/notification";
 import style from "./AddReview.module.css";
 
@@ -55,13 +54,7 @@ const AddReview: FC<IProps> = ({ product }) => {
       <div>
         <button className={style.button} onClick={handleAddRevies}>
           Залишити відгук
-          <Image
-            className={style.image}
-            src={imgAddReview}
-            alt="star"
-            height={24}
-            width={24}
-          />
+          <PiChatDotsLight size={24} />
         </button>
       </div>
       {showModal && (

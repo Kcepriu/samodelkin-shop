@@ -1,21 +1,34 @@
 import { FC } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { PiChatText } from "react-icons/pi";
 import NavigateToBack from "../NavigateToBack/NavigateToBack";
 import SliderInCard from "../SliderInCard/SliderInCard";
-import Image from "next/image";
 import ImgNoImage from "@/assets/no_images.png";
 import ButtonAddProductToCart from "../ButtonAddProductToCart/ButtonAddProductToCart";
 import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddProductToFavorite";
-import AddToRevised from "./AddToRevised/AddToRevised";
+import { PiTruck } from "react-icons/pi";
+import { HiOutlineIdentification } from "react-icons/hi2";
+import RatingStar from "../Reviews/RatingStar/RatingStar";
+import FlagLanguages from "../FlagLanguages/FlagLanguages";
+import { formatPrice } from "@/helpers/formatNumber";
+import {
+  FRONTEND_ROUTES,
+  PRODUCT_ADD_INFORMATION_ROUTES,
+} from "@/constants/app-keys.const";
 import style from "./Product.module.css";
 
 interface IProps {
   product: IProduct;
+  rating: number;
+  countReview: number;
 }
 
-const Product: FC<IProps> = ({ product }) => {
+const Product: FC<IProps> = ({ product, rating, countReview }) => {
   const { attributes } = product;
 
   const images = attributes.images?.data;
+  const additions = attributes.additions;
 
   return (
     <>
@@ -47,25 +60,74 @@ const Product: FC<IProps> = ({ product }) => {
 
         <div className={style.wrapProductInformation}>
           <h1 className={style.title}>{attributes.title}</h1>
-          <p>
-            code: <span>{attributes.code}</span>
-          </p>
-          <p>
-            countPlayers: <span>{attributes.countPlayers}</span>
-          </p>
-          <p>
-            price: <span>{attributes.price}</span>
-          </p>
-          <p>
-            available: <span>{attributes.available}</span>
+
+          <div className={style.wrapRatingCode}>
+            <div className={style.wrapRating}>
+              {rating > 0 && <RatingStar rating={rating} />}
+
+              <Link
+                className={style.countReviews}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+              >
+                <PiChatText size={24} />
+                {countReview}
+              </Link>
+            </div>
+            <p>
+              code: <span>{attributes.code}</span>
+            </p>
+          </div>
+
+          <div className={style.wrapTypeProduct}>
+            <p className={style.typeProduct} data-additions={!additions}>
+              Базовий набір
+            </p>
+
+            <p className={style.typeProduct} data-additions={additions}>
+              Розширення
+            </p>
+          </div>
+
+          <div className={style.wrapLanguages}>
+            Доступні мови:
+            <FlagLanguages flags={attributes.languages} />
+          </div>
+
+          <p className={style.price}>
+            {formatPrice(attributes.price)}
+            <span className={style.currency}>₴</span>
           </p>
 
-          <div>
-            <ButtonAddProductToCart product={product} />
+          <div className={style.wrapAvailable}>
+            {!!attributes.available ? (
+              <p className={style.isAvailable}>Є в наявності</p>
+            ) : (
+              <p>Немає в наявності</p>
+            )}
+          </div>
+
+          <div className={style.wrapButton}>
+            <div className={style.buttonCart}>
+              <ButtonAddProductToCart product={product} bigButton />
+            </div>
+
             <ButtonAddProductToFavorite product={product} size={24} />
           </div>
+
+          <div className={style.wrapGeneralInformation}>
+            <div className={style.generalInformation}>
+              <PiTruck size={24} />
+              <p>Доставка новою поштою, укр поштою</p>
+            </div>
+            <div className={style.generalInformation}>
+              <HiOutlineIdentification size={24} />
+              <p>
+                Оплачуйте покупку готівкою у відділені пошти, карткою або
+                перерахунком на банківські реквізити
+              </p>
+            </div>
+          </div>
         </div>
-        <AddToRevised product={product} />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 .listPage {
-  @apply flex flex-col gap-3;
+  @apply flex flex-col gap-3 w-[226px];
 }
 
 .elementList {
@@ -11,13 +11,22 @@
   gap-3
   h-full
   w-full
-  p-2
+  p-2  
+  text-black
+  font-inter
+  text-size_18
+  font-weight_400
+  leading-line_height_21
+
   border
-  border-button_active_page
-  transition hover:bg-indigo-400
-  focus:bg-indigo-400
-   focus:text-gray-100
-   hover:text-gray-100
-   data-[active=true]:hover:bg-indigo-400
-   data-[active=true]:bg-button_active_page;
+  rounded-lg
+  border-dark_blue
+  hover:text-blue_action_button
+  hover:border-blue_action_button
+  focus:text-blue_action_button
+  focus:border-blue_action_button
+  hover:shadow-lg
+  transition 
+  data-[active=true]:bg-light_blue
+  data-[active=true]:hover:bg-light_blue;
 }

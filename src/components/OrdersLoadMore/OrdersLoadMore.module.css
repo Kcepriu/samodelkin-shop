@@ -1,0 +1,6 @@
+.wrapButton {
+  @apply flex justify-center 
+  mt-8 
+  transition
+  hover:text-blue_action;
+}

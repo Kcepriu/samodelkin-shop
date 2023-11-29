@@ -1,49 +1,65 @@
-.title {
-  @apply px-6
-  py-3
+.wrapTitle {
+  @apply px-6 py-3
   border-b
-  border-b-border
-  text-text_black
-  text-title_checkout
+  border-gray_our;
+}
+
+.title {
+  @apply text-title_checkout
   font-title_checkout
   leading-title_checkout;
 }
 
+.wrapContactInfo {
+  @apply mt-6;
+}
+
 .titleSecond {
-  @apply mt-6
-  
-  text-text_black
-  text-title_second
+  @apply text-title_second
   font-title_second
   leading-title_second;
 }
 
-.inputText {
-  @apply px-1 py-2 shadow-lg;
+.form {
+  @apply mt-6;
 }
 
-.wrapper {
-  @apply bg-blue-500 p-4 rounded-lg shadow-md;
+.wrapContacts {
+  @apply flex flex-col gap-3
+  text-text_user_info
+  font-text_user_info
+  leading-text_user_info;
 }
 
-.text {
-  @apply text-white text-center mt-2;
+.wrapDeliveryService {
+  @apply mt-5;
 }
 
-.label {
-  @apply ml-2 block text-sm font-medium leading-6 text-gray-500;
+.wrapDelivery {
+  @apply mt-5
+  flex flex-col gap-3
+  text-text_user_info
+  font-text_user_info
+  leading-text_user_info;
+}
+
+.lineContacts {
+  @apply flex gap-12 w-full justify-between 
+  min-h-[80px];
+}
+
+.inputFields {
+  @apply w-[320px];
+}
+.inputComment {
+  @apply w-full;
 }
 
 .input {
-  @apply block px-2 py-1.5 w-full rounded border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 outline-none;
-}
-
-.select {
-  @apply block px-2 py-1.5 w-full rounded border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 outline-none;
-}
-
-.deliveryWrapper {
-  @apply mt-4 relative inline-block text-left;
+  @apply px-4 py-3
+  border 
+  border-light_gray
+  rounded-md;
 }
 
 .wrapButton {
@@ -60,31 +76,28 @@
   py-3
   min-w-[264px]
   rounded-lg 
-  bg-button_dark_background
-  text-white
-  
-  hover:text-action_color
-   hover:shadow-gray-500/80
+  bg-blue_action
+  text-white  
+  hover:bg-blue_action_button
+  hover:shadow-gray-500/80
   hover:shadow-lg  
 
-  /* focus-visible:outline 
-  focus-visible:outline-2 
-  focus-visible:outline-offset-2 
-  focus-visible:outline-indigo-600  */
   transition;
 }
 
 .buttonBack {
   @apply flex gap-3 
   py-3
-  
-  hover:text-action_color;
+  text-dark_blue
+  hover:text-blue_action
+  transition;
 }
 
 .iconBack {
-  @apply text-icon_back_color;
+  @apply text-dark_blue;
 }
 
 .buttonBack:hover .iconBack {
-  @apply text-action_color;
+  @apply text-blue_action
+  transition;
 }

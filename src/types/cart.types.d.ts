@@ -19,20 +19,16 @@ interface ICart {
 
 interface ICartRow {
   id: number | string;
-  product: { data: IProduct };
   count: number;
-  price: number;
   sum: number;
+  price: number;
+  language: ILanguage;
+  product: { data: IProduct };
 }
 
 interface ICartRowForSave {
   data: {
-    products: {
-      product: number;
-      count: number;
-      price: number;
-      sum: number;
-    }[];
+    products: IProductOrderCreate[];
   };
 }
 

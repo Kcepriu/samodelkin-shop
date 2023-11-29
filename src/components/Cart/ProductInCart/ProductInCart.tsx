@@ -1,11 +1,13 @@
 import { FC } from "react";
-import { useRouter } from "next/navigation";
-
 import Image from "next/image";
-import Img from "@/assets/no_images.png";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
-import CountProductChange from "@/components/CountProductChange/CountProductChange";
+import { useRouter } from "next/navigation";
 import { RiDeleteBin2Line } from "react-icons/ri";
+
+import Img from "@/assets/no_images.png";
+import ChangeLanguage from "@/components/ChangeLanguage/ChangeLanguage";
+import CountProductChange from "@/components/CountProductChange/CountProductChange";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import { formatPrice } from "@/helpers/formatNumber";
 import style from "./ProductInCart.module.css";
 
 interface IProps {
@@ -14,10 +16,10 @@ interface IProps {
   deleteProduct: (product: IProduct) => void;
 }
 const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
-  console.log("🚀 ~ rowCart:", rowCart);
   const router = useRouter();
   const { product } = rowCart;
   const attributes = product.data.attributes;
+
   const images = attributes.images?.data;
   const urlImage = images ? images[0].attributes.url : Img;
 
@@ -44,7 +46,19 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
           <button type="button" onClick={handleToProduct}>
             <h2 className={style.title}> {attributes.title}</h2>
           </button>
+        </div>
 
+        <div className={style.wrapChangeLanguage}>
+          Доступні мови:
+          <ChangeLanguage rowCart={rowCart} />
+        </div>
+
+        <div className={style.wrapDetails}>
+          <div className={style.wrapPrice}>
+            <p>Ціна: {formatPrice(rowCart.price)} грн</p>
+            <CountProductChange rowCart={rowCart} />
+            <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+          </div>
           <button
             className={style.buttonDelete}
             type="button"
@@ -52,12 +66,6 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
           >
             <RiDeleteBin2Line className={style.icon} size={18} />
           </button>
-        </div>
-
-        <div className={style.wrapDetails}>
-          <p>Ціна: {rowCart.price} грн</p>
-          <CountProductChange rowCart={rowCart} />
-          <p className={style.totalSum}>{rowCart.sum} грн</p>
         </div>
       </div>
     </div>

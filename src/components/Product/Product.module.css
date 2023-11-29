@@ -1,27 +1,111 @@
 .wrapInformation {
-  @apply md:grid 
-  md:grid-cols-2 
-  md:h-[500px]
- 
-  max-md:flex
-  max-md:flex-col
-  max-md:gap-2;
+  @apply flex gap-6
 
-  /* outline outline-1 outline-orange-700; */
+  /* outline outline-1 outline-orange-700; */;
 }
 
 .wrapImage {
-  @apply px-2 flex items-center overflow-hidden;
+  @apply px-2 flex items-center overflow-hidden
+  w-[397px];
 }
 
 .wrapProductInformation {
-  @apply px-2;
-}
-
-.title {
-  @apply text-xl font-medium;
+  @apply px-2 flex flex-col;
 }
 
 .image {
   @apply max-h-[500px] max-w-[100%] ml-auto mr-auto object-contain;
+}
+
+.title {
+  @apply font-robotoSerif 
+    text-size_32 
+    font-weight_500
+    leading-line_height_16;
+}
+.wrapRatingCode {
+  @apply flex justify-between items-center
+  mt-4
+  text-gray_our
+  font-inter 
+  text-size_16
+  font-weight_300
+  leading-line_height_21;
+}
+.wrapRating {
+  @apply flex gap-16 items-center;
+}
+
+.countReviews {
+  @apply flex gap-1
+  items-center
+  hover:text-blue_action;
+}
+
+.wrapTypeProduct {
+  @apply flex gap-6 
+  mt-3
+  font-roboto
+  text-size_18
+  font-weight_400
+  leading-line_height_17;
+}
+
+.typeProduct {
+  @apply p-2
+  border
+  rounded
+   border-light_blue
+   data-[additions=true]:bg-light_blue;
+}
+
+.wrapLanguages {
+  @apply flex gap-3 
+  items-center
+  mt-6;
+}
+
+.price {
+  @apply mt-6
+  font-inter
+  text-size_40
+  font-weight_500
+  leading-line_height_21;
+}
+.currency {
+  @apply text-size_32;
+}
+
+.wrapAvailable {
+  @apply mt-2
+  font-robotoSerif
+  text-size_16
+  font-weight_400
+  leading-line_height_21;
+}
+
+.isAvailable {
+  @apply text-green_main;
+}
+
+.wrapButton {
+  @apply flex mt-6 gap-10;
+}
+
+.buttonCart {
+  @apply w-[155px];
+}
+
+.wrapGeneralInformation {
+  @apply grow
+  flex flex-col justify-end gap-6
+  mt-6
+  font-roboto
+  text-size_16
+  font-weight_300
+  leading-line_height_17;
+}
+
+.generalInformation {
+  @apply flex gap-3;
 }

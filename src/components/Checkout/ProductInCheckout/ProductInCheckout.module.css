@@ -2,11 +2,15 @@
   @apply relative
   flex gap-3 
   w-full
-  items-center;
+  items-center
+  font-roboto
+  text-size_20  
+  font-weight_300
+  leading-line_height_17;
 }
 
 .wrapImage {
-  @apply block w-[127px];
+  @apply block w-[127px] min-w-[127px];
 }
 
 .image {
@@ -19,29 +23,33 @@
 
 .title {
   @apply text-left
-  text-type_add_info
-  font-type_add_info
-  leading-type_add_info;
+  font-inter
+  text-size_18  
+  font-weight_700
+  leading-line_height_21;
+}
+
+.wrapLanguage {
+  @apply mt-4
+  flex gap-2 items-center;
 }
 
 .wrapContent {
   @apply grow h-full
-  pl-3
   py-2;
 }
 .wrapDetails {
   @apply flex justify-between
-  mt-4 gap-16;
+  mt-4 gap-2;
 }
 
 .totalSum {
-  @apply text-title_second
-  font-title_second
-  leading-text_header;
+  @apply font-weight_500;
 }
 
 .buttonDelete {
-  @apply absolute top-2 right-1 p-1;
+  /* @apply absolute top-2 right-1 p-1; */
+  @apply p-1;
 }
 
 .icon {

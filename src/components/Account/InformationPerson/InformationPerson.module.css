@@ -6,9 +6,11 @@
   border-b-text_black
   w-[226px] 
   h-16
-  text-text_user_info
-  font-text_user_info
-  leading-text_user_info;
+  text-black
+  font-inter
+  text-size_14
+  font-weight_500
+  leading-line_height_24;
 }
 
 .wrapImageFromName {

@@ -1,8 +1,9 @@
 .wrapContent {
   @apply mt-describe_big 
-  text-text_description
-  font-text_description
-  leading-text_description
+  font-inter
+  text-size_16
+  font-weight_400
+  leading-line_height_15
   
   data-[after-title=true]:mt-describe_big_after_title
   data-[category=true]:mt-describe
@@ -10,12 +11,12 @@
   data-[product=true]:mt-describe
   data-[product=true]:data-[after-title=true]:mt-describe_after_title
   
-  data-[about-us=true]:text-text_description_home
-  data-[about-us=true]:font-text_description_home
-  data-[about-us=true]:leading-text_description_home;
+  data-[about-us=true]:text-size_18
+  data-[about-us=true]:font-weight_400
+  data-[about-us=true]:leading-line_height_28;
 }
-.wrapTitle {
-  @apply text-text_description_home 
-  font-text_description_home
-  leading-text_description_home;
+
+.wrapContent ul {
+  @apply list-disc
+  pl-10;
 }

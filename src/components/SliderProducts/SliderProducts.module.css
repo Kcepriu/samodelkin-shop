@@ -7,7 +7,7 @@
 }
 
 .elementCard {
-  @apply w-[292px] block;
+  @apply block;
 }
 
 .wrapButton {

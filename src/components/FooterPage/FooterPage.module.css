@@ -1,5 +1,6 @@
 .wrapFooter {
-  @apply pt-12 pb-6 
+  @apply pt-12 pb-10
+  text-text_white
   text-text_footer
   font-text_footer
   leading-text_footer;
@@ -9,6 +10,6 @@
   @apply flex justify-between w-full;
 }
 
-.wrapBottomRow {
-  @apply text-center mt-2;
+.wrapDevelopers {
+  @apply text-center mt-12;
 }

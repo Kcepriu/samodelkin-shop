@@ -1,0 +1,8 @@
+.button {
+  @apply font-roboto 
+  font-weight_300
+  text-size_18 leading-line_height_17
+  underline
+  underline-offset-1
+  hover:text-blue_action;
+}

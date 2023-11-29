@@ -3,11 +3,11 @@
 import { FC } from "react";
 import { useRouter } from "next/navigation";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import { AiOutlineClear } from "react-icons/ai";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import ProductInCart from "./ProductInCart/ProductInCart";
+import { formatPrice } from "@/helpers/formatNumber";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 
 import style from "./Cart.module.css";
 interface IProps {
@@ -16,7 +16,7 @@ interface IProps {
 const Cart: FC<IProps> = ({ onClose }) => {
   const router = useRouter();
   const cart = useStore(useCart, (state) => state.products) || [];
-  const cleanCart = useCart((state) => state.cleanCart);
+
   const deleteFromCart = useCart((state) => state.deleteFromCart);
 
   const totalSum =
@@ -35,14 +35,6 @@ const Cart: FC<IProps> = ({ onClose }) => {
     <div className={style.wrapCart}>
       <div className={style.wrapTitle}>
         <h2 className={style.title}>Кошик</h2>
-
-        <button
-          className={style.buttonClean}
-          type="button"
-          onClick={async () => cleanCart()}
-        >
-          <AiOutlineClear className={style.icon} size={24} />
-        </button>
       </div>
 
       <ul className={style.wrapProduct}>
@@ -60,7 +52,7 @@ const Cart: FC<IProps> = ({ onClose }) => {
       </ul>
 
       <div className={style.wrapTotalSum}>
-        <p>{`До сплати ${totalSum} грн`}</p>
+        <p>{`До сплати ${formatPrice(totalSum)} грн`}</p>
       </div>
 
       <div className={style.wrapButton}>

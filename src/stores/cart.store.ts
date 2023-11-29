@@ -7,18 +7,27 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 import { nanoid } from "nanoid";
+import { convertCartToCreate } from "@/helpers/convertStructuresToBac";
 
 interface IStateCart {
   products: ICartRow[];
   isAuth: boolean;
   loading: boolean;
   error: boolean | null;
-  addOneProductToCart: (newProduct: IProduct) => Promise<void>;
+  addOneProductToCart: (
+    newProduct: IProduct,
+    language: ILanguage
+  ) => Promise<void>;
   changeCountProduct: (changeProduct: IProduct, count: number) => Promise<void>;
+  changeLanguageProduct: (
+    changeProduct: IProduct,
+    language: ILanguage
+  ) => Promise<void>;
   deleteFromCart: (deleteProduct: IProduct) => Promise<void>;
   cleanCart: () => Promise<void>;
   fetchCart: (isRemoteStorage: boolean) => Promise<void>;
 }
+
 const getMissingProducts = (
   productsFrom: ICartRow[],
   productsTo: ICartRow[]
@@ -35,16 +44,6 @@ const getMissingProducts = (
   });
 
   return resultArr;
-};
-
-const convertCartToCreate = (products: ICartRow[]): ICartRowForSave => {
-  const convertProducts = products.map(({ id, ...row }) => ({
-    ...row,
-    product: row.product.data.id,
-  }));
-  return {
-    data: { products: convertProducts },
-  };
 };
 
 // * Save Favorite to Storage
@@ -105,8 +104,8 @@ const useCart = create<IStateCart>()((set, get) => ({
   isAuth: false,
   error: null,
 
-  // ! ERR
-  addOneProductToCart: async (newProduct) => {
+  // * Add One Product To Cart
+  addOneProductToCart: async (newProduct, language) => {
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
@@ -124,6 +123,7 @@ const useCart = create<IStateCart>()((set, get) => ({
         count: 1,
         price: newProduct.attributes.price,
         sum: newProduct.attributes.price,
+        language: language,
       });
     }
 
@@ -144,10 +144,34 @@ const useCart = create<IStateCart>()((set, get) => ({
       const changeRow = newProducts[index];
       changeRow.count = count;
       changeRow.sum = changeRow.count * changeRow.price;
+      newProducts[index] = { ...changeRow };
     }
 
     const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
 
+    return set((state) => ({
+      products: newProducts,
+      isAuth: isAuth,
+    }));
+  },
+  // ! Change Language Product
+  changeLanguageProduct: async (
+    changeProduct: IProduct,
+    language: ILanguage
+  ) => {
+    const newProducts = [...get().products];
+
+    const index = newProducts.findIndex(
+      (rowCart) => rowCart.product.data.id === changeProduct.id
+    );
+
+    if (index !== -1) {
+      const changeRow = newProducts[index];
+      changeRow.language = language;
+      newProducts[index] = { ...changeRow };
+    }
+
+    const { isAuth } = await saveCartToStorage(newProducts, get().isAuth);
     return set((state) => ({
       products: newProducts,
       isAuth: isAuth,

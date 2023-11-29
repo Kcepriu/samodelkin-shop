@@ -1,11 +1,23 @@
 import { TypeArticles } from "./generalTypes/articles.type";
 
 // * About Us
-interface IResponseAboutUs {
+interface IResponseGeneralPage {
   data: {
     id: number;
     attributes: {
       content: TArticleGeneral[];
+    };
+  };
+}
+
+// * MainPage
+interface IResponseMainPage {
+  data: {
+    id: number;
+    attributes: {
+      banner: {
+        data: IImage[] | null;
+      };
     };
   };
 }

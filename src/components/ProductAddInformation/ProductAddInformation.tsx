@@ -3,7 +3,7 @@ import Link from "next/link";
 import httpServices from "@/services/http";
 import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAddInfoReviews";
 import ProductAddInfoCharacteristics from "../ProductAddInfoCharacteristics/ProductAddInfoCharacteristics";
-import ProductDescription from "../ProductDescription/ProductDescription";
+import ProductAddInfoDescription from "../ProductAddInfoDescription/ProductAddInfoDescription";
 import ProductAddInfoVideos from "../ProductAddInfoVideos/ProductAddInfoVideos";
 import ProductAddInfoManuals from "../ProductAddInfoManuals/ProductAddInfoManuals";
 import {
@@ -83,7 +83,7 @@ const ProductAddInformation: FC<IProps> = async ({
         })}
       </ul>
       {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.DESCRIBE && (
-        <ProductDescription
+        <ProductAddInfoDescription
           productId={String(product.id)}
           urlToManuals={urlToManuals}
         />

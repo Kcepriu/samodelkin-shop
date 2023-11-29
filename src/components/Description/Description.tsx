@@ -34,7 +34,7 @@ const Description: FC<IProps> = ({ content, type }) => {
               className={style.wrapContent}
               key={index}
               data-after-title={countAfterTitile === 1}
-              data-about-us={type === TypeDescription.AboutUs}
+              data-about-us={type === TypeDescription.GeneralPage}
               data-category={type === TypeDescription.Category}
               data-product={type === TypeDescription.Product}
             >
@@ -50,7 +50,7 @@ const Description: FC<IProps> = ({ content, type }) => {
               className={style.wrapContent}
               key={index}
               data-after-title={countAfterTitile === 1}
-              data-about-us={type === TypeDescription.AboutUs}
+              data-about-us={type === TypeDescription.GeneralPage}
               data-category={type === TypeDescription.Category}
               data-product={type === TypeDescription.Product}
             >
@@ -66,7 +66,7 @@ const Description: FC<IProps> = ({ content, type }) => {
               className={style.wrapContent}
               key={index}
               data-after-title={countAfterTitile === 1}
-              data-about-us={type === TypeDescription.AboutUs}
+              data-about-us={type === TypeDescription.GeneralPage}
               data-category={type === TypeDescription.Category}
               data-product={type === TypeDescription.Product}
             >

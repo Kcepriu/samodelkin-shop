@@ -1,3 +1,5 @@
 .icon {
-  @apply text-icon_color hover:text-action_color;
+  @apply text-text_white
+  transition
+   hover:text-action_color;
 }

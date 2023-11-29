@@ -3,17 +3,15 @@
   px-5
   py-3 
   border 
-  rounded-lg 
-  bg-main_background
-  text-button_add_review
-  font-button_add_review
-  leading-button_add_review;
-}
+  border-white
 
-.button:hover {
-  @apply shadow-lg shadow-gray-500/80;
-}
+  font-roboto 
+  text-size_20 
+  font-weight_300 
+  leading-line_height_15
 
-/* .image {
-  @apply ml-3;
-} */
+  
+  hover:shadow-lg
+  hover:border-blue_action
+  hover:rounded-lg;
+}

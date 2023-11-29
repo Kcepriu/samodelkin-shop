@@ -1,13 +1,13 @@
-import { BACKEND_ROUTES, FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
-import { getCsrfToken } from "next-auth/react";
-import { getSession } from "next-auth/react";
+import { TAGS_DATA } from "@/constants/app-keys.const";
 
 import {
-  IResponseAboutUs,
+  IResponseGeneralPage,
   IResponseCategoryDescription,
   IResponseProductDescription,
+  IResponseMainPage,
 } from "@/types/articles.type";
 
 class HttpService {
@@ -23,6 +23,9 @@ class HttpService {
     this.countPageOnPage = process.env.COUNT_PRODUCT_ON_PAGE || "16";
     this.countReviewsOnPage = process.env.COUNT_REVIEWS_ON_PAGE || "4";
   }
+
+  // * AUTH
+  // * ------------
 
   async logIn(
     identifier: string,
@@ -52,71 +55,8 @@ class HttpService {
     }
   }
 
-  //TODO Delete this function
-  async localSignOut() {
-    console.log("222222222222");
-    // const url = `${this.frontUrl}${FRONTEND_ROUTES.SIGNOUT}?csrf=true`;
-    const url = "http://localhost:3000/api/auth/signout?csrf=true";
-    // const url = "http://localhost:3000/api/test";
-
-    const session = await getServerSession(authConfigs);
-    const accessToken = session?.user.jwt;
-    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
-
-    // Accept: "application/json",
-    // Authorization: Authorization,
-    // csrfToken: await getCsrfToken(),
-    try {
-      // const res = await fetch(url, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded",
-      //     "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      //     Authorization: Authorization,
-      //   },
-      //   // @ts-expect-error
-      //   body: new URLSearchParams({
-      //     // csrfToken: await getCsrfToken(),
-      //     csrfToken:
-      //       "a558a3fffa64a68bd9d2740a0b035dc9f04d0e1658f38979127a7c977c2b9465",
-      //     callbackUrl: "/",
-      //     json: true,
-      //   }),
-      // });
-
-      // console.log("🚀 ~ res:", res.status);
-
-      // const data = await res.json();
-      // console.log("🚀 ~ data:", data);
-
-      // const fetchOptions = {
-      //   method: "post",
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded",
-      //   },
-      //   // @ts-expect-error
-      //   body: new URLSearchParams({
-      //     csrfToken: await getCsrfToken(),
-      //     json: true,
-      //   }),
-      // };
-
-      // const res = await fetch(url, fetchOptions);
-
-      // console.log("Before");
-      // const data = await res.json();
-      // console.log("🚀 ~ data:", data);
-
-      // if (!res.ok) {
-      //   return null;
-      // }
-
-      return "OK";
-    } catch {
-      return null;
-    }
-  }
-
+  // * PRODUCT
+  // * ------------
   // * get Products
   async getProducts({
     page = "1",
@@ -164,7 +104,7 @@ class HttpService {
     }
   }
 
-  // * get sales leaders
+  // * get SALES LEADERS
   async getSalesLeaders(): Promise<IResponseProduct | null> {
     const paramsObj: { [key: string]: string } = {
       "pagination[pageSize]": "24",
@@ -187,6 +127,33 @@ class HttpService {
     }
   }
 
+  async getProductsByList(
+    productsID: number[]
+  ): Promise<IResponseProduct | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS_BY_LIST}`;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+        body: JSON.stringify(productsID),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * CATEGORIES
+  // * ------------
   // * get Categories
   async getCategories(): Promise<IResponseCategories | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.CATEGORIES}`;
@@ -204,8 +171,10 @@ class HttpService {
     }
   }
 
-  // * get About Us
-  async getAboutUs(): Promise<IResponseAboutUs | null> {
+  // * PAGES
+  // * ------------
+  // * get PAGE About Us
+  async getAboutUs(): Promise<IResponseGeneralPage | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_US}`;
 
     try {
@@ -221,7 +190,39 @@ class HttpService {
     }
   }
 
-  // * get CATEGORY_DESCRIPTION
+  async getPageDeliveryAndPayment(): Promise<IResponseGeneralPage | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.DELIVERY_AND_PAYMENT}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  async getPageChangeAndReturn(): Promise<IResponseGeneralPage | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CHANGE_AND_RETURN}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get PAGE  CATEGORY DESCRIPTION
   async getCategoryDescriptions(
     idCategory: string
   ): Promise<IResponseCategoryDescription | null> {
@@ -240,7 +241,7 @@ class HttpService {
     }
   }
 
-  // * get PRODUCT_DESCRIPTION
+  // * get PAGE  PRODUCT DESCRIPTION
   async getProductDescriptions(
     productId: string
   ): Promise<IResponseProductDescription | null> {
@@ -259,6 +260,25 @@ class HttpService {
     }
   }
 
+  // * get PAGE Main Page
+  async getMainPage(): Promise<IResponseMainPage | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.MAIN_PAGE}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  //  * REVIEWS
+  // * ------------
   // * get Last Reviews for HOME page
   async getLastReviews(category?: string): Promise<IResponseReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.LAST_REVIEWS}`;
@@ -285,14 +305,32 @@ class HttpService {
   ): Promise<IResponseReviews | null> {
     const paramsObj: { [key: string]: string } = {
       "filters[product][id][$eq]": productId,
-      //TODO Enable filter
-      // "filters[isPublication][$eq]": "true",
+      "filters[isPublication][$eq]": "true",
       "pagination[pageSize]": this.countReviewsOnPage,
       "pagination[page]": page,
       "sort[0]": "date:desc",
     };
+
     const params = new URLSearchParams(paramsObj);
     const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * get Info Product Review
+  async getInfoProductReview(
+    productId: string
+  ): Promise<IInfoProductReview | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.INFO_PRODUCT_REVIEW}/${productId}`;
 
     try {
       const res = await fetch(url);
@@ -478,6 +516,8 @@ class HttpService {
     }
   }
 
+  // * MARK PRODUCTS (FAVORITES, REVISEDS)
+  // * ------------
   // * get Mark Product
   async getMarkProduct(
     typeMarkProduct: string
@@ -517,7 +557,7 @@ class HttpService {
     }
   }
 
-  // * save Favorites
+  // * save Mark Product
   async saveMarkProduct(
     markProducts: IMarkProductForCreate,
     typeMarkProduct: string
@@ -558,7 +598,8 @@ class HttpService {
     }
   }
 
-  // ! CART
+  // * CART
+  // * ------------
   // * get Cart
   async getCart(): Promise<IResponseCartWithCode> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.CART}`;
@@ -632,6 +673,230 @@ class HttpService {
       return result;
     } catch {
       return result;
+    }
+  }
+
+  // * ORDERS
+  // * ------------
+  // * get ORDERS
+  async getOrders(page = "1"): Promise<IResponseOrder> {
+    const paramsObj: { [key: string]: string } = {
+      "pagination[page]": page,
+      "pagination[pageSize]": this.countReviewsOnPage,
+    };
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}?${params}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: [],
+    } as IResponseOrder;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+      const response = (await res.json()) as IResponseOrder;
+      response.code = res.status;
+
+      return response;
+    } catch {
+      return result;
+    }
+  }
+
+  // * get ONE ORDERS
+  async getOneOrder(orderId: number): Promise<IResponseOrder> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}/${orderId}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: [],
+    } as IResponseOrder;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+      const response = (await res.json()) as IResponseOrder;
+      response.code = res.status;
+
+      return response;
+    } catch {
+      return result;
+    }
+  }
+
+  // * Create ORDER
+  async createOrder(order: IOrderFromCreate): Promise<IResponseCreateOrder> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCreateOrder;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+        body: JSON.stringify(order),
+        next: { tags: [TAGS_DATA.ORDERS] },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IResponseCreateOrder;
+      response.code = res.status;
+
+      return response;
+    } catch {
+      return result;
+    }
+  }
+
+  // * Update ORDER
+  async updateOrder(
+    id: number,
+    order: IOrderFromCreate
+  ): Promise<IResponseCreateOrder> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}/${id}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCreateOrder;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+        body: JSON.stringify(order),
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IResponseCreateOrder;
+      response.code = res.status;
+
+      return response;
+    } catch {
+      return result;
+    }
+  }
+
+  // * Delete ORDER
+  async deleteOrder(orderId: number): Promise<IResponseCreateOrder> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ORDERS}/${orderId}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCreateOrder;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IResponseCreateOrder;
+      response.code = res.status;
+
+      return response;
+    } catch {
+      return result;
+    }
+  }
+
+  // * Get Delivery Services
+  async getDeliveryServices(): Promise<IDeliveryServices[]> {
+    const paramsObj: { [key: string]: string } = {
+      "filters[active][$eq]": "true",
+      "sort[0]": "id:desc",
+    };
+
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.DELIVERY_SERVICES}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return [];
+      }
+      const result = await res.json();
+      return result.data;
+    } catch {
+      return [];
     }
   }
 }

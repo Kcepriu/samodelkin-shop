@@ -1,0 +1,19 @@
+.listFlag {
+  @apply flex gap-2;
+}
+
+.flag {
+  @apply p-1
+  border
+  rounded
+  cursor-pointer
+  transition
+  border-white
+  data-[selected=true]:border-gray_our
+  hover:border-blue_action;
+}
+
+.image {
+  @apply w-[27px]
+  h-[20px];
+}

@@ -2,7 +2,8 @@
 import { FC, useEffect, useState } from "react";
 import Reviews from "../Reviews/Reviews";
 import { getProductReviews, getUserReviews } from "@/services/serverActionHttp";
-
+import ButtonLoadMore from "../ButtonLoadMore/ButtonLoadMore";
+import style from "./ReviewsLoadMore.module.css";
 interface IProps {
   owner: {
     isProduct?: boolean;
@@ -39,11 +40,14 @@ const ReviewsLoadMore: FC<IProps> = ({ owner, paginationReviews }) => {
   return (
     <>
       <Reviews reviews={reviews} />
-      {currentPage < countTotalPage && (
-        <button type="button" onClick={handleLoadMore}>
-          Завантажити ще відгуки
-        </button>
-      )}
+      <div className={style.wrapButton}>
+        {currentPage < countTotalPage && (
+          <ButtonLoadMore
+            handleLoadMore={handleLoadMore}
+            text="Завантажити ще відгуки"
+          />
+        )}
+      </div>
     </>
   );
 };

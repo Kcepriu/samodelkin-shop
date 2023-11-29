@@ -1,15 +1,16 @@
 .logo {
-  @apply text-text_header_logo
-  font-text_header_logo
-  leading-text_header_logo
+  @apply transition
   text-icon_color hover:text-action_color;
 }
 
 .wrapHeader {
-  @apply flex  items-center  justify-between  py-6
-  text-text_header
-  font-text_header
-  leading-text_header;
+  @apply flex  items-center  justify-between  
+  py-1
+  text-text_white
+  font-inter
+  text-size_20
+  font-weight_400
+  leading-line_height_20;
 }
 
 .wrapNavigate {
@@ -21,11 +22,11 @@
 }
 
 .link {
-  @apply hover:text-action_color;
+  @apply text-text_white transition hover:text-action_color;
 }
 
 .icon {
-  @apply text-icon_color hover:text-action_color;
+  @apply text-text_white transition hover:text-action_color;
 }
 
 /* 

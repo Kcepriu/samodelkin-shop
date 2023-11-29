@@ -3,12 +3,21 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import { getMarkProduct, saveMarkProduct } from "@/services/serverActionHttp";
+import {
+  getMarkProduct,
+  saveMarkProduct,
+  getProductsByList,
+} from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
+
+import {
+  convertRevisedToCreate,
+  convertProductToArrayId,
+} from "@/helpers/convertStructuresToBac";
 
 interface IStateRevisedData {
   revised: IProduct[];
@@ -21,13 +30,6 @@ interface IStateRevised extends IStateRevisedData {
   deleteRevised: (newProduct: IProduct) => Promise<void>;
   fetchRevised: (isRemoteStorage: boolean) => Promise<void>;
 }
-
-const convertRevisedToCreate = (revised: IProduct[]): IMarkProductForCreate => {
-  const products = revised.map((element) => element.id);
-  return {
-    data: { products },
-  };
-};
 
 // * Save Revised to Storage
 const saveRevisedToStorage = async (
@@ -60,9 +62,12 @@ const fetchRevisedFromStorage = async (isRemoteStorage: boolean) => {
   }
 
   const revised = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.REVISED, []);
+  const productsID = convertProductToArrayId(revised);
+  const responseRevised = await getProductsByList(productsID);
+
   return {
     isAuth: false,
-    revised,
+    revised: !!responseRevised ? responseRevised.data : revised,
   };
 };
 

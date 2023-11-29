@@ -1,0 +1,13 @@
+.wrapContent {
+  @apply mt-12;
+}
+
+.link {
+  @apply mt-6
+  flex gap-2
+    font-inter 
+    text-size_18 
+    font-weight_500
+    leading-line_height_21
+    hover:text-blue_action;
+}

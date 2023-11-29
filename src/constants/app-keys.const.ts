@@ -14,20 +14,25 @@ export const BACKEND_ROUTES = {
   // LOGOUT: "/user/logout",
   CATEGORIES: "/api/categories",
   PRODUCTS: "/api/products",
+  PRODUCTS_BY_LIST: "/api/products-by-list",
   COLORS: "/api/colors",
   DELIVERY_SERVICES: "/api/delivery-services",
   ORDERS: "/api/orders",
   ABOUT_US: "/api/about-us-section",
+  MAIN_PAGE: "/api/main-page",
   CATEGORY_DESCRIPTION: "/api/category-descriptions",
   PRODUCT_DESCRIPTION: "/api/product-descriptions",
   REVIEWS: "/api/reviews",
-  LAST_REVIEWS: "/api/lastReviews",
-  REPLY_TO_REVIEWS: "/api/replyToReview",
-  CHANGE_STATUS_REVIEWS: "/api/changeStatusReview",
-  CHANGE_REPLY_TO_REVIEWS: "/api/changeReplyToReview",
+  LAST_REVIEWS: "/api/last-reviews",
+  REPLY_TO_REVIEWS: "/api/reply-to-review",
+  CHANGE_STATUS_REVIEWS: "/api/change-status-review",
+  CHANGE_REPLY_TO_REVIEWS: "/api/change-reply-to-review",
   FAVORITES: "/api/favorites",
   REVISED: "/api/reviseds",
   CART: "/api/carts",
+  DELIVERY_AND_PAYMENT: "/api/delivery-and-payment",
+  CHANGE_AND_RETURN: "/api/exchange-and-return",
+  INFO_PRODUCT_REVIEW: "/api/get-info-product-review",
 };
 
 // Frontend routes
@@ -84,10 +89,10 @@ export const KEYS_LOCAL_STORAGE = {
 
 export const ACCOUNT_ADD_INFORMATION_ROUTES = {
   INFORMATION: "/information",
-  ORDERS: "/",
+  ORDERS: "/orders",
   FAVORITES: "/favorites",
   REVIEWS: "/reviews",
-  DEFAULT_FROM_GUEST: "/favorites",
+  REVISED: "/revised",
 };
 
 export const TYPES_ACCOUNT_ADD_INFORMATION = [
@@ -102,6 +107,11 @@ export const TYPES_ACCOUNT_ADD_INFORMATION = [
     onlyAuth: false,
   },
   {
+    title: "Переглянуті",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.REVISED,
+    onlyAuth: false,
+  },
+  {
     title: "Мої відгуки",
     url: ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS,
     onlyAuth: true,
@@ -112,3 +122,11 @@ export const TYPES_ACCOUNT_ADD_INFORMATION = [
     onlyAuth: true,
   },
 ];
+
+export const TAGS_DATA = {
+  INFORMATION: "/information",
+  ORDERS: "/orders",
+  FAVORITES: "/favorites",
+  REVIEWS: "/reviews",
+  REVISED: "/revised",
+};

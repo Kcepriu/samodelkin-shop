@@ -1,5 +1,7 @@
 .title {
-  @apply text-text_description_home
-   font-text_description_home
-   leading-text_description_home;
+  @apply mt-8
+  font-robotoSerif
+  text-size_22
+  font-weight_700
+  leading-line_height_17;
 }

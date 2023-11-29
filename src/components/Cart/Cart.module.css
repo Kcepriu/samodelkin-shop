@@ -1,8 +1,6 @@
 .wrapCart {
-  @apply pt-3 
-  pr-24 
-  pb-9 
-  pl-7
+  @apply py-8
+  px-10
   text-text_black;
 }
 
@@ -11,45 +9,54 @@
 }
 
 .title {
-  @apply text-title_section
-  font-title_section 
-  leading-title_section;
+  @apply ml-2
+  font-robotoSerif
+  text-size_32  
+  font-weight_400
+  leading-line_height_17;
 }
 
 .wrapProduct {
   @apply mt-8 
+  
+  max-h-[370px]
   text-text_gray 
   flex flex-col gap-4
-  max-h-[340px]
   overflow-y-auto;
 }
 
 .wrapTotalSum {
-  @apply mt-16 
+  @apply mt-6 
+  pr-11
   text-right
-  text-text_sum_order
-  font-text_sum_order
-  leading-text_sum_order;
+  font-roboto
+  text-size_24  
+  font-weight_500
+  leading-line_height_17;
 }
 
 .wrapButton {
   @apply flex gap-3 justify-between
-  mt-20  
-  text-text_gray
-  text-type_add_info
-  font-type_add_info
-  leading-type_add_info;
+  mt-20
+  pl-11
+  pr-11
+  
+  font-inter
+  text-size_20  
+  font-weight_300
+  leading-line_height_21;
 }
 
 .buttonBack {
   @apply flex gap-3 
   py-3
-  
+  text-black
+  transition
   hover:text-action_color;
 }
 
 .iconBack {
-  @apply text-icon_back_color;
+  @apply transition;
 }
 
 .buttonBack:hover .iconBack {
@@ -60,12 +67,13 @@
   @apply block 
   py-3
   px-5
+  
   rounded-lg 
-  bg-button_dark_background
+  bg-blue_action
   text-white
-  hover:text-action_color
-  hover:shadow-lg 
-  hover:shadow-gray-500/80;
+  transition
+  hover:bg-blue_action_button
+  hover:shadow-lg;
 }
 
 .buttonClean {
@@ -73,7 +81,7 @@
 }
 
 .icon {
-  @apply text-icon_back_color;
+  @apply text-icon_back_color transition;
 }
 
 .buttonClean:hover .icon {

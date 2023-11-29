@@ -17,13 +17,14 @@ const InformationPerson: FC<IProps> = ({ user }) => {
   return (
     <div className={style.wrapUserInfo}>
       <div className={style.wrapImageFromName}>
-        <GoPerson size={24} />
+        {!!user && <ButtonSignOut />}
+        {!user && <GoPerson size={24} />}
+
         <div>
           <p>{userName}</p>
           <p>{emailUser}</p>
         </div>
       </div>
-      {!!user && <ButtonSignOut />}
     </div>
   );
 };

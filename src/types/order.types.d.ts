@@ -1,24 +1,47 @@
 interface IResponseOrder {
-  data: IOrder[];
+  data: IOrder[] | null;
   meta?: IMeta;
+  code?: number;
+}
+
+interface IResponseCreateOrder {
+  data: IOrder | null;
+  meta?: IMeta;
+  code?: number;
 }
 
 interface IOrder {
   id: number;
-  attributes: IAttributesOrder;
+  attributes: {
+    date: string;
+    totalSum: number;
+    createdAt: string;
+    updatedAt: string;
+    numberPhone: string;
+    email: string;
+    name: string;
+    comment: string;
+    products: IProductOrder[];
+    addressDelivery?: IAddressDelivery;
+  };
 }
 
-interface IAttributesOrder {
-  date: string;
-  totalSum: number;
-  createdAt: string;
-  updatedAt: string;
+interface ICustomersContact {
   numberPhone: string;
   email: string;
   name: string;
   comment: string;
-  products: IProductOrder[];
-  adresDelivery?: IAdresDelivery;
+}
+interface IOrderFromCreate {
+  data: {
+    totalSum: number;
+    numberPhone: string;
+    email: string;
+    name: string;
+    comment: string;
+    products: IProductOrderCreate[];
+    addressDelivery: IAddressDeliveryForCreate;
+  };
 }
 
 interface IProductOrder {
@@ -26,9 +49,15 @@ interface IProductOrder {
   count: number;
   sum: number;
   price: number;
-  product: IResponseProductOrder;
+  language: ILanguage;
+  product: {
+    data: IProduct;
+  };
 }
 
-interface IResponseProductOrder {
-  data: IProduct;
+interface IProductOrderCreate {
+  product: number;
+  count: number;
+  price: number;
+  sum: number;
 }

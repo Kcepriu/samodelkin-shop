@@ -33,8 +33,8 @@ interface IVideo {
 }
 
 interface ILanguage {
-  id: number;
-  language: "ua" | "ru" | "us";
+  id?: number;
+  language: TypeLanguage;
 }
 
 interface IManual {

@@ -1,0 +1,14 @@
+.listOrders {
+  @apply flex flex-col gap-3;
+}
+
+.linkOder {
+  @apply block
+   py-5   
+   pl-2 pr-4
+  rounded-lg  
+  border
+  border-light_blue
+  transition
+  hover:border-dark_blue;
+}

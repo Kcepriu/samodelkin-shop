@@ -6,6 +6,7 @@ import {
   PiChatDots,
   PiHeart,
 } from "react-icons/pi";
+import { GoPerson } from "react-icons/go";
 
 interface IProps {
   urlPage: string;
@@ -15,9 +16,11 @@ const IconAccountPage: FC<IProps> = ({ urlPage, size = 24 }) => {
   if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.ORDERS)
     return <PiShoppingBagOpenDuotone size={size} />;
   if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.INFORMATION)
-    return <PiEyeLight size={size} />;
+    return <GoPerson size={size} />;
   if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.FAVORITES)
     return <PiHeart size={size} />;
+  if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.REVISED)
+    return <PiEyeLight size={size} />;
   if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS)
     return <PiChatDots size={size} />;
 

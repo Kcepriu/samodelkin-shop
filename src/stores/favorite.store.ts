@@ -3,12 +3,20 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import { getMarkProduct, saveMarkProduct } from "@/services/serverActionHttp";
+import {
+  getMarkProduct,
+  saveMarkProduct,
+  getProductsByList,
+} from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
+import {
+  convertFavoritesToCreate,
+  convertProductToArrayId,
+} from "@/helpers/convertStructuresToBac";
 
 interface IStateFavoriteData {
   favorites: IProduct[];
@@ -22,22 +30,11 @@ interface IStateFavorite extends IStateFavoriteData {
   fetchFavorites: (isRemoteStorage: boolean) => Promise<void>;
 }
 
-const convertFavoritesToCreate = (
-  favorites: IProduct[]
-): IMarkProductForCreate => {
-  const products = favorites.map((element) => element.id);
-  return {
-    data: { products },
-  };
-};
-
 // * Save Favorite to Storage
 const saveFavoriteToStorage = async (
   favorite: IProduct[],
   isRemoteStorage: boolean
 ) => {
-  console.log("isRemoteStorage", isRemoteStorage);
-
   if (isRemoteStorage) {
     const { isAuth } = await saveMarkProduct(
       convertFavoritesToCreate(favorite),
@@ -64,9 +61,12 @@ const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   }
 
   const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
+  const productsID = convertProductToArrayId(favorites);
+  const responseFavorites = await getProductsByList(productsID);
+
   return {
     isAuth: false,
-    favorites,
+    favorites: !!responseFavorites ? responseFavorites.data : favorites,
   };
 };
 
@@ -77,7 +77,6 @@ const useFavorite = create<IStateFavorite>()((set, get) => ({
   isAuth: false,
   error: null,
   addFavorite: async (newProduct) => {
-    console.log("addFavorite");
     const newFavorites = [...get().favorites, newProduct];
     const { isAuth } = await saveFavoriteToStorage(newFavorites, get().isAuth);
 
