@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
+import ImgNoImage from "@/assets/no_images.png";
 import style from "./ChoiceDelivery.module.css";
 
 interface IProps {
@@ -16,6 +17,8 @@ const ChoiceDelivery: FC<IProps> = ({
   return (
     <ul className={style.listDelivery}>
       {deliveryServices.map((delivery) => {
+        const urlLogo =
+          delivery?.attributes?.logo?.data?.attributes.url || ImgNoImage;
         return (
           <li
             key={delivery.id}
@@ -25,8 +28,8 @@ const ChoiceDelivery: FC<IProps> = ({
           >
             <Image
               // className={styles.image}
-              src={delivery.attributes.logo.data.attributes.url}
-              alt={delivery.attributes.title}
+              src={urlLogo}
+              alt={delivery?.attributes?.title || "Logo delivery"}
               height={0}
               width={80}
             />
