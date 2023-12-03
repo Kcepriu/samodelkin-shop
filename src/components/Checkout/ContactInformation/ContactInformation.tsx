@@ -16,7 +16,7 @@ import { validationSchema } from "./validationSchema";
 import { convertOrderToCreate } from "@/helpers/convertStructuresToBac";
 import AddressDeliveryService from "@/components/AddressDeliveryService/AddressDeliveryService";
 import { createOrder } from "@/services/serverActionHttp";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import { FRONTEND_ROUTES, DELIVERY_SERVICES } from "@/constants/app-keys.const";
 import style from "./ContactInformation.module.css";
 
 interface Values {
@@ -125,7 +125,6 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   }, [deliveryServices, setFieldValue]);
 
   const handleChangeDelivery = (deliveryServicesId: number) => {
-    // TODO Here need change API delivery cervices
     setFieldValue("deliveryServicesId", deliveryServicesId);
     setFieldValue("city", "");
     setFieldValue("postOffice", "");
@@ -145,28 +144,6 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
 
   return (
     <>
-      <div>
-        <div>{`value: ${value !== null ? `'${value}'` : "null"}`}</div>
-        <div>{`inputValue: '${inputValue}'`}</div>
-        <br />
-        <Autocomplete
-          value={value}
-          onChange={(event: any, newValue: string | null) => {
-            setValue(newValue);
-          }}
-          inputValue={inputValue}
-          onInputChange={(event, newInputValue) => {
-            setInputValue(newInputValue);
-          }}
-          id="controllable-states-demo"
-          options={options}
-          sx={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Controllable" />
-          )}
-        />
-      </div>
-      {/* ----------------------------------------------- */}
       <div className={style.wrapTitle}>
         <h1 className={style.title}>Оформлення замовлення</h1>
       </div>
@@ -241,43 +218,55 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
 
         {/* Delivery */}
         <div className={style.wrapDelivery}>
-          <div className={style.lineContacts}>
-            <TextField
-              fullWidth
-              id="city"
-              name="city"
-              label="Місто *"
-              value={values.city}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.city && Boolean(errors.city)}
-              helperText={touched.city && errors.city}
-              className={style.inputFields}
-            />
-            <TextField
-              fullWidth
-              id="postOffice"
-              name="postOffice"
-              label="Відділення *"
-              value={values.postOffice}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.postOffice && Boolean(errors.postOffice)}
-              helperText={touched.postOffice && errors.postOffice}
-              className={style.inputFields}
-            />
-          </div>
-          <div className={style.lineContacts}>
-            <AddressDeliveryService
-              selectedCity={null}
-              selectedWarehouses={null}
-              handleSetCity={handleSetCity}
-              handleSetWarehouse={handleSetWarehouse}
-              handleBlur={handleBlur}
-              errors={errors}
-              touched={touched}
-            />
-          </div>
+          {values.deliveryServicesId === DELIVERY_SERVICES.CURRIER && (
+            <div className={style.lineContacts}>
+              <TextField
+                fullWidth
+                id="city"
+                name="city"
+                label="Місто *"
+                value={values.city}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.city && Boolean(errors.city)}
+                helperText={touched.city && errors.city}
+                className={style.inputFields}
+              />
+              <TextField
+                fullWidth
+                id="postOffice"
+                name="postOffice"
+                label="Відділення *"
+                value={values.postOffice}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.postOffice && Boolean(errors.postOffice)}
+                helperText={touched.postOffice && errors.postOffice}
+                className={style.inputFields}
+              />
+            </div>
+          )}
+
+          {values.deliveryServicesId === DELIVERY_SERVICES.NOVA_POSHTA && (
+            <div className={style.lineContacts}>
+              <AddressDeliveryService
+                selectedCity={null}
+                selectedWarehouses={null}
+                handleSetCity={handleSetCity}
+                handleSetWarehouse={handleSetWarehouse}
+                handleBlur={handleBlur}
+                errors={errors}
+                touched={touched}
+              />
+            </div>
+          )}
+
+          {values.deliveryServicesId === DELIVERY_SERVICES.UKR_POSHTA && (
+            <div className={style.lineContacts}>
+              <p>Не реалізовано</p>
+            </div>
+          )}
+
           <TextField
             fullWidth
             id="comment"

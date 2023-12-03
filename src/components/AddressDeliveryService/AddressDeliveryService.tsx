@@ -1,20 +1,7 @@
 "use client";
 
-import {
-  useState,
-  useMemo,
-  useEffect,
-  FocusEvent,
-  ChangeEvent,
-  FC,
-} from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import Grid from "@mui/material/Grid";
-
-import { FormikErrors } from "formik";
-
+import { useState, useMemo, useEffect, FocusEvent, FC } from "react";
+import { Box, TextField, Autocomplete, Grid } from "@mui/material";
 import { debounce } from "@mui/material/utils";
 import { searchCityNP, searchWarehouses } from "@/services/serverActionHttp";
 
@@ -199,7 +186,6 @@ const AddressDeliveryService: FC<IProps> = ({
           setValue(newValue);
           handleSetCity(newValue?.name || "", newValue?.id || "");
           handleSetWarehouse("", "");
-          handleChange(event);
         }}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
@@ -246,7 +232,9 @@ const AddressDeliveryService: FC<IProps> = ({
         value={valueWarehouse}
         noOptionsText="Відділення"
         onChange={(event: any, newValue: IDeliveryCity | null) => {
-          setOptionsWarehouse(newValue ? [newValue, ...options] : options);
+          setOptionsWarehouse(
+            newValue ? [newValue, ...optionsWarehouse] : optionsWarehouse
+          );
           setValueWarehouse(newValue);
           handleSetWarehouse(newValue?.name || "", newValue?.id || "");
         }}

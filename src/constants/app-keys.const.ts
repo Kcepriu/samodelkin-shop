@@ -130,3 +130,9 @@ export const TAGS_DATA = {
   REVIEWS: "/reviews",
   REVISED: "/revised",
 };
+
+export const DELIVERY_SERVICES = {
+  NOVA_POSHTA: 1,
+  UKR_POSHTA: 2,
+  CURRIER: 3,
+};
