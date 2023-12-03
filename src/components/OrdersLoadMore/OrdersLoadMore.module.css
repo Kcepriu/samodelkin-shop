@@ -1,3 +1,7 @@
+.wrapOrdersLoadMore {
+  @apply mt-3;
+}
+
 .wrapButton {
   @apply flex justify-center 
   mt-8 

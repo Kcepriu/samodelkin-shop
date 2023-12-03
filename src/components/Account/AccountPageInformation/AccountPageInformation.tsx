@@ -1,7 +1,9 @@
-import { FC } from "react";
+import { ReactNode } from "react";
 
-const AccountPageInformation: FC = () => {
-  return <>AccountPageInformation</>;
+import AddressDeliveryService from "@/components/AddressDeliveryService/AddressDeliveryService";
+
+const AccountPageInformation = (): ReactNode => {
+  return <p>AccountPageInformation</p>;
 };
 
 export default AccountPageInformation;

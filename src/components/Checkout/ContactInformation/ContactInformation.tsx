@@ -5,13 +5,17 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FormikHelpers, useFormik } from "formik";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+
 import TextField from "@mui/material/TextField";
-import { validationSchema } from "./validationSchema";
+import Autocomplete from "@mui/material/Autocomplete";
+
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
-import { convertOrderToCreate } from "@/helpers/convertStructuresToBac";
-import { createOrder } from "@/services/serverActionHttp";
 import ChoiceDelivery from "../ChoiceDelivery/ChoiceDelivery";
+import { validationSchema } from "./validationSchema";
+import { convertOrderToCreate } from "@/helpers/convertStructuresToBac";
+import AddressDeliveryService from "@/components/AddressDeliveryService/AddressDeliveryService";
+import { createOrder } from "@/services/serverActionHttp";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import style from "./ContactInformation.module.css";
 
@@ -21,7 +25,9 @@ interface Values {
   email: string;
   phone: string;
   city: string;
+  idCity: string;
   postOffice: string;
+  idPostOffice: string;
   comment: string;
   deliveryServicesId: number;
 }
@@ -32,7 +38,9 @@ const emptyValues = {
   email: "",
   phone: "",
   city: "",
+  idCity: "",
   postOffice: "",
+  idPostOffice: "",
   comment: "",
   deliveryServicesId: 0,
 };
@@ -44,6 +52,10 @@ interface IProps {
 const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   const router = useRouter();
   const cart = useStore(useCart, (state) => state.products) || [];
+
+  const options = ["Option 1", "Option 2"];
+  const [value, setValue] = useState<string | null>("");
+  const [inputValue, setInputValue] = useState("");
 
   const cleanCart = useCart((state) => state.cleanCart);
 
@@ -117,10 +129,44 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
     setFieldValue("deliveryServicesId", deliveryServicesId);
     setFieldValue("city", "");
     setFieldValue("postOffice", "");
+    setFieldValue("idCity", "");
+    setFieldValue("idPostOffice", "");
+  };
+
+  const handleSetCity = (city: string, idCity: string) => {
+    setFieldValue("city", city);
+    setFieldValue("idCity", idCity);
+  };
+
+  const handleSetWarehouse = (postOffice: string, idPostOffice: string) => {
+    setFieldValue("postOffice", postOffice);
+    setFieldValue("idPostOffice", idPostOffice);
   };
 
   return (
     <>
+      <div>
+        <div>{`value: ${value !== null ? `'${value}'` : "null"}`}</div>
+        <div>{`inputValue: '${inputValue}'`}</div>
+        <br />
+        <Autocomplete
+          value={value}
+          onChange={(event: any, newValue: string | null) => {
+            setValue(newValue);
+          }}
+          inputValue={inputValue}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
+          id="controllable-states-demo"
+          options={options}
+          sx={{ width: 300 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Controllable" />
+          )}
+        />
+      </div>
+      {/* ----------------------------------------------- */}
       <div className={style.wrapTitle}>
         <h1 className={style.title}>Оформлення замовлення</h1>
       </div>
@@ -221,6 +267,17 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
               className={style.inputFields}
             />
           </div>
+          <div className={style.lineContacts}>
+            <AddressDeliveryService
+              selectedCity={null}
+              selectedWarehouses={null}
+              handleSetCity={handleSetCity}
+              handleSetWarehouse={handleSetWarehouse}
+              handleBlur={handleBlur}
+              errors={errors}
+              touched={touched}
+            />
+          </div>
           <TextField
             fullWidth
             id="comment"
@@ -236,6 +293,7 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
             className={style.inputComment}
           />
         </div>
+
         {/* Button */}
         <div className={style.wrapButton}>
           <button

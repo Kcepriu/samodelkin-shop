@@ -48,16 +48,18 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
           </button>
         </div>
 
-        <div className={style.wrapChangeLanguage}>
-          Доступні мови:
-          <ChangeLanguage rowCart={rowCart} />
-        </div>
-
         <div className={style.wrapDetails}>
-          <div className={style.wrapPrice}>
-            <p>Ціна: {formatPrice(rowCart.price)} грн</p>
-            <CountProductChange rowCart={rowCart} />
-            <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+          <div className={style.wrapInformation}>
+            <div className={style.wrapChangeLanguage}>
+              Доступні мови:
+              <ChangeLanguage rowCart={rowCart} />
+            </div>
+
+            <div className={style.wrapPrice}>
+              <p>Ціна: {formatPrice(rowCart.price)} грн</p>
+              <CountProductChange rowCart={rowCart} />
+              <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+            </div>
           </div>
           <button
             className={style.buttonDelete}

@@ -44,19 +44,24 @@ const ProductInCheckout: FC<IProps> = ({ rowCart, deleteProduct }) => {
           </button>
         </div>
 
-        <div className={style.wrapLanguage}>
-          Мова гри:
-          <Image
-            // className={styles.image}
-            src={getImageFlag(rowCart.language.language)}
-            alt={rowCart.language.language}
-            height={25}
-            width={34}
-          />
-        </div>
-        <div className={style.wrapDetails}>
-          <div>Кількість: {rowCart.count} шт.</div>
-          <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+        <div className={style.wrapInformation}>
+          <div className={style.wrapInformationProduct}>
+            <div className={style.wrapLanguage}>
+              Мова гри:
+              <Image
+                // className={styles.image}
+                src={getImageFlag(rowCart.language.language)}
+                alt={rowCart.language.language}
+                height={25}
+                width={34}
+              />
+            </div>
+
+            <div className={style.wrapDetails}>
+              <div>Кількість: {rowCart.count} шт.</div>
+              <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+            </div>
+          </div>
           <button
             className={style.buttonDelete}
             type="button"

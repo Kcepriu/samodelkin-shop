@@ -28,11 +28,16 @@
   @apply flex flex-col gap-3
   text-text_user_info
   font-text_user_info
-  leading-text_user_info;
+  leading-text_user_info
+  
+  border-b
+  pb-3;
 }
 
 .wrapDeliveryService {
-  @apply mt-5;
+  @apply mt-5
+  border-b
+  pb-5;
 }
 
 .wrapDelivery {
@@ -49,7 +54,8 @@
 }
 
 .inputFields {
-  @apply w-[320px];
+  /* @apply w-[320px]; */
+  @apply w-full;
 }
 .inputComment {
   @apply w-full;

@@ -2,6 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 import httpServices from "./http";
+import httpApiNovaPoshta from "./httpApiNovaPoshta";
 import { TAGS_DATA } from "@/constants/app-keys.const";
 
 // * get Product By List
@@ -151,4 +152,22 @@ export const getOrders = async (page = "1") => {
   const orders = code === 200 ? response : null;
 
   return orders;
+};
+
+export const searchCityNP = async (nameCity: string) => {
+  const response = await httpApiNovaPoshta.searchCity(nameCity);
+
+  return response;
+};
+
+export const searchWarehouses = async (
+  idCity: string,
+  nameWarehouses: string
+) => {
+  const response = await httpApiNovaPoshta.searchWarehouses(
+    idCity,
+    nameWarehouses
+  );
+
+  return response;
 };
