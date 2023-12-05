@@ -154,7 +154,7 @@ const useCart = create<IStateCart>()((set, get) => ({
       isAuth: isAuth,
     }));
   },
-  // ! Change Language Product
+  // * Change Language Product
   changeLanguageProduct: async (
     changeProduct: IProduct,
     language: ILanguage

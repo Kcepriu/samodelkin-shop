@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ITitleArticle } from "@/types/articles.type";
+import { ITitleArticle } from "@/types/articles.types";
 import style from "./TitleDescription.module.css";
 
 interface IProps {

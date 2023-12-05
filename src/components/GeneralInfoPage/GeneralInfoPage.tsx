@@ -2,7 +2,7 @@ import { FC } from "react";
 import httpServices from "@/services/http";
 import Description from "../Description/Description";
 import { TypeDescription } from "@/types/generalTypes/articles.type";
-import { TArticleGeneral } from "@/types/articles.type";
+import { TArticleGeneral } from "@/types/articles.types";
 import style from "./GeneralInfoPage.module.css";
 
 interface IProps {

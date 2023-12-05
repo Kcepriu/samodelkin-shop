@@ -171,3 +171,36 @@ export const searchWarehouses = async (
 
   return response;
 };
+
+// * About User
+export const getAboutUser = async (): Promise<{
+  isAuth: boolean;
+  aboutUser: IAboutUser | null;
+}> => {
+  const { code, data: response } = await httpServices.getAboutUser();
+
+  const aboutUser = code === 200 && !!response ? response : null;
+
+  return {
+    isAuth: code === 200,
+    aboutUser,
+  };
+};
+
+export const saveAboutUser = async (
+  information: IAboutUserForCreate
+): Promise<{
+  isAuth: boolean;
+  aboutUser: IAboutUser | null;
+}> => {
+  const { code, data: response } = await httpServices.saveAboutUser(
+    information
+  );
+
+  const aboutUser = code === 200 && !!response ? response : null;
+
+  return {
+    isAuth: code === 200,
+    aboutUser,
+  };
+};

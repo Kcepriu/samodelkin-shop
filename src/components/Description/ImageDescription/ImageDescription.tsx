@@ -1,4 +1,4 @@
-import { IImageArticle } from "@/types/articles.type";
+import { IImageArticle } from "@/types/articles.types";
 import { FC } from "react";
 import Image from "next/image";
 import style from "./ImageDescription.module.css";

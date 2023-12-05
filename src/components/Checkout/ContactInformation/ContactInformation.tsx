@@ -53,10 +53,6 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   const router = useRouter();
   const cart = useStore(useCart, (state) => state.products) || [];
 
-  const options = ["Option 1", "Option 2"];
-  const [value, setValue] = useState<string | null>("");
-  const [inputValue, setInputValue] = useState("");
-
   const cleanCart = useCart((state) => state.cleanCart);
 
   const { data: session } = useSession();
@@ -73,7 +69,9 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   ) => {
     const addressDelivery = {
       city: values.city,
-      branchNumber: values.postOffice,
+      idCity: values.idCity,
+      postOffice: values.postOffice,
+      idPostOffice: values.idPostOffice,
       street: "",
       delivery_service: values.deliveryServicesId,
     };

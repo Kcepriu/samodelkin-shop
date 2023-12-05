@@ -6,7 +6,7 @@ import ContentWithImageDescription from "./ContentWithImageDescription/ContentWi
 import ImageDescription from "./ImageDescription/ImageDescription";
 
 import { TypeArticles } from "@/types/generalTypes/articles.type";
-import { TArticleGeneral } from "@/types/articles.type";
+import { TArticleGeneral } from "@/types/articles.types";
 import { TypeDescription } from "@/types/generalTypes/articles.type";
 import style from "./Description.module.css";
 

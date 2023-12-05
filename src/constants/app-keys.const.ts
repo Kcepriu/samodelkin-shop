@@ -33,6 +33,7 @@ export const BACKEND_ROUTES = {
   DELIVERY_AND_PAYMENT: "/api/delivery-and-payment",
   CHANGE_AND_RETURN: "/api/exchange-and-return",
   INFO_PRODUCT_REVIEW: "/api/get-info-product-review",
+  ABOUT_USER: "/api/about-users",
 };
 
 // Frontend routes
@@ -85,6 +86,7 @@ export const KEYS_LOCAL_STORAGE = {
   FAVORITE: "FAVORITE_PRODUCT",
   CART: "CART_SHOP",
   REVISED: "REVISED_PRODUCT",
+  ABOUT_USER: "ABOUT_USER",
 };
 
 export const ACCOUNT_ADD_INFORMATION_ROUTES = {
