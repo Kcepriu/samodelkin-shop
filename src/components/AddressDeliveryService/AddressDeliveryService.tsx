@@ -15,8 +15,10 @@ interface IDeliveryCityWarehouse {
   id: string;
 }
 interface IProps {
-  selectedCity: IDeliveryCity | null;
-  selectedWarehouses: IDeliveryCityWarehouse | null;
+  city: string;
+  idCity: string;
+  postOffice: string;
+  idPostOffice: string;
   handleSetCity: (city: string, idCity: string) => void;
   handleSetWarehouse: (postOffice: string, idPostOffice: string) => void;
   handleBlur: (e: FocusEvent<any>) => void;
@@ -25,12 +27,13 @@ interface IProps {
 }
 
 const AddressDeliveryService: FC<IProps> = ({
-  selectedCity,
-  selectedWarehouses,
+  city,
+  idCity,
+  postOffice,
+  idPostOffice,
   handleSetCity,
   handleSetWarehouse,
   handleBlur,
-
   touched,
   errors,
   ...props
@@ -163,6 +166,20 @@ const AddressDeliveryService: FC<IProps> = ({
     };
   }, [value, valueWarehouse, inputValueWarehouse, fetchWarehouse]);
 
+  useEffect(() => {
+    setValue({
+      name: city,
+      id: idCity,
+    });
+  }, [city, idCity]);
+
+  useEffect(() => {
+    setValueWarehouse({
+      name: postOffice,
+      id: idPostOffice,
+    });
+  }, [postOffice, idPostOffice]);
+
   return (
     <>
       <Autocomplete
@@ -178,12 +195,11 @@ const AddressDeliveryService: FC<IProps> = ({
         filterSelectedOptions
         value={value}
         noOptionsText="Місто доставки"
-        onChange={(event: any, newValue: IDeliveryCityWarehouse | null) => {
+        isOptionEqualToValue={(option, value) => option.id === value.id}
+        onChange={(event: any, newValue: IDeliveryCity | null) => {
           setOptions(newValue ? [newValue, ...options] : options);
           // here city was changed. Need fetch new warehouses
           setOptionsWarehouse([]);
-          setValueWarehouse(null);
-          setValue(newValue);
           handleSetCity(newValue?.name || "", newValue?.id || "");
           handleSetWarehouse("", "");
         }}
@@ -231,11 +247,13 @@ const AddressDeliveryService: FC<IProps> = ({
         filterSelectedOptions
         value={valueWarehouse}
         noOptionsText="Відділення"
-        onChange={(event: any, newValue: IDeliveryCity | null) => {
+        isOptionEqualToValue={(option, value) =>
+          !!value && !!option && option.id === value.id
+        }
+        onChange={(event: any, newValue: IDeliveryCityWarehouse | null) => {
           setOptionsWarehouse(
-            newValue ? [newValue, ...optionsWarehouse] : optionsWarehouse
+            newValue ? [newValue, ...optionsWarehouse] : [optionsWarehouse[0]]
           );
-          setValueWarehouse(newValue);
           handleSetWarehouse(newValue?.name || "", newValue?.id || "");
         }}
         onInputChange={(event, newInputValue) => {

@@ -4,6 +4,10 @@ interface IResponseDeliveryServices {
   error?: IError;
 }
 
+interface IResponseDeliveryService {
+  data: IDeliveryServices;
+}
+
 interface IDeliveryServices {
   id: number;
   attributes: {

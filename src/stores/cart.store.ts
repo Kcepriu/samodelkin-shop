@@ -74,7 +74,7 @@ const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
     let { isAuth, products } = await getCart();
     if (!isAuth) {
       await signOut();
-      return { isAuth, products };
+      return { isAuth, productsFromLocalStorage };
     }
 
     const missingProducts = getMissingProducts(

@@ -7,14 +7,14 @@ import { FormikHelpers, useFormik } from "formik";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 
 import useCart from "@/stores/cart.store";
+import useAboutUser from "@/stores/aboutUser.store";
 import useStore from "@/helpers/useStore";
 import ChoiceDelivery from "../ChoiceDelivery/ChoiceDelivery";
+import AddressDeliveryService from "@/components/AddressDeliveryService/AddressDeliveryService";
 import { validationSchema } from "./validationSchema";
 import { convertOrderToCreate } from "@/helpers/convertStructuresToBac";
-import AddressDeliveryService from "@/components/AddressDeliveryService/AddressDeliveryService";
 import { createOrder } from "@/services/serverActionHttp";
 import { FRONTEND_ROUTES, DELIVERY_SERVICES } from "@/constants/app-keys.const";
 import style from "./ContactInformation.module.css";
@@ -49,14 +49,36 @@ interface IProps {
   deliveryServices: IDeliveryServices[];
 }
 
+const convertToAboutUser = (value: Values): IAboutUserStore => {
+  return {
+    contactInformation: {
+      firstName: value.firstName,
+      lastName: value.lastName,
+      phoneNumber: value.phone,
+      email: null,
+    },
+    addressDelivery: {
+      city: value.city,
+      idCity: value.idCity,
+      postOffice: value.postOffice,
+      idPostOffice: value.idPostOffice,
+      delivery_service: value.deliveryServicesId,
+    },
+  };
+};
+
 const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   const router = useRouter();
+  // * Use Store
+  // * Store Cart
   const cart = useStore(useCart, (state) => state.products) || [];
-
   const cleanCart = useCart((state) => state.cleanCart);
+  // * Store Info About User
+  const infoAboutUser = useStore(useAboutUser, (state) => state.infoAboutUser);
+  const saveAboutUser = useAboutUser((state) => state.saveAboutUser);
 
+  // * Session
   const { data: session } = useSession();
-
   const user = session?.user;
 
   const handleGoToBach = () => {
@@ -67,6 +89,8 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
     values: Values,
     { setSubmitting }: FormikHelpers<Values>
   ) => {
+    await saveAboutUser(convertToAboutUser(values));
+
     const addressDelivery = {
       city: values.city,
       idCity: values.idCity,
@@ -112,22 +136,31 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   });
 
   useEffect(() => {
-    if (!values.firstName && user?.fullName)
-      setFieldValue("firstName", user.fullName);
     if (!values.email && user?.email) setFieldValue("email", user.email);
   }, [user, values, setFieldValue]);
 
   useEffect(() => {
-    if (deliveryServices.length > 0)
-      setFieldValue("deliveryServicesId", deliveryServices[0].id || 0);
-  }, [deliveryServices, setFieldValue]);
+    if (!infoAboutUser) return;
 
-  const handleChangeDelivery = (deliveryServicesId: number) => {
-    setFieldValue("deliveryServicesId", deliveryServicesId);
-    setFieldValue("city", "");
-    setFieldValue("postOffice", "");
-    setFieldValue("idCity", "");
-    setFieldValue("idPostOffice", "");
+    const { addressDelivery, contactInformation } = infoAboutUser;
+    try {
+      setFieldValue("firstName", contactInformation.firstName);
+      setFieldValue("lastName", contactInformation.lastName);
+      setFieldValue("phone", contactInformation.phoneNumber);
+      setFieldValue("city", addressDelivery.city);
+      setFieldValue("idCity", addressDelivery.idCity);
+      setFieldValue("postOffice", addressDelivery.postOffice);
+      setFieldValue("idPostOffice", addressDelivery.idPostOffice);
+      setFieldValue("deliveryServicesId", addressDelivery.delivery_service);
+    } catch {}
+  }, [infoAboutUser, setFieldValue]);
+
+  const handleChangeDelivery = async (deliveryServicesId: number) => {
+    await setFieldValue("deliveryServicesId", deliveryServicesId);
+    await setFieldValue("city", "");
+    await setFieldValue("postOffice", "");
+    await setFieldValue("idCity", "");
+    await setFieldValue("idPostOffice", "");
   };
 
   const handleSetCity = (city: string, idCity: string) => {
@@ -248,8 +281,10 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
           {values.deliveryServicesId === DELIVERY_SERVICES.NOVA_POSHTA && (
             <div className={style.lineContacts}>
               <AddressDeliveryService
-                selectedCity={null}
-                selectedWarehouses={null}
+                city={values.city}
+                idCity={values.idCity}
+                postOffice={values.postOffice}
+                idPostOffice={values.idPostOffice}
                 handleSetCity={handleSetCity}
                 handleSetWarehouse={handleSetWarehouse}
                 handleBlur={handleBlur}

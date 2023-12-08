@@ -10,7 +10,6 @@ interface IResponseCreateAboutUser {
 
 interface IAboutUser {
   id: number;
-
   attributes: {
     createdAt: string;
     updatedAt: string;
@@ -18,7 +17,6 @@ interface IAboutUser {
     addressDelivery: IAddressDelivery;
   };
 }
-
 interface IContactInformation {
   id: number;
   firstName: string;
@@ -33,26 +31,9 @@ interface IAddressDelivery {
   idCity: string;
   postOffice: string;
   idPostOffice: string;
-  delivery_service: IResponeDeliveryServices;
+  delivery_service: IResponseDeliveryService;
   branchNumber?: string;
   street?: string;
-}
-
-interface IResponseDeliveryServices {
-  data: IDeliveryServices;
-}
-
-interface IDeliveryServices {
-  id: number;
-  attributes: {
-    title: string;
-    slug: string;
-    active: boolean;
-    createdAt: string;
-    updatedAt: string;
-    homeDelivery: boolean;
-    postOfficeDelivery: boolean;
-  };
 }
 
 interface IAboutUserForCreate {
@@ -77,4 +58,9 @@ interface IAddressDeliveryForCreate {
   delivery_service: number;
   branchNumber?: string;
   street?: string;
+}
+
+interface IAboutUserStore {
+  contactInformation: IContactInformationForCreate;
+  addressDelivery: IAddressDeliveryForCreate;
 }

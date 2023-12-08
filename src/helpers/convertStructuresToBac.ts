@@ -62,3 +62,36 @@ export const convertProductToArrayId = (favorites: IProduct[]): number[] => {
   const products = favorites.map((element) => element.id);
   return products;
 };
+
+export const convertAboutUserToCreate = (
+  newInformation: IAboutUserStore
+): IAboutUserForCreate => {
+  return {
+    data: {
+      ...newInformation,
+    },
+  };
+};
+
+export const convertAboutUserToStore = (
+  newInformation: IAboutUser | null
+): IAboutUserStore | null => {
+  if (!newInformation) return null;
+
+  const {
+    id: idAddressDelivery,
+    delivery_service,
+    ...addressDelivery
+  } = newInformation.attributes.addressDelivery;
+
+  const { id: idContactInformation, ...contactInformation } =
+    newInformation.attributes.contactInformation;
+
+  return {
+    addressDelivery: {
+      ...addressDelivery,
+      delivery_service: delivery_service.data.id,
+    },
+    contactInformation,
+  };
+};
