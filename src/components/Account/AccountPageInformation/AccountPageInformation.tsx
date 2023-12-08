@@ -1,9 +1,18 @@
-import { ReactNode } from "react";
+import { ReactNode, FC } from "react";
+import ContactInformationDelivery from "@/components/ContactInformationDelivery/ContactInformationDelivery";
 
-import AddressDeliveryService from "@/components/AddressDeliveryService/AddressDeliveryService";
+interface IProps {
+  deliveryServices: IDeliveryServices[];
+}
 
-const AccountPageInformation = (): ReactNode => {
-  return <p>AccountPageInformation</p>;
+const AccountPageInformation: FC<IProps> = ({
+  deliveryServices,
+}): ReactNode => {
+  return (
+    <ContactInformationDelivery deliveryServices={deliveryServices}>
+      {" "}
+    </ContactInformationDelivery>
+  );
 };
 
 export default AccountPageInformation;

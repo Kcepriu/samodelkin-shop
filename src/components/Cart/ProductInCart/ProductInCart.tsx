@@ -56,9 +56,9 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
             </div>
 
             <div className={style.wrapPrice}>
-              <p>Ціна: {formatPrice(rowCart.price)} грн</p>
+              <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
               <CountProductChange rowCart={rowCart} />
-              <p className={style.totalSum}>{formatPrice(rowCart.sum)} грн</p>
+              <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
             </div>
           </div>
           <button

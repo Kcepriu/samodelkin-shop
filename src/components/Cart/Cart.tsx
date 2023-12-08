@@ -52,7 +52,7 @@ const Cart: FC<IProps> = ({ onClose }) => {
       </ul>
 
       <div className={style.wrapTotalSum}>
-        <p>{`До сплати ${formatPrice(totalSum)} грн`}</p>
+        <p>{`До сплати ${formatPrice(totalSum)} ₴`}</p>
       </div>
 
       <div className={style.wrapButton}>

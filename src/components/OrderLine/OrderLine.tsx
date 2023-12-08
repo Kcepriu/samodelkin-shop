@@ -2,6 +2,7 @@ import { FC } from "react";
 import Image from "next/image";
 import ImgNoImage from "@/assets/no_images.png";
 import { formatDateOrder } from "@/helpers/formatDateTime";
+import { formatPrice } from "@/helpers/formatNumber";
 import style from "./OrderLine.module.css";
 
 interface IProps {
@@ -21,7 +22,7 @@ const OrderLine: FC<IProps> = ({ order }) => {
       </p>
       <div>
         <p>Сумма замовлення</p>
-        <p>{attributes.totalSum} ₴</p>
+        <p>{formatPrice(attributes.totalSum)} ₴</p>
       </div>
       <Image
         // className={style.image}

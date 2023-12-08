@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Cart from "@/components/Cart/Cart";
 
