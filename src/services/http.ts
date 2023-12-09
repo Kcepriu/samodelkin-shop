@@ -977,6 +977,86 @@ class HttpService {
       return result;
     }
   }
+
+  // * About Me
+  async getAboutMe(): Promise<IResponseMyInformation> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseMyInformation;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IMyInformation;
+
+      result.data = response;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  async saveAboutMe(
+    information: IMyInformationFromCreate
+  ): Promise<IResponseMyInformation> {
+    const { id, ...saveInformation } = information;
+
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME_UPDATE}/${id}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseMyInformation;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+        body: JSON.stringify(saveInformation),
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+      const response = (await res.json()) as IMyInformation;
+      result.data = response;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
 }
 
 const httpServices = new HttpService();

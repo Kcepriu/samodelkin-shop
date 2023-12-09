@@ -1,0 +1,49 @@
+.wrapContactInfo {
+  @apply mt-6;
+}
+
+.titleSecond {
+  @apply text-title_second
+  font-title_second
+  leading-title_second;
+}
+
+.form {
+  @apply mt-6;
+}
+
+.lineContacts {
+  @apply flex 
+  flex-col
+  gap-3 
+  min-h-[80px]
+  max-w-[50%];
+}
+
+.halfLineContacts {
+  @apply flex gap-12 w-full justify-between 
+  min-h-[80px]
+  max-w-[50%];
+}
+
+.inputFields {
+  /* @apply w-[320px]; */
+  @apply w-full;
+}
+
+.lineContacts .button {
+  @apply px-8
+  py-3
+  w-[50%]
+  mt-4
+  ml-auto
+  mr-auto
+  rounded-lg 
+  bg-blue_action
+  text-white  
+  hover:bg-blue_action_button
+  hover:shadow-gray-500/80
+  hover:shadow-lg  
+
+  transition;
+}

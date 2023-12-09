@@ -1,0 +1,11 @@
+.wrapTitle {
+  @apply px-6 py-3
+  border-b
+  border-gray_our;
+}
+
+.title {
+  @apply text-title_checkout
+  font-title_checkout
+  leading-title_checkout;
+}

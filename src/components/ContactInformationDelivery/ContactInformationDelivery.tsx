@@ -125,9 +125,6 @@ const ContactInformationDelivery: FC<IProps> = ({
 
   return (
     <>
-      <div className={style.wrapTitle}>
-        <h1 className={style.title}>Оформлення замовлення</h1>
-      </div>
       <div className={style.wrapContactInfo}>
         <h2 className={style.titleSecond}>Контактна інформація</h2>
       </div>
@@ -189,6 +186,11 @@ const ContactInformationDelivery: FC<IProps> = ({
           </div>
         </div>
 
+        <div className={style.wrapContactInfo}>
+          <h2 className={style.titleSecond}>Адреса доставки</h2>
+        </div>
+        {/* Delivery */}
+
         <div className={style.wrapDeliveryService}>
           <ChoiceDelivery
             deliveryServices={deliveryServices}
@@ -197,7 +199,6 @@ const ContactInformationDelivery: FC<IProps> = ({
           />
         </div>
 
-        {/* Delivery */}
         <div className={style.wrapDelivery}>
           {values.deliveryServicesId === DELIVERY_SERVICES.CURRIER && (
             <div className={style.lineContacts}>

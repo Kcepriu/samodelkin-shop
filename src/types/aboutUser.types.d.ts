@@ -64,3 +64,27 @@ interface IAboutUserStore {
   contactInformation: IContactInformationForCreate;
   addressDelivery: IAddressDeliveryForCreate;
 }
+
+interface IResponseMyInformation {
+  code: number;
+  data: IMyInformation | null;
+}
+interface IMyInformation {
+  id: number;
+  username: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  createdAt: string;
+  updatedAt: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+}
+
+interface IMyInformationFromCreate {
+  id: number;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+}

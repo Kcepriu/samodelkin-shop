@@ -204,3 +204,34 @@ export const saveAboutUser = async (
     aboutUser,
   };
 };
+
+// * About ME
+export const getAboutMe = async (): Promise<{
+  isAuth: boolean;
+  infoAboutMe: IMyInformation | null;
+}> => {
+  const { code, data: response } = await httpServices.getAboutMe();
+
+  const infoAboutMe = code === 200 && !!response ? response : null;
+
+  return {
+    isAuth: code === 200,
+    infoAboutMe,
+  };
+};
+
+export const saveAboutMe = async (
+  information: IMyInformationFromCreate
+): Promise<{
+  isAuth: boolean;
+  infoAboutMe: IMyInformation | null;
+}> => {
+  const { code, data: response } = await httpServices.saveAboutMe(information);
+
+  const infoAboutMe = code === 200 && !!response ? response : null;
+
+  return {
+    isAuth: code === 200,
+    infoAboutMe,
+  };
+};
