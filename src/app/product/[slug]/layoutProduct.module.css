@@ -7,7 +7,7 @@
 }
 
 .titleSection {
-  @apply text-title_section
-    font-title_section 
-    leading-title_section;
+  @apply text-size_32
+    font-weight_400 
+    leading-line_height_16;
 }

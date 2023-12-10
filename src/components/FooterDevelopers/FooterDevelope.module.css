@@ -20,7 +20,7 @@
 
 .link {
   @apply flex gap-2  items-center
-  hover:text-action_color;
+  hover:text-blue_action;
 }
 
 .author {
@@ -32,7 +32,7 @@
 }
 
 .link:hover .author {
-  @apply text-action_color;
+  @apply text-blue_action;
 }
 
 .link:hover img {

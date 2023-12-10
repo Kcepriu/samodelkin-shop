@@ -78,9 +78,9 @@
 }
 
 .icon {
-  @apply text-icon_back_color;
+  @apply text-red-500;
 }
 
 .buttonDelete:hover .icon {
-  @apply text-action_color;
+  @apply text-blue_action;
 }

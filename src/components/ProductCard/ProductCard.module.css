@@ -103,7 +103,7 @@
 }
 
 .isNoAvailable {
-  @apply text-dark_blue;
+  @apply text-light_gray;
 }
 
 .typeProduct {
@@ -112,10 +112,11 @@
 }
 
 .price {
-  @apply font-robotoSerif
+  @apply font-inter
   text-size_20 
   font-weight_400
-  leading-line_height_17;
+  leading-line_height_21
+  text-blue_action;
 }
 
 .wrapPrice {

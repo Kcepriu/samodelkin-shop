@@ -5,10 +5,16 @@ import IconWithCount from "../IconWithCount/IconWithCount";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
 import useCartComponent from "@/hooks/useCartComponent";
+import useModalMessage from "@/hooks/useModalMessage";
 
 import style from "./ButtonOpenCart.module.css";
 
 const ButtonOpenCart: FC = () => {
+  const {
+    MessageComponent,
+    setShowModal: setShowModalMessage,
+    setTextMessage,
+  } = useModalMessage();
   const cart = useStore(useCart, (state) => state.products);
   const { CartComponent, setShowModal } = useCartComponent();
 
@@ -16,7 +22,8 @@ const ButtonOpenCart: FC = () => {
     if (cart?.length) {
       setShowModal(true);
     } else {
-      // TODO Показати модалку що корзина породжня
+      setTextMessage("Корзина порожня");
+      setShowModalMessage(true);
     }
   };
 
@@ -31,6 +38,7 @@ const ButtonOpenCart: FC = () => {
         />
       </button>
       {CartComponent}
+      {MessageComponent}
     </>
   );
 };

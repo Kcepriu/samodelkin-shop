@@ -2,9 +2,9 @@
   @apply flex justify-between
   mt-6
   pb-2
-  text-type_add_info
-  font-type_add_info
-  leading-type_add_info;
+  text-size_20
+  font-weight_300
+  leading-line_height_20;
 }
 
 .wrapButton .buttonCheckout {

@@ -1,7 +1,7 @@
 .wrapCart {
   @apply py-8
   px-10
-  text-text_black;
+  text-black;
 }
 
 .wrapTitle {
@@ -20,7 +20,7 @@
   @apply mt-8 
   
   max-h-[370px]
-  text-text_gray 
+  text-red-500
   flex flex-col gap-4
   overflow-y-auto;
 }
@@ -52,7 +52,7 @@
   py-3
   text-black
   transition
-  hover:text-action_color;
+  hover:text-blue_action;
 }
 
 .iconBack {
@@ -60,7 +60,7 @@
 }
 
 .buttonBack:hover .iconBack {
-  @apply text-action_color;
+  @apply text-blue_action;
 }
 
 .wrapButton .buttonAccept {
@@ -81,9 +81,9 @@
 }
 
 .icon {
-  @apply text-icon_back_color transition;
+  @apply text-red-500 transition;
 }
 
 .buttonClean:hover .icon {
-  @apply text-action_color;
+  @apply text-blue_action;
 }

@@ -3,9 +3,9 @@
 }
 
 .titleSecond {
-  @apply text-title_second
-  font-title_second
-  leading-title_second;
+  @apply text-size_16
+  font-weight_500
+  leading-line_height_75;
 }
 
 .form {
@@ -14,9 +14,9 @@
 
 .wrapContacts {
   @apply flex flex-col gap-3
-  text-text_user_info
-  font-text_user_info
-  leading-text_user_info
+  text-size_14
+  font-weight_500
+  leading-line_height_71
   
   border-b
   pb-3;
@@ -31,9 +31,9 @@
 .wrapDelivery {
   @apply mt-5
   flex flex-col gap-3
-  text-text_user_info
-  font-text_user_info
-  leading-text_user_info;
+  text-size_14
+  font-weight_500
+  leading-line_height_71;
 }
 
 .lineContacts {

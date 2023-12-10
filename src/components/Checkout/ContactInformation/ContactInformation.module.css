@@ -5,7 +5,7 @@
 }
 
 .title {
-  @apply text-title_checkout
-  font-title_checkout
-  leading-title_checkout;
+  @apply text-size_22
+  font-weight_600
+  leading-line_height_60;
 }

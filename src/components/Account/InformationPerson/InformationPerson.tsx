@@ -1,18 +1,35 @@
-import { FC } from "react";
+"use client";
+import { FC, useEffect, useState } from "react";
 
+import { useSession } from "next-auth/react";
 import { GoPerson } from "react-icons/go";
-
-import style from "./InformationPerson.module.css";
-import { UserWithField } from "@/types/next-auth";
+import useAboutMe from "@/stores/aboutMe.store";
+import useStore from "@/helpers/useStore";
 import ButtonSignOut from "./ButtonSignOut/ButtonSignOut";
+import style from "./InformationPerson.module.css";
 
-interface IProps {
-  user: UserWithField | undefined;
-}
+const InformationPerson: FC = () => {
+  const infoAboutMe = useStore(useAboutMe, (state) => state.infoAboutMe);
+  const { data: session } = useSession();
+  const user = session?.user;
 
-const InformationPerson: FC<IProps> = ({ user }) => {
+  const [userName, setUserName] = useState("");
+
   const emailUser = !!user ? user.email : "";
-  const userName = !!user ? user.fullName! : "Гість";
+
+  useEffect(() => {
+    if (!user) {
+      setUserName("Гість");
+      return;
+    }
+
+    if (!!infoAboutMe && (infoAboutMe.lastName || infoAboutMe.firstName)) {
+      setUserName(`${infoAboutMe.lastName} ${infoAboutMe.firstName}`);
+      return;
+    }
+
+    setUserName(user.fullName!);
+  }, [infoAboutMe, user]);
 
   return (
     <div className={style.wrapUserInfo}>

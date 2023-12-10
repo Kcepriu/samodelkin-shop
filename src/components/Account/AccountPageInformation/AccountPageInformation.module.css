@@ -3,9 +3,9 @@
 }
 
 .titleSecond {
-  @apply text-title_second
-  font-title_second
-  leading-title_second;
+  @apply text-size_16
+  font-weight_500
+  leading-line_height_75;
 }
 
 .form {

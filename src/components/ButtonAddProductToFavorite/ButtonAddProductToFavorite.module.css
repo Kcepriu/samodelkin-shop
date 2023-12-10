@@ -3,7 +3,7 @@
 }
 
 .icon {
-  @apply text-icon_color transition;
+  @apply text-black transition;
 }
 
 .icon:hover {
