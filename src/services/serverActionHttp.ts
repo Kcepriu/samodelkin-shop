@@ -207,7 +207,7 @@ export const saveAboutUser = async (
 
 // * About ME
 export const getAboutMe = async (): Promise<{
-  isAuth: boolean;
+  isError: boolean;
   infoAboutMe: IMyInformation | null;
 }> => {
   const { code, data: response } = await httpServices.getAboutMe();
@@ -215,7 +215,7 @@ export const getAboutMe = async (): Promise<{
   const infoAboutMe = code === 200 && !!response ? response : null;
 
   return {
-    isAuth: code === 200,
+    isError: code !== 200,
     infoAboutMe,
   };
 };
@@ -223,7 +223,7 @@ export const getAboutMe = async (): Promise<{
 export const saveAboutMe = async (
   information: IMyInformationFromCreate
 ): Promise<{
-  isAuth: boolean;
+  isError: boolean;
   infoAboutMe: IMyInformation | null;
 }> => {
   const { code, data: response } = await httpServices.saveAboutMe(information);
@@ -231,7 +231,7 @@ export const saveAboutMe = async (
   const infoAboutMe = code === 200 && !!response ? response : null;
 
   return {
-    isAuth: code === 200,
+    isError: code !== 200,
     infoAboutMe,
   };
 };

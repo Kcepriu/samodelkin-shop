@@ -40,6 +40,7 @@ const config: Config = {
 
         button_active_page: "#DDDDDD",
         button_background_favorite: "#ffffffb3",
+        modal_overlay: "#1B1919",
       },
       screens: {
         xs: "320px",
@@ -134,6 +135,7 @@ const config: Config = {
         line_height_21: "1.21",
         line_height_22: "1.22",
         line_height_24: "1.24",
+        line_height_25: "1.25",
         line_height_28: "1.28",
         line_height_29: "1.29",
         line_height_31: "1.31",

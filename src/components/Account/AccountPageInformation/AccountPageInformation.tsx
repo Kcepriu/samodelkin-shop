@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import useAboutMe from "@/stores/aboutMe.store";
 import useStore from "@/helpers/useStore";
 import { validationSchema } from "./validationSchema";
+import { showNotifyFailure } from "@/services/notification";
+import useModalMessage from "@/hooks/useModalMessage";
 import style from "./AccountPageInformation.module.css";
 
 const emptyAboutMe = {
@@ -16,10 +18,18 @@ const emptyAboutMe = {
 };
 
 const AccountPageInformation: FC = () => {
+  const { MessageComponent, setShowModal, setTextMessage } = useModalMessage();
   // * Use Store
   // * Store Info About User
   const infoAboutMe = useStore(useAboutMe, (state) => state.infoAboutMe);
-  const saveAboutMe = useAboutMe((state) => state.saveAboutMe);
+  const isError = useStore(useAboutMe, (state) => state.isError);
+  const isSavedOk = useStore(useAboutMe, (state) => state.isSavedOk);
+
+  const [saveAboutMe, setIsError, setIsSavedOk] = useAboutMe((state) => [
+    state.saveAboutMe,
+    state.setIsError,
+    state.setIsSavedOk,
+  ]);
 
   // * Session
   const { data: session } = useSession();
@@ -60,9 +70,23 @@ const AccountPageInformation: FC = () => {
     setFieldValue("id", user?.id);
   }, [user, setFieldValue]);
 
+  useEffect(() => {
+    if (!isError) return;
+    setIsError(false);
+
+    showNotifyFailure("Не вдалося зберегти дані");
+  }, [isError, setIsError]);
+
+  useEffect(() => {
+    if (!isSavedOk) return;
+    setIsSavedOk(false);
+    setTextMessage("Дані збережені");
+    setShowModal(true);
+  }, [isSavedOk, setIsSavedOk, setShowModal, setTextMessage]);
+
   return (
     <>
-      {!!user && (
+      {!!user && !!infoAboutMe && (
         <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.lineContacts}>
             <TextField
@@ -109,6 +133,7 @@ const AccountPageInformation: FC = () => {
           </div>
         </form>
       )}
+      {MessageComponent}
     </>
   );
 };

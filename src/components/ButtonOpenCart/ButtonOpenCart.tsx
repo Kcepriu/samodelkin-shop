@@ -12,9 +12,17 @@ const ButtonOpenCart: FC = () => {
   const cart = useStore(useCart, (state) => state.products);
   const { CartComponent, setShowModal } = useCartComponent();
 
+  const handleOpenCart = () => {
+    if (cart?.length) {
+      setShowModal(true);
+    } else {
+      // TODO Показати модалку що корзина породжня
+    }
+  };
+
   return (
     <>
-      <button type="button" onClick={() => setShowModal(true)}>
+      <button type="button" onClick={handleOpenCart}>
         <IconWithCount
           Icon={BsCart3}
           sizeIcon={32}

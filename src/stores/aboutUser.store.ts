@@ -87,8 +87,6 @@ const useAboutUser = create<IStateAboutUser>()((set, get) => ({
       newInformation,
       get().isAuth
     );
-    // TODO Додати інформацію про помилку
-
     return set((state) => ({
       infoAboutUser: newInformation,
       isAuth: isAuth,
