@@ -83,7 +83,7 @@
 }
 
 .iconBack {
-  @apply text-red-500; transition;
+  @apply text-gray_our; transition;
 }
 
 .buttonBack:hover .iconBack {

@@ -20,7 +20,7 @@
   @apply mt-8 
   
   max-h-[370px]
-  text-red-500
+  text-black
   flex flex-col gap-4
   overflow-y-auto;
 }
@@ -42,7 +42,7 @@
   pr-11
   
   font-inter
-  text-size_20  
+  text-size_18  
   font-weight_300
   leading-line_height_21;
 }
@@ -78,10 +78,6 @@
 
 .buttonClean {
   @apply p-2;
-}
-
-.icon {
-  @apply text-red-500 transition;
 }
 
 .buttonClean:hover .icon {

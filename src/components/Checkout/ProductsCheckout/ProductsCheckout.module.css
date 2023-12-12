@@ -17,7 +17,7 @@
 }
 
 .icon {
-  @apply text-red-500;
+  @apply text-gray_our;
 }
 
 .buttonClean:hover .icon {
@@ -26,7 +26,7 @@
 
 .wrapProduct {
   @apply mt-5   
-  text-red-500
+  text-black
   flex flex-col gap-4
   max-h-[360px]
   overflow-y-auto;
