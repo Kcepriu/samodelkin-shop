@@ -1,9 +1,15 @@
-.wrapSwiper {
+/* .wrapSwiper {
   @apply w-full 
   sm:max-w-screen-sm 
   md:max-w-screen-md 
   lg:max-w-[924px]
   mt-4;
+} */
+
+.wrapSwiper {
+  @apply w-full 
+  overflow-x-hidden
+  p-2;
 }
 
 .elementCard {
@@ -11,13 +17,13 @@
 }
 
 .wrapButton {
-  @apply flex gap-6 mt-8 justify-center;
+  @apply flex 
+  gap-6 
+  mt-4 
+  justify-center;
 }
 
-.buttonPrev {
-  @apply bg-slate-400;
-}
-
-.buttonNext {
-  @apply bg-slate-400;
+.buttonPrevNext {
+  @apply cursor-pointer
+  hover:text-blue_action;
 }

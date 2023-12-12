@@ -17,16 +17,16 @@
 }
 
 .icon {
-  @apply text-icon_back_color;
+  @apply text-gray_our;
 }
 
 .buttonClean:hover .icon {
-  @apply text-action_color;
+  @apply text-blue_action;
 }
 
 .wrapProduct {
   @apply mt-5   
-  text-text_gray 
+  text-black
   flex flex-col gap-4
   max-h-[360px]
   overflow-y-auto;
@@ -36,20 +36,20 @@
   @apply mt-6 
   flex justify-between 
   
-  text-review_text
-  font-review_text
-  leading-review_text;
+  text-size_14
+  font-weight_300
+  leading-line_height_29;
 }
 .wrapTotal {
   @apply mt-7
   flex justify-between
-  text-review_text
-  font-review_text
-  leading-review_text;
+  text-size_14
+  font-weight_300
+  leading-line_height_29;
 }
 
 .textAccent {
-  @apply text-title_second
-  font-title_second
-  leading-text_header;
+  @apply text-size_16
+  font-weight_500
+  leading-line_height_20;
 }

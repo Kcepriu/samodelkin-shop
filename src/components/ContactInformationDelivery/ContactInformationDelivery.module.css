@@ -1,0 +1,57 @@
+.wrapContactInfo {
+  @apply mt-6;
+}
+
+.titleSecond {
+  @apply text-size_16
+  font-weight_500
+  leading-line_height_75;
+}
+
+.form {
+  @apply mt-6;
+}
+
+.wrapContacts {
+  @apply flex flex-col gap-3
+  text-size_14
+  font-weight_500
+  leading-line_height_71
+  
+  border-b
+  pb-3;
+}
+
+.wrapDeliveryService {
+  @apply mt-5
+  border-b
+  pb-5;
+}
+
+.wrapDelivery {
+  @apply mt-5
+  flex flex-col gap-3
+  text-size_14
+  font-weight_500
+  leading-line_height_71;
+}
+
+.lineContacts {
+  @apply flex gap-12 w-full justify-between 
+  min-h-[80px];
+}
+
+.inputFields {
+  /* @apply w-[320px]; */
+  @apply w-full;
+}
+.inputComment {
+  @apply w-full;
+}
+
+.input {
+  @apply px-4 py-3
+  border 
+  border-light_gray
+  rounded-md;
+}

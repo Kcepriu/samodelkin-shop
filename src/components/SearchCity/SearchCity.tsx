@@ -27,8 +27,7 @@ const SearchCity = () => {
 
   // };
 
-  const debouncedChangeCity = useDebouncedCallback((value) => {
-    console.log("😋", value);
+  const debouncedChangeCity = useDebouncedCallback((value) => {    
     getData(value);
   }, 1000);
 

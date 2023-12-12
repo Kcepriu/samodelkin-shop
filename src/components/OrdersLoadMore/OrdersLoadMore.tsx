@@ -31,7 +31,7 @@ const OrdersLoadMore: FC<IProps> = ({ pagination }) => {
   if (countTotalPage === 1) return null;
 
   return (
-    <>
+    <div className={style.wrapOrdersLoadMore}>
       <Orders orders={orders} />
       <div className={style.wrapButton}>
         {currentPage < countTotalPage && (
@@ -41,7 +41,7 @@ const OrdersLoadMore: FC<IProps> = ({ pagination }) => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

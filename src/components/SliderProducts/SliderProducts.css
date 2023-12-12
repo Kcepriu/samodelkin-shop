@@ -2,10 +2,11 @@
 .mySwiperProduct.swiper {
   height: 100%;
   width: 100%;
+
   box-sizing: border-box;
-  /* overflow: visible; */
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: visible;
+  /* overflow-x: clip;
+  overflow-y: visible; */
 }
 
 .mySwiperProduct .swiper-slide {
@@ -29,7 +30,7 @@
   height: 100%; */
 }
 
-/* .mySwiperProduct .swiper-button-prev {
+.mySwiperProduct .swiper-button-prev {
   left: -20px;
   z-index: 20;
-} */
+}

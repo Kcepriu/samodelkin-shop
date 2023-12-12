@@ -1,4 +1,4 @@
-import { IContentArticle } from "@/types/articles.type";
+import { IContentArticle } from "@/types/articles.types";
 import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { TypeDescription } from "@/types/generalTypes/articles.type";

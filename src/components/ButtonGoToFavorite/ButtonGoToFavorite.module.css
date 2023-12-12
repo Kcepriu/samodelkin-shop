@@ -3,9 +3,9 @@
 }
 
 .icon:hover {
-  @apply text-action_color;
+  @apply text-blue_action;
 }
 
 .link {
-  @apply transition hover:text-action_color;
+  @apply transition hover:text-blue_action;
 }

@@ -74,7 +74,7 @@ const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
     let { isAuth, products } = await getCart();
     if (!isAuth) {
       await signOut();
-      return { isAuth, products };
+      return { isAuth, productsFromLocalStorage };
     }
 
     const missingProducts = getMissingProducts(
@@ -154,7 +154,7 @@ const useCart = create<IStateCart>()((set, get) => ({
       isAuth: isAuth,
     }));
   },
-  // ! Change Language Product
+  // * Change Language Product
   changeLanguageProduct: async (
     changeProduct: IProduct,
     language: ILanguage

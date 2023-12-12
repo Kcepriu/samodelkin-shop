@@ -47,18 +47,24 @@
 .wrapDetails {
   @apply flex 
   gap-5
-  mt-4
+  mt-4  
   items-center
   font-roboto
   text-size_20  
   font-weight_300
   leading-line_height_17;
 }
+
+.wrapInformation {
+  @apply grow;
+}
+
 .wrapPrice {
   @apply flex 
   gap-16 
   justify-between
   items-center
+  mt-4
   grow;
 }
 
@@ -72,9 +78,9 @@
 }
 
 .icon {
-  @apply text-icon_back_color;
+  @apply text-gray_our;
 }
 
 .buttonDelete:hover .icon {
-  @apply text-action_color;
+  @apply text-blue_action;
 }

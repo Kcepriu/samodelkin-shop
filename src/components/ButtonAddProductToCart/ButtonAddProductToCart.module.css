@@ -3,7 +3,7 @@
 }
 
 .icon {
-  @apply hover:text-action_color
+  @apply hover:text-blue_action
   transition
   data-[in-cart=true]:text-blue_action_button;
 }

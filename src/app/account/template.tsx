@@ -15,7 +15,7 @@ const Layout: FC<IProps> = async ({ children }): Promise<JSX.Element> => {
   const user = session?.user;
   return (
     <>
-      <InformationPerson user={user} />
+      <InformationPerson />
 
       <div className={style.wrapPage}>
         <div className={style.wrapListPage}>

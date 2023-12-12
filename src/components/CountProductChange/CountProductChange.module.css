@@ -3,13 +3,13 @@
   gap-1
   justify-between 
   items-center
-  text-text_black
+  text-black
 
   w-[74px];
 }
 
 .icon {
-  @apply text-icon_back_color
+  @apply text-gray_our
   transition
-   hover:text-action_color;
+   hover:text-blue_action;
 }

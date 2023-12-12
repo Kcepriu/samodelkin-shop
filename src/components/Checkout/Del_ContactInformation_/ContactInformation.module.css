@@ -2,20 +2,20 @@
   @apply px-6
   py-3
   border-b
-  border-b-border
-  text-text_black
-  text-title_checkout
-  font-title_checkout
-  leading-title_checkout;
+  border-b-light_gray
+  text-black
+  text-size_22
+  font-weight_600
+  leading-line_height_60;
 }
 
 .titleSecond {
   @apply mt-6
   
-  text-text_black
-  text-title_second
-  font-title_second
-  leading-title_second;
+  text-black
+  text-size_16
+  font-weight_500
+  leading-line_height_75;
 }
 
 .inputText {
@@ -50,9 +50,9 @@
   @apply flex justify-between
   mt-6
   pb-2
-  text-type_add_info
-  font-type_add_info
-  leading-type_add_info;
+  text-size_20
+  font-weight_300
+  leading-line_height_20;
 }
 
 .wrapButton .buttonCheckout {
@@ -60,11 +60,11 @@
   py-3
   min-w-[264px]
   rounded-lg 
-  bg-button_dark_background
+  bg-blue_action
   text-white
   
   
-  hover:text-action_color
+  hover:text-blue_action
    hover:shadow-gray-500/80
   hover:shadow-lg  
 
@@ -79,13 +79,13 @@
   @apply flex gap-3 
   py-3
   transition
-  hover:text-action_color;
+  hover:text-blue_action;
 }
 
 .iconBack {
-  @apply text-icon_back_color transition;
+  @apply text-gray_our; transition;
 }
 
 .buttonBack:hover .iconBack {
-  @apply text-action_color;
+  @apply text-blue_action;
 }

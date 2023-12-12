@@ -30,7 +30,7 @@ const ChoiceDelivery: FC<IProps> = ({
               // className={styles.image}
               src={urlLogo}
               alt={delivery?.attributes?.title || "Logo delivery"}
-              height={0}
+              height={80}
               width={80}
             />
           </li>

@@ -1,7 +1,7 @@
 .wrapElement {
   @apply relative
    transition    
-   hover:text-icon_color;
+   hover:text-black;
 }
 .textCount {
   @apply absolute 
@@ -11,8 +11,7 @@
   border 
   rounded-full 
   transition
-  bg-blue_action_button
-  
+  bg-blue_action_button  
   text-center;
 }
 .icon:hover .textCount {

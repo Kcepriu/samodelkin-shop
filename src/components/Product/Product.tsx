@@ -100,7 +100,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
           <div className={style.wrapAvailable}>
             {!!attributes.available ? (
-              <p className={style.isAvailable}>Є в наявності</p>
+              <p className={style.isAvailable}>В наявності</p>
             ) : (
               <p>Немає в наявності</p>
             )}

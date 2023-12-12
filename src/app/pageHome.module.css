@@ -27,8 +27,7 @@
 }
 
 .wrapSwiper {
-  @apply mt-8
-  
+  @apply mt-8  
   w-full 
   sm:max-w-screen-sm 
   md:max-w-screen-md 

@@ -13,7 +13,7 @@
 }
 
 .header {
-  @apply bg-main_background;
+  @apply bg-dark_blue;
 }
 
 .wrapBody {
@@ -25,5 +25,5 @@
 }
 
 .wrapFooter {
-  @apply mt-20 bg-main_background;
+  @apply mt-20 bg-dark_blue;
 }

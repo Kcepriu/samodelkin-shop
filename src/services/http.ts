@@ -8,7 +8,7 @@ import {
   IResponseCategoryDescription,
   IResponseProductDescription,
   IResponseMainPage,
-} from "@/types/articles.type";
+} from "@/types/articles.types";
 
 class HttpService {
   private baseUrl: string = "";
@@ -897,6 +897,164 @@ class HttpService {
       return result.data;
     } catch {
       return [];
+    }
+  }
+
+  // * About User
+  async getAboutUser(): Promise<IResponseCreateAboutUser> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_USER}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCreateAboutUser;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IResponseAboutUser;
+
+      result.data =
+        !!response && response.data.length > 0 ? response.data[0] : null;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  async saveAboutUser(
+    information: IAboutUserForCreate
+  ): Promise<IResponseCreateAboutUser> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_USER}`;
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseCreateAboutUser;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+        body: JSON.stringify(information),
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+      const response = (await res.json()) as IResponseCreateAboutUser;
+      result.data = response.data || null;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  // * About Me
+  async getAboutMe(): Promise<IResponseMyInformation> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseMyInformation;
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IMyInformation;
+
+      result.data = response;
+
+      return result;
+    } catch {
+      return result;
+    }
+  }
+
+  async saveAboutMe(
+    information: IMyInformationFromCreate
+  ): Promise<IResponseMyInformation> {
+    const { id, ...saveInformation } = information;
+
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME_UPDATE}/${id}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      code: 401,
+      data: null,
+    } as IResponseMyInformation;
+
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+        body: JSON.stringify(saveInformation),
+      });
+
+      result.code = res.status;
+
+      if (!res.ok) {
+        return result;
+      }
+      const response = (await res.json()) as IMyInformation;
+      result.data = response;
+
+      return result;
+    } catch {
+      return result;
     }
   }
 }

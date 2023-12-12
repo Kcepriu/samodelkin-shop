@@ -5,21 +5,18 @@
   mx-auto 
   flex justify-center 
   items-center z-50  
-  bg-opacity-95
-  bg-dark_blue;
+  bg-opacity-60
+  bg-modal_overlay;
 }
 
 .modalContainer {
   @apply relative 
-  /* px-5 
-  py-5   */
   max-w-[95%] 
   min-w-[250px] 
-  rounded-lg 
-  border 
+  rounded-lg   
   shadow-lg 
-  overflow-y-auto
-  bg-white;
+  overflow-y-auto  
+   bg-white;
 }
 
 .modalCloseBtn {
@@ -27,8 +24,12 @@
   top-6 
   right-6 
   block 
-  w-6 h-6 border-none cursor-pointer 
+  w-6 h-6 
+  border-none 
+  cursor-pointer 
   transition
-  hover:scale-110
+  hover:scale-110    
+  data-[is-dark=true]:text-white
+  data-[is-dark=true]:hover:text-blue_action
   hover:text-blue_action;
 }

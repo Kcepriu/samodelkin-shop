@@ -1,7 +1,7 @@
 .wrapContent {
   @apply mt-12
   flex flex-col gap-4
-  text-text_add_info 
-  font-text_add_info 
-  leading-text_add_info;
+  text-size_18
+  font-weight_300
+  leading-line_height_17;
 }

@@ -1,6 +1,6 @@
 .logo {
   @apply transition
-  text-icon_color hover:text-action_color;
+  text-black hover:text-blue_action;
 }
 
 .wrapHeader {
@@ -22,11 +22,11 @@
 }
 
 .link {
-  @apply text-text_white transition hover:text-action_color;
+  @apply text-text_white transition hover:text-blue_action;
 }
 
 .icon {
-  @apply text-text_white transition hover:text-action_color;
+  @apply text-text_white transition hover:text-blue_action;
 }
 
 /* 

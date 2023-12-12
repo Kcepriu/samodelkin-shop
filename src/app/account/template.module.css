@@ -1,5 +1,6 @@
 .wrapPage {
-  @apply mt-3 flex gap-20;
+  @apply mt-3 
+  flex gap-20;
 }
 
 .wrapListPage {
@@ -7,6 +8,6 @@
 }
 
 .wrapContentPage {
-  @apply grow 
-  outline outline-1 outline-orange-800;
+  @apply grow
+  pb-4;
 }

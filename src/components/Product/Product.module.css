@@ -81,7 +81,8 @@
   font-robotoSerif
   text-size_16
   font-weight_400
-  leading-line_height_21;
+  leading-line_height_21
+  text-light_gray;
 }
 
 .isAvailable {

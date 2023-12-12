@@ -1,4 +1,4 @@
-import { IContentImageArticle } from "@/types/articles.type";
+import { IContentImageArticle } from "@/types/articles.types";
 import { FC } from "react";
 import Markdown from "react-markdown";
 // import Markdown from "markdown-to-jsx";

@@ -38,9 +38,19 @@
   @apply grow h-full
   py-2;
 }
+
+.wrapInformation {
+  @apply flex;
+}
+
+.wrapInformationProduct {
+  @apply grow;
+}
+
 .wrapDetails {
   @apply flex justify-between
-  mt-4 gap-2;
+  mt-4 gap-2
+  grow;
 }
 
 .totalSum {
@@ -53,9 +63,9 @@
 }
 
 .icon {
-  @apply text-icon_back_color;
+  @apply text-gray_our;
 }
 
 .buttonDelete:hover .icon {
-  @apply text-action_color;
+  @apply text-blue_action;
 }

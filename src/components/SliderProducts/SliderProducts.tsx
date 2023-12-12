@@ -1,7 +1,8 @@
 "use client";
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { PiArrowCircleLeft, PiArrowCircleRight } from "react-icons/pi";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
 
@@ -22,14 +23,28 @@ interface IProps {
 }
 
 const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
-    <>
+    <div className={style.wrapSwiper}>
       <Swiper
         loop={true}
         navigation={{
           enabled: true,
-          // nextEl: style.buttonPrev,
-          // prevEl: ".swiper-button-prev",
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          if (
+            typeof swiper.params.navigation !== "boolean" &&
+            !!swiper.params.navigation
+          ) {
+            const navigation = swiper.params.navigation;
+            navigation.prevEl = prevRef.current;
+            navigation.nextEl = nextRef.current;
+          }
+          swiper.navigation.update();
         }}
         modules={[Navigation]}
         className="mySwiperProduct"
@@ -55,16 +70,16 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
             </div>
           </SwiperSlide>
         ))}
+        <div className={style.wrapButton}>
+          <div className={style.buttonPrevNext} ref={prevRef}>
+            <PiArrowCircleLeft size={32} />
+          </div>
+          <div className={style.buttonPrevNext} ref={nextRef}>
+            <PiArrowCircleRight size={32} />
+          </div>
+        </div>
       </Swiper>
-      {/* <div className={style.wrapButton}>
-        <button className={style.buttonPrev} type="button">
-          Prev
-        </button>
-        <button className="swiper-button-prev" type="button">
-          Next
-        </button>
-      </div> */}
-    </>
+    </div>
   );
 };
 

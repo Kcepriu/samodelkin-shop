@@ -17,7 +17,7 @@ const ProductAddInfoCharacteristics: FC<IProps> = ({ product }) => {
       </p>
       <p>
         <span>price: </span>
-        {product.attributes.price} грн
+        {product.attributes.price} ₴
       </p>
       <p>
         <span>available: </span>

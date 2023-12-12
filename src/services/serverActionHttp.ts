@@ -2,6 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 import httpServices from "./http";
+import httpApiNovaPoshta from "./httpApiNovaPoshta";
 import { TAGS_DATA } from "@/constants/app-keys.const";
 
 // * get Product By List
@@ -151,4 +152,86 @@ export const getOrders = async (page = "1") => {
   const orders = code === 200 ? response : null;
 
   return orders;
+};
+
+export const searchCityNP = async (nameCity: string) => {
+  const response = await httpApiNovaPoshta.searchCity(nameCity);
+
+  return response;
+};
+
+export const searchWarehouses = async (
+  idCity: string,
+  nameWarehouses: string
+) => {
+  const response = await httpApiNovaPoshta.searchWarehouses(
+    idCity,
+    nameWarehouses
+  );
+
+  return response;
+};
+
+// * About User
+export const getAboutUser = async (): Promise<{
+  isAuth: boolean;
+  aboutUser: IAboutUser | null;
+}> => {
+  const { code, data: response } = await httpServices.getAboutUser();
+
+  const aboutUser = code === 200 && !!response ? response : null;
+
+  return {
+    isAuth: code === 200,
+    aboutUser,
+  };
+};
+
+export const saveAboutUser = async (
+  information: IAboutUserForCreate
+): Promise<{
+  isAuth: boolean;
+  aboutUser: IAboutUser | null;
+}> => {
+  const { code, data: response } = await httpServices.saveAboutUser(
+    information
+  );
+
+  const aboutUser = code === 200 && !!response ? response : null;
+
+  return {
+    isAuth: code === 200,
+    aboutUser,
+  };
+};
+
+// * About ME
+export const getAboutMe = async (): Promise<{
+  isError: boolean;
+  infoAboutMe: IMyInformation | null;
+}> => {
+  const { code, data: response } = await httpServices.getAboutMe();
+
+  const infoAboutMe = code === 200 && !!response ? response : null;
+
+  return {
+    isError: code !== 200,
+    infoAboutMe,
+  };
+};
+
+export const saveAboutMe = async (
+  information: IMyInformationFromCreate
+): Promise<{
+  isError: boolean;
+  infoAboutMe: IMyInformation | null;
+}> => {
+  const { code, data: response } = await httpServices.saveAboutMe(information);
+
+  const infoAboutMe = code === 200 && !!response ? response : null;
+
+  return {
+    isError: code !== 200,
+    infoAboutMe,
+  };
 };
