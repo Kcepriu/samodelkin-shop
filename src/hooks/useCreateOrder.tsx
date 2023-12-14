@@ -26,17 +26,20 @@ const useCreateOrder = () => {
       delivery_service: contactInformationDelivery.deliveryServicesId,
     };
 
-    const contacts = {
-      numberPhone: contactInformationDelivery.phone,
+    const contactInformation = {
+      phoneNumber: contactInformationDelivery.phone,
       email: contactInformationDelivery.email,
-      name: `${contactInformationDelivery.firstName} ${contactInformationDelivery.lastName}`,
-      comment: contactInformationDelivery.comment,
+      firstName: contactInformationDelivery.firstName,
+      lastName: contactInformationDelivery.lastName,
     };
+
+    const comment = contactInformationDelivery.comment;
 
     const convertData = convertOrderToCreate({
       products: cart,
-      contacts,
+      contactInformation,
       addressDelivery,
+      comment,
     });
 
     const { order } = await createOrder(convertData);
