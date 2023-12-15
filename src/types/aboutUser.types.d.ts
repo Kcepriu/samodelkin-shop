@@ -1,3 +1,4 @@
+import { ROLES } from "@/constants/app-keys.const";
 interface IResponseAboutUser {
   data: IAboutUser[];
   code: number;
@@ -87,4 +88,11 @@ interface IMyInformationFromCreate {
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  additional_roles?: IAdditionalRoles[];
+}
+
+interface IAdditionalRoles {
+  id: number;
+  name: string;
+  type: ROLES;
 }

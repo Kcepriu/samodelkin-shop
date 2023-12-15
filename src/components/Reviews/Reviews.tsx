@@ -5,15 +5,17 @@ import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import RatingStar from "./RatingStar/RatingStar";
 import RepliesReviews from "./RepliesReviews/RepliesReviews";
-import AddReplyToReview from "../AddReplyToReview/AddReplyToReview";
 import ImgNoImage from "@/assets/no_images.png";
 import imgPerson from "@/assets/icons/person.svg";
+import ButtonsReview from "./ButtonsReview/ButtonsReview";
+
 import style from "./Reviews.module.css";
 interface IProps {
   reviews: IReview[];
+  isModerator?: boolean;
 }
 
-const Reviews: FC<IProps> = ({ reviews }) => {
+const Reviews: FC<IProps> = ({ reviews, isModerator = false }) => {
   return (
     <div className={style.wrapSection}>
       {reviews.map((review) => {
@@ -61,15 +63,7 @@ const Reviews: FC<IProps> = ({ reviews }) => {
                   {attributes.disAdvantages}
                 </p>
 
-                {/*TODO show only administrator */}
-                {/* <p>
-                  <span className={style.titleField}>Статус:</span>&nbsp;
-                  {String(attributes.isPublication)}
-                </p>
-
-                <div>
-                  <AddReplyToReview reviewsId={id} />
-                </div> */}
+                {isModerator && <ButtonsReview review={review} />}
               </div>
 
               <div className={style.wrapProduct}>

@@ -3,6 +3,9 @@ import { FC } from "react";
 import Link from "next/link";
 import { User } from "next-auth";
 import { usePathname } from "next/navigation";
+import { isRole } from "@/services/roles";
+import useAboutMe from "@/stores/aboutMe.store";
+import useStore from "@/helpers/useStore";
 
 import IconAccountPage from "../IconAccountPage/IconAccountPage";
 
@@ -19,10 +22,16 @@ interface IProps {
 
 const AccountListPages: FC<IProps> = ({ user }) => {
   const pathname = usePathname();
+  const infoAboutMe = useStore(useAboutMe, (state) => state.infoAboutMe);
   return (
     <ul className={style.listPage}>
       {TYPES_ACCOUNT_ADD_INFORMATION.map((element) => {
         if (element.onlyAuth && !user) return null;
+        if (
+          element.fromRoles &&
+          !isRole(element.fromRoles, infoAboutMe?.additional_roles)
+        )
+          return null;
 
         return (
           <li key={element.url} className={style.elementList}>

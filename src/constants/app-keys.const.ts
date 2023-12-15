@@ -98,6 +98,15 @@ export const ACCOUNT_ADD_INFORMATION_ROUTES = {
   FAVORITES: "/favorites",
   REVIEWS: "/reviews",
   REVISED: "/revised",
+  REVIEWS_MODERATOR: "/reviews-moderator",
+};
+
+export enum ROLES {
+  CreateReplyReview = "createReplyReview",
+  FeedbackModerator = "feedbackModerator",
+}
+export const ALL_ROLES = {
+  REVIEWS_MODERATOR: [ROLES.CreateReplyReview, ROLES.FeedbackModerator],
 };
 
 export const TYPES_ACCOUNT_ADD_INFORMATION = [
@@ -125,6 +134,12 @@ export const TYPES_ACCOUNT_ADD_INFORMATION = [
     title: "Моя інформація",
     url: ACCOUNT_ADD_INFORMATION_ROUTES.INFORMATION,
     onlyAuth: true,
+  },
+  {
+    title: "Модерація відгуків",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS_MODERATOR,
+    onlyAuth: true,
+    fromRoles: ALL_ROLES.REVIEWS_MODERATOR,
   },
 ];
 

@@ -2,6 +2,14 @@ import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
 import { TAGS_DATA } from "@/constants/app-keys.const";
+import {
+  IResponseCreateAboutUser,
+  IResponseAboutUser,
+  IAboutUserForCreate,
+  IResponseMyInformation,
+  IMyInformation,
+  IMyInformationFromCreate,
+} from "@/types/aboutUser.types";
 
 import {
   IResponseGeneralPage,

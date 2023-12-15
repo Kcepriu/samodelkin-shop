@@ -10,7 +10,9 @@ export const validationSchema = Yup.object({
     .max(50, "Повинен бути 50 символів або менше")
     .required("Обовʼязкове поле"),
 
-  email: Yup.string().email("Invalid email address"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Обовʼязкове поле"),
 
   phone: Yup.string()
     .matches(phoneRegExp, "Не вірний формат номеру телефону")

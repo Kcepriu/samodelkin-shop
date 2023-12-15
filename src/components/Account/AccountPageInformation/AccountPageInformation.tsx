@@ -8,6 +8,7 @@ import useStore from "@/helpers/useStore";
 import { validationSchema } from "./validationSchema";
 import { showNotifyFailure } from "@/services/notification";
 import useModalMessage from "@/hooks/useModalMessage";
+import { IMyInformationFromCreate } from "@/types/aboutUser.types";
 import style from "./AccountPageInformation.module.css";
 
 const emptyAboutMe = {

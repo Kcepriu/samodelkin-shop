@@ -21,7 +21,7 @@ const AccountPageReviews: FC = async (): Promise<JSX.Element> => {
     <div className={style.wrapReviews}>
       {reviews && reviews.length > 0 && (
         <>
-          <Reviews reviews={reviews} />
+          <Reviews reviews={reviews} isModerator={true} />
           <ReviewsLoadMore
             owner={{ id: userId }}
             paginationReviews={paginationReviews}
