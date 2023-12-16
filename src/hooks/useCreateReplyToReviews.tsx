@@ -29,8 +29,7 @@ const useCreateReplyToReviews = ({
     setShowModal(false);
   };
 
-  const handleCreateReply = async (value: IValuesFormCreateReply) => {
-    console.log("Create reply");
+  const handleCreateReply = async (value: IValuesFormCreateReply) => {    
     const newReply = {
       data: value,
     };

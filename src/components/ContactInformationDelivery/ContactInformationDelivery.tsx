@@ -19,6 +19,9 @@ import {
   IContactInformationDelivery,
   emptyContactInformationDelivery,
 } from "@/types/contactInformationDelivery.types";
+
+import { IAboutUserStore } from "@/types/aboutUser.types";
+
 import style from "./ContactInformationDelivery.module.css";
 
 interface IProps {

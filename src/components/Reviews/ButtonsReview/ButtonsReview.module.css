@@ -1,4 +1,5 @@
 .wrapModerator {
   @apply flex justify-between
-  pr-40;
+  pr-40
+  mt-10;
 }

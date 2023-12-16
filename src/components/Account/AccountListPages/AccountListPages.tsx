@@ -3,7 +3,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { User } from "next-auth";
 import { usePathname } from "next/navigation";
-import { isRole } from "@/services/roles";
+import { isRole } from "@/helpers/roles";
 import useAboutMe from "@/stores/aboutMe.store";
 import useStore from "@/helpers/useStore";
 

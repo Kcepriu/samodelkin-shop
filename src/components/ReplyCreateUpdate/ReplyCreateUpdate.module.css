@@ -1,11 +1,24 @@
 .wrapComponent {
-  @apply flex flex-col w-[600px];
+  @apply flex flex-col 
+  py-12 px-24;
+}
+
+.title {
+  @apply font-robotoSerif
+  text-size_32
+  font-weight_400
+  leading-line_height_17;
 }
 
 .form {
-  @apply flex flex-col gap-4 mt-4;
+  @apply flex flex-col gap-4
+  mt-6
+  w-[608px];
 }
 
+.wrapContactInformation {
+  @apply flex gap-9;
+}
 .wrapField {
   @apply flex flex-col gap-2;
 }
@@ -19,16 +32,40 @@
 }
 
 .wrapButton {
-  @apply flex justify-end gap-8;
+  @apply flex justify-end gap-20;
 }
 
 .button {
   @apply px-4 py-4 
+  w-full
   border 
   rounded-lg
-  w-1/3;
+  font-inter
+  text-size_18
+  font-weight_500
+  leading-line_height_21
+  transition
+  bg-blue_action
+  text-white
+  hover:bg-blue_action_button
+  hover:shadow-lg;
 }
 
-.button:hover {
+/* .button:hover {
   @apply shadow-lg shadow-gray-500/80;
+} */
+
+.buttonWhite {
+  @apply px-4 py-4 
+  w-full
+  border 
+  rounded-lg
+  font-inter
+  text-size_18
+  font-weight_300
+  leading-line_height_21
+  transition
+  hover:text-blue_action_button
+  hover:border-blue_action
+  hover:shadow-lg;
 }

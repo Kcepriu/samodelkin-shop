@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import { isRole } from "@/services/roles";
+import { isRole } from "@/helpers/roles";
 import useAboutMe from "@/stores/aboutMe.store";
 import useStore from "@/helpers/useStore";
 import { ALL_ROLES } from "@/constants/app-keys.const";

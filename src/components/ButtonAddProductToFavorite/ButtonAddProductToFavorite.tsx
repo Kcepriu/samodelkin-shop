@@ -29,7 +29,6 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
     if (isFavorite) {
       await deleteFavorite(product);
     } else {
-      console.log("handleOnClick");
       await addFavorite(product);
     }
   };

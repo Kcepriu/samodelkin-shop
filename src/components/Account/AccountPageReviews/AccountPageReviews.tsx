@@ -14,6 +14,7 @@ const AccountPageReviews: FC = async (): Promise<JSX.Element> => {
   const userId = user?.id || "";
 
   const responseReviews = await httpServices.getUserReviews(userId);
+  console.log("🚀 ~ responseReviews:", responseReviews);
   const reviews = responseReviews?.data;
   const paginationReviews = responseReviews?.meta.pagination;
 
@@ -21,7 +22,11 @@ const AccountPageReviews: FC = async (): Promise<JSX.Element> => {
     <div className={style.wrapReviews}>
       {reviews && reviews.length > 0 && (
         <>
-          <Reviews reviews={reviews} isModerator={true} />
+          <Reviews
+            reviews={reviews}
+            isModerator={true}
+            isCreateReplyReview={true}
+          />
           <ReviewsLoadMore
             owner={{ id: userId }}
             paginationReviews={paginationReviews}

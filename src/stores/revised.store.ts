@@ -39,7 +39,7 @@ const saveRevisedToStorage = async (
   if (isRemoteStorage) {
     const { isAuth } = await saveMarkProduct(
       convertRevisedToCreate(revised),
-      BACKEND_ROUTES.FAVORITES
+      BACKEND_ROUTES.REVISED
     );
     if (!isAuth) await signOut();
     return { isAuth };
@@ -55,7 +55,7 @@ const saveRevisedToStorage = async (
 const fetchRevisedFromStorage = async (isRemoteStorage: boolean) => {
   if (isRemoteStorage) {
     const { isAuth, markProduct: revised } = await getMarkProduct(
-      BACKEND_ROUTES.FAVORITES
+      BACKEND_ROUTES.REVISED
     );
     if (!isAuth) await signOut();
     return { isAuth, revised };

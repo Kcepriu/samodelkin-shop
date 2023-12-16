@@ -115,6 +115,8 @@ class HttpService {
   // * get SALES LEADERS
   async getSalesLeaders(): Promise<IResponseProduct | null> {
     const paramsObj: { [key: string]: string } = {
+      "filters[isPublication][$eq]": "true",
+      "filters[salesLeader][$eq]": "true",
       "pagination[pageSize]": "24",
       "pagination[page]": "1",
     };
@@ -363,15 +365,13 @@ class HttpService {
     const Authorization = accessToken ? `Bearer ${accessToken}` : "";
 
     const paramsObj: { [key: string]: string } = {
-      //TODO add filter USER
-      // "filters[product][id][$eq]": productId,
-      // "filters[isPublication][$eq]": "true",
+      "filters[isPublication][$eq]": "true",
       "pagination[pageSize]": this.countReviewsOnPage,
       "pagination[page]": page,
       "sort[0]": "date:desc",
     };
     const params = new URLSearchParams(paramsObj);
-    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+    const url = `${this.baseUrl}${BACKEND_ROUTES.MY_REVIEWS}?${params}`;
 
     try {
       const res = await fetch(url, {
@@ -382,6 +382,7 @@ class HttpService {
           Authorization: Authorization,
         },
       });
+      console.log("🚀 ~ res:", res);
 
       if (!res.ok) {
         return null;
@@ -425,7 +426,6 @@ class HttpService {
   }
 
   // * Create Reply To Reviews
-  // ! Add auth
   async createReplyToReviews(
     reviewId: string,
     reply: ICreateReply
@@ -458,7 +458,6 @@ class HttpService {
   }
 
   // * Change Status Review
-  // ! Add auth
   async changeStatusReview(
     reviewId: string,
     review: IChangeStatusReview
@@ -491,7 +490,6 @@ class HttpService {
   }
 
   // * Change Reply To Review
-  // ! Add auth
   async changeReplyToReview(
     reviewId: string,
     replyId: string,

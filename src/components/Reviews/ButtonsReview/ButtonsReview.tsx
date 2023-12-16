@@ -12,9 +12,15 @@ import style from "./ButtonsReview.module.css";
 
 interface IProps {
   review: IReview;
+  isModerator: boolean;
+  isCreateReplyReview: boolean;
 }
 
-const ButtonsReview: FC<IProps> = ({ review }) => {
+const ButtonsReview: FC<IProps> = ({
+  review,
+  isModerator,
+  isCreateReplyReview,
+}) => {
   const { id: reviewsId, attributes } = review;
 
   const { ReplyToReviewsComponent, setShowModal } = useCreateReplyToReviews({
@@ -44,22 +50,31 @@ const ButtonsReview: FC<IProps> = ({ review }) => {
       return;
     }
     review.attributes.isPublication = !review.attributes.isPublication;
-    setTextMessage("Статус змінено.");
+    setTextMessage(
+      review.attributes.isPublication
+        ? "Відгук активовано."
+        : "Відгук деактивовано."
+    );
     setShowModalMessage(true);
   };
 
   return (
     <div className={style.wrapModerator}>
-      <ButtonWithIcon
-        Icon={PiCaretCircleRight}
-        handleOnClick={handleCreateReply}
-        text="Відповісти"
-      />
-      <ButtonWithIcon
-        Icon={PiCaretCircleDown}
-        handleOnClick={handleEnableDisableReview}
-        text={attributes.isPublication ? "Деактивувати" : "Схвалити"}
-      />
+      {isCreateReplyReview && (
+        <ButtonWithIcon
+          Icon={PiCaretCircleRight}
+          handleOnClick={handleCreateReply}
+          text="Відповісти"
+        />
+      )}
+      {isModerator && (
+        <ButtonWithIcon
+          Icon={PiCaretCircleDown}
+          handleOnClick={handleEnableDisableReview}
+          text={attributes.isPublication ? "Деактивувати" : "Схвалити"}
+        />
+      )}
+
       {ReplyToReviewsComponent}
       {MessageComponent}
     </div>
