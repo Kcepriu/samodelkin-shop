@@ -46,6 +46,12 @@ export const createReplyToReviews = async (
   return await httpServices.createReplyToReviews(reviewsId, reply);
 };
 
+export const deleteReview = async (
+  reviewId: string
+): Promise<IResponseOneReviews | null> => {
+  return await httpServices.deleteReview(reviewId);
+};
+
 export const changeStatusReview = async (
   reviewId: string,
   review: IChangeStatusReview

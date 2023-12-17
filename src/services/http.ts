@@ -336,6 +336,35 @@ class HttpService {
     }
   }
 
+  async getNotPublishedReviews({
+    onlyNotPublished = true,
+    page = "1",
+  } = {}): Promise<IResponseReviews | null> {
+    const paramsObj: { [key: string]: string } = {
+      "pagination[pageSize]": "50",
+      "pagination[page]": page,
+      "sort[0]": "date:desc",
+    };
+
+    if (onlyNotPublished) {
+      paramsObj["filters[isPublication][$eq]"] = "false";
+    }
+
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
   // * get Info Product Review
   async getInfoProductReview(
     productId: string
@@ -474,6 +503,34 @@ class HttpService {
           Authorization: Authorization,
         },
         body: JSON.stringify(review),
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // * Delete Review
+  async deleteReview(reviewId: string): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}/${reviewId}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    try {
+      const res = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
       });
 
       if (!res.ok) {

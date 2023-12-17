@@ -4,6 +4,7 @@ import { isRole } from "@/helpers/roles";
 import useAboutMe from "@/stores/aboutMe.store";
 import useStore from "@/helpers/useStore";
 import Reviews from "@/components/Reviews/Reviews";
+import FilterReview from "./FilterReview/FilterReview";
 import { ALL_ROLES } from "@/constants/app-keys.const";
 
 interface IProps {
@@ -29,11 +30,14 @@ const ReviewsModerator: FC<IProps> = ({ reviews }) => {
     return null;
 
   return (
-    <Reviews
-      reviews={reviews}
-      isModerator={isModerator}
-      isCreateReplyReview={isCreateReplyReview}
-    />
+    <>
+      <FilterReview />
+      <Reviews
+        reviews={reviews}
+        isModerator={isModerator}
+        isCreateReplyReview={isCreateReplyReview}
+      />
+    </>
   );
 };
 
