@@ -1,5 +1,6 @@
 "use client";
 import { Dispatch, SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Modal } from "@/components/Modal/Modal";
 import ReplyCreateUpdate from "@/components/ReplyCreateUpdate/ReplyCreateUpdate";
 import { createReplyToReviews } from "@/services/serverActionHttp";
@@ -17,6 +18,8 @@ interface IProps {
 const useCreateReplyToReviews = ({
   review,
 }: IProps): ReplyToReviewsComponentHook => {
+  const router = useRouter();
+
   const reviewsId = review.id;
   const {
     MessageComponent,
@@ -29,7 +32,7 @@ const useCreateReplyToReviews = ({
     setShowModal(false);
   };
 
-  const handleCreateReply = async (value: IValuesFormCreateReply) => {    
+  const handleCreateReply = async (value: IValuesFormCreateReply) => {
     const newReply = {
       data: value,
     };
@@ -45,6 +48,7 @@ const useCreateReplyToReviews = ({
 
     setTextMessage("Відповідь створено.");
     setShowModalMessage(true);
+    router.refresh();
   };
 
   const ReplyToReviewsComponent = (

@@ -1,3 +1,11 @@
+import {
+  IAddressDeliveryForCreate,
+  IContactInformationForCreate,
+  IAboutUserStore,
+  IAboutUserForCreate,
+  IAboutUser,
+} from "@/types/aboutUser.types";
+
 export const convertCartToCreate = (products: ICartRow[]): ICartRowForSave => {
   const convertProducts = products.map(({ id, ...row }) => ({
     ...row,
