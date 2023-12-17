@@ -4,6 +4,12 @@ import { revalidateTag } from "next/cache";
 import httpServices from "./http";
 import httpApiNovaPoshta from "./httpApiNovaPoshta";
 import { TAGS_DATA } from "@/constants/app-keys.const";
+import {
+  IAboutUserForCreate,
+  IAboutUser,
+  IMyInformation,
+  IMyInformationFromCreate,
+} from "@/types/aboutUser.types";
 
 // * get Product By List
 export const getProductsByList = async (
@@ -38,6 +44,12 @@ export const createReplyToReviews = async (
   reply: ICreateReply
 ): Promise<IResponseOneReviews | null> => {
   return await httpServices.createReplyToReviews(reviewsId, reply);
+};
+
+export const deleteReview = async (
+  reviewId: string
+): Promise<IResponseOneReviews | null> => {
+  return await httpServices.deleteReview(reviewId);
 };
 
 export const changeStatusReview = async (

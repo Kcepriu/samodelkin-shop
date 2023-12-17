@@ -1,8 +1,8 @@
 import { FC } from "react";
 import AccountPageReviews from "@/components/Account/AccountPageReviews/AccountPageReviews";
 
-const Reviews: FC = () => {
+const PageReviews: FC = () => {
   return <AccountPageReviews />;
 };
 
-export default Reviews;
+export default PageReviews;

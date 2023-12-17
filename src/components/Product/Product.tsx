@@ -12,6 +12,7 @@ import { HiOutlineIdentification } from "react-icons/hi2";
 import RatingStar from "../Reviews/RatingStar/RatingStar";
 import FlagLanguages from "../FlagLanguages/FlagLanguages";
 import { formatPrice } from "@/helpers/formatNumber";
+import AddToRevised from "./AddToRevised/AddToRevised";
 import {
   FRONTEND_ROUTES,
   PRODUCT_ADD_INFORMATION_ROUTES,
@@ -33,6 +34,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
   return (
     <>
       <NavigateToBack />
+      <AddToRevised product={product} />
       <div className={style.wrapInformation}>
         <div className={style.wrapImage}>
           {!images && (

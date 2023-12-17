@@ -9,9 +9,16 @@ interface IProps {
     isProduct?: boolean;
     id: string;
   };
+  isModerator?: boolean;
+  isCreateReplyReview?: boolean;
   paginationReviews: IPagination | undefined;
 }
-const ReviewsLoadMore: FC<IProps> = ({ owner, paginationReviews }) => {
+const ReviewsLoadMore: FC<IProps> = ({
+  owner,
+  paginationReviews,
+  isModerator = false,
+  isCreateReplyReview = false,
+}) => {
   const countTotalPage = paginationReviews?.pageCount || 1;
   const [currentPage, setCurrentPage] = useState(1);
   const [reviews, setReviews] = useState<IReview[]>([]);
@@ -39,7 +46,11 @@ const ReviewsLoadMore: FC<IProps> = ({ owner, paginationReviews }) => {
 
   return (
     <>
-      <Reviews reviews={reviews} />
+      <Reviews
+        reviews={reviews}
+        isModerator={isModerator}
+        isCreateReplyReview={isCreateReplyReview}
+      />
       <div className={style.wrapButton}>
         {currentPage < countTotalPage && (
           <ButtonLoadMore

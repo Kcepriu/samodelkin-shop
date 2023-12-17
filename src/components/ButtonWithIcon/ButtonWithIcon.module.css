@@ -1,0 +1,10 @@
+.button {
+  @apply flex gap-2 items-center
+  font-inter
+  text-size_14  
+  font-weight_400
+  leading-line_height_31
+  transition
+  
+  hover:text-blue_action;
+}

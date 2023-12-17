@@ -35,6 +35,7 @@ const ProductAddInformation: FC<IProps> = async ({
   const responseReviews = await httpServices.getProductReviews(
     String(product.id)
   );
+
   const manuals = product.attributes.manual;
   const videos = product.attributes.videos;
   const reviews = responseReviews?.data;

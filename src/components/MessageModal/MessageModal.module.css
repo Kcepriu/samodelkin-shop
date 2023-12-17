@@ -13,7 +13,7 @@
   flex 
   justify-center 
   items-center
-  font-inter
+  font-roboto
   text-size_20
   font-weight_400
   leading-line_height_25;
@@ -30,5 +30,9 @@
   hover:bg-blue_action_button
   hover:shadow-gray-500/80
   hover:shadow-lg  
-  transition;
+  transition
+  font-inter
+  text-size_18
+  font-weight_300
+  leading-line_height_21;
 }

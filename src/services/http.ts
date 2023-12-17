@@ -2,6 +2,14 @@ import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
 import { TAGS_DATA } from "@/constants/app-keys.const";
+import {
+  IResponseCreateAboutUser,
+  IResponseAboutUser,
+  IAboutUserForCreate,
+  IResponseMyInformation,
+  IMyInformation,
+  IMyInformationFromCreate,
+} from "@/types/aboutUser.types";
 
 import {
   IResponseGeneralPage,
@@ -107,6 +115,8 @@ class HttpService {
   // * get SALES LEADERS
   async getSalesLeaders(): Promise<IResponseProduct | null> {
     const paramsObj: { [key: string]: string } = {
+      "filters[isPublication][$eq]": "true",
+      "filters[salesLeader][$eq]": "true",
       "pagination[pageSize]": "24",
       "pagination[page]": "1",
     };
@@ -326,6 +336,35 @@ class HttpService {
     }
   }
 
+  async getNotPublishedReviews({
+    onlyNotPublished = true,
+    page = "1",
+  } = {}): Promise<IResponseReviews | null> {
+    const paramsObj: { [key: string]: string } = {
+      "pagination[pageSize]": "50",
+      "pagination[page]": page,
+      "sort[0]": "date:desc",
+    };
+
+    if (onlyNotPublished) {
+      paramsObj["filters[isPublication][$eq]"] = "false";
+    }
+
+    const params = new URLSearchParams(paramsObj);
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
   // * get Info Product Review
   async getInfoProductReview(
     productId: string
@@ -345,7 +384,6 @@ class HttpService {
   }
 
   // * get getUser Reviews
-  // ! Add auth
   async getUserReviews(
     userId: string,
     page = "1"
@@ -355,15 +393,13 @@ class HttpService {
     const Authorization = accessToken ? `Bearer ${accessToken}` : "";
 
     const paramsObj: { [key: string]: string } = {
-      //TODO add filter USER
-      // "filters[product][id][$eq]": productId,
-      // "filters[isPublication][$eq]": "true",
+      "filters[isPublication][$eq]": "true",
       "pagination[pageSize]": this.countReviewsOnPage,
       "pagination[page]": page,
       "sort[0]": "date:desc",
     };
     const params = new URLSearchParams(paramsObj);
-    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}?${params}`;
+    const url = `${this.baseUrl}${BACKEND_ROUTES.MY_REVIEWS}?${params}`;
 
     try {
       const res = await fetch(url, {
@@ -385,7 +421,6 @@ class HttpService {
   }
 
   // * Create Product Reviews
-  // ! Add auth
   async createProductReviews(
     review: ICreateReview
   ): Promise<IResponseOneReviews | null> {
@@ -417,7 +452,6 @@ class HttpService {
   }
 
   // * Create Reply To Reviews
-  // ! Add auth
   async createReplyToReviews(
     reviewId: string,
     reply: ICreateReply
@@ -450,7 +484,6 @@ class HttpService {
   }
 
   // * Change Status Review
-  // ! Add auth
   async changeStatusReview(
     reviewId: string,
     review: IChangeStatusReview
@@ -482,8 +515,35 @@ class HttpService {
     }
   }
 
+  // * Delete Review
+  async deleteReview(reviewId: string): Promise<IResponseOneReviews | null> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.REVIEWS}/${reviewId}`;
+
+    const session = await getServerSession(authConfigs);
+    const accessToken = session?.user.jwt;
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    try {
+      const res = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
   // * Change Reply To Review
-  // ! Add auth
   async changeReplyToReview(
     reviewId: string,
     replyId: string,

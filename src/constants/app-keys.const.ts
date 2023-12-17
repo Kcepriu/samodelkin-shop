@@ -23,6 +23,7 @@ export const BACKEND_ROUTES = {
   CATEGORY_DESCRIPTION: "/api/category-descriptions",
   PRODUCT_DESCRIPTION: "/api/product-descriptions",
   REVIEWS: "/api/reviews",
+  MY_REVIEWS: "/api/my-reviews",
   LAST_REVIEWS: "/api/last-reviews",
   REPLY_TO_REVIEWS: "/api/reply-to-review",
   CHANGE_STATUS_REVIEWS: "/api/change-status-review",
@@ -98,6 +99,16 @@ export const ACCOUNT_ADD_INFORMATION_ROUTES = {
   FAVORITES: "/favorites",
   REVIEWS: "/reviews",
   REVISED: "/revised",
+  REVIEWS_MODERATOR: "/reviews-moderator",
+};
+
+export enum ROLES {
+  CreateReplyReview = "createReplyReview",
+  FeedbackModerator = "feedbackModerator",
+}
+export const ALL_ROLES = {
+  REVIEWS_MODERATOR: [ROLES.FeedbackModerator],
+  REVIEWS_CREATE_REPLY: [ROLES.CreateReplyReview],
 };
 
 export const TYPES_ACCOUNT_ADD_INFORMATION = [
@@ -125,6 +136,12 @@ export const TYPES_ACCOUNT_ADD_INFORMATION = [
     title: "Моя інформація",
     url: ACCOUNT_ADD_INFORMATION_ROUTES.INFORMATION,
     onlyAuth: true,
+  },
+  {
+    title: "Модерація відгуків",
+    url: ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS_MODERATOR,
+    onlyAuth: true,
+    fromRoles: ALL_ROLES.REVIEWS_MODERATOR,
   },
 ];
 

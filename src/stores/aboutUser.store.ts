@@ -10,6 +10,7 @@ import {
   saveDataToLocalStorage,
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
+import { IAboutUserStore } from "@/types/aboutUser.types";
 
 interface IStateAboutUser {
   infoAboutUser: IAboutUserStore | null;

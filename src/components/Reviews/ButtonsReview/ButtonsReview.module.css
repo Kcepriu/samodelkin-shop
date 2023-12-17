@@ -1,0 +1,6 @@
+.wrapModerator {
+  @apply flex justify-between
+  pr-40
+  mt-10
+  text-dark_blue;
+}

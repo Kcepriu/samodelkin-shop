@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { getAboutMe, saveAboutMe } from "@/services/serverActionHttp";
+import { IMyInformationFromCreate } from "@/types/aboutUser.types";
 
 interface IStateAboutMe {
   infoAboutMe: IMyInformationFromCreate | null;

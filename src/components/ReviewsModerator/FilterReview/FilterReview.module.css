@@ -1,0 +1,8 @@
+.wrapFilter {
+  @apply mb-4
+  font-inter
+  text-size_16
+  font-weight_400
+  rounded-lg
+  leading-line_height_31;
+}

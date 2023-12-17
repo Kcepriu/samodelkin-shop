@@ -1,3 +1,11 @@
+import {
+  IAddressDeliveryForCreate,
+  IContactInformationForCreate,
+  IAboutUserStore,
+  IAboutUserForCreate,
+  IAboutUser,
+} from "@/types/aboutUser.types";
+
 export const convertCartToCreate = (products: ICartRow[]): ICartRowForSave => {
   const convertProducts = products.map(({ id, ...row }) => ({
     ...row,
@@ -37,23 +45,27 @@ export const getTotalSumCart = (products: ICartRow[]): number => {
 export const convertOrderToCreate = ({
   products,
   addressDelivery,
-  contacts,
+  contactInformation,
+  comment,
 }: {
   products: ICartRow[];
   addressDelivery: IAddressDeliveryForCreate;
-  contacts: ICustomersContact;
+  contactInformation: IContactInformationForCreate;
+  comment: string;
 }): IOrderFromCreate => {
   const {
     data: { products: convertProducts },
   } = convertCartToCreate(products);
+
   const totalSum = getTotalSumCart(products);
   // -
   return {
     data: {
-      ...contacts,
       totalSum,
       addressDelivery,
+      contactInformation,
       products: convertProducts,
+      comment,
     },
   };
 };

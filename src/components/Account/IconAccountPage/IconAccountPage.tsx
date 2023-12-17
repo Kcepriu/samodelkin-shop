@@ -6,6 +6,7 @@ import {
   PiChatDots,
   PiHeart,
 } from "react-icons/pi";
+import { SiCodereview } from "react-icons/si";
 import { GoPerson } from "react-icons/go";
 
 interface IProps {
@@ -23,6 +24,8 @@ const IconAccountPage: FC<IProps> = ({ urlPage, size = 24 }) => {
     return <PiEyeLight size={size} />;
   if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS)
     return <PiChatDots size={size} />;
+  if (urlPage === ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS_MODERATOR)
+    return <SiCodereview size={size} />;
 
   return null;
 };

@@ -9,34 +9,34 @@ export const authConfigs: AuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
-    Credentials({
-      credentials: {
-        email: { label: "email", type: "email", required: true },
-        password: { label: "password", type: "password", required: true },
-      },
+    // Credentials({
+    //   credentials: {
+    //     email: { label: "email", type: "email", required: true },
+    //     password: { label: "password", type: "password", required: true },
+    //   },
 
-      async authorize(credentials) {
-        if (!credentials) return null;
+    //   async authorize(credentials) {
+    //     if (!credentials) return null;
 
-        const response = await httpServices.logIn(
-          credentials.email,
-          credentials.password
-        );
+    //     const response = await httpServices.logIn(
+    //       credentials.email,
+    //       credentials.password
+    //     );
 
-        if (!response) return null;
+    //     if (!response) return null;
 
-        const { jwt, user } = response;
+    //     const { jwt, user } = response;
 
-        return {
-          ...user,
-          id: String(user.id),
-          name: user.username,
-          email: credentials.email,
-          jwt: jwt,
-          forceLogOut: false,
-        } as User;
-      },
-    }),
+    //     return {
+    //       ...user,
+    //       id: String(user.id),
+    //       name: user.username,
+    //       email: credentials.email,
+    //       jwt: jwt,
+    //       forceLogOut: false,
+    //     } as User;
+    //   },
+    // }),
   ],
   secret: "g9qj1bBK4GuXIteSC+bLGgVavKhdZlk21ce0q0LzHLc=",
   session: {

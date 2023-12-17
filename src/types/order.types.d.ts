@@ -22,7 +22,8 @@ interface IOrder {
     name: string;
     comment: string;
     products: IProductOrder[];
-    addressDelivery?: IAddressDelivery;
+    addressDelivery: IAddressDelivery;
+    contactInformation: IContactInformation;
   };
 }
 
@@ -35,12 +36,10 @@ interface ICustomersContact {
 interface IOrderFromCreate {
   data: {
     totalSum: number;
-    numberPhone: string;
-    email: string;
-    name: string;
     comment: string;
     products: IProductOrderCreate[];
     addressDelivery: IAddressDeliveryForCreate;
+    contactInformation: IContactInformationForCreate;
   };
 }
 

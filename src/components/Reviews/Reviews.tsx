@@ -5,15 +5,23 @@ import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import RatingStar from "./RatingStar/RatingStar";
 import RepliesReviews from "./RepliesReviews/RepliesReviews";
-import AddReplyToReview from "../AddReplyToReview/AddReplyToReview";
 import ImgNoImage from "@/assets/no_images.png";
 import imgPerson from "@/assets/icons/person.svg";
+import ButtonsReview from "./ButtonsReview/ButtonsReview";
+import ButtonDeleteReview from "./ButtonDeleteReview/ButtonDeleteReview";
+
 import style from "./Reviews.module.css";
 interface IProps {
   reviews: IReview[];
+  isModerator?: boolean;
+  isCreateReplyReview?: boolean;
 }
 
-const Reviews: FC<IProps> = ({ reviews }) => {
+const Reviews: FC<IProps> = ({
+  reviews,
+  isModerator = false,
+  isCreateReplyReview = false,
+}) => {
   return (
     <div className={style.wrapSection}>
       {reviews.map((review) => {
@@ -61,15 +69,13 @@ const Reviews: FC<IProps> = ({ reviews }) => {
                   {attributes.disAdvantages}
                 </p>
 
-                {/*TODO show only administrator */}
-                {/* <p>
-                  <span className={style.titleField}>Статус:</span>&nbsp;
-                  {String(attributes.isPublication)}
-                </p>
-
-                <div>
-                  <AddReplyToReview reviewsId={id} />
-                </div> */}
+                {(isModerator || isCreateReplyReview) && (
+                  <ButtonsReview
+                    review={review}
+                    isModerator={isModerator}
+                    isCreateReplyReview={isCreateReplyReview}
+                  />
+                )}
               </div>
 
               <div className={style.wrapProduct}>
@@ -83,6 +89,11 @@ const Reviews: FC<IProps> = ({ reviews }) => {
                   />
                 </Link>
               </div>
+              {isModerator && (
+                <div className={style.buttonDelete}>
+                  <ButtonDeleteReview idReview={id} />
+                </div>
+              )}
             </div>
             {repliesReview.length > 0 && (
               <RepliesReviews reviewId={id} repliesReview={repliesReview} />

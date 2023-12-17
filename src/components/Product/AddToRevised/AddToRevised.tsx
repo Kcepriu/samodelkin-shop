@@ -15,7 +15,7 @@ const AddToRevised: FC<IProps> = ({ product }) => {
     const addToRevised = async () => {
       await addRevised(product);
     };
-
+    
     if (!revised) return;
 
     const index = revised.findIndex((element) => element.id === product.id);
