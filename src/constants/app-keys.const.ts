@@ -107,7 +107,8 @@ export enum ROLES {
   FeedbackModerator = "feedbackModerator",
 }
 export const ALL_ROLES = {
-  REVIEWS_MODERATOR: [ROLES.CreateReplyReview, ROLES.FeedbackModerator],
+  REVIEWS_MODERATOR: [ROLES.FeedbackModerator],
+  REVIEWS_CREATE_REPLY: [ROLES.CreateReplyReview],
 };
 
 export const TYPES_ACCOUNT_ADD_INFORMATION = [

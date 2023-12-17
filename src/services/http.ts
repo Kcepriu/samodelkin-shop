@@ -355,7 +355,6 @@ class HttpService {
   }
 
   // * get getUser Reviews
-  // ! Add auth
   async getUserReviews(
     userId: string,
     page = "1"
@@ -382,7 +381,6 @@ class HttpService {
           Authorization: Authorization,
         },
       });
-      console.log("🚀 ~ res:", res);
 
       if (!res.ok) {
         return null;
@@ -394,7 +392,6 @@ class HttpService {
   }
 
   // * Create Product Reviews
-  // ! Add auth
   async createProductReviews(
     review: ICreateReview
   ): Promise<IResponseOneReviews | null> {

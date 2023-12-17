@@ -8,12 +8,18 @@ interface IProps {
   Icon: IconType;
   text: string;
   handleOnClick: () => void;
+  size?: number;
 }
 
-const ButtonWithIcon: FC<IProps> = ({ Icon, text, handleOnClick }) => {
+const ButtonWithIcon: FC<IProps> = ({
+  Icon,
+  text,
+  handleOnClick,
+  size = 24,
+}) => {
   return (
     <button type="button" onClick={handleOnClick} className={style.button}>
-      <Icon size={24} />
+      <Icon size={size} />
       {text}
     </button>
   );

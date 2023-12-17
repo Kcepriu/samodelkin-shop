@@ -8,6 +8,7 @@ import RepliesReviews from "./RepliesReviews/RepliesReviews";
 import ImgNoImage from "@/assets/no_images.png";
 import imgPerson from "@/assets/icons/person.svg";
 import ButtonsReview from "./ButtonsReview/ButtonsReview";
+import ButtonDeleteReview from "./ButtonDeleteReview/ButtonDeleteReview";
 
 import style from "./Reviews.module.css";
 interface IProps {
@@ -88,6 +89,11 @@ const Reviews: FC<IProps> = ({
                   />
                 </Link>
               </div>
+              {isModerator && (
+                <div className={style.buttonDelete}>
+                  <ButtonDeleteReview idReview={id} />
+                </div>
+              )}
             </div>
             {repliesReview.length > 0 && (
               <RepliesReviews reviewId={id} repliesReview={repliesReview} />

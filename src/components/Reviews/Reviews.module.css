@@ -81,3 +81,8 @@
   rounded-lg
   border-blue_100;
 }
+
+.buttonDelete {
+  @apply flex items-center
+  text-gray_our;
+}
