@@ -3,7 +3,7 @@ import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
-
+import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
 import httpServices from "@/services/http";
 import style from "./pageProducts.module.css";
 
@@ -19,6 +19,8 @@ const Products: FC<IParams> = async ({
   const categoryId = typeof category === "string" ? category : category[0];
   const currentPage = typeof page === "string" ? page : page[0];
 
+  const responseCategory = await httpServices.getCategory(categoryId);
+
   const responseProducts = await httpServices.getProducts({
     page: currentPage,
     category: categoryId,
@@ -33,6 +35,11 @@ const Products: FC<IParams> = async ({
 
   return (
     <>
+      {/* <BreadcrumbSetData
+        isInProduct={false}
+        category={!responseCategory ? null : responseCategory.data[0]}
+      /> */}
+
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
           <FilterPanel categoryId={categoryId} />

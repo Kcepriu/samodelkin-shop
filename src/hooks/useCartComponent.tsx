@@ -3,12 +3,12 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Cart from "@/components/Cart/Cart";
 
-interface CartComponentHook {
+interface ICartComponentHook {
   CartComponent: JSX.Element; // or JSX.Element, depending on the type of Cart and Modal components
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const useCartComponent = (): CartComponentHook => {
+const useCartComponent = (): ICartComponentHook => {
   const [showModal, setShowModal] = useState(false);
 
   const handlerCloseCard = () => {

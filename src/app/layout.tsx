@@ -34,6 +34,8 @@ interface IProps {
 }
 
 const RootLayout: FC<IProps> = ({ children }) => {
+  console.log("RootLayout");
+
   return (
     <html
       lang="ua"

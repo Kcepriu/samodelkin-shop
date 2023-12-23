@@ -33,7 +33,6 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
   return (
     <>
-      <NavigateToBack />
       <AddToRevised product={product} />
       <div className={style.wrapInformation}>
         <div className={style.wrapImage}>
