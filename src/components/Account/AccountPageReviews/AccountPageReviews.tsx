@@ -14,6 +14,7 @@ const AccountPageReviews: FC = async (): Promise<JSX.Element> => {
   const userId = user?.id || "";
 
   const responseReviews = await httpServices.getUserReviews(userId);
+
   const reviews = responseReviews?.data;
   const paginationReviews = responseReviews?.meta.pagination;
 
