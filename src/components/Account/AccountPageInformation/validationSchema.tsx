@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { phoneRegExp } from "@/constants/regExp";
+import { phoneRegExp } from "@/constants/regExp.const";
 
 export const validationSchema = Yup.object({
   firstName: Yup.string()

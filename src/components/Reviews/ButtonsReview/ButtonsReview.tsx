@@ -26,6 +26,7 @@ const ButtonsReview: FC<IProps> = ({
   const { ReplyToReviewsComponent, setShowModal } = useCreateReplyToReviews({
     review: review,
   });
+
   const {
     MessageComponent,
     setShowModal: setShowModalMessage,

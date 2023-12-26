@@ -6,6 +6,7 @@ interface IResponseGeneralPage {
     id: number;
     attributes: {
       content: TArticleGeneral[];
+      seo?: ISeo;
     };
   };
 }
@@ -18,6 +19,7 @@ interface IResponseMainPage {
       banner: {
         data: IImage[] | null;
       };
+      seo?: ISeo;
     };
   };
 }

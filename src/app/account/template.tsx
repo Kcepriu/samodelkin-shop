@@ -10,7 +10,7 @@ interface IProps {
   children: ReactNode;
   searchParams: { [key: string]: string | string[] | undefined };
 }
-const Layout: FC<IProps> = async ({ children }): Promise<JSX.Element> => {
+const Template: FC<IProps> = async ({ children }): Promise<JSX.Element> => {
   const session = await getServerSession(authConfigs);
   const user = session?.user;
   return (
@@ -27,4 +27,4 @@ const Layout: FC<IProps> = async ({ children }): Promise<JSX.Element> => {
   );
 };
 
-export default Layout;
+export default Template;

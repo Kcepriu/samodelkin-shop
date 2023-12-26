@@ -15,4 +15,5 @@ interface IAttributesCategorie {
   createdAt: string;
   updatedAt: string;
   locale: string;
+  seo?: ISeo;
 }
