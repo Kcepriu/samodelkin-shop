@@ -4,6 +4,7 @@ import { Inter, Roboto, Roboto_Serif } from "next/font/google";
 import Providers from "@/components/Providers/Providers";
 import FooterPage from "@/components/FooterPage/FooterPage";
 import HeaderPage from "@/components/HeaderPage/HeaderPage";
+import { DefaultValueSeo } from "@/constants/seo.const";
 import style from "./layoutRoot.module.css";
 import "@/styles/globals.css";
 
@@ -25,17 +26,13 @@ const robotoSerif = Roboto_Serif({
   variable: "--font-roboto_serif",
 });
 
-export const metadata: Metadata = {
-  title: "Samodelkin Shop",
-  description: "Інтернет магазин продажу іграшок ручної роботи",
-};
+export const metadata: Metadata = DefaultValueSeo;
+
 interface IProps {
   children: ReactNode;
 }
 
 const RootLayout: FC<IProps> = ({ children }) => {
-  console.log("RootLayout");
-
   return (
     <html
       lang="ua"

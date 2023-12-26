@@ -2,7 +2,7 @@
 import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { getImageFlag } from "@/helpers/getImageFlag";
-import { defaultLanguage } from "@/constants/defaultValue";
+import { defaultLanguage } from "@/constants/defaultValue.const";
 import useCart from "@/stores/cart.store";
 import style from "./ChangeLanguage.module.css";
 

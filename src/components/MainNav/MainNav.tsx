@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import Link from "next/link";
-import { pages } from "@/constants/pages";
+import { pages } from "@/constants/pages.const";
 import { usePathname } from "next/navigation";
 
 import styles from "./MainNav.module.css";

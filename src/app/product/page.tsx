@@ -3,7 +3,7 @@ import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
-import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
+import { setSeo } from "@/helpers/setSeo";
 import httpServices from "@/services/http";
 import style from "./pageProducts.module.css";
 
@@ -12,14 +12,25 @@ interface IParams {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
+export async function generateMetadata({ searchParams }: IParams) {
+  const { category = "" } = searchParams;
+  const categoryId = typeof category === "string" ? category : category[0];
+  const response = await httpServices.getCategory(categoryId);
+
+  const valueSeo =
+    !!response && response.data.length > 0
+      ? response?.data[0].attributes?.seo
+      : undefined;
+  const seo = setSeo(valueSeo);
+  return seo;
+}
+
 const Products: FC<IParams> = async ({
   searchParams,
 }): Promise<JSX.Element> => {
   const { page = "1", category = "" } = searchParams;
   const categoryId = typeof category === "string" ? category : category[0];
   const currentPage = typeof page === "string" ? page : page[0];
-
-  const responseCategory = await httpServices.getCategory(categoryId);
 
   const responseProducts = await httpServices.getProducts({
     page: currentPage,

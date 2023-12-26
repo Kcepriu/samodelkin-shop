@@ -6,7 +6,7 @@ import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
 import ButtonMain from "../ButtonMain/ButtonMain";
 import useCartComponent from "@/hooks/useCartComponent";
-import { defaultLanguage } from "@/constants/defaultValue";
+import { defaultLanguage } from "@/constants/defaultValue.const";
 
 import style from "./ButtonAddProductToCart.module.css";
 

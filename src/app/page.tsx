@@ -2,12 +2,12 @@ import { FC } from "react";
 import Image from "next/image";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import heroImage from "@/assets/hero.jpg";
-// import TypeGames from "@/components/TypeGames/TypeGames";
 import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
 import httpServices from "@/services/http";
+import { setSeo } from "@/helpers/setSeo";
 import style from "./pageHome.module.css";
 
 interface IParams {
@@ -15,10 +15,13 @@ interface IParams {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
-  const { category = "" } = searchParams;
-  const categoryId = typeof category === "string" ? category : category[0];
+export async function generateMetadata() {
+  const responseMainPage = await httpServices.getMainPage();
+  const seo = setSeo(responseMainPage?.data.attributes?.seo);
+  return seo;
+}
 
+const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
   const responseProducts = await httpServices.getSalesLeaders();
   const responseReviews = await httpServices.getLastReviews();
   const responseMainPage = await httpServices.getMainPage();
@@ -32,7 +35,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
     <>
       <div className={style.wrapHomePage}>
         <div className={style.wrapFilter}>
-          <FilterPanel categoryId={categoryId} />
+          <FilterPanel categoryId={""} />
         </div>
         <div className={style.wrapContent}>
           <section>
