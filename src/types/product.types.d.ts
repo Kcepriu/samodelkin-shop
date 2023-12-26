@@ -22,6 +22,7 @@ interface IProduct {
     videos: IVideo[];
     languages: ILanguage[];
     manual: IManual[];
+    seo?: ISeo;
   };
 }
 

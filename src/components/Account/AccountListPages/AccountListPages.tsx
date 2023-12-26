@@ -23,6 +23,7 @@ interface IProps {
 const AccountListPages: FC<IProps> = ({ user }) => {
   const pathname = usePathname();
   const infoAboutMe = useStore(useAboutMe, (state) => state.infoAboutMe);
+
   return (
     <ul className={style.listPage}>
       {TYPES_ACCOUNT_ADD_INFORMATION.map((element) => {

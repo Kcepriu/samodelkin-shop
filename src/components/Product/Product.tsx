@@ -1,18 +1,16 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { PiChatText } from "react-icons/pi";
-import NavigateToBack from "../NavigateToBack/NavigateToBack";
+import { PiChatText, PiTruck } from "react-icons/pi";
+import { HiOutlineIdentification } from "react-icons/hi2";
 import SliderInCard from "../SliderInCard/SliderInCard";
-import ImgNoImage from "@/assets/no_images.png";
 import ButtonAddProductToCart from "../ButtonAddProductToCart/ButtonAddProductToCart";
 import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddProductToFavorite";
-import { PiTruck } from "react-icons/pi";
-import { HiOutlineIdentification } from "react-icons/hi2";
 import RatingStar from "../Reviews/RatingStar/RatingStar";
 import FlagLanguages from "../FlagLanguages/FlagLanguages";
-import { formatPrice } from "@/helpers/formatNumber";
 import AddToRevised from "./AddToRevised/AddToRevised";
+import ImgNoImage from "@/assets/no_images.png";
+import { formatPrice } from "@/helpers/formatNumber";
 import {
   FRONTEND_ROUTES,
   PRODUCT_ADD_INFORMATION_ROUTES,
@@ -33,7 +31,6 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
   return (
     <>
-      <NavigateToBack />
       <AddToRevised product={product} />
       <div className={style.wrapInformation}>
         <div className={style.wrapImage}>

@@ -181,6 +181,24 @@ class HttpService {
     }
   }
 
+  async getCategory(categoryId: string): Promise<IResponseCategories | null> {
+    if (!categoryId) return null;
+
+    const url = `${this.baseUrl}${BACKEND_ROUTES.CATEGORIES}/${categoryId}`;
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
+
   // * PAGES
   // * ------------
   // * get PAGE About Us

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { getImageFlag } from "@/helpers/getImageFlag";
-import { defaultLanguage } from "@/constants/defaultValue";
+import { defaultLanguage } from "@/constants/defaultValue.const";
 import style from "./FlagLanguages.module.css";
 
 interface IProps {

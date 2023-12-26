@@ -1,9 +1,11 @@
 interface IValuesFormCreateReview {
-  userName: string;
-  rating: number;
+  firstName: string;
+  lastName: string;
   content: string;
   advantages: string;
   disAdvantages: string;
+  rating: number;
+  product: number;
 }
 interface IValuesFormCreateReply {
   firstName: string;
@@ -67,7 +69,7 @@ interface IReplyReview {
 interface ICreateReview {
   data: {
     firstName: string;
-    secondName: string;
+    lastName: string;
     content: string;
     advantages: string;
     disAdvantages: string;
