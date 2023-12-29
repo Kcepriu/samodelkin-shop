@@ -14,11 +14,11 @@
 }
 
 .wrapNavigate {
-  @apply flex justify-between items-center gap-32;
+  @apply flex justify-between items-center gap-14;
 }
 
 .wrapButton {
-  @apply flex justify-between  items-center gap-12;
+  @apply flex justify-between  items-center gap-7;
 }
 
 .link {
@@ -29,6 +29,16 @@
   @apply text-text_white transition hover:text-blue_action;
 }
 
+.phoneNumber {
+  @apply flex gap-4
+  items-center
+  font-inter
+  text-size_16
+  font-weight_300
+  leading-line_height_50
+  transition
+   hover:text-blue_action;
+}
 /* 
   stroke-2
   fill-red-800

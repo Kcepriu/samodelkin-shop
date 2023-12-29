@@ -11,7 +11,7 @@
   leading-line_height_15
 
   
-  hover:shadow-lg
+  /* hover:shadow-lg */
   hover:border-blue_action
   hover:rounded-lg;
 }

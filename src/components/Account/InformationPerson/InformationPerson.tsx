@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { GoPerson } from "react-icons/go";
 import useAboutMe from "@/stores/aboutMe.store";
 import useStore from "@/helpers/useStore";
-import ButtonSignOut from "./ButtonSignOut/ButtonSignOut";
+
 import style from "./InformationPerson.module.css";
 
 const InformationPerson: FC = () => {
@@ -34,9 +34,7 @@ const InformationPerson: FC = () => {
   return (
     <div className={style.wrapUserInfo}>
       <div className={style.wrapImageFromName}>
-        {!!user && <ButtonSignOut />}
-        {!user && <GoPerson size={24} />}
-
+        <GoPerson size={24} />
         <div>
           <p>{userName}</p>
           <p>{emailUser}</p>

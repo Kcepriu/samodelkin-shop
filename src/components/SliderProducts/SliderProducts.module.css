@@ -20,7 +20,8 @@
   @apply flex 
   gap-6 
   mt-4 
-  justify-center;
+  justify-center
+  text-gray_our;
 }
 
 .buttonPrevNext {

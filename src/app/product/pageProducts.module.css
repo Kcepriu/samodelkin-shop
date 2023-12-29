@@ -3,7 +3,8 @@
 }
 
 .wrapFilter {
-  @apply w-[292px];
+  @apply w-[292px]
+  min-w-[292px];
 }
 
 .wrapContent {

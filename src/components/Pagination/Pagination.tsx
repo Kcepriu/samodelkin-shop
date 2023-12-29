@@ -3,6 +3,8 @@
 import { FC } from "react";
 import ReactPaginate from "react-paginate";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { PiArrowRight, PiArrowLeft } from "react-icons/pi";
+import ButtonPagination from "./ButtonPagination/ButtonPagination";
 import "./Pagination.css";
 
 interface IParams {
@@ -34,11 +36,13 @@ const Pagination: FC<IParams> = ({ pageCount = 1, forcePage }) => {
     <ReactPaginate
       className="react-paginate"
       breakLabel="..."
-      nextLabel="next >"
       onPageChange={handleClickPagination}
       pageRangeDisplayed={5}
       pageCount={pageCount}
-      previousLabel="< previous"
+      nextLabel={
+        <ButtonPagination title="Наступна" Icon={PiArrowRight} isReverse />
+      }
+      previousLabel={<ButtonPagination title="Попередня" Icon={PiArrowLeft} />}
       renderOnZeroPageCount={null}
       forcePage={forcePage - 1}
     />

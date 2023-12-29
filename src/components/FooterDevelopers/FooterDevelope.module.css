@@ -6,11 +6,18 @@
   before:w-[80%]
   before:h-3
   before:border-b
-  before:border-gray_our;
+  before:border-gray_our
+  font-inter 
+  text-text_white
+  text-size_16 
+  font-weight_300 
+  leading-line_height_50;
 }
 
 .wrapDevelopers {
-  @apply flex  gap-14 justify-end  items-baseline
+  @apply flex flex-col
+  gap-3
+  items-baseline
   pr-48;
 }
 
@@ -35,6 +42,6 @@
   @apply text-blue_action;
 }
 
-.link:hover img {
+/* .link:hover img {
   @apply shadow-lg;
-}
+} */

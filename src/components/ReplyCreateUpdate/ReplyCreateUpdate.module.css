@@ -48,7 +48,7 @@
   bg-blue_action
   text-white
   hover:bg-blue_action_button
-  hover:shadow-lg;
+  /* hover:shadow-lg; */;
 }
 
 /* .button:hover {
@@ -67,5 +67,5 @@
   transition
   hover:text-blue_action_button
   hover:border-blue_action
-  hover:shadow-lg;
+  /* hover:shadow-lg; */;
 }

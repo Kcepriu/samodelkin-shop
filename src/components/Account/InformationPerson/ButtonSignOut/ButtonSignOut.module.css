@@ -1,6 +1,15 @@
 .button {
   @apply relative
-  text-black hover:text-blue_action;
+  flex
+  gap-3
+  mt-7
+  text-black 
+  
+  font-inter
+  text-size_18
+  font-weight_400
+  leading-line_height_21
+  hover:text-blue_action;
 }
 
 /* .button:before {

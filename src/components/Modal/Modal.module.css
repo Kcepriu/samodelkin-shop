@@ -14,7 +14,7 @@
   max-w-[95%] 
   min-w-[250px] 
   rounded-lg   
-  shadow-lg 
+  /* shadow-lg  */
   overflow-y-auto  
    bg-white;
 }

@@ -8,12 +8,16 @@
 
 .input {
   @apply p-4
-  text-black
+  text-text_white
   font-inter
   text-size_16 
   font-weight_500 
-  leading-line_height_24
-  placeholder:text-gray_our;
+  leading-line_height_24  
+  placeholder:text-gray_our
+  bg-inherit
+  border
+  rounded-lg
+  border-text_white;
 }
 
 .button {
@@ -30,6 +34,6 @@
 .form .button {
   @apply bg-blue_action
   hover:bg-blue_action_button
-  hover:shadow-gray-500/80
-  hover:shadow-lg;
+  /* hover:shadow-gray-500/80
+  hover:shadow-lg; */;
 }

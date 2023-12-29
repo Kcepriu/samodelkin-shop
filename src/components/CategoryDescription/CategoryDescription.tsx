@@ -22,14 +22,14 @@ const CategoryDescription: FC<IProps> = async ({
     respCategoryDescription.data[0].attributes.content;
 
   return (
-    <>
+    <section className={style.wrapSection}>
       <div className={style.wrapContent}>
         <Description
           content={CategoryDescription}
           type={TypeDescription.Category}
         />
       </div>
-    </>
+    </section>
   );
 };
 

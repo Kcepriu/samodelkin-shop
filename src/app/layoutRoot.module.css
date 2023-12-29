@@ -8,8 +8,8 @@
   md:max-w-screen-md 
   lg:max-w-screen-lg 
   lg:px-[100px] 
- 
-  overflow-hidden;
+  md:px-[20px]  
+  /* overflow-hidden; */;
 }
 
 .header {

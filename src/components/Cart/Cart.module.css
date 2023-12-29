@@ -19,7 +19,7 @@
 .wrapProduct {
   @apply mt-8 
   
-  max-h-[370px]
+  max-h-[450px]
   text-black
   flex flex-col gap-4
   overflow-y-auto;
@@ -36,7 +36,7 @@
 }
 
 .wrapButton {
-  @apply flex gap-3 justify-between
+  @apply flex 
   mt-20
   pl-11
   pr-11
@@ -52,7 +52,12 @@
   py-3
   text-black
   transition
-  hover:text-blue_action;
+font-inter
+  text-size_20  
+  font-weight_300
+  leading-line_height_21;
+
+  hover: text-blue_action;
 }
 
 .iconBack {
@@ -66,14 +71,14 @@
 .wrapButton .buttonAccept {
   @apply block 
   py-3
-  px-5
-  
+  px-8
+  ml-28
   rounded-lg 
   bg-blue_action
   text-white
   transition
   hover:bg-blue_action_button
-  hover:shadow-lg;
+  /* hover:shadow-lg; */;
 }
 
 .buttonClean {

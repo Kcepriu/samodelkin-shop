@@ -12,7 +12,7 @@
 }
 
 .wrapImage {
-  @apply block w-[127px];
+  @apply block w-[187px];
 }
 
 .image {
@@ -47,7 +47,7 @@
 .wrapDetails {
   @apply flex 
   gap-5
-  mt-4  
+  mt-4
   items-center
   font-roboto
   text-size_20  
@@ -64,7 +64,7 @@
   gap-16 
   justify-between
   items-center
-  mt-4
+  
   grow;
 }
 

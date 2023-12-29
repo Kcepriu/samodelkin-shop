@@ -2,7 +2,8 @@
   @apply flex
   flex-wrap
   justify-start
-  gap-6;
+  gap-6
+  w-full;
 }
 
 /* .elementCard {

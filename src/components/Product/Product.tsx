@@ -88,7 +88,6 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
           </div>
 
           <div className={style.wrapLanguages}>
-            Доступні мови:
             <FlagLanguages flags={attributes.languages} />
           </div>
 

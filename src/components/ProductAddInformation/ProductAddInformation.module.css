@@ -7,7 +7,6 @@
 }
 
 .typeInfo {
-  /* 188 96 */
   @apply w-[188px] 
   min-w-[188px] 
   h-24  
@@ -18,8 +17,8 @@
   border-light_blue  
   data-[active=true]:bg-light_blue
 
-  hover:shadow-lg
-  hover:border-blue_action;
+  /* hover:shadow-lg */
+  hover:bg-light_blue;
 }
 
 .linkInfo {

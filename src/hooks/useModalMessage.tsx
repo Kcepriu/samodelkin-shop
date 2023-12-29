@@ -6,12 +6,19 @@ import MessageModal from "@/components/MessageModal/MessageModal";
 interface ICartComponentHook {
   MessageComponent: JSX.Element; // or JSX.Element, depending on the type of Cart and Modal components
   setShowModal: Dispatch<SetStateAction<boolean>>;
-  setTextMessage: Dispatch<SetStateAction<string>>;
+  setTextMessage: (headerMessage: string, textMessage?: string) => void;
 }
 
 const useModalMessage = (): ICartComponentHook => {
   const [showModal, setShowModal] = useState(false);
-  const [textMessage, setTextMessage] = useState("");
+  const [contentMessage, setContentMessage] = useState({
+    headerMessage: "",
+    textMessage: "",
+  });
+
+  const setTextMessage = (headerMessage: string, textMessage: string = "") => {
+    setContentMessage({ headerMessage, textMessage });
+  };
 
   const handlerCloseCard = () => {
     setShowModal(false);
@@ -22,7 +29,10 @@ const useModalMessage = (): ICartComponentHook => {
     <>
       {showModal && (
         <Modal onClose={handlerCloseCard} isDark>
-          <MessageModal onClose={handlerCloseCard} textMessage={textMessage} />
+          <MessageModal
+            onClose={handlerCloseCard}
+            contentMessage={contentMessage}
+          />
         </Modal>
       )}
     </>

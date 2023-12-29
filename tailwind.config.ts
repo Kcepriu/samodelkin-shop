@@ -69,6 +69,7 @@ const config: Config = {
         weight_500: "500",
         weight_600: "600",
         weight_700: "700",
+        weight_800: "800",
       },
       lineHeight: {
         line_height_15: "1.15",

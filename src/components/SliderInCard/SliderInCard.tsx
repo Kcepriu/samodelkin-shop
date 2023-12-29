@@ -26,12 +26,8 @@ const SliderInCard: FC<IProps> = ({ images, title }) => {
     <div className={style.wrapSectionSlider}>
       <div className={style.wrapSlider}>
         <Swiper
-          // style={{
-          //   "--swiper-navigation-color": "#fff",
-          //   "--swiper-pagination-color": "#fff",
-          // }}
           spaceBetween={10}
-          navigation={true}
+          // navigation={true}
           thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiperInCardLarge"
@@ -39,10 +35,8 @@ const SliderInCard: FC<IProps> = ({ images, title }) => {
           {images.map((element, ind) => {
             return (
               <SwiperSlide key={element.id}>
-                {/* <p>image</p> */}
                 <Image
                   priority={ind === 0}
-                  // className={style.image}
                   src={element.attributes.url}
                   alt={title}
                   height={500}
@@ -69,7 +63,6 @@ const SliderInCard: FC<IProps> = ({ images, title }) => {
               <SwiperSlide key={id}>
                 <Image
                   priority={ind === 0}
-                  // className={style.image}
                   src={urlImage}
                   alt={title}
                   height={50}
