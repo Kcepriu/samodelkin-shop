@@ -9,6 +9,7 @@ import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddP
 import RatingStar from "../Reviews/RatingStar/RatingStar";
 import FlagLanguages from "../FlagLanguages/FlagLanguages";
 import AddToRevised from "./AddToRevised/AddToRevised";
+import ButtonsTypeProduct from "./ButtonsTypeProduct/ButtonsTypeProduct";
 import ImgNoImage from "@/assets/no_images.png";
 import { formatPrice } from "@/helpers/formatNumber";
 import {
@@ -25,9 +26,7 @@ interface IProps {
 
 const Product: FC<IProps> = ({ product, rating, countReview }) => {
   const { attributes } = product;
-
   const images = attributes.images?.data;
-  const additions = attributes.additions;
 
   return (
     <>
@@ -78,13 +77,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
           </div>
 
           <div className={style.wrapTypeProduct}>
-            <p className={style.typeProduct} data-additions={!additions}>
-              Базовий набір
-            </p>
-
-            <p className={style.typeProduct} data-additions={additions}>
-              Розширення
-            </p>
+            <ButtonsTypeProduct product={product} />
           </div>
 
           <div className={style.wrapLanguages}>

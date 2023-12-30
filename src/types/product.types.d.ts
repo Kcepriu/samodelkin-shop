@@ -23,6 +23,23 @@ interface IProduct {
     languages: ILanguage[];
     manual: IManual[];
     seo?: ISeo;
+    characteristics: {
+      id: number;
+      title: string;
+      value: string;
+      isFilter: boolean;
+    }[];
+    relatedProduct: {
+      data?: {
+        id: number;
+        attributes: {
+          title: string;
+          code: string;
+          slug: string;
+          images: IResponseImages;
+        };
+      };
+    };
   };
 }
 

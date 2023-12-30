@@ -1,7 +1,16 @@
 .wrapContent {
   @apply mt-12
-  flex flex-col gap-4
+  flex flex-col 
+  gap-6
   text-size_18
-  font-weight_300
-  leading-line_height_17;
+  font-weight_400
+  leading-line_height_21;
+}
+
+.content {
+  @apply flex gap-12;
+}
+.title {
+  @apply font-weight_600
+  min-w-[200px];
 }
