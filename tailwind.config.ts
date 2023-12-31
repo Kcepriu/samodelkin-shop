@@ -52,6 +52,7 @@ const config: Config = {
         roboto: [`var(--font-roboto)`],
         inter: [`var(--font-inter)`],
         robotoSerif: [`var(--font-roboto_serif)`],
+        itim: [`var(--font-itim)`],
       },
       fontSize: {
         size_14: "14px",
@@ -62,6 +63,7 @@ const config: Config = {
         size_24: "24px",
         size_32: "32px",
         size_40: "40px",
+        size_250: "250px",
       },
       fontWeight: {
         weight_300: "300",

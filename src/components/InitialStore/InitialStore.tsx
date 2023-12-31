@@ -1,6 +1,8 @@
 "use client";
 
 import { FC, ReactNode, useEffect } from "react";
+import { useSelectedLayoutSegment } from "next/navigation";
+
 import { useSession } from "next-auth/react";
 import useFavorite from "@/stores/favorite.store";
 import useRevised from "@/stores/revised.store";
@@ -23,23 +25,52 @@ const InitialStore: FC<IProps> = ({ children }) => {
   const [fetchAboutMe] = useAboutMe((state) => [state.fetchAboutMe]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const rehydrate = async () => {
-      await fetchFavorites(!!user);
-      await fetchRevised(!!user);
-      await fetchCart(!!user);
-      await fetchAboutUser(!!user);
-      await fetchAboutMe(!!user);
+      try {
+        await fetchFavorites(!!user, controller);
+      } catch {}
     };
 
     rehydrate();
-  }, [
-    user,
-    fetchFavorites,
-    fetchRevised,
-    fetchCart,
-    fetchAboutUser,
-    fetchAboutMe,
-  ]);
+
+    // return () => {
+    //   controller.abort();
+    // };
+  }, [user, fetchFavorites]);
+
+  // useEffect(() => {
+  //   const rehydrate = async () => {
+  //     await fetchRevised(!!user);
+  //   };
+
+  //   rehydrate();
+  // }, [user, fetchRevised]);
+
+  // useEffect(() => {
+  //   const rehydrate = async () => {
+  //     await fetchCart(!!user);
+  //   };
+
+  //   rehydrate();
+  // }, [user, fetchCart]);
+
+  // useEffect(() => {
+  //   const rehydrate = async () => {
+  //     await fetchAboutUser(!!user);
+  //   };
+
+  //   rehydrate();
+  // }, [user, fetchAboutUser]);
+
+  // useEffect(() => {
+  //   const rehydrate = async () => {
+  //     await fetchAboutMe(!!user);
+  //   };
+
+  //   rehydrate();
+  // }, [user, fetchAboutMe]);
 
   return <>{children}</>;
 };

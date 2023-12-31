@@ -15,7 +15,8 @@ import {
 export const getProductsByList = async (
   productsID: number[]
 ): Promise<IResponseProduct | null> => {
-  return await httpServices.getProductsByList(productsID);
+  const result = await httpServices.getProductsByList(productsID);
+  return result;
 };
 
 // * get Product Reviews
@@ -69,14 +70,16 @@ export const changeReplyToReview = async (
 
 // * Mark Product
 export const getMarkProduct = async (
-  typeMarkProduct: string
+  typeMarkProduct: string,
+  controller: AbortController
 ): Promise<{
   isAuth: boolean;
   markProduct: IProduct[];
 }> => {
   // {BACKEND_ROUTES.FAVORITES}
   const { code, data: response } = await httpServices.getMarkProduct(
-    typeMarkProduct
+    typeMarkProduct,
+    controller
   );
 
   const markProduct =
