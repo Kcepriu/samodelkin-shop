@@ -1,5 +1,9 @@
 .wrapComponent {
-  @apply flex  gap-20;
+  @apply flex
+  flex-col  
+  gap-6
+  md:flex-row 
+  md:gap-20;
 }
 
 .title {

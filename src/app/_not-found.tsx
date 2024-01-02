@@ -1,14 +1,24 @@
-import { FC } from "react";
+"use client";
+
+import { FC, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import icon404 from "@/assets/404.svg";
-import { headers } from "next/headers";
+import useOnPageNotFound from "@/stores/onPageNotFound.store";
 import style from "./not-found.module.css";
 
 const NotFound: FC = () => {
-  const headersList = headers();
-  const domain = headersList.get("host");
-  console.log("🚀 ~ headersList:", domain);
+  const [setOnPageNotFound] = useOnPageNotFound((state) => [
+    state.setOnPageNotFound,
+  ]);
+
+  // useEffect(() => {
+  //   setOnPageNotFound(true);
+
+  //   return () => {
+  //     setOnPageNotFound(false);
+  //   };
+  // }, [setOnPageNotFound]);
 
   return (
     <section className={style.wrapContent}>

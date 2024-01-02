@@ -1,5 +1,9 @@
 .wrapFooter {
-  @apply pt-12 pb-10
+  @apply pt-6 
+  pb-6
+  md:py-12
+  md:pb-10
+
   text-text_white
   text-size_16
   font-weight_300
@@ -7,9 +11,18 @@
 }
 
 .wrapTopRow {
-  @apply flex justify-between w-full;
+  @apply flex 
+  lg:flex-row
+  flex-col-reverse
+  gap-10
+  justify-between w-full;
+}
+.wrapInformation {
+  @apply flex justify-between
+  md:gap-36;
 }
 
 .wrapDevelopers {
-  @apply text-center mt-12;
+  @apply text-left mt-6
+  md:mt-12;
 }

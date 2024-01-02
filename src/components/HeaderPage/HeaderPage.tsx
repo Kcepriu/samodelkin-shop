@@ -6,6 +6,7 @@ import { PiPhoneCall } from "react-icons/pi";
 import ButtonOpenCart from "../ButtonOpenCart/ButtonOpenCart";
 import ButtonGoToFavorite from "../ButtonGoToFavorite/ButtonGoToFavorite";
 import ButtonGoToAccount from "../ButtonGoToAccount/ButtonGoToAccount";
+import ButtonBurger from "../ButtonBurger/ButtonBurger";
 import httpServices from "@/services/http";
 
 import style from "./HeaderPage.module.css";
@@ -16,8 +17,18 @@ const HeaderPage: FC = async () => {
 
   return (
     <div className={style.wrapHeader}>
+      <div className={style.burger}>
+        <ButtonBurger />
+      </div>
+
       <Link href="/" className={style.logo}>
-        <Image src={ImageLogo} alt="Logo Shop" width={78} height={78} />
+        <Image
+          src={ImageLogo}
+          alt="Logo Shop"
+          width={78}
+          height={78}
+          className={style.imageLogo}
+        />
       </Link>
 
       <div className={style.wrapNavigate}>

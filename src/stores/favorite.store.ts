@@ -27,10 +27,7 @@ interface IStateFavoriteData {
 interface IStateFavorite extends IStateFavoriteData {
   addFavorite: (newProduct: IProduct) => Promise<void>;
   deleteFavorite: (newProduct: IProduct) => Promise<void>;
-  fetchFavorites: (
-    isRemoteStorage: boolean,
-    controller: AbortController
-  ) => Promise<void>;
+  fetchFavorites: (isRemoteStorage: boolean) => Promise<void>;
 }
 
 // * Save Favorite to Storage
@@ -54,15 +51,12 @@ const saveFavoriteToStorage = async (
 };
 
 // * fetch Favorites From Storage
-const fetchFavoritesFromStorage = async (
-  isRemoteStorage: boolean,
-  controller: AbortController
-) => {
-  if (false && isRemoteStorage) {
+const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
+  if (isRemoteStorage) {
     console.log("fetchFavoritesFromStorage - before");
+
     const { isAuth, markProduct: favorites } = await getMarkProduct(
-      BACKEND_ROUTES.FAVORITES,
-      controller
+      BACKEND_ROUTES.FAVORITES
     );
 
     console.log("fetchFavoritesFromStorage - After", isAuth);
@@ -71,14 +65,14 @@ const fetchFavoritesFromStorage = async (
     return { isAuth, favorites };
   }
 
-  // const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
-  // const productsID = convertProductToArrayId(favorites);
-  // const responseFavorites = await getProductsByList(productsID);
+  const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
+  const productsID = convertProductToArrayId(favorites);
+  const responseFavorites = await getProductsByList(productsID);
 
   return {
     isAuth: false,
-    // favorites: !!responseFavorites ? responseFavorites.data : favorites,
-    favorites: [],
+    favorites: !!responseFavorites ? responseFavorites.data : favorites,
+    // favorites: [],
   };
 };
 
@@ -111,10 +105,9 @@ const useFavorite = create<IStateFavorite>()((set, get) => ({
     }));
   },
 
-  fetchFavorites: async (isRemoteStorage, controller) => {
+  fetchFavorites: async (isRemoteStorage) => {
     const { isAuth, favorites } = await fetchFavoritesFromStorage(
-      isRemoteStorage,
-      controller
+      isRemoteStorage
     );
 
     return set((state) => ({

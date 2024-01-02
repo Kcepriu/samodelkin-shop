@@ -1,10 +1,5 @@
-.logo {
-  @apply transition
-  text-black hover:text-blue_action;
-}
-
 .wrapHeader {
-  @apply flex  items-center  justify-between  
+  @apply flex  items-center  
   py-1
   text-text_white
   font-inter
@@ -13,12 +8,36 @@
   leading-line_height_20;
 }
 
+.burger {
+  @apply lg:hidden
+  mr-6
+  sm:mr-24
+  py-5;
+}
+
+.logo {
+  @apply mr-8
+  transition
+  text-black hover:text-blue_action;
+}
+
+.imageLogo {
+  @apply w-12 h-12  
+  md:w-[78px] md:h-[78px];
+}
+
 .wrapNavigate {
-  @apply flex justify-between items-center gap-14;
+  @apply flex 
+  justify-end 
+  items-center 
+  grow;
 }
 
 .wrapButton {
-  @apply flex justify-between  items-center gap-7;
+  @apply flex justify-between  items-center 
+  gap-4
+  sm:gap-8
+  md:gap-7;
 }
 
 .link {
@@ -30,14 +49,17 @@
 }
 
 .phoneNumber {
-  @apply flex gap-4
+  @apply mr-14
+  gap-4
   items-center
+  hidden
   font-inter
   text-size_16
   font-weight_300
   leading-line_height_50
   transition
-   hover:text-blue_action;
+   hover:text-blue_action
+   md:flex;
 }
 /* 
   stroke-2

@@ -70,16 +70,14 @@ export const changeReplyToReview = async (
 
 // * Mark Product
 export const getMarkProduct = async (
-  typeMarkProduct: string,
-  controller: AbortController
+  typeMarkProduct: string
 ): Promise<{
   isAuth: boolean;
   markProduct: IProduct[];
 }> => {
   // {BACKEND_ROUTES.FAVORITES}
   const { code, data: response } = await httpServices.getMarkProduct(
-    typeMarkProduct,
-    controller
+    typeMarkProduct
   );
 
   const markProduct =
@@ -226,7 +224,6 @@ export const getAboutMe = async (): Promise<{
   infoAboutMe: IMyInformation | null;
 }> => {
   const { code, data: response } = await httpServices.getAboutMe();
-
   const infoAboutMe = code === 200 && !!response ? response : null;
 
   return {

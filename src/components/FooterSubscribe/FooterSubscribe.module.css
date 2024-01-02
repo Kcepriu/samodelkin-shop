@@ -3,7 +3,9 @@
     text-text_white
   text-size_16 
   font-weight_300 
-  leading-line_height_15;
+  leading-line_height_15
+  md:m-auto
+  lg:m-0;
 }
 
 .input {

@@ -33,7 +33,7 @@ const config: Config = {
         xs: "320px",
         // => @media (min-width: 320px) { ... }
 
-        sm: "480px",
+        sm: "414px",
         // => @media (min-width: 480px) { ... }
 
         md: "768px",

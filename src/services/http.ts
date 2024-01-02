@@ -598,8 +598,7 @@ class HttpService {
   // * ------------
   // * get Mark Product
   async getMarkProduct(
-    typeMarkProduct: string,
-    controller: AbortController
+    typeMarkProduct: string
   ): Promise<IResponseMarkProductWithCode> {
     const url = `${this.baseUrl}${typeMarkProduct}`;
 
@@ -620,7 +619,6 @@ class HttpService {
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
           Authorization: Authorization,
         },
-        signal: controller.signal,
       });
 
       result.code = res.status;

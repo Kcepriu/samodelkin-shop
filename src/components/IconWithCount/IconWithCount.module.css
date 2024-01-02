@@ -5,7 +5,7 @@
 }
 .textCount {
   @apply absolute 
-  top-[-10%] right-[-50%]
+  top-[-10%] right-[-40%]
   w-3/4 h-3/4
   block 
   border 

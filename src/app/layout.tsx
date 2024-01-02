@@ -54,7 +54,7 @@ const RootLayout: FC<IProps> = ({ children }) => {
             </header>
 
             <main className={style.wrapMain}>
-              <div className={style.container}>{children}</div>
+              {/* <div className={style.container}>{children}</div> */}
             </main>
 
             <footer className={style.wrapFooter}>

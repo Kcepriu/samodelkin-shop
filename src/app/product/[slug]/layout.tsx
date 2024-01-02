@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import { notFound } from "next/navigation";
 import Product from "@/components/Product/Product";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import httpServices from "@/services/http";
@@ -30,6 +31,9 @@ const Layout: FC<IProps> = async ({
 }): Promise<JSX.Element> => {
   const { slug } = params;
   const responseProduct = await httpServices.getOneProducts(slug);
+
+  if (!responseProduct?.data.length) notFound();
+
   const responseSalesLeaders = await httpServices.getSalesLeaders();
   const productId = responseProduct?.data[0].id || 0;
   const responseInfoProductReview = await httpServices.getInfoProductReview(

@@ -3,7 +3,8 @@
   before:mr-auto
   before:mb-6
   before:block
-  before:w-[80%]
+  w-full
+  md:before:w-[80%]
   before:h-3
   before:border-b
   before:border-gray_our
@@ -17,8 +18,7 @@
 .wrapDevelopers {
   @apply flex flex-col
   gap-3
-  items-baseline
-  pr-48;
+  items-baseline;
 }
 
 .wrapInformation {

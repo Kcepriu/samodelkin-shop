@@ -28,10 +28,7 @@ interface IStateRevisedData {
 interface IStateRevised extends IStateRevisedData {
   addRevised: (newProduct: IProduct) => Promise<void>;
   deleteRevised: (newProduct: IProduct) => Promise<void>;
-  fetchRevised: (
-    isRemoteStorage: boolean,
-    controller: AbortController
-  ) => Promise<void>;
+  fetchRevised: (isRemoteStorage: boolean) => Promise<void>;
 }
 
 // * Save Revised to Storage
@@ -55,14 +52,10 @@ const saveRevisedToStorage = async (
 };
 
 // * fetch Revised From Storage
-const fetchRevisedFromStorage = async (
-  isRemoteStorage: boolean,
-  controller: AbortController
-) => {
+const fetchRevisedFromStorage = async (isRemoteStorage: boolean) => {
   if (isRemoteStorage) {
     const { isAuth, markProduct: revised } = await getMarkProduct(
-      BACKEND_ROUTES.REVISED,
-      controller
+      BACKEND_ROUTES.REVISED
     );
     if (!isAuth) await signOut();
     return { isAuth, revised };
@@ -107,11 +100,8 @@ const useRevised = create<IStateRevised>()((set, get) => ({
     }));
   },
 
-  fetchRevised: async (isRemoteStorage, controller) => {
-    const { isAuth, revised } = await fetchRevisedFromStorage(
-      isRemoteStorage,
-      controller
-    );
+  fetchRevised: async (isRemoteStorage) => {
+    const { isAuth, revised } = await fetchRevisedFromStorage(isRemoteStorage);
 
     return set((state) => ({
       revised: [...revised],
