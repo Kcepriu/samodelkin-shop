@@ -9,14 +9,27 @@
 }
 .wrapMessage {
   @apply w-[419px]
-  h-[222px]
+  h-[222px];
+}
+
+.content {
+  @apply w-full h-full 
+  py-8
+  px-8
   flex 
+  flex-col
+  gap-2
   justify-center 
   items-center
   font-roboto
   text-size_20
   font-weight_400
-  leading-line_height_25;
+  leading-line_height_20
+  text-center;
+}
+
+.header {
+  @apply font-weight_800;
 }
 
 .button {
@@ -28,8 +41,8 @@
   bg-blue_action
   text-white  
   hover:bg-blue_action_button
-  hover:shadow-gray-500/80
-  hover:shadow-lg  
+  /* hover:shadow-gray-500/80
+  hover:shadow-lg   */
   transition
   font-inter
   text-size_18

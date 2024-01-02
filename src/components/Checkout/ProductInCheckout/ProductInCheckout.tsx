@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useRouter } from "next/navigation";
 
 import Image from "next/image";
-import { RiDeleteBin2Line } from "react-icons/ri";
+import { PiTrash } from "react-icons/pi";
 import Img from "@/assets/no_images.png";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import { formatPrice } from "@/helpers/formatNumber";
@@ -46,8 +46,19 @@ const ProductInCheckout: FC<IProps> = ({ rowCart, deleteProduct }) => {
 
         <div className={style.wrapInformation}>
           <div className={style.wrapInformationProduct}>
+            <div className={style.wrapDetails}>
+              <div>Кількість: {rowCart.count} шт.</div>
+              <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+              <button
+                className={style.buttonDelete}
+                type="button"
+                onClick={async () => await deleteProduct(product.data)}
+              >
+                <PiTrash className={style.icon} size={18} />
+              </button>
+            </div>
+
             <div className={style.wrapLanguage}>
-              Мова гри:
               <Image
                 // className={styles.image}
                 src={getImageFlag(rowCart.language.language)}
@@ -56,19 +67,7 @@ const ProductInCheckout: FC<IProps> = ({ rowCart, deleteProduct }) => {
                 width={34}
               />
             </div>
-
-            <div className={style.wrapDetails}>
-              <div>Кількість: {rowCart.count} шт.</div>
-              <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
-            </div>
           </div>
-          <button
-            className={style.buttonDelete}
-            type="button"
-            onClick={async () => await deleteProduct(product.data)}
-          >
-            <RiDeleteBin2Line className={style.icon} size={18} />
-          </button>
         </div>
       </div>
     </div>

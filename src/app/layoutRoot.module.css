@@ -4,12 +4,17 @@
   w-full 
   flex 
   flex-col 
-  sm:max-w-screen-sm 
-  md:max-w-screen-md 
   lg:max-w-screen-lg 
+  md:max-w-screen-md 
+  sm:max-w-screen-sm 
+  
   lg:px-[100px] 
- 
-  overflow-hidden;
+  md:px-5
+  sm:px-5
+  
+  
+  outline outline-1 outline-red-600
+  /* overflow-hidden; */;
 }
 
 .header {
@@ -17,7 +22,10 @@
 }
 
 .wrapBody {
-  @apply flex flex-col  justify-between min-h-screen;
+  @apply flex 
+  flex-col  
+  justify-between 
+  min-h-screen;
 }
 
 .wrapMain {
@@ -25,5 +33,6 @@
 }
 
 .wrapFooter {
-  @apply mt-20 bg-dark_blue;
+  @apply mt-10
+  md:mt-20 bg-dark_blue;
 }

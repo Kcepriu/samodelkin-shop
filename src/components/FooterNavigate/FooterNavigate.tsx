@@ -12,7 +12,7 @@ const FooterNavigate: FC = () => {
           Про компанію
         </Link>
         <Link className={style.link} href={FRONTEND_ROUTES.PRODUCTS}>
-          Catalog
+          Каталог товарів
         </Link>
       </div>
       <div className={style.wrapInfo}>

@@ -33,7 +33,7 @@ const config: Config = {
         xs: "320px",
         // => @media (min-width: 320px) { ... }
 
-        sm: "480px",
+        sm: "414px",
         // => @media (min-width: 480px) { ... }
 
         md: "768px",
@@ -52,6 +52,7 @@ const config: Config = {
         roboto: [`var(--font-roboto)`],
         inter: [`var(--font-inter)`],
         robotoSerif: [`var(--font-roboto_serif)`],
+        itim: [`var(--font-itim)`],
       },
       fontSize: {
         size_14: "14px",
@@ -62,6 +63,7 @@ const config: Config = {
         size_24: "24px",
         size_32: "32px",
         size_40: "40px",
+        size_250: "250px",
       },
       fontWeight: {
         weight_300: "300",
@@ -69,6 +71,7 @@ const config: Config = {
         weight_500: "500",
         weight_600: "600",
         weight_700: "700",
+        weight_800: "800",
       },
       lineHeight: {
         line_height_15: "1.15",

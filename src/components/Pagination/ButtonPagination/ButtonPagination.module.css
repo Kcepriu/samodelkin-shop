@@ -1,0 +1,18 @@
+.button {
+  @apply px-3 py-1
+  flex
+  gap-1
+  font-inter
+  text-size_14
+  font-weight_500
+  leading-line_height_71
+  items-center
+  border
+  border-light_blue
+  bg-text_white
+  transition
+  rounded-lg
+  /* hover:shadow-lg */
+  hover:border-blue_action_button
+  data-[is-reverse=true]:flex-row-reverse;
+}

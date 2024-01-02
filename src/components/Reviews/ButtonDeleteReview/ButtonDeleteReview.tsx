@@ -2,10 +2,10 @@
 
 import { FC } from "react";
 import { useRouter } from "next/navigation";
-import { RiDeleteBin2Line } from "react-icons/ri";
+import { PiTrash } from "react-icons/pi";
 import ButtonWithIcon from "@/components/ButtonWithIcon/ButtonWithIcon";
-import { deleteReview } from "@/services/serverActionHttp";
 import useModalMessage from "@/hooks/useModalMessage";
+import { deleteReview } from "@/services/serverActionHttp";
 import { showNotifyFailure } from "@/services/notification";
 interface IProps {
   idReview: number;
@@ -38,8 +38,8 @@ const ButtonDeleteReview: FC<IProps> = ({ idReview }) => {
       <ButtonWithIcon
         handleOnClick={handleDeleteReview}
         text=""
-        Icon={RiDeleteBin2Line}
-        size={18}
+        Icon={PiTrash}
+        size={24}
       />
       {MessageComponent}
     </>

@@ -1,0 +1,38 @@
+.wrapContent {
+  @apply flex justify-end 
+  mt-10;
+}
+
+.wrapLeft {
+  @apply mt-10
+  pr-28;
+}
+
+.title {
+  @apply font-itim
+  text-size_250
+  font-weight_400
+  leading-line_height_20;
+}
+
+.text {
+  @apply mt-3
+  w-[370px]
+  font-inter
+  text-size_18
+  font-weight_500
+  leading-line_height_21;
+}
+
+.button {
+  @apply mt-8
+  w-fit
+  block 
+  py-3
+  px-8  
+  rounded-lg 
+  bg-blue_action
+  text-white
+  transition
+  hover:bg-blue_action_button;
+}

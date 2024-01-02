@@ -64,9 +64,8 @@ const Products: FC<IParams> = async ({
           )}
         </div>
       </section>
-      <section className={style.wrapSection}>
-        <CategoryDescription categoryId={categoryId} />
-      </section>
+
+      <CategoryDescription categoryId={categoryId} />
     </>
   );
 };

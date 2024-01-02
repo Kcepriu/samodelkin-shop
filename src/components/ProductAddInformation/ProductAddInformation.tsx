@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import httpServices from "@/services/http";
 import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAddInfoReviews";
 import ProductAddInfoCharacteristics from "../ProductAddInfoCharacteristics/ProductAddInfoCharacteristics";
@@ -50,6 +51,11 @@ const ProductAddInformation: FC<IProps> = async ({
     PRODUCT_ADD_INFORMATION_ROUTES.MANUALS,
     slug
   );
+
+  const findUrl = Object.values(PRODUCT_ADD_INFORMATION_ROUTES).find(
+    (element) => element === currentUrlInfo
+  );
+  if (!!currentUrlInfo && !findUrl) notFound();
 
   return (
     <>

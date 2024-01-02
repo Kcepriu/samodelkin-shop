@@ -20,6 +20,9 @@ interface IResponseMainPage {
         data: IImage[] | null;
       };
       seo?: ISeo;
+      phoneNumber: string;
+      telegram: string;
+      workingHours: string;
     };
   };
 }

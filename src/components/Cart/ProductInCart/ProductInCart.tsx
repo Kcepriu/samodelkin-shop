@@ -1,7 +1,8 @@
 import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { RiDeleteBin2Line } from "react-icons/ri";
+
+import { PiTrash } from "react-icons/pi";
 
 import Img from "@/assets/no_images.png";
 import ChangeLanguage from "@/components/ChangeLanguage/ChangeLanguage";
@@ -48,26 +49,25 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
           </button>
         </div>
 
-        <div className={style.wrapDetails}>
-          <div className={style.wrapInformation}>
-            <div className={style.wrapChangeLanguage}>
-              Доступні мови:
-              <ChangeLanguage rowCart={rowCart} />
-            </div>
-
+        <div className={style.wrapInformation}>
+          <div className={style.wrapDetails}>
             <div className={style.wrapPrice}>
               <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
               <CountProductChange rowCart={rowCart} />
               <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
             </div>
+            <button
+              className={style.buttonDelete}
+              type="button"
+              onClick={async () => await deleteProduct(product.data)}
+            >
+              <PiTrash className={style.icon} size={24} />
+            </button>
           </div>
-          <button
-            className={style.buttonDelete}
-            type="button"
-            onClick={async () => await deleteProduct(product.data)}
-          >
-            <RiDeleteBin2Line className={style.icon} size={18} />
-          </button>
+
+          <div className={style.wrapChangeLanguage}>
+            <ChangeLanguage rowCart={rowCart} />
+          </div>
         </div>
       </div>
     </div>

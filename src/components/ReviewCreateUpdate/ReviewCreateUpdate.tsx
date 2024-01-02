@@ -111,27 +111,27 @@ const ReviewCreateUpdate: FC<IProps> = ({
 
         <TextField
           fullWidth
-          id="advantages"
-          name="advantages"
-          label="Недоліки *"
-          value={values.advantages}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={touched.advantages && Boolean(errors.advantages)}
-          helperText={touched.advantages && errors.advantages}
-          className={style.inputFields}
-        />
-
-        <TextField
-          fullWidth
           id="disAdvantages"
           name="disAdvantages"
-          label="Переваги *"
+          label="Переваги"
           value={values.disAdvantages}
           onChange={handleChange}
           onBlur={handleBlur}
           error={touched.disAdvantages && Boolean(errors.disAdvantages)}
           helperText={touched.disAdvantages && errors.disAdvantages}
+          className={style.inputFields}
+        />
+
+        <TextField
+          fullWidth
+          id="advantages"
+          name="advantages"
+          label="Недоліки"
+          value={values.advantages}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.advantages && Boolean(errors.advantages)}
+          helperText={touched.advantages && errors.advantages}
           className={style.inputFields}
         />
 

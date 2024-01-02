@@ -2,22 +2,43 @@ import { FC } from "react";
 import Link from "next/link";
 import ImageLogo from "@/assets/logo.png";
 import Image from "next/image";
+import { PiPhoneCall } from "react-icons/pi";
 import ButtonOpenCart from "../ButtonOpenCart/ButtonOpenCart";
 import ButtonGoToFavorite from "../ButtonGoToFavorite/ButtonGoToFavorite";
 import ButtonGoToAccount from "../ButtonGoToAccount/ButtonGoToAccount";
+import ButtonBurger from "../ButtonBurger/ButtonBurger";
+import httpServices from "@/services/http";
 
 import style from "./HeaderPage.module.css";
 
-const HeaderPage: FC = () => {
+const HeaderPage: FC = async () => {
+  const responseMainPage = await httpServices.getMainPage();
+  const telephoneNumber = responseMainPage?.data.attributes.phoneNumber || "";
+
   return (
     <div className={style.wrapHeader}>
+      <div className={style.burger}>
+        <ButtonBurger />
+      </div>
+
       <Link href="/" className={style.logo}>
-        <Image src={ImageLogo} alt="Logo Shop" width={78} height={78} />
+        <Image
+          src={ImageLogo}
+          alt="Logo Shop"
+          width={78}
+          height={78}
+          className={style.imageLogo}
+        />
       </Link>
 
       <div className={style.wrapNavigate}>
-        <Link className={style.link} href="#contacts">
+        {/* <Link className={style.link} href="#contacts">
           Контакти
+        </Link> */}
+
+        <Link href={`tel:${telephoneNumber}`} className={style.phoneNumber}>
+          <PiPhoneCall size={24} />
+          {telephoneNumber}
         </Link>
 
         <ul className={style.wrapButton}>

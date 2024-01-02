@@ -42,8 +42,8 @@
   bg-blue_action
   text-white  
   hover:bg-blue_action_button
-  hover:shadow-gray-500/80
-  hover:shadow-lg  
+  /* hover:shadow-gray-500/80
+  hover:shadow-lg   */
 
   transition;
 }

@@ -15,7 +15,8 @@ import {
 export const getProductsByList = async (
   productsID: number[]
 ): Promise<IResponseProduct | null> => {
-  return await httpServices.getProductsByList(productsID);
+  const result = await httpServices.getProductsByList(productsID);
+  return result;
 };
 
 // * get Product Reviews
@@ -223,7 +224,6 @@ export const getAboutMe = async (): Promise<{
   infoAboutMe: IMyInformation | null;
 }> => {
   const { code, data: response } = await httpServices.getAboutMe();
-
   const infoAboutMe = code === 200 && !!response ? response : null;
 
   return {

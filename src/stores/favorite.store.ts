@@ -53,9 +53,14 @@ const saveFavoriteToStorage = async (
 // * fetch Favorites From Storage
 const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   if (isRemoteStorage) {
+    console.log("fetchFavoritesFromStorage - before");
+
     const { isAuth, markProduct: favorites } = await getMarkProduct(
       BACKEND_ROUTES.FAVORITES
     );
+
+    console.log("fetchFavoritesFromStorage - After", isAuth);
+
     if (!isAuth) await signOut();
     return { isAuth, favorites };
   }
@@ -67,6 +72,7 @@ const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
   return {
     isAuth: false,
     favorites: !!responseFavorites ? responseFavorites.data : favorites,
+    // favorites: [],
   };
 };
 

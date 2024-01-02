@@ -5,29 +5,19 @@ interface IProps {
   product: IProduct;
 }
 const ProductAddInfoCharacteristics: FC<IProps> = ({ product }) => {
+  const characteristics = product.attributes.characteristics;
+
   return (
-    <div className={style.wrapContent}>
-      <p>
-        <span>countPlayers: </span>
-        {product.attributes.countPlayers}
-      </p>
-      <p>
-        <span>descrition: </span>
-        {product.attributes.descrition}
-      </p>
-      <p>
-        <span>price: </span>
-        {product.attributes.price} ₴
-      </p>
-      <p>
-        <span>available: </span>
-        {product.attributes.available ? "Є в наявністі" : "Під замовлення"}
-      </p>
-      <p>
-        <span>additions: </span>
-        {product.attributes.additions ? "Додаток" : "Базовий набір"}
-      </p>
-    </div>
+    <ul className={style.wrapContent}>
+      {characteristics.map((element) => {
+        return (
+          <li key={element.id} className={style.content}>
+            <p className={style.title}>{element.title}</p>
+            <p>{element.value}</p>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
