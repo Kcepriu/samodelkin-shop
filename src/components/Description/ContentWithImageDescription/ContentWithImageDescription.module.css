@@ -1,10 +1,19 @@
 .wrapContent {
-  @apply flex gap-6 
-   
-  data-[reverse=true]:flex-row-reverse;
+  @apply flex 
+  gap-3
+  md:gap-6 
+  
+  flex-col
+  
+  
+
+  lg:data-[reverse=false]:flex-row
+  lg:data-[reverse=true]:flex-row-reverse;
 }
+
 .wrapContent .wrapText {
-  @apply overflow-hidden flex flex-col justify-center;
+  @apply overflow-hidden 
+  flex flex-col justify-center;
 }
 
 .wrapImage {

@@ -77,9 +77,9 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           )}
         </div>
       </div>
-      {/* <section className={style.section}>
+      <section className={style.section}>
         <AboutUsSection />
-      </section> */}
+      </section>
     </>
   );
 };
