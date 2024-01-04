@@ -1,0 +1,25 @@
+/* Large image */
+.mySwiperReviews.swiper {
+  height: 100%;
+  width: 100%;
+
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.mySwiperReviews .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiperReviews .swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+}

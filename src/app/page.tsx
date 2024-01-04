@@ -5,6 +5,7 @@ import heroImage from "@/assets/hero.jpg";
 import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
+import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
@@ -70,6 +71,9 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           {responseReviews && responseReviews.data.length > 0 && (
             <section className={style.section}>
               <h2 className={style.titleSectionReview}>Відгуки</h2>
+              <div className={style.wrapReviewsSlider}>
+                <SliderReviews reviews={responseReviews.data} />
+              </div>
               <div className={style.wrapReviews}>
                 <Reviews reviews={responseReviews.data} />
               </div>

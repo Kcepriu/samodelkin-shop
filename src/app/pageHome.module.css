@@ -14,7 +14,8 @@
 }
 
 .wrapContent {
-  @apply flex-grow;
+  @apply flex-grow 
+  max-w-full;
 }
 
 .imageHero {
@@ -38,7 +39,15 @@
 }
 
 .wrapReviews {
-  @apply mt-4;
+  @apply mt-4
+  hidden
+  md:block;
+}
+
+.wrapReviewsSlider {
+  @apply mt-4 
+  w-full 
+  md:hidden;
 }
 
 .titleSection {
