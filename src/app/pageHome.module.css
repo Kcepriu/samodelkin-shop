@@ -7,7 +7,10 @@
 }
 
 .wrapFilter {
-  @apply w-[292px] min-w-[292px];
+  @apply hidden
+  lg:block
+  lg:w-[292px] 
+  lg:min-w-[292px];
 }
 
 .wrapContent {
@@ -43,4 +46,13 @@
   text-size_32
   font-weight_500
   leading-line_height_17;
+}
+
+.titleSectionReview {
+  @apply font-robotoSerif
+  text-size_32
+  font-weight_500
+  leading-line_height_17
+  hidden
+  md:block;
 }

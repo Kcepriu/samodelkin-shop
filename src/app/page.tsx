@@ -49,7 +49,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
             />
           </section>
 
-          {responseProducts && responseProducts.data.length > 0 && (
+          {/* { responseProducts &&  responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2 className={style.titleSection}>Лідери продажу</h2>
 
@@ -60,16 +60,16 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
                 />
               </div>
             </section>
-          )}
+          )} */}
 
           <section className={style.section}>
             {/* moved to a separate component as the data is only available with the client */}
-            <RevisedProducts />
+            {/* <RevisedProducts /> */}
           </section>
 
           {responseReviews && responseReviews.data.length > 0 && (
             <section className={style.section}>
-              <h2 className={style.titleSection}>Відгуки</h2>
+              <h2 className={style.titleSectionReview}>Відгуки</h2>
               <div className={style.wrapReviews}>
                 <Reviews reviews={responseReviews.data} />
               </div>
@@ -77,9 +77,9 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           )}
         </div>
       </div>
-      <section className={style.section}>
+      {/* <section className={style.section}>
         <AboutUsSection />
-      </section>
+      </section> */}
     </>
   );
 };

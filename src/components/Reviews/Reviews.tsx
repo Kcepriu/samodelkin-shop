@@ -19,8 +19,8 @@ interface IProps {
 
 const Reviews: FC<IProps> = ({
   reviews,
-  isModerator = false,
-  isCreateReplyReview = false,
+  isModerator = true,
+  isCreateReplyReview = true,
 }) => {
   return (
     <div className={style.wrapSection}>
@@ -48,27 +48,57 @@ const Reviews: FC<IProps> = ({
                   />
                 </div>
 
-                <p className={style.userName}>
-                  {`${attributes.firstName} ${attributes.lastName}`}
-                </p>
+                <div>
+                  <div className={style.wrapRatingMobile}>
+                    <RatingStar rating={attributes.rating} />
+                  </div>
 
-                <p className={style.data}>
-                  {format(new Date(attributes.date), "dd-MM-yyyy")}
-                </p>
+                  <p className={style.userName}>
+                    {`${attributes.firstName} ${attributes.lastName}`}
+                  </p>
+
+                  <p className={style.data}>
+                    {format(new Date(attributes.date), "dd-MM-yyyy")}
+                  </p>
+                </div>
               </div>
 
-              <div className={style.wrapContent}>
-                <RatingStar rating={attributes.rating} />
-                <p className={style.content}>{attributes.content}</p>
-                <p>
-                  <span className={style.titleField}>Переваги:</span>&nbsp;
-                  {attributes.advantages}
-                </p>
-                <p>
-                  <span className={style.titleField}>Недоліки:</span>&nbsp;
-                  {attributes.disAdvantages}
-                </p>
+              <div className={style.wrapContentWithModerator}>
+                <div className={style.wrapContentWithImage}>
+                  <div className={style.wrapContent}>
+                    <div className={style.wrapRatingDesktop}>
+                      <RatingStar rating={attributes.rating} />
+                    </div>
 
+                    <p className={style.content}>{attributes.content}</p>
+                    <p>
+                      <span className={style.titleField}>Переваги:</span>&nbsp;
+                      {attributes.advantages}
+                    </p>
+                    <p>
+                      <span className={style.titleField}>Недоліки:</span>&nbsp;
+                      {attributes.disAdvantages}
+                    </p>
+                  </div>
+
+                  <div className={style.wrapProduct}>
+                    <Link href={urlProduct}>
+                      <Image
+                        className={style.imageProduct}
+                        src={urlImage}
+                        alt={product.attributes.title}
+                        width={0}
+                        height={0}
+                        sizes="(max-width: 1140px) 13vw, (max-width: 768px) 25vw,  25vw"
+                      />
+                    </Link>
+                  </div>
+                  {isModerator && (
+                    <div className={style.buttonDelete}>
+                      <ButtonDeleteReview idReview={id} />
+                    </div>
+                  )}
+                </div>
                 {(isModerator || isCreateReplyReview) && (
                   <ButtonsReview
                     review={review}
@@ -77,23 +107,6 @@ const Reviews: FC<IProps> = ({
                   />
                 )}
               </div>
-
-              <div className={style.wrapProduct}>
-                <Link href={urlProduct}>
-                  <Image
-                    className={style.image}
-                    src={urlImage}
-                    alt={product.attributes.title}
-                    height={187}
-                    width={219}
-                  />
-                </Link>
-              </div>
-              {isModerator && (
-                <div className={style.buttonDelete}>
-                  <ButtonDeleteReview idReview={id} />
-                </div>
-              )}
             </div>
             {repliesReview.length > 0 && (
               <RepliesReviews reviewId={id} repliesReview={repliesReview} />
