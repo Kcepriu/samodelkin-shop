@@ -30,7 +30,12 @@
   height: 100%; */
 }
 
-.mySwiperProduct .swiper-button-prev {
+/* .mySwiperProduct .swiper-button-prev {
   left: -20px;
   z-index: 20;
+} */
+
+.mySwiperProduct .swiper-pagination {
+  position: relative;
+  margin-top: 16px;
 }

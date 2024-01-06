@@ -17,7 +17,8 @@
 }
 
 .wrapButton {
-  @apply flex 
+  @apply hidden
+  md:flex 
   gap-6 
   mt-4 
   justify-center

@@ -59,13 +59,14 @@ const SliderReviews: FC<IProps> = ({
   return (
     <div className={style.wrapSwiper}>
       <Swiper
-        loop={true}
+        // loop={true}
         pagination={{
           dynamicBullets: true,
         }}
         zoom={true}
         modules={[Pagination, Zoom]}
         className="mySwiperReviews"
+        onReachEnd={(swiper) => console.log("swiper", swiper)}
         breakpoints={{
           480: {
             slidesPerView: 1,

@@ -50,22 +50,22 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
             />
           </section>
 
-          {/* { responseProducts &&  responseProducts.data.length > 0 && (
+          {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2 className={style.titleSection}>Лідери продажу</h2>
 
               <div className={style.wrapSwiper}>
                 <SliderProducts
                   productList={responseProducts.data}
-                  slidesPerView={{ desktop: 3, tablet: 2, mobile: 1 }}
+                  slidesPerView={{ desktop: 3, tablet: 2, mobile: 2 }}
                 />
               </div>
             </section>
-          )} */}
+          )}
 
           <section className={style.section}>
             {/* moved to a separate component as the data is only available with the client */}
-            {/* <RevisedProducts /> */}
+            <RevisedProducts />
           </section>
 
           {responseReviews && responseReviews.data.length > 0 && (

@@ -1,13 +1,6 @@
 .wrapSwiper {
   @apply max-w-full  
-  overflow-x-hidden  
-  /* max-w-[300px] */
-  /* max-w-[374px] */
-  
-  /* max-w-min */
-  /* w-full */
-  /* max-w-screen-sm    */
-  outline outline-1 outline-red-600;
+  overflow-x-hidden;
 }
 
 .elementCard {

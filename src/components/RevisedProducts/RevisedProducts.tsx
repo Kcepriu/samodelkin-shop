@@ -16,7 +16,7 @@ const RevisedProducts: FC = () => {
           <div className={style.wrapSwiper}>
             <SliderProducts
               productList={revised}
-              slidesPerView={{ desktop: 3, tablet: 2, mobile: 1 }}
+              slidesPerView={{ desktop: 3, tablet: 2, mobile: 2 }}
             />
           </div>
         </>
