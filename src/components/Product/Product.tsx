@@ -32,6 +32,38 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
     <>
       <AddToRevised product={product} />
       <div className={style.wrapInformation}>
+        <div className={style.wrapProductInformationMobile}>
+          <h1 className={style.title}>{attributes.title}</h1>
+
+          <div className={style.wrapRatingCode}>
+            <div className={style.wrapRating}>
+              <p>
+                code: <span>{attributes.code}</span>
+              </p>
+
+              {rating > 0 && <RatingStar rating={rating} />}
+
+              <Link
+                className={style.countReviews}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+              >
+                <PiChatText size={24} />
+                {countReview}
+              </Link>
+            </div>
+
+            <div className={style.wrapLanguages}>
+              <FlagLanguages flags={attributes.languages} />
+            </div>
+          </div>
+
+          <div className={style.wrapTypeProduct}>
+            <ButtonsTypeProduct product={product} />
+          </div>
+        </div>
+
+        {/* IMAGES */}
+
         <div className={style.wrapImage}>
           {!images && (
             <Image
@@ -102,16 +134,67 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               <ButtonAddProductToCart product={product} bigButton />
             </div>
 
-            <ButtonAddProductToFavorite product={product} size={24} />
+            <ButtonAddProductToFavorite
+              product={product}
+              size={24}
+              sizeIcon={24}
+            />
           </div>
 
           <div className={style.wrapGeneralInformation}>
             <div className={style.generalInformation}>
-              <PiTruck size={24} />
+              <PiTruck size={24} className={style.iconGeneralInformation} />
               <p>Доставка новою поштою, укр поштою</p>
             </div>
             <div className={style.generalInformation}>
-              <HiOutlineIdentification size={24} />
+              <HiOutlineIdentification
+                size={24}
+                className={style.iconGeneralInformation}
+              />
+              <p>
+                Оплачуйте покупку готівкою у відділені пошти, карткою або
+                перерахунком на банківські реквізити
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={style.wrapProductInformationButtonMobile}>
+          <div className={style.wrapAvailable}>
+            {!!attributes.available ? (
+              <p className={style.isAvailable}>В наявності</p>
+            ) : (
+              <p>Немає в наявності</p>
+            )}
+          </div>
+
+          <p className={style.price}>
+            {formatPrice(attributes.price)}
+            <span className={style.currency}>₴</span>
+          </p>
+
+          <div className={style.wrapButton}>
+            <div className={style.buttonCart}>
+              <ButtonAddProductToCart product={product} bigButton />
+            </div>
+
+            <ButtonAddProductToFavorite
+              product={product}
+              size={40}
+              sizeIcon={40}
+            />
+          </div>
+
+          <div className={style.wrapGeneralInformation}>
+            <div className={style.generalInformation}>
+              <PiTruck size={24} className={style.iconGeneralInformation} />
+              <p>Доставка новою поштою, укр поштою</p>
+            </div>
+            <div className={style.generalInformation}>
+              <HiOutlineIdentification
+                size={24}
+                className={style.iconGeneralInformation}
+              />
               <p>
                 Оплачуйте покупку готівкою у відділені пошти, карткою або
                 перерахунком на банківські реквізити

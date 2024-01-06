@@ -16,14 +16,15 @@ const ContentWithImageDescription: FC<IProps> = ({ params }) => {
   return (
     <div className={style.wrapContent} data-reverse={params.reverseDirection}>
       <div
-        className={style.wrapText}
-        style={{ width: `${100 - params.percentImage}%` }}
+        className={`${style.wrapText} w-full lg:w-[${
+          100 - params.percentImage
+        }%]`}
       >
         <Markdown>{params.content}</Markdown>
       </div>
+
       <div
-        className={style.wrapImage}
-        style={{ width: `${params.percentImage}%` }}
+        className={`${style.wrapImage} w-full lg:w-[${params.percentImage}%]`}
       >
         {image && image.data && (
           <Image
@@ -33,7 +34,7 @@ const ContentWithImageDescription: FC<IProps> = ({ params }) => {
             height={0}
             width={0}
             // priority={true}
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 100vw"
+            sizes="(max-width: 1440px) 30vw, (max-width: 768px) 50vw,  100vw"
           />
         )}
       </div>

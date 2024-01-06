@@ -1,6 +1,9 @@
 .wrapModerator {
-  @apply flex justify-between
-  pr-40
-  mt-10
+  @apply flex 
+  gap-6
+  mt-6
+  justify-between
+  md:pr-[210px]
+  md:mt-10
   text-dark_blue;
 }

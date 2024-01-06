@@ -19,8 +19,8 @@ const FlagLanguages: FC<IProps> = ({ flags }) => {
               // className={styles.image}
               src={getImageFlag(flag.language)}
               alt={flag.language}
-              height={25}
-              width={34}
+              height={0}
+              width={0}
             />
           </li>
         );

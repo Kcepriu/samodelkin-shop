@@ -1,7 +1,10 @@
 .reply {
   @apply relative
-  flex gap-6
-  p-6
+  flex 
+  gap-3
+  md:gap-6
+  p-1
+  md:p-6
   w-full
   
   font-inter 
@@ -15,7 +18,9 @@
   border-blue_100;
 }
 .icon {
-  @apply absolute top-0 -left-12;
+  @apply absolute top-0 
+  -left-8
+  md:-left-12;
 }
 
 .data {
@@ -40,8 +45,13 @@
 }
 
 .content {
-  @apply font-inter 
-  text-size_18 
+  @apply text-left
+  font-inter 
+  text-size_14 
   font-weight_300 
-  leading-line_height_31;
+  leading-line_height_28
+
+  md:text-size_18 
+  md:font-weight_300 
+  md:leading-line_height_31;
 }

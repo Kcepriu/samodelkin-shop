@@ -68,7 +68,7 @@ const Layout: FC<IProps> = async ({
           <div className={style.wrapSwiper}>
             <SliderProducts
               productList={responseSalesLeaders.data}
-              slidesPerView={{ desktop: 4, tablet: 2, mobile: 1 }}
+              slidesPerView={{ desktop: 4, tablet: 2, mobile: 2 }}
             />
           </div>
         </section>

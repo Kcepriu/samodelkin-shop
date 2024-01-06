@@ -1,4 +1,6 @@
 .sectionAddInformation {
-  @apply mt-12
-  max-w-[1036px];
+  @apply mt-6
+  md:mt-12
+  max-w-max
+  /* lg:max-w-[1036px]; */;
 }

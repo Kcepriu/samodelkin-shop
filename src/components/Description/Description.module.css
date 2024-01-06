@@ -1,5 +1,6 @@
 .wrapContent {
-  @apply mt-describe_big 
+  @apply mt-5
+  md:mt-10
   font-inter
   text-size_16
   font-weight_400
