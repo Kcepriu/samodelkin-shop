@@ -35,12 +35,15 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
 
   return (
     <button
-      className={`w-[${size}px] h-[${size}px] ${style.button}`}
+      className={`w-[${size}px] h-[${size}px]  ${style.button}`}
       type="button"
       onClick={handleOnClick}
     >
       {!!isFavorite ? (
-        <AiFillHeart size={sizeIcon} className={style.iconFavorite} />
+        <AiFillHeart
+          size={sizeIcon}
+          className={`w-[${size}px] h-[${size}px] min-w-[${size}px] min-h-[${size}px] ${style.iconFavorite}`}
+        />
       ) : (
         <AiOutlineHeart size={sizeIcon} className={style.icon} />
       )}

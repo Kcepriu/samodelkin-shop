@@ -2,10 +2,7 @@
   @apply relative  
   w-[179px]  
   md:w-[292px]  
-  overflow-hidden
-  outline
-  outline-1
-  outline-red-700;
+  overflow-hidden;
 }
 
 .wrapCard:hover {
