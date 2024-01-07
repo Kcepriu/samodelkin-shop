@@ -1,7 +1,8 @@
 .wrapCard {
   @apply relative  
   w-[179px]  
-  md:w-[292px]  
+  md:w-[234px]  
+  lg:w-[292px]  
   overflow-hidden;
 }
 
@@ -68,10 +69,11 @@
   object-contain  
   rounded-t-lg;
 }
+
 .wrapFlag {
   @apply absolute
   -bottom-1
-  md:-bottom-3
+  lg:-bottom-3
   right-2
   md:right-6;
 }
@@ -80,7 +82,7 @@
   @apply text-left
   font-inter
   text-size_16 
-  md:text-size_20 
+  lg:text-size_20 
   font-weight_600
   leading-line_height_21;
 }

@@ -3,7 +3,9 @@
 }
 
 .wrapFilter {
-  @apply w-[292px]
+  @apply hidden
+  md:block
+  w-[292px]
   min-w-[292px];
 }
 

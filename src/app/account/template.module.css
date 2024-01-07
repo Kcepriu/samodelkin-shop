@@ -4,7 +4,8 @@
   flex-col
   md:flex-row
   gap-10
-  md:gap-20;
+  md:gap-5
+  lg:gap-20;
 }
 
 .wrapListPage {
