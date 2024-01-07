@@ -1,5 +1,5 @@
 "use client";
-import { FC } from "react";
+import { FC, useRef, MutableRefObject, useEffect } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, FreeMode } from "swiper/modules";
@@ -30,9 +30,23 @@ const ButtonsAddInformationSlider: FC<IProps> = ({
   countReviews,
   countManuals,
 }) => {
+  const swiperRef = useRef<any>(null);
+  // const swiperRef: MutableRefObject<null>;
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const founIndex = TYPES_PRODUCT_ADD_INFORMATION.findIndex(
+        (type_info) => currentUrlInfo === type_info.url
+      );
+
+      if (founIndex >= 0) swiperRef.current.slideTo(founIndex, 0);
+    }
+  }, [currentUrlInfo]);
+
   return (
     <div className={style.listTypesInfo}>
       <Swiper
+        onAfterInit={(swiper) => (swiperRef.current = swiper)}
         loop={true}
         // freeMode={true}
         pagination={{

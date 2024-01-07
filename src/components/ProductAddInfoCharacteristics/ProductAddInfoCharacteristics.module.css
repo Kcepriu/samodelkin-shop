@@ -1,5 +1,6 @@
 .wrapContent {
-  @apply mt-12
+  @apply mt-6
+  md:mt-12
   flex flex-col 
   gap-6
   text-size_18
@@ -8,9 +9,11 @@
 }
 
 .content {
-  @apply flex gap-12;
+  @apply flex gap-3
+  md:gap-12;
 }
 .title {
   @apply font-weight_600
-  min-w-[200px];
+  min-w-[170px]
+  md:min-w-[200px];
 }

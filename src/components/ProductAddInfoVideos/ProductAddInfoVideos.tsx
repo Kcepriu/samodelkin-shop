@@ -17,8 +17,9 @@ const ProductAddInfoVideos: FC<IProps> = ({ videos }) => {
     <div className={style.wrapContent}>
       {videos.map((video, index) => {
         return (
-          <div key={index}>
+          <div key={index} className={style.wrapVideo}>
             <iframe
+              className={style.wrapVideo}
               width="853"
               height="480"
               src={`https://www.youtube.com/embed/${getVideoId(video.url)}`}

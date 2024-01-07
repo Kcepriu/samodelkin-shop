@@ -9,9 +9,9 @@
   mx-auto
   md:mx-0
 
-  flex items-center 
+  flex items-start 
   overflow-hidden
-  w-[234px]
+  w-[320px]
   md:w-[397px];
 }
 
