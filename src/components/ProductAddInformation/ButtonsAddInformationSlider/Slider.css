@@ -1,0 +1,26 @@
+/* Large image */
+.mySwiperAddInformation.swiper {
+  height: 100%;
+  width: 100%;
+
+  box-sizing: border-box;
+  /* overflow: visible; */
+}
+
+.mySwiperAddInformation .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  width: 25%;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiperAddInformation .swiper-pagination {
+  position: relative;
+  margin-top: 24px;
+}
