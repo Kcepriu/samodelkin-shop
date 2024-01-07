@@ -1,5 +1,7 @@
 .listPage {
-  @apply flex flex-col gap-3 w-[226px];
+  @apply flex flex-col gap-3 
+  w-full
+  md:w-[226px];
 }
 
 .elementList {
