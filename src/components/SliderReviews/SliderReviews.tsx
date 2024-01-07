@@ -40,9 +40,14 @@ const SliderReviews: FC<IProps> = ({
   }, [reviews]);
 
   const handleLoadMore = async () => {
-    const nextPage = currentPage + 1;
-
     if (!owner) return; //if show getLastReviews then not load more
+
+    if (currentPage >= countTotalPage) return;
+
+    console.log("countTotalPage", countTotalPage);
+    console.log("currentPage", currentPage);
+
+    const nextPage = currentPage + 1;
 
     const newReviews = owner?.isProduct
       ? await getProductReviews(owner.id, String(nextPage))
@@ -66,7 +71,7 @@ const SliderReviews: FC<IProps> = ({
         zoom={true}
         modules={[Pagination, Zoom]}
         className="mySwiperReviews"
-        onReachEnd={(swiper) => console.log("swiper", swiper)}
+        onReachEnd={handleLoadMore}
         breakpoints={{
           480: {
             slidesPerView: 1,

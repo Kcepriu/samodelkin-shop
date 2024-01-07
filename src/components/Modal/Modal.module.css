@@ -10,11 +10,11 @@
 }
 
 .modalContainer {
-  @apply relative 
-  max-w-[95%] 
+  @apply relative
+  max-w-[374px] 
+  md:max-w-[95%] 
   min-w-[250px] 
-  rounded-lg   
-  /* shadow-lg  */
+  rounded-lg     
   overflow-y-auto  
    bg-white;
 }
