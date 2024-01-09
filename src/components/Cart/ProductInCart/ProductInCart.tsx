@@ -86,6 +86,13 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
       <div className={style.wrapCountProductMobile}>
         <CountProductChange rowCart={rowCart} />
         <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+        <button
+          className={style.buttonDelete}
+          type="button"
+          onClick={async () => await deleteProduct(product.data)}
+        >
+          <PiTrash className={style.icon} size={24} />
+        </button>
       </div>
     </div>
   );

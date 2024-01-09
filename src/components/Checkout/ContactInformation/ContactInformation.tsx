@@ -14,9 +14,6 @@ const ContactInformation: FC<IProps> = ({ deliveryServices }) => {
   const { createOrderFromForm } = useCreateOrder();
   return (
     <>
-      <div className={style.wrapTitle}>
-        <h1 className={style.title}>Оформлення замовлення</h1>
-      </div>
       <ContactInformationDelivery
         deliveryServices={deliveryServices}
         addHandlerSubmitForm={createOrderFromForm}

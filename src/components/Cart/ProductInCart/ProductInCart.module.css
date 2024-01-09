@@ -1,5 +1,5 @@
 .wrapCardProduct {
-  @apply w-full;
+  @apply w-full relative;
 }
 .wrapProduct {
   @apply relative
@@ -28,6 +28,7 @@
 .wrapContent {
   @apply grow 
   h-full
+  mt-7
   md:py-8;
 }
 
@@ -95,7 +96,9 @@
 
 .buttonDelete {
   /* @apply absolute top-2 right-1 p-1; */
-  @apply p-1;
+  @apply absolute top-0 right-2
+  md:relative
+  p-1;
 }
 
 .icon {
