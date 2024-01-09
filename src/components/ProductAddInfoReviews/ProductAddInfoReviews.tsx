@@ -2,6 +2,7 @@ import { FC } from "react";
 import AddReview from "@/components/AddReview/AddReview";
 import Reviews from "@/components/Reviews/Reviews";
 import ReviewsLoadMore from "@/components/ReviewsLoadMore/ReviewsLoadMore";
+import SliderReviews from "../SliderReviews/SliderReviews";
 import style from "./ProductAddInfoReviews.module.css";
 interface IProps {
   product: IProduct;
@@ -20,11 +21,20 @@ const ProductAddInfoReviews: FC<IProps> = ({
       <div className={style.wrapReviews}>
         {reviews && reviews.length > 0 && (
           <>
-            <Reviews reviews={reviews} />
-            <ReviewsLoadMore
-              owner={{ isProduct: true, id: String(product.id) }}
-              paginationReviews={paginationReviews}
-            />
+            <div className={style.wrapReviewsSlider}>
+              <SliderReviews
+                reviews={reviews}
+                owner={{ isProduct: true, id: String(product.id) }}
+                paginationReviews={paginationReviews}
+              />
+            </div>
+            <div className={style.wrapReviewsDesktop}>
+              <Reviews reviews={reviews} isModerator isCreateReplyReview />
+              <ReviewsLoadMore
+                owner={{ isProduct: true, id: String(product.id) }}
+                paginationReviews={paginationReviews}
+              />
+            </div>
           </>
         )}
       </div>

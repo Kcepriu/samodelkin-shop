@@ -70,7 +70,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               className={style.image}
               src={ImgNoImage}
               height={500}
-              width={500}
+              width={420}
               alt="No image"
             />
           )}
@@ -80,7 +80,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               src={images[0].attributes.url}
               alt={attributes.title}
               height={500}
-              width={500}
+              width={420}
             />
           )}
           {images && images.length > 1 && (

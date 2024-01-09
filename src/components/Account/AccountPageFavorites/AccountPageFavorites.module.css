@@ -1,0 +1,8 @@
+.wrapProducts {
+  @apply hidden
+  md:block;
+}
+.wrapProductsSlider {
+  @apply w-full 
+  md:hidden;
+}

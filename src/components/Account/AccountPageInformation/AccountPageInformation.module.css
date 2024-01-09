@@ -16,8 +16,9 @@
   @apply flex 
   flex-col
   gap-3 
-  min-h-[80px]
-  max-w-[50%];
+  w-full
+  md:min-h-[80px]
+  md:max-w-[50%];
 }
 
 .halfLineContacts {
@@ -34,7 +35,8 @@
 .lineContacts .button {
   @apply px-8
   py-3
-  w-[50%]
+  w-full
+  md:w-[50%]
   mt-4
   ml-auto
   mr-auto

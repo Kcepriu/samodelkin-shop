@@ -4,7 +4,8 @@
   pb-3
   border-b
   border-b-light_blue
-  w-[226px] 
+  w-full
+  md:w-[226px] 
   h-16
   text-black
   font-inter

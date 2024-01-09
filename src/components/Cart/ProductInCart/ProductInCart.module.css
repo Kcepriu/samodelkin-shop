@@ -1,35 +1,47 @@
+.wrapCardProduct {
+  @apply w-full relative;
+}
 .wrapProduct {
   @apply relative
   flex gap-6 
   w-full  
-  items-center
-  /* border
-  rounded-lg
-  border-inherit
-  hover:border
-  hover:border-gray_our
-  hover:rounded-lg; */;
+  items-center;
 }
 
 .wrapImage {
-  @apply block w-[187px];
+  @apply block 
+  max-w-[173px]
+  sm:w-[173px]
+  sm:min-w-[173px]
+  
+  md:w-[187px]
+  md:max-w-[187px]
+  md:min-w-[187px];
 }
-
+.buttonImage {
+  @apply block w-full;
+}
 .image {
-  @apply w-auto object-contain;
+  @apply h-auto object-contain;
 }
 
 .wrapContent {
-  @apply grow h-full
-  py-8;
+  @apply grow 
+  h-full
+  mt-7
+  md:py-8;
 }
 
 .wrapTitle {
-  @apply flex justify-between items-baseline;
+  @apply flex justify-between items-baseline
+  /* w-[400px]
+  lg:w-[715px]; */;
 }
 
 .title {
-  @apply font-inter
+  @apply text-left
+  font-inter
+  
   text-size_18  
   font-weight_700
   leading-line_height_21;
@@ -44,10 +56,23 @@
   leading-line_height_17;
 }
 
+.wrapInformation {
+  @apply grow
+  mt-4
+  hidden
+  md:block;
+}
+
+.wrapInformationMobile {
+  @apply mt-4
+  block
+  md:hidden;
+}
+
 .wrapDetails {
   @apply flex 
   gap-5
-  mt-4
+  
   items-center
   font-roboto
   text-size_20  
@@ -55,13 +80,10 @@
   leading-line_height_17;
 }
 
-.wrapInformation {
-  @apply grow;
-}
-
 .wrapPrice {
   @apply flex 
-  gap-16 
+  gap-4
+  lg:gap-16 
   justify-between
   items-center
   
@@ -74,7 +96,9 @@
 
 .buttonDelete {
   /* @apply absolute top-2 right-1 p-1; */
-  @apply p-1;
+  @apply absolute top-0 right-2
+  md:relative
+  p-1;
 }
 
 .icon {
@@ -83,4 +107,12 @@
 
 .buttonDelete:hover .icon {
   @apply text-blue_action;
+}
+
+.wrapCountProductMobile {
+  @apply mt-8
+  flex 
+  md:hidden
+  gap-6
+  items-center;
 }

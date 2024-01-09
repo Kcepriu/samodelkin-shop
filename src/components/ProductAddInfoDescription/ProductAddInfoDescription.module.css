@@ -1,13 +1,29 @@
 .wrapContent {
-  @apply mt-12;
+  @apply mt-6
+  md:mt-12;
 }
 
 .link {
   @apply mt-6
-  flex gap-2
-    font-inter 
-    text-size_18 
-    font-weight_500
-    leading-line_height_21
-    hover:text-blue_action;
+  px-2
+  py-[14px]
+  flex 
+  gap-2
+  w-full
+  md:w-fit
+  
+  md:justify-start
+  justify-center
+
+  border
+  rounded
+  border-light_blue
+  transition
+  
+  font-inter 
+  text-size_18 
+  font-weight_500
+  leading-line_height_21
+  hover:text-blue_action
+  hover:border-blue_action_button;
 }

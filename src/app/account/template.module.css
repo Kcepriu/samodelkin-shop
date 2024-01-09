@@ -1,10 +1,16 @@
 .wrapPage {
   @apply mt-3 
-  flex gap-20;
+  flex 
+  flex-col
+  md:flex-row
+  gap-10
+  md:gap-5
+  lg:gap-20;
 }
 
 .wrapListPage {
-  @apply w-[226px];
+  @apply w-full
+  md:w-[226px];
 }
 
 .wrapContentPage {

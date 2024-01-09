@@ -1,11 +1,31 @@
+.wrapTitle {
+  @apply py-3
+  border-b
+  border-light_blue
+  w-full
+  md:w-[713px];
+}
+
+.title {
+  @apply text-size_22
+  font-weight_600
+  leading-line_height_60;
+}
+
 .wrapComponent {
-  @apply flex gap-6;
+  @apply flex 
+  flex-col-reverse
+  lg:flex-row
+  gap-6
+  lg:gap-11;
 }
 
 .wrapContactInformation {
-  @apply grow;
+  @apply w-full
+  lg:w-[693px]
+  lg:min-w-[693px];
 }
 
 .wrapProducts {
-  @apply pt-14 w-[503px];
+  /* @apply w-[503px]; grow */
 }

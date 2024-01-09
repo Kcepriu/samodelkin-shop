@@ -20,7 +20,7 @@ const MessageModal: FC<IProps> = ({ contentMessage, onClose }) => {
         style={{
           backgroundImage: `url(${backgroundMessage.src})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%",
         }}
       >
         <div className={style.content}>

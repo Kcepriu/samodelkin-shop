@@ -6,6 +6,7 @@
   text-size_18
   font-weight_500
   rounded-lg
+  transition
   leading-line_height_21
   bg-blue_action
   hover:bg-blue_action_button;

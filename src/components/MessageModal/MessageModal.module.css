@@ -1,14 +1,17 @@
 .wrapWindow {
-  @apply pt-20 
+  @apply pt-12
+  md:pt-20 
   pb-10
-  px-20
+  px-5
+  md:px-20
   flex 
   flex-col
   items-center
   bg-dark_blue;
 }
 .wrapMessage {
-  @apply w-[419px]
+  @apply w-[334px]
+  md:w-[419px]
   h-[222px];
 }
 
@@ -35,7 +38,8 @@
 .button {
   @apply px-8
   py-3
-  mt-10
+  mt-3
+  md:mt-10
   rounded-lg 
   w-fit
   bg-blue_action

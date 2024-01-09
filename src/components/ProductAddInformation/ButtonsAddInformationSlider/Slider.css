@@ -1,21 +1,16 @@
 /* Large image */
-.mySwiperProduct.swiper {
+.mySwiperAddInformation.swiper {
   height: 100%;
   width: 100%;
 
   box-sizing: border-box;
-  overflow: visible;
-  /* overflow-x: clip;
-  overflow-y: visible; */
+  /* overflow: visible; */
 }
 
-.mySwiperProduct .swiper-slide {
+.mySwiperAddInformation .swiper-slide {
   text-align: center;
   font-size: 18px;
-  /* width: 100%; */
   width: 25%;
-
-  /* background: #fff; */
 
   /* Center slide text vertically */
   display: flex;
@@ -25,7 +20,7 @@
   background-position: center;
 }
 
-.mySwiperProduct .swiper-pagination {
+.mySwiperAddInformation .swiper-pagination {
   position: relative;
   margin-top: 24px;
 }

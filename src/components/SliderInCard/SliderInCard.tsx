@@ -25,53 +25,57 @@ const SliderInCard: FC<IProps> = ({ images, title }) => {
   return (
     <div className={style.wrapSectionSlider}>
       <div className={style.wrapSlider}>
-        <Swiper
-          spaceBetween={10}
-          // navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiperInCardLarge"
-        >
-          {images.map((element, ind) => {
-            return (
-              <SwiperSlide key={element.id}>
-                <Image
-                  priority={ind === 0}
-                  src={element.attributes.url}
-                  alt={title}
-                  height={500}
-                  width={500}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          spaceBetween={10}
-          slidesPerView={4}
-          freeMode={true}
-          watchSlidesProgress={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiperInCardSmall"
-        >
-          {images.map(({ id, attributes }, ind) => {
-            const urlImage = attributes.formats?.thumbnail
-              ? attributes.formats?.thumbnail.url
-              : attributes.url;
-            return (
-              <SwiperSlide key={id}>
-                <Image
-                  priority={ind === 0}
-                  src={urlImage}
-                  alt={title}
-                  height={50}
-                  width={50}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        <div className={style.wrapSliderBig}>
+          <Swiper
+            spaceBetween={10}
+            // navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiperInCardLarge"
+          >
+            {images.map((element, ind) => {
+              return (
+                <SwiperSlide key={element.id}>
+                  <Image
+                    priority={ind === 0}
+                    src={element.attributes.url}
+                    alt={title}
+                    height={500}
+                    width={420}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+        <div className={style.wrapSliderSmall}>
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            spaceBetween={10}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiperInCardSmall"
+          >
+            {images.map(({ id, attributes }, ind) => {
+              const urlImage = attributes.formats?.thumbnail
+                ? attributes.formats?.thumbnail.url
+                : attributes.url;
+              return (
+                <SwiperSlide key={id}>
+                  <Image
+                    priority={ind === 0}
+                    src={urlImage}
+                    alt={title}
+                    height={50}
+                    width={50}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

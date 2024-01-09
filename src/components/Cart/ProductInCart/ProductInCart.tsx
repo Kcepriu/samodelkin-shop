@@ -30,45 +30,69 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
   };
 
   return (
-    <div className={style.wrapProduct}>
-      <div className={style.wrapImage}>
-        <button type="button" onClick={handleToProduct}>
-          <Image
-            className={style.image}
-            src={urlImage}
-            alt={attributes.title}
-            height={0}
-            width={187}
-          />
-        </button>
-      </div>
-      <div className={style.wrapContent}>
-        <div className={style.wrapTitle}>
-          <button type="button" onClick={handleToProduct}>
-            <h2 className={style.title}> {attributes.title}</h2>
+    <div className={style.wrapCardProduct}>
+      <div className={style.wrapProduct}>
+        <div className={style.wrapImage}>
+          <button
+            type="button"
+            onClick={handleToProduct}
+            className={style.buttonImage}
+          >
+            <Image
+              className={style.image}
+              src={urlImage}
+              alt={attributes.title}
+              height={0}
+              width={187}
+            />
           </button>
         </div>
-
-        <div className={style.wrapInformation}>
-          <div className={style.wrapDetails}>
-            <div className={style.wrapPrice}>
-              <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
-              <CountProductChange rowCart={rowCart} />
-              <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
-            </div>
-            <button
-              className={style.buttonDelete}
-              type="button"
-              onClick={async () => await deleteProduct(product.data)}
-            >
-              <PiTrash className={style.icon} size={24} />
+        <div className={style.wrapContent}>
+          <div className={style.wrapTitle}>
+            <button type="button" onClick={handleToProduct}>
+              <h2 className={style.title}> {attributes.title}</h2>
             </button>
           </div>
 
-          <div className={style.wrapChangeLanguage}>
-            <ChangeLanguage rowCart={rowCart} />
+          <div className={style.wrapInformationMobile}>
+            <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
+            <div className={style.wrapChangeLanguage}>
+              <ChangeLanguage rowCart={rowCart} />
+            </div>
+          </div>
+
+          <div className={style.wrapInformation}>
+            <div className={style.wrapDetails}>
+              <div className={style.wrapPrice}>
+                <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
+                <CountProductChange rowCart={rowCart} />
+                <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+              </div>
+              <button
+                className={style.buttonDelete}
+                type="button"
+                onClick={async () => await deleteProduct(product.data)}
+              >
+                <PiTrash className={style.icon} size={24} />
+              </button>
+            </div>
+
+            <div className={style.wrapChangeLanguage}>
+              <ChangeLanguage rowCart={rowCart} />
+            </div>
           </div>
         </div>
+      </div>
+      <div className={style.wrapCountProductMobile}>
+        <CountProductChange rowCart={rowCart} />
+        <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+        <button
+          className={style.buttonDelete}
+          type="button"
+          onClick={async () => await deleteProduct(product.data)}
+        >
+          <PiTrash className={style.icon} size={24} />
+        </button>
       </div>
     </div>
   );

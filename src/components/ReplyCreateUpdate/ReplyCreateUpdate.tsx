@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect } from "react";
-import { FormikHelpers, useFormik } from "formik";
+import { useFormik } from "formik";
 import { validationSchema } from "./validationSchema";
 import useAboutUser from "@/stores/aboutUser.store";
 import useStore from "@/helpers/useStore";
@@ -63,6 +63,21 @@ const ReplyCreateUpdate: FC<IProps> = ({ handlerOk, handleCancel }) => {
         onSubmit={handleSubmit}
         onReset={handleReset}
       >
+        <TextField
+          fullWidth
+          id="content"
+          name="content"
+          label="Відгук *"
+          value={values.content}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          multiline
+          rows={10}
+          error={touched.content && Boolean(errors.content)}
+          helperText={touched.content && errors.content}
+          className={style.wrapField}
+        />
+
         <div className={style.wrapContactInformation}>
           <TextField
             fullWidth
@@ -89,20 +104,6 @@ const ReplyCreateUpdate: FC<IProps> = ({ handlerOk, handleCancel }) => {
             className={style.wrapField}
           />
         </div>
-        <TextField
-          fullWidth
-          id="content"
-          name="content"
-          label="Відгук *"
-          value={values.content}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          multiline
-          rows={10}
-          error={touched.content && Boolean(errors.content)}
-          helperText={touched.content && errors.content}
-          className={style.wrapField}
-        />
 
         <div className={style.wrapButton}>
           <button className={style.buttonWhite} type="reset">

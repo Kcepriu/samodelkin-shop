@@ -33,9 +33,8 @@ const Cart: FC<IProps> = ({ onClose }) => {
 
   return (
     <div className={style.wrapCart}>
-      <div className={style.wrapTitle}>
-        <h2 className={style.title}>Кошик</h2>
-      </div>
+      <h2 className={style.title}>Кошик</h2>
+      <div className={style.wrapTitle}></div>
 
       <ul className={style.wrapProduct}>
         {cart.map((rowCart) => {
