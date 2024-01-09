@@ -11,8 +11,9 @@
 
 .modalContainer {
   @apply relative
-  max-w-[374px] 
-  md:max-w-[95%] 
+  max-w-full
+  md:max-w-full
+  lg:max-w-[95%] 
   min-w-[250px] 
   rounded-lg     
   overflow-y-auto  
