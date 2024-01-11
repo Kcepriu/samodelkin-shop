@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import heroImage from "@/assets/hero.jpg";
 import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
@@ -7,6 +8,8 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
+import ButtonMain from "@/components/ButtonMain/ButtonMain";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
 import style from "./pageHome.module.css";
@@ -49,6 +52,15 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
               priority
             />
           </section>
+
+          <div className={style.wrapAllProducts}>
+            <Link
+              href={FRONTEND_ROUTES.PRODUCT}
+              className={style.buttonToAllProduct}
+            >
+              Каталог всіх ігор
+            </Link>
+          </div>
 
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>

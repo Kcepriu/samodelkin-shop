@@ -1,12 +1,24 @@
-"use client";
 import { FC } from "react";
-import { LuAlignLeft } from "react-icons/lu";
+import httpServices from "@/services/http";
+import ButtonBurgerClient from "./ButtonBurgerClient/ButtonBurgerClient";
 
-const ButtonBurger: FC = () => {
+interface IParams {
+  categoryId: string;
+}
+
+const ButtonBurger: FC<IParams> = async ({
+  categoryId,
+}): Promise<JSX.Element> => {
+  const responseCategories = await httpServices.getCategories();
+  const allCategories = responseCategories ? responseCategories.data : [];
+
   return (
-    <button>
-      <LuAlignLeft size={40} />
-    </button>
+    <>
+      <ButtonBurgerClient
+        allCategories={allCategories}
+        currentCategory={categoryId}
+      />
+    </>
   );
 };
 

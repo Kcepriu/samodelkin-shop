@@ -22,6 +22,28 @@
   @apply w-full max-w-[924px];
 }
 
+.wrapAllProducts {
+  @apply mt-4
+  md:mt-8
+  w-full
+  md:w-[290px];
+}
+.buttonToAllProduct {
+  @apply block
+  p-[14px] 
+  text-center
+  text-text_white
+  w-full
+  font-inter
+  text-size_18
+  font-weight_500
+  rounded-lg
+  transition
+  leading-line_height_21
+  bg-blue_action
+  hover:bg-blue_action_button;
+}
+
 .sectionTypeGames {
   @apply mt-6;
 }

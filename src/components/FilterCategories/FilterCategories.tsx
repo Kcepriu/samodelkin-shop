@@ -8,8 +8,13 @@ import style from "./FilterCategories.module.css";
 interface IProps {
   allCategories: ICategorie[];
   currentCategory: string;
+  addAction?: () => void;
 }
-const FilterCategories: FC<IProps> = ({ allCategories, currentCategory }) => {
+const FilterCategories: FC<IProps> = ({
+  allCategories,
+  currentCategory,
+  addAction,
+}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -27,6 +32,8 @@ const FilterCategories: FC<IProps> = ({ allCategories, currentCategory }) => {
 
     params.delete("page");
     if (category === "") params.delete("category");
+
+    if (!!addAction) addAction();
 
     router.push(`${FRONTEND_ROUTES.PRODUCT}/?${params}`);
   };
