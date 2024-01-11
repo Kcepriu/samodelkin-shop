@@ -3,6 +3,7 @@
   flex-wrap
   justify-start
   gap-3
+  gap-y-6
   lg:gap-6
   w-full;
 }
