@@ -247,3 +247,8 @@ export const saveAboutMe = async (
     infoAboutMe,
   };
 };
+
+export const getCategories = async (): Promise<IResponseCategories | null> => {
+  const result = await httpServices.getCategories();
+  return result;
+};

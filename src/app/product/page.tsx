@@ -3,6 +3,8 @@ import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
+import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import { setSeo } from "@/helpers/setSeo";
 import httpServices from "@/services/http";
 import style from "./pageProducts.module.css";
@@ -36,6 +38,7 @@ const Products: FC<IParams> = async ({
     page: currentPage,
     category: categoryId,
   });
+  const responseCategories = await httpServices.getCategories();
 
   const products =
     responseProducts && responseProducts.data.length > 0
@@ -46,10 +49,10 @@ const Products: FC<IParams> = async ({
 
   return (
     <>
-      {/* <BreadcrumbSetData
+      <BreadcrumbSetData
         isInProduct={false}
-        category={!responseCategory ? null : responseCategory.data[0]}
-      /> */}
+        category={!responseCategories ? null : responseCategories.data[0]}
+      />
 
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
@@ -57,6 +60,10 @@ const Products: FC<IParams> = async ({
         </div>
 
         <div className={style.wrapContent}>
+          <div className={style.wrapBreadcrumb}>
+            <Breadcrumb />
+          </div>
+
           {products.length > 0 && <ProductList productList={products} />}
 
           {pageCount > 1 && (

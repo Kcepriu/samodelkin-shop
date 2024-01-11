@@ -4,7 +4,7 @@
 
 .wrapFilter {
   @apply hidden
-  md:block
+  lg:block
   w-[292px]
   min-w-[292px];
 }
@@ -15,4 +15,8 @@
 
 .wrapSection {
   @apply mt-12;
+}
+
+.wrapBreadcrumb {
+  @apply mt-4;
 }

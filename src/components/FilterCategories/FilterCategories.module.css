@@ -3,7 +3,10 @@
   font-inter
   text-size_20
   font-weight_600
-  leading-line_height_15;
+  leading-line_height_15
+  
+  pl-32
+  lg:pl-0;
 }
 
 .listCategory {

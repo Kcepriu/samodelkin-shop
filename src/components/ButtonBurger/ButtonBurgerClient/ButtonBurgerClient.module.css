@@ -1,0 +1,7 @@
+.wrapFilter {
+  @apply w-full
+  pl-5
+  pr-12
+  py-4
+  md:w-[409px];
+}
