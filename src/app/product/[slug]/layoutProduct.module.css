@@ -13,3 +13,7 @@
     font-weight_400 
     leading-line_height_16;
 }
+
+.wrapBreadcrumb {
+  @apply mb-6;
+}

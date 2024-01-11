@@ -51,7 +51,10 @@ const Layout: FC<IProps> = async ({
         category={!category ? null : category.data[0]}
       />
       <section>
-        <Breadcrumb />
+        <div className={style.wrapBreadcrumb}>
+          <Breadcrumb />
+        </div>
+
         {responseProduct && responseProduct.data.length > 0 && (
           <Product
             product={responseProduct.data[0]}

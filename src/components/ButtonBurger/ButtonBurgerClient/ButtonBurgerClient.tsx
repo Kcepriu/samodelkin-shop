@@ -2,15 +2,21 @@
 import { FC } from "react";
 import { LuAlignLeft } from "react-icons/lu";
 import useMobileMenu from "@/hooks/useMobileMenu";
+import { useSearchParams } from "next/navigation";
 import FilterCategories from "@/components/FilterCategories/FilterCategories";
 import style from "./ButtonBurgerClient.module.css";
 
 interface IProps {
   allCategories: ICategorie[];
-  currentCategory: string;
 }
 
-const ButtonBurgerClient: FC<IProps> = ({ allCategories, currentCategory }) => {
+const ButtonBurgerClient: FC<IProps> = ({ allCategories }) => {
+  const searchParams = useSearchParams();
+
+  const category = searchParams.get("category");
+
+  const currentCategory = !!category ? category : "";
+
   const closeModal = () => {
     setShowMobileMenu(false);
   };
