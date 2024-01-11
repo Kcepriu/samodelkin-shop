@@ -18,7 +18,8 @@ const HeaderPage: FC = async () => {
   return (
     <div className={style.wrapHeader}>
       <div className={style.burger}>
-        <ButtonBurger />
+        {/* TODO categoryId */}
+        <ButtonBurger categoryId="" />
       </div>
 
       <Link href="/" className={style.logo}>
