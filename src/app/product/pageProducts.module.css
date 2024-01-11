@@ -20,3 +20,15 @@
 .wrapBreadcrumb {
   @apply mb-4;
 }
+
+.wrapPagination {
+  @apply hidden
+  md:block
+  mt-8;
+}
+
+.wrapLoadMore {
+  @apply block 
+  md:hidden
+  mt-5;
+}

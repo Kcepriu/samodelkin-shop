@@ -5,6 +5,7 @@ import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
 import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import ProductListLoadMore from "@/components/ProductListLoadMore/ProductListLoadMore";
 import { setSeo } from "@/helpers/setSeo";
 import httpServices from "@/services/http";
 import style from "./pageProducts.module.css";
@@ -39,6 +40,7 @@ const Products: FC<IParams> = async ({
     category: categoryId,
   });
   const responseCategories = await httpServices.getCategories();
+  const paginationProducts = responseProducts?.meta?.pagination;
 
   const products =
     responseProducts && responseProducts.data.length > 0
@@ -67,7 +69,20 @@ const Products: FC<IParams> = async ({
           {products.length > 0 && <ProductList productList={products} />}
 
           {pageCount > 1 && (
-            <Pagination pageCount={pageCount} forcePage={Number(currentPage)} />
+            <>
+              <div className={style.wrapPagination}>
+                <Pagination
+                  pageCount={pageCount}
+                  forcePage={Number(currentPage)}
+                />
+              </div>
+              <div className={style.wrapLoadMore}>
+                <ProductListLoadMore
+                  categoryId={categoryId}
+                  paginationProducts={paginationProducts}
+                />
+              </div>
+            </>
           )}
         </div>
       </section>

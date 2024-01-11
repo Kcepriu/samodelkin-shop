@@ -19,6 +19,18 @@ export const getProductsByList = async (
   return result;
 };
 
+// * get Products
+export const getProducts = async ({
+  page = "1",
+  category = "",
+}: {
+  page: string;
+  category: string;
+}): Promise<IResponseProduct | null> => {
+  const result = await httpServices.getProducts({page, category}); ;
+  return result;
+};
+
 // * get Product Reviews
 export const getProductReviews = async (
   productId: string,
