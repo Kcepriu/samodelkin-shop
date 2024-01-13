@@ -8,7 +8,6 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
-import ButtonMain from "@/components/ButtonMain/ButtonMain";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
@@ -59,6 +58,12 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
               className={style.buttonToAllProduct}
             >
               Каталог всіх ігор
+            </Link>
+          </div>
+
+          <div className={style.wrapAllProducts}>
+            <Link href="/ggggggg" className={style.buttonToAllProduct}>
+              TEST
             </Link>
           </div>
 

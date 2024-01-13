@@ -1,32 +1,43 @@
 .wrapContent {
-  @apply flex justify-end 
-  mt-10;
+  @apply flex 
+  flex-col-reverse
+  md:flex-row
+  justify-end 
+  md:mt-10;
 }
 
 .wrapLeft {
   @apply mt-10
-  pr-28;
+  pr-0
+  md:pr-16
+  lg:pr-28
+  text-center;
 }
 
 .title {
   @apply font-itim
-  text-size_250
+  text-size_150
+  md:text-size_200
+  lg:text-size_250
   font-weight_400
-  leading-line_height_20;
+  leading-line_height_10;
 }
 
 .text {
   @apply mt-3
-  w-[370px]
+  w-full
+  md:w-[370px]
   font-inter
-  text-size_18
+  text-size_17
+  md:text-size_18
   font-weight_500
   leading-line_height_21;
 }
 
 .button {
   @apply mt-8
-  w-fit
+  w-full
+  md:w-fit
   block 
   py-3
   px-8  
@@ -35,4 +46,10 @@
   text-white
   transition
   hover:bg-blue_action_button;
+}
+
+.image {
+  @apply w-full
+  md:w-[300px]
+  lg:w-[463px];
 }

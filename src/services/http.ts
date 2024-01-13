@@ -1,3 +1,5 @@
+import { NextResponse, NextRequest } from "next/server";
+
 import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
@@ -633,6 +635,20 @@ class HttpService {
     } catch {
       return result;
     }
+  }
+
+  async getMarkProductProxy(
+    request: NextRequest,
+    typeMarkProduct: string
+  ): Promise<Response> {
+    const url = `${this.baseUrl}${typeMarkProduct}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
   }
 
   // * save Mark Product
