@@ -8,6 +8,8 @@ import style from "./RevisedProducts.module.css";
 const RevisedProducts: FC = () => {
   const revised = useStore(useRevised, (state) => state.revised);
 
+  console.log("🚀 ~ revised:", revised);
+
   return (
     <>
       {!!revised && revised.length > 0 && (

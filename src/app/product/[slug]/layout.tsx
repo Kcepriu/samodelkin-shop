@@ -4,7 +4,6 @@ import Product from "@/components/Product/Product";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import httpServices from "@/services/http";
 import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import { setSeo } from "@/helpers/setSeo";
 import style from "./layoutProduct.module.css";
 
@@ -51,10 +50,6 @@ const Layout: FC<IProps> = async ({
         category={!category ? null : category.data[0]}
       />
       <section>
-        <div className={style.wrapBreadcrumb}>
-          <Breadcrumb />
-        </div>
-
         {responseProduct && responseProduct.data.length > 0 && (
           <Product
             product={responseProduct.data[0]}

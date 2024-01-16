@@ -27,7 +27,7 @@ export const getProducts = async ({
   page: string;
   category: string;
 }): Promise<IResponseProduct | null> => {
-  const result = await httpServices.getProducts({page, category}); ;
+  const result = await httpServices.getProducts({ page, category });
   return result;
 };
 
@@ -236,6 +236,7 @@ export const getAboutMe = async (): Promise<{
   infoAboutMe: IMyInformation | null;
 }> => {
   const { code, data: response } = await httpServices.getAboutMe();
+
   const infoAboutMe = code === 200 && !!response ? response : null;
 
   return {

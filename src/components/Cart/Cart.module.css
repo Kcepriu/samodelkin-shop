@@ -27,7 +27,7 @@
 .wrapProduct {
   @apply mt-10
   md:mt-6 
-
+  pr-2
   max-h-[550px]
   md:max-h-[450px]
   

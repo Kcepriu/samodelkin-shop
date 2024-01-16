@@ -1,3 +1,5 @@
+import { NextResponse, NextRequest } from "next/server";
+
 import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
@@ -635,6 +637,20 @@ class HttpService {
     }
   }
 
+  async getMarkProductProxy(
+    request: NextRequest,
+    typeMarkProduct: string
+  ): Promise<Response> {
+    const url = `${this.baseUrl}${typeMarkProduct}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
+  }
+
   // * save Mark Product
   async saveMarkProduct(
     markProducts: IMarkProductForCreate,
@@ -1018,6 +1034,17 @@ class HttpService {
     }
   }
 
+  async getAboutUserProxy(request: NextRequest): Promise<Response> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_USER}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
+  }
+
   async saveAboutUser(
     information: IAboutUserForCreate
   ): Promise<IResponseCreateAboutUser> {
@@ -1093,6 +1120,17 @@ class HttpService {
     } catch {
       return result;
     }
+  }
+
+  async getAboutMeProxy(request: NextRequest): Promise<Response> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
   }
 
   async saveAboutMe(

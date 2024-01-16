@@ -57,12 +57,15 @@ const config: Config = {
       fontSize: {
         size_14: "14px",
         size_16: "16px",
+        size_17: "17px",
         size_18: "18px",
         size_20: "20px",
         size_22: "22px",
         size_24: "24px",
         size_32: "32px",
         size_40: "40px",
+        size_150: "150px",
+        size_200: "200px",
         size_250: "250px",
       },
       fontWeight: {
@@ -74,6 +77,7 @@ const config: Config = {
         weight_800: "800",
       },
       lineHeight: {
+        line_height_10: "1",
         line_height_15: "1.15",
         line_height_16: "1.16",
         line_height_17: "1.17",

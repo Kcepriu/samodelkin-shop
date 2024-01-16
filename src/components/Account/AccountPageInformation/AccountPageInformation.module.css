@@ -18,7 +18,7 @@
   gap-3 
   w-full
   md:min-h-[80px]
-  md:max-w-[50%];
+  lg:max-w-[50%];
 }
 
 .halfLineContacts {

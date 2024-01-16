@@ -8,7 +8,6 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
-import ButtonMain from "@/components/ButtonMain/ButtonMain";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
@@ -62,6 +61,16 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
             </Link>
           </div>
 
+          <div className={style.wrapAllProducts}>
+            <Link
+              href="/ggggggg"
+              className={style.buttonToAllProduct}
+              prefetch={false}
+            >
+              TEST
+            </Link>
+          </div>
+
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2 className={style.titleSection}>Лідери продажу</h2>
@@ -76,7 +85,6 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           )}
 
           <section className={style.section}>
-            {/* moved to a separate component as the data is only available with the client */}
             <RevisedProducts />
           </section>
 
