@@ -3,11 +3,7 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import {
-  getMarkProduct,
-  saveMarkProduct,
-  getProductsByList,
-} from "@/services/serverActionHttp";
+import { saveMarkProduct } from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
@@ -19,6 +15,8 @@ import {
   convertProductToArrayId,
 } from "@/helpers/convertStructuresToBac";
 
+import httpClientServices from "@/services/httpClient";
+
 interface IStateRevisedData {
   revised: IProduct[];
   isAuth: boolean;
@@ -28,7 +26,10 @@ interface IStateRevisedData {
 interface IStateRevised extends IStateRevisedData {
   addRevised: (newProduct: IProduct) => Promise<void>;
   deleteRevised: (newProduct: IProduct) => Promise<void>;
-  fetchRevised: (isRemoteStorage: boolean) => Promise<void>;
+  fetchRevised: (
+    isRemoteStorage: boolean,
+    accessToken: string
+  ) => Promise<void>;
 }
 
 // * Save Revised to Storage
@@ -52,18 +53,25 @@ const saveRevisedToStorage = async (
 };
 
 // * fetch Revised From Storage
-const fetchRevisedFromStorage = async (isRemoteStorage: boolean) => {
+const fetchRevisedFromStorage = async (
+  isRemoteStorage: boolean,
+  accessToken: string
+) => {
   if (isRemoteStorage) {
-    const { isAuth, markProduct: revised } = await getMarkProduct(
-      BACKEND_ROUTES.REVISED
-    );
+    const { isAuth, markProduct: revised } =
+      await httpClientServices.getMarkProduct(
+        BACKEND_ROUTES.REVISED,
+        accessToken
+      );
     if (!isAuth) await signOut();
     return { isAuth, revised };
   }
 
   const revised = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.REVISED, []);
   const productsID = convertProductToArrayId(revised);
-  const responseRevised = await getProductsByList(productsID);
+  const responseRevised = await httpClientServices.getProductsByList(
+    productsID
+  );
 
   return {
     isAuth: false,
@@ -100,8 +108,11 @@ const useRevised = create<IStateRevised>()((set, get) => ({
     }));
   },
 
-  fetchRevised: async (isRemoteStorage) => {
-    const { isAuth, revised } = await fetchRevisedFromStorage(isRemoteStorage);
+  fetchRevised: async (isRemoteStorage, accessToken) => {
+    const { isAuth, revised } = await fetchRevisedFromStorage(
+      isRemoteStorage,
+      accessToken
+    );
 
     return set((state) => ({
       revised: [...revised],

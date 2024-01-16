@@ -1034,6 +1034,17 @@ class HttpService {
     }
   }
 
+  async getAboutUserProxy(request: NextRequest): Promise<Response> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_USER}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
+  }
+
   async saveAboutUser(
     information: IAboutUserForCreate
   ): Promise<IResponseCreateAboutUser> {
@@ -1109,6 +1120,17 @@ class HttpService {
     } catch {
       return result;
     }
+  }
+
+  async getAboutMeProxy(request: NextRequest): Promise<Response> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
   }
 
   async saveAboutMe(

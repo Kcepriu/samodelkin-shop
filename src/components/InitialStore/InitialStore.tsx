@@ -19,20 +19,21 @@ const InitialStore: FC<IProps> = ({ children }) => {
 
   const [fetchFavorites] = useFavorite((state) => [state.fetchFavorites]);
   const [fetchRevised] = useRevised((state) => [state.fetchRevised]);
+
   const [fetchCart] = useCart((state) => [state.fetchCart]);
   const [fetchAboutUser] = useAboutUser((state) => [state.fetchAboutUser]);
   const [fetchAboutMe] = useAboutMe((state) => [state.fetchAboutMe]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetchFavorites(!!user, user?.jwt || "");
-    };
-    fetchData();
-  }, [user, fetchFavorites]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await fetchFavorites(!!user, user?.jwt || "");
+  //   };
+  //   fetchData();
+  // }, [user, fetchFavorites]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
-  //     await fetchRevised(!!user);
+  //     await fetchRevised(!!user, user?.jwt || "");
   //   };
 
   //   fetchData();
@@ -48,7 +49,7 @@ const InitialStore: FC<IProps> = ({ children }) => {
 
   // useEffect(() => {
   //   const fetchData = async () => {
-  //     await fetchAboutUser(!!user);
+  //     await fetchAboutUser(!!user, user?.jwt || "");
   //   };
 
   //   fetchData();
@@ -56,7 +57,7 @@ const InitialStore: FC<IProps> = ({ children }) => {
 
   // useEffect(() => {
   //   const fetchData = async () => {
-  //     await fetchAboutMe(!!user);
+  //     await fetchAboutMe(!!user, user?.jwt || "");
   //   };
 
   //   fetchData();

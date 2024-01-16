@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
-import { getAboutUser, saveAboutUser } from "@/services/serverActionHttp";
+import { saveAboutUser } from "@/services/serverActionHttp";
 import { KEYS_LOCAL_STORAGE } from "@/constants/app-keys.const";
 import {
   convertAboutUserToCreate,
@@ -11,6 +11,7 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 import { IAboutUserStore } from "@/types/aboutUser.types";
+import httpClientServices from "@/services/httpClient";
 
 interface IStateAboutUser {
   infoAboutUser: IAboutUserStore | null;
@@ -18,7 +19,10 @@ interface IStateAboutUser {
   loading: boolean;
   error: boolean | null;
   saveAboutUser: (newInformation: IAboutUserStore) => Promise<void>;
-  fetchAboutUser: (isRemoteStorage: boolean) => Promise<void>;
+  fetchAboutUser: (
+    isRemoteStorage: boolean,
+    accessToken: string
+  ) => Promise<void>;
 }
 
 const saveAboutUserToStorage = async (
@@ -45,7 +49,8 @@ const saveAboutUserToStorage = async (
 };
 
 const fetchAboutUserFromStorage = async (
-  isRemoteStorage: boolean
+  isRemoteStorage: boolean,
+  accessToken: string
 ): Promise<{ infoAboutUser: IAboutUserStore | null; isAuth: boolean }> => {
   const aboutUserFromLocalStorage = loadDataFromLocalStorage(
     KEYS_LOCAL_STORAGE.ABOUT_USER,
@@ -53,7 +58,9 @@ const fetchAboutUserFromStorage = async (
   );
 
   if (isRemoteStorage) {
-    const { isAuth, aboutUser } = await getAboutUser();
+    const { isAuth, aboutUser } = await httpClientServices.getAboutUser(
+      accessToken
+    );
 
     if (!isAuth) {
       await signOut();
@@ -94,9 +101,10 @@ const useAboutUser = create<IStateAboutUser>()((set, get) => ({
     }));
   },
 
-  fetchAboutUser: async (isRemoteStorage: boolean) => {
+  fetchAboutUser: async (isRemoteStorage: boolean, accessToken: string) => {
     const { isAuth, infoAboutUser } = await fetchAboutUserFromStorage(
-      isRemoteStorage
+      isRemoteStorage,
+      accessToken
     );
 
     return set((state) => ({

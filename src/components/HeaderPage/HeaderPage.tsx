@@ -21,7 +21,7 @@ const HeaderPage: FC = async () => {
         <ButtonBurger />
       </div>
 
-      <Link href="/" className={style.logo}>
+      <Link href="http://localhost:3000/" className={style.logo}>
         <Image
           src={ImageLogo}
           alt="Logo Shop"

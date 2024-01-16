@@ -1,10 +1,17 @@
 "use client";
-import { BACKEND_ROUTES } from "@/constants/app-keys.const";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
+import {
+  IAboutUserForCreate,
+  IAboutUser,
+  IMyInformation,
+  IMyInformationFromCreate,
+} from "@/types/aboutUser.types";
+
 class HttpClientService {
   async getProductsByList(
     productsID: number[]
   ): Promise<IResponseProduct | null> {
-    const url = "/api/get_products_by_list";
+    const url = `${FRONTEND_ROUTES.PRODUCT_BY_LIST}`;
 
     try {
       const res = await fetch(url, {
@@ -34,7 +41,7 @@ class HttpClientService {
     isAuth: boolean;
     markProduct: IProduct[];
   }> {
-    const url = `/api/get_mark_product/${typeMarkProduct}`;
+    const url = `${FRONTEND_ROUTES.MARK_PRODUCT}/${typeMarkProduct}`;
 
     const Authorization = `Bearer ${accessToken}`;
 
@@ -67,6 +74,88 @@ class HttpClientService {
       return {
         isAuth: res.status === 200,
         markProduct,
+      };
+    } catch {
+      return result;
+    }
+  }
+
+  // * About Me
+  async getAboutMe(accessToken: string): Promise<{
+    isError: boolean;
+    infoAboutMe: IMyInformation | null;
+  }> {
+    const url = `${FRONTEND_ROUTES.ABOUT_ME}`;
+
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      isError: true,
+      infoAboutMe: null,
+    };
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = (await res.json()) as IMyInformation;
+
+      const infoAboutMe = res.status === 200 && !!response ? response : null;
+
+      return {
+        isError: res.status !== 200,
+        infoAboutMe,
+      };
+    } catch {
+      return result;
+    }
+  }
+
+  // * About Me
+  async getAboutUser(accessToken: string): Promise<{
+    isAuth: boolean;
+    aboutUser: IAboutUser | null;
+  }> {
+    const url = `${FRONTEND_ROUTES.ABOUT_USER}`;
+
+    const Authorization = accessToken ? `Bearer ${accessToken}` : "";
+
+    const result = {
+      isAuth: false,
+      aboutUser: null,
+    };
+
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          Authorization: Authorization,
+        },
+      });
+
+      if (!res.ok) {
+        return result;
+      }
+
+      const response = await res.json();
+
+      const aboutUser = res.status === 200 && !!response ? response : null;
+
+      return {
+        isAuth: res.status === 200,
+        aboutUser,
       };
     } catch {
       return result;

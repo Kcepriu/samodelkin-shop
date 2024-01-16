@@ -62,7 +62,11 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           </div>
 
           <div className={style.wrapAllProducts}>
-            <Link href="/ggggggg" className={style.buttonToAllProduct}>
+            <Link
+              href="/ggggggg"
+              className={style.buttonToAllProduct}
+              prefetch={false}
+            >
               TEST
             </Link>
           </div>
@@ -81,7 +85,6 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           )}
 
           <section className={style.section}>
-            {/* moved to a separate component as the data is only available with the client */}
             <RevisedProducts />
           </section>
 
