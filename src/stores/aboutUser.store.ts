@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
-import { saveAboutUser } from "@/services/serverActionHttp";
+import { saveAboutUser, getAboutUser } from "@/services/serverActionHttp";
 import { KEYS_LOCAL_STORAGE } from "@/constants/app-keys.const";
 import {
   convertAboutUserToCreate,
@@ -11,7 +11,7 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 import { IAboutUserStore } from "@/types/aboutUser.types";
-import httpClientServices from "@/services/httpClient";
+// import httpClientServices from "@/services/httpClient";
 
 interface IStateAboutUser {
   infoAboutUser: IAboutUserStore | null;
@@ -58,9 +58,11 @@ const fetchAboutUserFromStorage = async (
   );
 
   if (isRemoteStorage) {
-    const { isAuth, aboutUser } = await httpClientServices.getAboutUser(
-      accessToken
-    );
+    const { isAuth, aboutUser } = await getAboutUser();
+
+    // const { isAuth, aboutUser } = await httpClientServices.getAboutUser(
+    //   accessToken
+    // );
 
     if (!isAuth) {
       await signOut();

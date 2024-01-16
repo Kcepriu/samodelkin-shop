@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { saveMarkProduct } from "@/services/serverActionHttp";
 
@@ -15,6 +15,8 @@ import {
 } from "@/helpers/convertStructuresToBac";
 
 import httpClientServices from "@/services/httpClient";
+
+import { getProductsByList, getMarkProduct } from "@/services/serverActionHttp";
 
 interface IStateFavoriteData {
   favorites: IProduct[];
@@ -59,15 +61,15 @@ const fetchFavoritesFromStorage = async (
   if (isRemoteStorage) {
     // * change fetch data  with api.
 
-    // const { isAuth, markProduct: favorites } = await getMarkProduct(
-    //   BACKEND_ROUTES.FAVORITES
-    // );
+    const { isAuth, markProduct: favorites } = await getMarkProduct(
+      BACKEND_ROUTES.FAVORITES
+    );
 
-    const { isAuth, markProduct: favorites } =
-      await httpClientServices.getMarkProduct(
-        BACKEND_ROUTES.FAVORITES,
-        accessToken
-      );
+    // const { isAuth, markProduct: favorites } =
+    //   await httpClientServices.getMarkProduct(
+    //     BACKEND_ROUTES.FAVORITES,
+    //     accessToken
+    //   );
 
     if (!isAuth) await signOut();
     return { isAuth, favorites };
@@ -75,7 +77,12 @@ const fetchFavoritesFromStorage = async (
 
   const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
   const productsID = convertProductToArrayId(favorites);
-  // const responseFavorites = await getProductsByList(productsID);
+  // try {
+  //   const responseFavorites1 = await getProductsByList(productsID);
+  // } catch {
+  //   console.log("ERROR");
+  // }
+
   const responseFavorites = await httpClientServices.getProductsByList(
     productsID
   );

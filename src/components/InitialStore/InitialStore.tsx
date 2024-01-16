@@ -24,44 +24,44 @@ const InitialStore: FC<IProps> = ({ children }) => {
   const [fetchAboutUser] = useAboutUser((state) => [state.fetchAboutUser]);
   const [fetchAboutMe] = useAboutMe((state) => [state.fetchAboutMe]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await fetchFavorites(!!user, user?.jwt || "");
-  //   };
-  //   fetchData();
-  // }, [user, fetchFavorites]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchFavorites(!!user, user?.jwt || "");
+    };
+    fetchData();
+  }, [user, fetchFavorites]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await fetchRevised(!!user, user?.jwt || "");
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchRevised(!!user, user?.jwt || "");
+    };
 
-  //   fetchData();
-  // }, [user, fetchRevised]);
+    fetchData();
+  }, [user, fetchRevised]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await fetchCart(!!user);
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchCart(!!user);
+    };
 
-  //   fetchData();
-  // }, [user, fetchCart]);
+    fetchData();
+  }, [user, fetchCart]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await fetchAboutUser(!!user, user?.jwt || "");
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchAboutUser(!!user, user?.jwt || "");
+    };
 
-  //   fetchData();
-  // }, [user, fetchAboutUser]);
+    fetchData();
+  }, [user, fetchAboutUser]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await fetchAboutMe(!!user, user?.jwt || "");
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchAboutMe(!!user, user?.jwt || "");
+    };
 
-  //   fetchData();
-  // }, [user, fetchAboutMe]);
+    fetchData();
+  }, [user, fetchAboutMe]);
 
   return <>{children}</>;
 };

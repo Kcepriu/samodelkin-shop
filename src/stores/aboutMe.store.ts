@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { saveAboutMe } from "@/services/serverActionHttp";
+import { saveAboutMe, getAboutMe } from "@/services/serverActionHttp";
 import { IMyInformationFromCreate } from "@/types/aboutUser.types";
-import httpClientServices from "@/services/httpClient";
+// import httpClientServices from "@/services/httpClient";
 
 interface IStateAboutMe {
   infoAboutMe: IMyInformationFromCreate | null;
@@ -45,10 +45,10 @@ const useAboutMe = create<IStateAboutMe>()((set, get) => ({
   fetchAboutMe: async (isAuth: boolean, accessToken: string) => {
     if (!isAuth) return;
 
-    // const { infoAboutMe, isError } = await getAboutMe();
-    const { infoAboutMe, isError } = await httpClientServices.getAboutMe(
-      accessToken
-    );
+    const { infoAboutMe, isError } = await getAboutMe();
+    // const { infoAboutMe, isError } = await httpClientServices.getAboutMe(
+    //   accessToken
+    // );
 
     return set((state) => ({
       infoAboutMe,

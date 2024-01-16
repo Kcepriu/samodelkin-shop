@@ -3,7 +3,11 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import { saveMarkProduct } from "@/services/serverActionHttp";
+import {
+  saveMarkProduct,
+  getMarkProduct,
+  getProductsByList,
+} from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
@@ -58,17 +62,24 @@ const fetchRevisedFromStorage = async (
   accessToken: string
 ) => {
   if (isRemoteStorage) {
-    const { isAuth, markProduct: revised } =
-      await httpClientServices.getMarkProduct(
-        BACKEND_ROUTES.REVISED,
-        accessToken
-      );
+    // const { isAuth, markProduct: revised } =
+    //   await httpClientServices.getMarkProduct(
+    //     BACKEND_ROUTES.REVISED,
+    //     accessToken
+    //   );
+
+    const { isAuth, markProduct: revised } = await getMarkProduct(
+      BACKEND_ROUTES.REVISED
+    );
+
     if (!isAuth) await signOut();
     return { isAuth, revised };
   }
 
   const revised = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.REVISED, []);
   const productsID = convertProductToArrayId(revised);
+  // const responseRevised = await getProductsByList(productsID);
+
   const responseRevised = await httpClientServices.getProductsByList(
     productsID
   );
