@@ -265,3 +265,9 @@ export const getCategories = async (): Promise<IResponseCategories | null> => {
   const result = await httpServices.getCategories();
   return result;
 };
+
+// * Add subscribe
+export const addSubscribe = async (email: string): Promise<boolean> => {
+  const result = await httpServices.addSubscribe(email);
+  return result;
+};

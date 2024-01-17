@@ -1173,6 +1173,36 @@ class HttpService {
       return result;
     }
   }
+
+  // * Add subscribe
+  async addSubscribe(email: string): Promise<boolean> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.SUBSCRIBE}`;
+    const data = { data: { email } };
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const response = await res.json();
+
+        return (
+          (response.error.name === "ValidationError" &&
+            response.error.message) === "This attribute must be unique"
+        );
+      }
+
+      return true;
+    } catch {
+      return false;
+    }
+  }
 }
 
 const httpServices = new HttpService();
