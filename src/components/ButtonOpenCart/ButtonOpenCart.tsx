@@ -22,7 +22,7 @@ const ButtonOpenCart: FC = () => {
     if (cart?.length) {
       setShowModal(true);
     } else {
-      setTextMessage("Корзина порожня");
+      setTextMessage("Кошик порожній");
       setShowModalMessage(true);
     }
   };

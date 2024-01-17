@@ -37,6 +37,7 @@ export const BACKEND_ROUTES = {
   ABOUT_USER: "/api/about-users",
   ABOUT_ME: "/api/users/me",
   ABOUT_ME_UPDATE: "/api/users",
+  SUBSCRIBE: "/api/subscriptions",
 };
 
 // Frontend routes
@@ -52,6 +53,10 @@ export const FRONTEND_ROUTES = {
   ACCOUNT: "/account",
   SIGNIN: "/api/auth/signin",
   SIGNOUT: "/api/auth/signout",
+  ABOUT_ME: "/api/about_me",
+  ABOUT_USER: "/api/about_user",
+  MARK_PRODUCT: "/api/mark_product",
+  PRODUCT_BY_LIST: "/api/products_by_list",
 };
 
 export const PRODUCT_ADD_INFORMATION_ROUTES = {

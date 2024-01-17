@@ -1,0 +1,9 @@
+.wrapSwiper {
+  @apply max-w-full  
+  overflow-x-hidden;
+}
+
+.elementCard {
+  @apply block
+  w-full;
+}

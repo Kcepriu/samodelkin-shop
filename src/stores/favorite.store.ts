@@ -3,11 +3,7 @@
 import { create } from "zustand";
 import { signOut } from "next-auth/react";
 import { KEYS_LOCAL_STORAGE, BACKEND_ROUTES } from "@/constants/app-keys.const";
-import {
-  getMarkProduct,
-  saveMarkProduct,
-  getProductsByList,
-} from "@/services/serverActionHttp";
+import { saveMarkProduct } from "@/services/serverActionHttp";
 
 import {
   saveDataToLocalStorage,
@@ -18,6 +14,10 @@ import {
   convertProductToArrayId,
 } from "@/helpers/convertStructuresToBac";
 
+import httpClientServices from "@/services/httpClient";
+
+import { getProductsByList, getMarkProduct } from "@/services/serverActionHttp";
+
 interface IStateFavoriteData {
   favorites: IProduct[];
   isAuth: boolean;
@@ -27,7 +27,10 @@ interface IStateFavoriteData {
 interface IStateFavorite extends IStateFavoriteData {
   addFavorite: (newProduct: IProduct) => Promise<void>;
   deleteFavorite: (newProduct: IProduct) => Promise<void>;
-  fetchFavorites: (isRemoteStorage: boolean) => Promise<void>;
+  fetchFavorites: (
+    isRemoteStorage: boolean,
+    accessToken: string
+  ) => Promise<void>;
 }
 
 // * Save Favorite to Storage
@@ -51,18 +54,38 @@ const saveFavoriteToStorage = async (
 };
 
 // * fetch Favorites From Storage
-const fetchFavoritesFromStorage = async (isRemoteStorage: boolean) => {
+const fetchFavoritesFromStorage = async (
+  isRemoteStorage: boolean,
+  accessToken: string
+) => {
   if (isRemoteStorage) {
+    // * change fetch data  with api.
+
     const { isAuth, markProduct: favorites } = await getMarkProduct(
       BACKEND_ROUTES.FAVORITES
     );
+
+    // const { isAuth, markProduct: favorites } =
+    //   await httpClientServices.getMarkProduct(
+    //     BACKEND_ROUTES.FAVORITES,
+    //     accessToken
+    //   );
+
     if (!isAuth) await signOut();
     return { isAuth, favorites };
   }
 
   const favorites = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.FAVORITE, []);
   const productsID = convertProductToArrayId(favorites);
-  const responseFavorites = await getProductsByList(productsID);
+  // try {
+  //   const responseFavorites1 = await getProductsByList(productsID);
+  // } catch {
+  //   console.log("ERROR");
+  // }
+
+  const responseFavorites = await httpClientServices.getProductsByList(
+    productsID
+  );
 
   return {
     isAuth: false,
@@ -99,9 +122,10 @@ const useFavorite = create<IStateFavorite>()((set, get) => ({
     }));
   },
 
-  fetchFavorites: async (isRemoteStorage) => {
+  fetchFavorites: async (isRemoteStorage, accessToken) => {
     const { isAuth, favorites } = await fetchFavoritesFromStorage(
-      isRemoteStorage
+      isRemoteStorage,
+      accessToken
     );
 
     return set((state) => ({

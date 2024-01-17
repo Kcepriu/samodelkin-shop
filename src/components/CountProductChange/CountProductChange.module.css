@@ -5,11 +5,12 @@
   items-center
   text-black
 
-  w-[74px];
+  border
+  /* border-gray_our */
+  p-2;
 }
 
 .icon {
-  @apply text-gray_our
-  transition
+  @apply transition
    hover:text-blue_action;
 }

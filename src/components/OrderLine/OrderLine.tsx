@@ -21,7 +21,7 @@ const OrderLine: FC<IProps> = ({ order }) => {
         №{id} від {formatDateOrder(Date.parse(attributes.date))}
       </p>
       <div>
-        <p>Сумма замовлення</p>
+        <p className={style.titleSumma}>Сумма замовлення</p>
         <p>{formatPrice(attributes.totalSum)} ₴</p>
       </div>
       <Image

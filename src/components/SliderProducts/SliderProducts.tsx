@@ -1,7 +1,7 @@
 "use client";
 import { FC, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { PiArrowCircleLeft, PiArrowCircleRight } from "react-icons/pi";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
@@ -9,6 +9,7 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "./SliderProducts.css";
 
 import style from "./SliderProducts.module.css";
@@ -35,6 +36,9 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
+        pagination={{
+          dynamicBullets: true,
+        }}
         onBeforeInit={(swiper) => {
           if (
             typeof swiper.params.navigation !== "boolean" &&
@@ -46,16 +50,29 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
           }
           swiper.navigation.update();
         }}
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
         className="mySwiperProduct"
         breakpoints={{
-          480: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            pagination: {
+              enabled: true,
+            },
+          },
+          390: {
             slidesPerView: slidesPerView.mobile,
-            spaceBetween: 10,
+            spaceBetween: 16,
+            pagination: {
+              enabled: true,
+            },
           },
           768: {
             slidesPerView: slidesPerView.tablet,
             spaceBetween: 24,
+            pagination: {
+              enabled: false,
+            },
           },
           1440: {
             slidesPerView: slidesPerView.desktop,

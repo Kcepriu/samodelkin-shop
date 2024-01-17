@@ -1,6 +1,10 @@
 .wrapComponent {
-  @apply py-7 pl-6 pr-4 
-  border-2 
+  @apply mt-4
+  md:mt-0
+  lg:py-7 
+  lg:pl-6 
+  lg:pr-4 
+  lg:border-2 
   rounded-lg 
   border-light_blue;
 }
@@ -27,29 +31,54 @@
 .wrapProduct {
   @apply mt-5   
   text-black
-  flex flex-col gap-4
-  max-h-[360px]
+  flex flex-col gap-5
+  max-h-[470px]
+  md:max-h-[480px]
   overflow-y-auto;
 }
 
 .wrapDelivery {
   @apply mt-6 
-  flex justify-between 
+  flex 
+  flex-col
+  gap-4
+  md:flex-row
+  justify-between 
   
   text-size_14
   font-weight_300
   leading-line_height_29;
 }
+
 .wrapTotal {
-  @apply mt-7
-  flex justify-between
-  text-size_14
-  font-weight_300
-  leading-line_height_29;
+  @apply mt-4
+  md:mt-7
+  flex 
+  justify-start
+  items-center
+  gap-2
+  md:justify-between
+  
+  text-size_24
+  font-weight_600
+  leading-line_height_17
+  
+  md:text-size_14
+  md:font-weight_300
+  md:leading-line_height_29;
 }
 
 .textAccent {
   @apply text-size_16
   font-weight_500
   leading-line_height_20;
+}
+
+.textAccentTotal {
+  @apply text-size_24
+  font-weight_600
+  leading-line_height_17
+  md:text-size_16
+  md:font-weight_500
+  md:leading-line_height_20;
 }

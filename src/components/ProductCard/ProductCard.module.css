@@ -1,6 +1,8 @@
 .wrapCard {
   @apply relative  
-  w-[292px]  
+  w-[179px]  
+  md:w-[234px]  
+  lg:w-[292px]  
   overflow-hidden;
 }
 
@@ -13,8 +15,13 @@
   flex flex-col   
   w-full 
   max-h-full
-  h-[550px] 
-  min-h-[550px] 
+  
+  h-[420px]
+  min-h-[420px] 
+  
+  md:h-[550px] 
+  md:min-h-[550px] 
+  
   text-left
    
   rounded-xl;
@@ -22,25 +29,29 @@
 
 .card:hover {
   /* absolute  */
-  @apply min-h-[550px] 
+  @apply min-h-[400px] 
+  md:min-h-[550px] 
   max-h-max 
-  /* h-auto 
-  z-20  */
   shadow-lg 
   shadow-gray-500/80;
 }
 .wrapTop {
   @apply relative  
-  h-[340px]
-  min-h-[340px];
+  h-[211px]
+  min-h-[211px]
+
+  md:h-[340px]
+  md:min-h-[340px];
 }
 
 .wrapBottom {
   @apply flex 
   flex-col justify-between
-  pt-6
-  pb-2
-  px-5
+  p-2
+  
+  md:pt-6
+  md:pb-5
+  md:px-2
 
   grow
   font-robotoSerif
@@ -50,23 +61,28 @@
 }
 
 .image {
-  @apply h-80 
+  @apply h-[211px]
+  md:h-80 
   w-auto 
   ml-auto 
   mr-auto 
   object-contain  
   rounded-t-lg;
 }
+
 .wrapFlag {
   @apply absolute
-  -bottom-3
-  right-6;
+  -bottom-1
+  lg:-bottom-3
+  right-2
+  md:right-6;
 }
 
 .title {
   @apply text-left
   font-inter
-  text-size_20 
+  text-size_16 
+  lg:text-size_20 
   font-weight_600
   leading-line_height_21;
 }
@@ -108,24 +124,35 @@
 
 .typeProduct {
   @apply mt-4
+  hidden
+  md:block
   text-gray_our;
 }
 
 .price {
   @apply font-inter
   text-size_20 
-  font-weight_400
+  font-weight_500
+  md:font-weight_400
   leading-line_height_21
   text-blue_action;
 }
 
+.wrapPriceMobile {
+  @apply block
+  md:hidden
+  mb-3;
+}
+
 .wrapPrice {
   @apply mt-4
-  flex justify-between
+  hidden
+  md:flex 
+  justify-between
   items-center;
 }
-/* .wrapAddToCart {
-  @apply absolute
-  right-2
-  bottom-2;
-} */
+
+.wrapButtonMobile {
+  @apply block
+  md:hidden;
+}

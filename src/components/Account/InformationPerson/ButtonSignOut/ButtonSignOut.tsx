@@ -1,13 +1,20 @@
 "use client";
 import { FC } from "react";
 import { signOut } from "next-auth/react";
-import { FiLogOut } from "react-icons/fi";
+import { PiArrowSquareOut } from "react-icons/pi";
+import { useSession } from "next-auth/react";
 import style from "./ButtonSignOut.module.css";
 
 const ButtonSignOut: FC = () => {
+  const { data: session } = useSession();
+  const user = session?.user;
+
   const handleLogOut = async () => {
     await signOut({ callbackUrl: "/" });
   };
+
+  if (!user) return <></>;
+
   return (
     <button
       type="button"
@@ -15,7 +22,8 @@ const ButtonSignOut: FC = () => {
       className={style.button}
       data-before={"SignOut"}
     >
-      <FiLogOut size={24} />
+      <PiArrowSquareOut size={24} />
+      Вийти
     </button>
   );
 };

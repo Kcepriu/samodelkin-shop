@@ -1,5 +1,7 @@
 .sectionSliderProducts {
-  @apply mt-20 mb-28;
+  @apply mt-10 
+  mb-0
+  md:mt-20;
 }
 
 .wrapSwiper {
@@ -10,4 +12,8 @@
   @apply text-size_32
     font-weight_400 
     leading-line_height_16;
+}
+
+.wrapBreadcrumb {
+  @apply mb-6;
 }

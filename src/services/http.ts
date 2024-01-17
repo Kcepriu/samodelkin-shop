@@ -1,3 +1,5 @@
+import { NextResponse, NextRequest } from "next/server";
+
 import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
@@ -635,6 +637,20 @@ class HttpService {
     }
   }
 
+  async getMarkProductProxy(
+    request: NextRequest,
+    typeMarkProduct: string
+  ): Promise<Response> {
+    const url = `${this.baseUrl}${typeMarkProduct}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
+  }
+
   // * save Mark Product
   async saveMarkProduct(
     markProducts: IMarkProductForCreate,
@@ -1018,6 +1034,17 @@ class HttpService {
     }
   }
 
+  async getAboutUserProxy(request: NextRequest): Promise<Response> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_USER}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
+  }
+
   async saveAboutUser(
     information: IAboutUserForCreate
   ): Promise<IResponseCreateAboutUser> {
@@ -1095,6 +1122,17 @@ class HttpService {
     }
   }
 
+  async getAboutMeProxy(request: NextRequest): Promise<Response> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.ABOUT_ME}`;
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: request.headers,
+    });
+
+    return res;
+  }
+
   async saveAboutMe(
     information: IMyInformationFromCreate
   ): Promise<IResponseMyInformation> {
@@ -1133,6 +1171,36 @@ class HttpService {
       return result;
     } catch {
       return result;
+    }
+  }
+
+  // * Add subscribe
+  async addSubscribe(email: string): Promise<boolean> {
+    const url = `${this.baseUrl}${BACKEND_ROUTES.SUBSCRIBE}`;
+    const data = { data: { email } };
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const response = await res.json();
+
+        return (
+          (response.error.name === "ValidationError" &&
+            response.error.message) === "This attribute must be unique"
+        );
+      }
+
+      return true;
+    } catch {
+      return false;
     }
   }
 }

@@ -1,27 +1,22 @@
 import { FC } from "react";
-import Link from "next/link";
+
+import { notFound } from "next/navigation";
 import httpServices from "@/services/http";
 import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAddInfoReviews";
 import ProductAddInfoCharacteristics from "../ProductAddInfoCharacteristics/ProductAddInfoCharacteristics";
 import ProductAddInfoDescription from "../ProductAddInfoDescription/ProductAddInfoDescription";
 import ProductAddInfoVideos from "../ProductAddInfoVideos/ProductAddInfoVideos";
 import ProductAddInfoManuals from "../ProductAddInfoManuals/ProductAddInfoManuals";
-import {
-  FRONTEND_ROUTES,
-  PRODUCT_ADD_INFORMATION_ROUTES,
-  TYPES_PRODUCT_ADD_INFORMATION,
-} from "@/constants/app-keys.const";
-
+import ButtonsAddInformation from "./ButtonsAddInformation/ButtonsAddInformation";
+import ButtonsAddInformationSlider from "./ButtonsAddInformationSlider/ButtonsAddInformationSlider";
+import { getUrlAddInformation } from "@/helpers/addInformation";
+import { PRODUCT_ADD_INFORMATION_ROUTES } from "@/constants/app-keys.const";
 import style from "./ProductAddInformation.module.css";
 
 interface IProps {
   slug: string;
   addInfo: string;
 }
-
-const getUrlAddInformation = (typeInformation: string, slug: string) => {
-  return `${FRONTEND_ROUTES.PRODUCT}/${slug}${typeInformation}`;
-};
 
 const ProductAddInformation: FC<IProps> = async ({
   slug,
@@ -51,38 +46,32 @@ const ProductAddInformation: FC<IProps> = async ({
     slug
   );
 
+  const findUrl = Object.values(PRODUCT_ADD_INFORMATION_ROUTES).find(
+    (element) => element === currentUrlInfo
+  );
+  if (!!currentUrlInfo && !findUrl) notFound();
+
   return (
     <>
-      <ul className={style.listTypesInfo}>
-        {TYPES_PRODUCT_ADD_INFORMATION.map((type_info, ind) => {
-          let addTitle = "";
-          if (type_info.url === PRODUCT_ADD_INFORMATION_ROUTES.VIDEOS) {
-            addTitle = countVideos;
-          }
-          if (type_info.url === PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS) {
-            addTitle = countReviews;
-          }
-          if (type_info.url === PRODUCT_ADD_INFORMATION_ROUTES.MANUALS) {
-            addTitle = countManuals;
-          }
+      <div className={style.wrapAddButtons}>
+        <ButtonsAddInformation
+          slug={slug}
+          currentUrlInfo={currentUrlInfo}
+          countVideos={countVideos}
+          countReviews={countReviews}
+          countManuals={countManuals}
+        />
+      </div>
+      <div className={style.wrapAddButtonsClient}>
+        <ButtonsAddInformationSlider
+          slug={slug}
+          currentUrlInfo={currentUrlInfo}
+          countVideos={countVideos}
+          countReviews={countReviews}
+          countManuals={countManuals}
+        />
+      </div>
 
-          return (
-            <li
-              key={ind}
-              className={style.typeInfo}
-              data-active={currentUrlInfo === type_info.url}
-            >
-              <Link
-                className={style.linkInfo}
-                href={getUrlAddInformation(type_info.url, slug)}
-              >
-                {type_info.title}&nbsp;
-                <span>{addTitle}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
       {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.DESCRIBE && (
         <ProductAddInfoDescription
           productId={String(product.id)}

@@ -1,7 +1,8 @@
 import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { RiDeleteBin2Line } from "react-icons/ri";
+
+import { PiTrash } from "react-icons/pi";
 
 import Img from "@/assets/no_images.png";
 import ChangeLanguage from "@/components/ChangeLanguage/ChangeLanguage";
@@ -29,46 +30,69 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
   };
 
   return (
-    <div className={style.wrapProduct}>
-      <div className={style.wrapImage}>
-        <button type="button" onClick={handleToProduct}>
-          <Image
-            className={style.image}
-            src={urlImage}
-            alt={attributes.title}
-            height={0}
-            width={187}
-          />
-        </button>
-      </div>
-      <div className={style.wrapContent}>
-        <div className={style.wrapTitle}>
-          <button type="button" onClick={handleToProduct}>
-            <h2 className={style.title}> {attributes.title}</h2>
+    <div className={style.wrapCardProduct}>
+      <div className={style.wrapProduct}>
+        <div className={style.wrapImage}>
+          <button
+            type="button"
+            onClick={handleToProduct}
+            className={style.buttonImage}
+          >
+            <Image
+              className={style.image}
+              src={urlImage}
+              alt={attributes.title}
+              height={0}
+              width={187}
+            />
           </button>
         </div>
+        <div className={style.wrapContent}>
+          <div className={style.wrapTitle}>
+            <button type="button" onClick={handleToProduct}>
+              <h2 className={style.title}> {attributes.title}</h2>
+            </button>
+          </div>
 
-        <div className={style.wrapDetails}>
-          <div className={style.wrapInformation}>
+          <div className={style.wrapInformationMobile}>
+            <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
             <div className={style.wrapChangeLanguage}>
-              Доступні мови:
               <ChangeLanguage rowCart={rowCart} />
             </div>
+          </div>
 
-            <div className={style.wrapPrice}>
-              <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
-              <CountProductChange rowCart={rowCart} />
-              <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+          <div className={style.wrapInformation}>
+            <div className={style.wrapDetails}>
+              <div className={style.wrapPrice}>
+                <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
+                <CountProductChange rowCart={rowCart} />
+                <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+              </div>
+              <button
+                className={style.buttonDelete}
+                type="button"
+                onClick={async () => await deleteProduct(product.data)}
+              >
+                <PiTrash className={style.icon} size={24} />
+              </button>
+            </div>
+
+            <div className={style.wrapChangeLanguage}>
+              <ChangeLanguage rowCart={rowCart} />
             </div>
           </div>
-          <button
-            className={style.buttonDelete}
-            type="button"
-            onClick={async () => await deleteProduct(product.data)}
-          >
-            <RiDeleteBin2Line className={style.icon} size={18} />
-          </button>
         </div>
+      </div>
+      <div className={style.wrapCountProductMobile}>
+        <CountProductChange rowCart={rowCart} />
+        <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
+        <button
+          className={style.buttonDelete}
+          type="button"
+          onClick={async () => await deleteProduct(product.data)}
+        >
+          <PiTrash className={style.icon} size={24} />
+        </button>
       </div>
     </div>
   );

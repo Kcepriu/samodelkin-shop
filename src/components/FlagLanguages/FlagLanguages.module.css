@@ -1,3 +1,11 @@
 .listFlag {
   @apply flex gap-2;
 }
+
+.image {
+  @apply w-[25px]
+  h-[19px]
+
+  md:w-[34px]
+  md:h-[25px];
+}

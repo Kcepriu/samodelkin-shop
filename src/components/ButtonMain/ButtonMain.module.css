@@ -1,11 +1,12 @@
 .button {
-  @apply p-2 
+  @apply p-[14px] 
   text-text_white
   w-full
   font-inter
   text-size_18
   font-weight_500
   rounded-lg
+  transition
   leading-line_height_21
   bg-blue_action
   hover:bg-blue_action_button;

@@ -1,8 +1,13 @@
+.wrapCardProduct {
+  @apply flex flex-col
+  relative;
+}
+
 .wrapProduct {
   @apply relative
   flex gap-3 
   w-full
-  items-center
+  items-start
   font-roboto
   text-size_20  
   font-weight_300
@@ -10,15 +15,29 @@
 }
 
 .wrapImage {
-  @apply block w-[127px] min-w-[127px];
+  @apply block 
+  max-w-[173px]
+  sm:w-[173px]
+  sm:min-w-[173px]
+  
+  md:w-[127px] 
+  md:min-w-[127px];
+}
+
+.buttonImage {
+  @apply w-full;
 }
 
 .image {
-  @apply w-auto object-contain;
+  @apply w-full  
+  h-auto 
+  object-contain;
 }
 
 .wrapTitle {
-  @apply flex justify-between items-baseline;
+  @apply flex justify-between items-baseline
+  pt-3
+  md:pt-0;
 }
 
 .title {
@@ -36,11 +55,12 @@
 
 .wrapContent {
   @apply grow h-full
+  items-start
   py-2;
 }
 
 .wrapInformation {
-  @apply flex;
+  @apply flex items-start;
 }
 
 .wrapInformationProduct {
@@ -48,7 +68,8 @@
 }
 
 .wrapDetails {
-  @apply flex justify-between
+  @apply hidden
+  md:flex justify-between
   mt-4 gap-2
   grow;
 }
@@ -59,7 +80,10 @@
 
 .buttonDelete {
   /* @apply absolute top-2 right-1 p-1; */
-  @apply p-1;
+  @apply absolute 
+  top-0 right-2
+  md:relative
+  p-1;
 }
 
 .icon {
@@ -68,4 +92,14 @@
 
 .buttonDelete:hover .icon {
   @apply text-blue_action;
+}
+
+.wrapDetailsMobile {
+  @apply mt-2
+  block
+  md:hidden;
+}
+
+.wrapCountMobile {
+  @apply flex gap-3;
 }

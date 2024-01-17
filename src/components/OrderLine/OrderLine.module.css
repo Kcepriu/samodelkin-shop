@@ -1,3 +1,15 @@
 .wrapOrder {
-  @apply flex justify-between items-center;
+  @apply flex 
+  justify-between 
+  items-center
+  text-black
+  font-inter
+  text-size_16
+  font-weight_500
+  leading-line_height_50;
+}
+
+.titleSumma {
+  @apply text-gray_our
+  mb-2;
 }

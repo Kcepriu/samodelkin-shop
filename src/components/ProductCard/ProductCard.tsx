@@ -52,6 +52,12 @@ const ProductCard: FC<IProps> = ({ product }) => {
           </Link>
 
           <div>
+            <div className={styles.wrapPriceMobile}>
+              <p className={styles.price}>
+                Ціна {formatPrice(attributes.price)} ₴
+              </p>
+            </div>
+
             {!!attributes.available ? (
               <p className={styles.isAvailable}>В наявності</p>
             ) : (
@@ -69,13 +75,9 @@ const ProductCard: FC<IProps> = ({ product }) => {
             </div>
           </div>
         </div>
-
-        {/* <div className={styles.appearInformation}>
-          <p>{attributes.descrition}</p>
-          <p>Код товару: {attributes.code}</p>
-          <p>Ціна: {attributes.price} ₴.</p>
-          <p>Кількість гравців: {attributes.countPlayers}</p>
-        </div> */}
+        <div className={styles.wrapButtonMobile}>
+          <ButtonAddProductToCart product={product} bigButton />
+        </div>
       </div>
     </div>
   );

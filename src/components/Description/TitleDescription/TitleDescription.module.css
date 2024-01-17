@@ -1,5 +1,6 @@
 .title {
-  @apply mt-8
+  @apply mt-2
+  md:mt-6
   font-robotoSerif
   text-size_22
   font-weight_700

@@ -11,9 +11,9 @@ const Orders: FC<IProps> = ({ orders }) => {
     <ul className={style.listOrders}>
       {orders.map((order) => (
         <li key={order.id}>
-          <Link href="#" className={style.linkOder}>
+          <div className={style.linkOder}>
             <OrderLine order={order} />
-          </Link>
+          </div>
         </li>
       ))}
     </ul>

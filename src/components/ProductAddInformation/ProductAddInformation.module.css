@@ -1,27 +1,7 @@
-.listTypesInfo {
-  @apply flex gap-6
-    font-inter 
-    text-size_20 
-    font-weight_400 
-    leading-line_height_21;
+.wrapAddButtonsClient {
+  @apply block lg:hidden;
 }
 
-.typeInfo {
-  /* 188 96 */
-  @apply w-[188px] 
-  min-w-[188px] 
-  h-24  
-  
-  border 
-  rounded-lg 
-  transition
-  border-light_blue  
-  data-[active=true]:bg-light_blue
-
-  hover:shadow-lg
-  hover:border-blue_action;
-}
-
-.linkInfo {
-  @apply h-full w-full flex items-center justify-center;
+.wrapAddButtons {
+  @apply hidden lg:block;
 }

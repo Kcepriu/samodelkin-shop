@@ -15,7 +15,20 @@ import {
 export const getProductsByList = async (
   productsID: number[]
 ): Promise<IResponseProduct | null> => {
-  return await httpServices.getProductsByList(productsID);
+  const result = await httpServices.getProductsByList(productsID);
+  return result;
+};
+
+// * get Products
+export const getProducts = async ({
+  page = "1",
+  category = "",
+}: {
+  page: string;
+  category: string;
+}): Promise<IResponseProduct | null> => {
+  const result = await httpServices.getProducts({ page, category });
+  return result;
 };
 
 // * get Product Reviews
@@ -246,4 +259,15 @@ export const saveAboutMe = async (
     isError: code !== 200,
     infoAboutMe,
   };
+};
+
+export const getCategories = async (): Promise<IResponseCategories | null> => {
+  const result = await httpServices.getCategories();
+  return result;
+};
+
+// * Add subscribe
+export const addSubscribe = async (email: string): Promise<boolean> => {
+  const result = await httpServices.addSubscribe(email);
+  return result;
 };

@@ -52,7 +52,7 @@ const useCreateReviews = ({ product }: IProps): ICreateReviewsComponentHook => {
 
     await setShowModal(false);
 
-    setTextMessage("Відгук створено");
+    setTextMessage("Відгук створено", "Відгук зʼявиться на сайті після модерації адміністратором");
     setShowModalMessage(true);
     router.refresh();
   };

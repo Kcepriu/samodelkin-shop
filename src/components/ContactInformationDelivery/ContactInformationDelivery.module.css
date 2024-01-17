@@ -1,5 +1,5 @@
 .wrapContactInfo {
-  @apply mt-6;
+  @apply lg:mt-6;
 }
 
 .titleSecond {
@@ -37,7 +37,13 @@
 }
 
 .lineContacts {
-  @apply flex gap-12 w-full justify-between 
+  @apply flex 
+  flex-col
+  md:flex-row
+  gap-3
+  md:gap-12 
+  w-full 
+  justify-between 
   min-h-[80px];
 }
 

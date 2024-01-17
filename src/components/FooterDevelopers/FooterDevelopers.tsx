@@ -10,36 +10,18 @@ const FooterDevelopers: FC = () => {
   return (
     <div className={style.wrapMain}>
       <div className={style.wrapDevelopers}>
-        <div className={style.wrapInformation}>
-          <p>Розробка:</p>
-          <Link
-            className={style.link}
-            href="https://www.linkedin.com/in/serhii-kostiuchenko"
-          >
-            <span className={style.author}>Serhii</span>
-
-            <Image
-              src={iconLinkedin}
-              alt="icon Linkedin"
-              height={28}
-              width={28}
-            />
-          </Link>
-        </div>
+        <h3>Працювали над проєктом: </h3>
 
         <div className={style.wrapInformation}>
-          <p>Дизайн:</p>
-
           <Link
             className={style.link}
             href="https://www.linkedin.com/in/nadiia-zhurba-b40867268/"
           >
-            <span className={style.author}>Zhurba Nadiia</span>
             <Image
               src={iconLinkedin}
               alt="icon Linkedin"
-              height={28}
-              width={28}
+              height={32}
+              width={32}
             />
           </Link>
           <Link
@@ -53,6 +35,31 @@ const FooterDevelopers: FC = () => {
               width={28}
             />
           </Link>
+          <p>Design - Zhurba Nadiia</p>
+          {/* <span className={style.author}>Zhurba Nadiia</span> */}
+        </div>
+
+        <div className={style.wrapInformation}>
+          <Link
+            className={style.link}
+            href="https://www.linkedin.com/in/serhii-kostiuchenko"
+          >
+            <Image
+              src={iconLinkedin}
+              alt="icon Linkedin"
+              height={32}
+              width={32}
+            />
+          </Link>
+          <p>Development - </p>
+          <Link
+            href="https://t.me/SerhiiKostiuchenko"
+            target="_blank"
+            className={style.link}
+          >
+            Serhii Kostiuchenko
+          </Link>
+          {/* <span className={style.author}>Serhii Kostiuchenko</span> */}
         </div>
       </div>
     </div>

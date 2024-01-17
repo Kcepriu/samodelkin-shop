@@ -1,0 +1,17 @@
+.wrapTypeProduct {
+  @apply flex gap-6 
+  mt-3
+  font-roboto
+  text-size_18
+  font-weight_400
+  leading-line_height_17;
+}
+
+.typeProduct {
+  @apply p-2
+  border
+  rounded
+   border-light_blue
+   data-[additions=true]:bg-light_blue
+   data-[disabled=false]:hover:border-blue_action;
+}

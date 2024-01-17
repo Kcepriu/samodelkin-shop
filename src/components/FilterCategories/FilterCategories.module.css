@@ -3,7 +3,10 @@
   font-inter
   text-size_20
   font-weight_600
-  leading-line_height_15;
+  leading-line_height_15
+  
+  pl-32
+  lg:pl-0;
 }
 
 .listCategory {
@@ -12,7 +15,7 @@
 
 .buttonCategory {
   @apply px-4 
-  py-2
+  py-3
   w-full 
   text-center
 
@@ -22,17 +25,14 @@
   font-weight_400
   leading-line_height_21
 
-  border
+  border-2
   rounded-lg
-  border-dark_blue
+  border-light_blue
   transition
-  
-  
-  hover:text-blue_action_button
-  hover:border-blue_action_button
-  focus:text-blue_action_button
-  focus:border-blue_action_button
-  hover:shadow-lg
+
+  hover:bg-light_blue
+  focus:bg-light_blue
+  /* hover:shadow-lg */
   
   data-[active=true]:bg-light_blue;
 }

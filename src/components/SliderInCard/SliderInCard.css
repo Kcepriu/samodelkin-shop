@@ -1,6 +1,6 @@
 /* Large image */
 .mySwiperInCardLarge {
-  height: 80%;
+  height: 100%;
   width: 100%;
 }
 
@@ -13,9 +13,8 @@
   object-fit: contain;
 }
 
-// Smal image
 .mySwiperInCardSmall {
-  height: 20%;
+  /* height: 20%; */
   box-sizing: border-box;
   padding: 10px 0;
 }

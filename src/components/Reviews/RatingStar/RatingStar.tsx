@@ -20,6 +20,7 @@ const RatingStar: FC<IProps> = ({ rating, maxRating = 5 }) => {
             alt="star"
             height={24}
             width={24}
+            className={style.star}
           />
         ) : (
           <Image
@@ -29,6 +30,7 @@ const RatingStar: FC<IProps> = ({ rating, maxRating = 5 }) => {
             alt="empty star"
             height={24}
             width={24}
+            className={style.star}
           />
         );
       })}

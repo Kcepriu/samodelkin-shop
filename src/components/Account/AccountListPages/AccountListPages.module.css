@@ -1,5 +1,7 @@
 .listPage {
-  @apply flex flex-col gap-3 w-[226px];
+  @apply flex flex-col gap-3 
+  w-full
+  md:w-[226px];
 }
 
 .elementList {
@@ -20,12 +22,11 @@
 
   border
   rounded-lg
-  border-dark_blue
-  hover:text-blue_action_button
-  hover:border-blue_action_button
-  focus:text-blue_action_button
-  focus:border-blue_action_button
-  hover:shadow-lg
+  border-light_blue
+  hover:bg-light_blue
+  focus:bg-light_blue
+  
+  /* hover:shadow-lg */
   transition 
   data-[active=true]:bg-light_blue
   data-[active=true]:hover:bg-light_blue;

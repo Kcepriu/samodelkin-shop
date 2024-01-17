@@ -3,8 +3,9 @@
   items-center
   pb-3
   border-b
-  border-b-black
-  w-[226px] 
+  border-b-light_blue
+  w-full
+  md:w-[226px] 
   h-16
   text-black
   font-inter

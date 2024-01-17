@@ -53,8 +53,8 @@ const ProductsCheckout: FC = () => {
           <p className={style.textAccent}>За тарифами перевізника</p>
         </div>
         <div className={style.wrapTotal}>
-          <p>Всього</p>
-          <p className={style.textAccent}>{formatPrice(totalSum)} ₴</p>
+          <p>До сплати</p>
+          <p className={style.textAccentTotal}>{formatPrice(totalSum)} ₴</p>
         </div>
       </div>
       {CartComponent}

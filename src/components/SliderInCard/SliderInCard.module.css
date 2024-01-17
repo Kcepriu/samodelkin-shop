@@ -7,3 +7,13 @@
 .wrapSlider {
   @apply flex flex-col w-full h-full gap-2;
 }
+
+.wrapSliderBig {
+  @apply h-[80%];
+}
+
+.wrapSliderSmall {
+  @apply h-[20%]
+  /* hidden
+  md:block; */;
+}

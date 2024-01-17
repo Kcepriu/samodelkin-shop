@@ -1,7 +1,7 @@
+"use client";
 import { FC } from "react";
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { authConfigs } from "@/configs/authConfigs";
+import { useSession } from "next-auth/react";
 
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import IconWithCount from "../IconWithCount/IconWithCount";
@@ -10,8 +10,8 @@ import { FiLogIn } from "react-icons/fi";
 
 import style from "./ButtonGoToAccount.module.css";
 
-const ButtonGoToAccount: FC = async () => {
-  const session = await getServerSession(authConfigs);
+const ButtonGoToAccount: FC = () => {
+  const { data: session } = useSession();
   const user = session?.user;
 
   return (

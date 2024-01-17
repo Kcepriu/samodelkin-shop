@@ -9,6 +9,7 @@ import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddP
 import RatingStar from "../Reviews/RatingStar/RatingStar";
 import FlagLanguages from "../FlagLanguages/FlagLanguages";
 import AddToRevised from "./AddToRevised/AddToRevised";
+import ButtonsTypeProduct from "./ButtonsTypeProduct/ButtonsTypeProduct";
 import ImgNoImage from "@/assets/no_images.png";
 import { formatPrice } from "@/helpers/formatNumber";
 import {
@@ -25,21 +26,51 @@ interface IProps {
 
 const Product: FC<IProps> = ({ product, rating, countReview }) => {
   const { attributes } = product;
-
   const images = attributes.images?.data;
-  const additions = attributes.additions;
 
   return (
     <>
       <AddToRevised product={product} />
       <div className={style.wrapInformation}>
+        <div className={style.wrapProductInformationMobile}>
+          <h1 className={style.title}>{attributes.title}</h1>
+
+          <div className={style.wrapRatingCode}>
+            <div className={style.wrapRating}>
+              <p>
+                code: <span>{attributes.code}</span>
+              </p>
+
+              {rating > 0 && <RatingStar rating={rating} />}
+
+              <Link
+                className={style.countReviews}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+              >
+                <PiChatText size={24} />
+                {countReview}
+              </Link>
+            </div>
+
+            <div className={style.wrapLanguages}>
+              <FlagLanguages flags={attributes.languages} />
+            </div>
+          </div>
+
+          <div className={style.wrapTypeProduct}>
+            <ButtonsTypeProduct product={product} />
+          </div>
+        </div>
+
+        {/* IMAGES */}
+
         <div className={style.wrapImage}>
           {!images && (
             <Image
               className={style.image}
               src={ImgNoImage}
               height={500}
-              width={500}
+              width={420}
               alt="No image"
             />
           )}
@@ -49,7 +80,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               src={images[0].attributes.url}
               alt={attributes.title}
               height={500}
-              width={500}
+              width={420}
             />
           )}
           {images && images.length > 1 && (
@@ -78,17 +109,10 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
           </div>
 
           <div className={style.wrapTypeProduct}>
-            <p className={style.typeProduct} data-additions={!additions}>
-              Базовий набір
-            </p>
-
-            <p className={style.typeProduct} data-additions={additions}>
-              Розширення
-            </p>
+            <ButtonsTypeProduct product={product} />
           </div>
 
           <div className={style.wrapLanguages}>
-            Доступні мови:
             <FlagLanguages flags={attributes.languages} />
           </div>
 
@@ -110,16 +134,67 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               <ButtonAddProductToCart product={product} bigButton />
             </div>
 
-            <ButtonAddProductToFavorite product={product} size={24} />
+            <ButtonAddProductToFavorite
+              product={product}
+              size={24}
+              sizeIcon={24}
+            />
           </div>
 
           <div className={style.wrapGeneralInformation}>
             <div className={style.generalInformation}>
-              <PiTruck size={24} />
+              <PiTruck size={24} className={style.iconGeneralInformation} />
               <p>Доставка новою поштою, укр поштою</p>
             </div>
             <div className={style.generalInformation}>
-              <HiOutlineIdentification size={24} />
+              <HiOutlineIdentification
+                size={24}
+                className={style.iconGeneralInformation}
+              />
+              <p>
+                Оплачуйте покупку готівкою у відділені пошти, карткою або
+                перерахунком на банківські реквізити
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={style.wrapProductInformationButtonMobile}>
+          <div className={style.wrapAvailable}>
+            {!!attributes.available ? (
+              <p className={style.isAvailable}>В наявності</p>
+            ) : (
+              <p>Немає в наявності</p>
+            )}
+          </div>
+
+          <p className={style.price}>
+            {formatPrice(attributes.price)}
+            <span className={style.currency}>₴</span>
+          </p>
+
+          <div className={style.wrapButton}>
+            <div className={style.buttonCart}>
+              <ButtonAddProductToCart product={product} bigButton />
+            </div>
+
+            <ButtonAddProductToFavorite
+              product={product}
+              size={40}
+              sizeIcon={40}
+            />
+          </div>
+
+          <div className={style.wrapGeneralInformation}>
+            <div className={style.generalInformation}>
+              <PiTruck size={24} className={style.iconGeneralInformation} />
+              <p>Доставка новою поштою, укр поштою</p>
+            </div>
+            <div className={style.generalInformation}>
+              <HiOutlineIdentification
+                size={24}
+                className={style.iconGeneralInformation}
+              />
               <p>
                 Оплачуйте покупку готівкою у відділені пошти, карткою або
                 перерахунком на банківські реквізити

@@ -7,15 +7,41 @@
 }
 
 .wrapFilter {
-  @apply w-[292px] min-w-[292px];
+  @apply hidden
+  lg:block
+  lg:w-[292px] 
+  lg:min-w-[292px];
 }
 
 .wrapContent {
-  @apply flex-grow;
+  @apply flex-grow 
+  max-w-full;
 }
 
 .imageHero {
   @apply w-full max-w-[924px];
+}
+
+.wrapAllProducts {
+  @apply mt-4
+  md:mt-8
+  w-full
+  md:w-[290px];
+}
+.buttonToAllProduct {
+  @apply block
+  p-[14px] 
+  text-center
+  text-text_white
+  w-full
+  font-inter
+  text-size_18
+  font-weight_500
+  rounded-lg
+  transition
+  leading-line_height_21
+  bg-blue_action
+  hover:bg-blue_action_button;
 }
 
 .sectionTypeGames {
@@ -23,11 +49,13 @@
 }
 
 .section {
-  @apply mt-12;
+  @apply mt-6
+  md:mt-12;
 }
 
 .wrapSwiper {
-  @apply mt-8  
+  @apply mt-5
+  md:mt-8  
   w-full 
   sm:max-w-screen-sm 
   md:max-w-screen-md 
@@ -35,12 +63,31 @@
 }
 
 .wrapReviews {
-  @apply mt-4;
+  @apply mt-4
+  hidden
+  md:block;
+}
+
+.wrapReviewsSlider {
+  @apply mt-4 
+  w-full 
+  md:hidden;
 }
 
 .titleSection {
   @apply font-robotoSerif
   text-size_32
   font-weight_500
-  leading-line_height_17;
+  leading-line_height_17
+  text-center
+  md:text-left;
+}
+
+.titleSectionReview {
+  @apply font-robotoSerif
+  text-size_32
+  font-weight_500
+  leading-line_height_17
+  hidden
+  md:block;
 }

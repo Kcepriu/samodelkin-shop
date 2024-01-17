@@ -1,15 +1,23 @@
 .wrapCart {
-  @apply py-8
-  px-10
+  @apply max-w-[414px]
+  md:w-[741px]
+  md:max-w-[741px]
+  lg:w-[818px]
+  lg:max-w-[818px]
+  py-6
+  px-5
+
+  md:py-8
+  
+  md:pl-10
+  md:pr-9
+
   text-black;
 }
 
-.wrapTitle {
-  @apply flex justify-between;
-}
-
 .title {
-  @apply ml-2
+  @apply max-w-full
+  md:pl-2
   font-robotoSerif
   text-size_32  
   font-weight_400
@@ -17,29 +25,43 @@
 }
 
 .wrapProduct {
-  @apply mt-8 
+  @apply mt-10
+  md:mt-6 
+  pr-2
+  max-h-[550px]
+  md:max-h-[450px]
   
-  max-h-[370px]
   text-black
-  flex flex-col gap-4
+  flex 
+  flex-col 
+  gap-6
+  md:gap-4
+
   overflow-y-auto;
 }
 
 .wrapTotalSum {
   @apply mt-6 
-  pr-11
-  text-right
+  text-left
+  md:pr-28
+  md:text-right
+
   font-roboto
   text-size_24  
-  font-weight_500
+  font-weight_600
+  md:font-weight_500
   leading-line_height_17;
 }
 
 .wrapButton {
-  @apply flex gap-3 justify-between
-  mt-20
-  pl-11
-  pr-11
+  @apply flex 
+  justify-between
+  
+  mt-6
+  md:mt-20
+
+  lg:pl-11
+  lg:pr-11 
   
   font-inter
   text-size_18  
@@ -48,10 +70,16 @@
 }
 
 .buttonBack {
-  @apply flex gap-3 
+  @apply hidden
+  md:flex gap-3 
   py-3
   text-black
   transition
+  font-inter
+  text-size_20  
+  font-weight_300
+  leading-line_height_21
+
   hover:text-blue_action;
 }
 
@@ -66,14 +94,15 @@
 .wrapButton .buttonAccept {
   @apply block 
   py-3
-  px-5
-  
+  px-8
+  w-full
+  md:w-[273px]  
   rounded-lg 
   bg-blue_action
   text-white
   transition
   hover:bg-blue_action_button
-  hover:shadow-lg;
+  /* hover:shadow-lg; */;
 }
 
 .buttonClean {

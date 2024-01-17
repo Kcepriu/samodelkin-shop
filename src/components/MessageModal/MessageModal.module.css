@@ -1,35 +1,52 @@
 .wrapWindow {
-  @apply pt-20 
+  @apply pt-12
+  md:pt-20 
   pb-10
-  px-20
+  px-5
+  md:px-20
   flex 
   flex-col
   items-center
   bg-dark_blue;
 }
 .wrapMessage {
-  @apply w-[419px]
-  h-[222px]
+  @apply w-[334px]
+  md:w-[419px]
+  h-[222px];
+}
+
+.content {
+  @apply w-full h-full 
+  py-8
+  px-8
   flex 
+  flex-col
+  gap-2
   justify-center 
   items-center
   font-roboto
   text-size_20
   font-weight_400
-  leading-line_height_25;
+  leading-line_height_20
+  text-center;
+}
+
+.header {
+  @apply font-weight_800;
 }
 
 .button {
   @apply px-8
   py-3
-  mt-10
+  mt-3
+  md:mt-10
   rounded-lg 
   w-fit
   bg-blue_action
   text-white  
   hover:bg-blue_action_button
-  hover:shadow-gray-500/80
-  hover:shadow-lg  
+  /* hover:shadow-gray-500/80
+  hover:shadow-lg   */
   transition
   font-inter
   text-size_18

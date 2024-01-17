@@ -6,7 +6,8 @@
 }
 
 .wrapSwiper {
-  @apply mt-8
+  @apply mt-5
+  md:mt-8
   
   w-full 
   sm:max-w-screen-sm 

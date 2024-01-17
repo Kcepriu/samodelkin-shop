@@ -1,22 +1,37 @@
 .wrapContent {
-  @apply mt-describe_big 
+  @apply mt-5
+  md:mt-10
   font-inter
   text-size_16
   font-weight_400
-  leading-line_height_15
+  leading-line_height_50
   
   data-[after-title=true]:mt-describe_big_after_title
+  
   data-[category=true]:mt-describe
   data-[category=true]:data-[after-title=true]:mt-describe_after_title
+  
   data-[product=true]:mt-describe
   data-[product=true]:data-[after-title=true]:mt-describe_after_title
   
   data-[about-us=true]:text-size_18
   data-[about-us=true]:font-weight_400
-  data-[about-us=true]:leading-line_height_28;
+  data-[about-us=true]:leading-line_height_50;
 }
 
 .wrapContent ul {
-  @apply list-disc
-  pl-10;
+  @apply list-none
+  mb-2
+  /* marker:contents: {
+  } */;
+}
+
+.wrapContent li {
+  @apply before:content-['-'] before:mr-2 mb-1;
+}
+
+.wrapContent p {
+  @apply mb-2
+  /* marker:contents: {
+  } */;
 }

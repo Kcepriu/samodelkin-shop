@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, ReactNode, useEffect } from "react";
+
 import { useSession } from "next-auth/react";
 import useFavorite from "@/stores/favorite.store";
 import useRevised from "@/stores/revised.store";
@@ -18,28 +19,49 @@ const InitialStore: FC<IProps> = ({ children }) => {
 
   const [fetchFavorites] = useFavorite((state) => [state.fetchFavorites]);
   const [fetchRevised] = useRevised((state) => [state.fetchRevised]);
+
   const [fetchCart] = useCart((state) => [state.fetchCart]);
   const [fetchAboutUser] = useAboutUser((state) => [state.fetchAboutUser]);
   const [fetchAboutMe] = useAboutMe((state) => [state.fetchAboutMe]);
 
   useEffect(() => {
-    const rehydrate = async () => {
-      await fetchFavorites(!!user);
-      await fetchRevised(!!user);
-      await fetchCart(!!user);
-      await fetchAboutUser(!!user);
-      await fetchAboutMe(!!user);
+    const fetchData = async () => {
+      await fetchFavorites(!!user, user?.jwt || "");
+    };
+    fetchData();
+  }, [user, fetchFavorites]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchRevised(!!user, user?.jwt || "");
     };
 
-    rehydrate();
-  }, [
-    user,
-    fetchFavorites,
-    fetchRevised,
-    fetchCart,
-    fetchAboutUser,
-    fetchAboutMe,
-  ]);
+    fetchData();
+  }, [user, fetchRevised]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchCart(!!user);
+    };
+
+    fetchData();
+  }, [user, fetchCart]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchAboutUser(!!user, user?.jwt || "");
+    };
+
+    fetchData();
+  }, [user, fetchAboutUser]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchAboutMe(!!user, user?.jwt || "");
+    };
+
+    fetchData();
+  }, [user, fetchAboutMe]);
 
   return <>{children}</>;
 };

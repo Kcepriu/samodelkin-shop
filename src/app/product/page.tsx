@@ -3,6 +3,8 @@ import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
+import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
+import ProductListLoadMore from "@/components/ProductListLoadMore/ProductListLoadMore";
 import { setSeo } from "@/helpers/setSeo";
 import httpServices from "@/services/http";
 import style from "./pageProducts.module.css";
@@ -31,11 +33,14 @@ const Products: FC<IParams> = async ({
   const { page = "1", category = "" } = searchParams;
   const categoryId = typeof category === "string" ? category : category[0];
   const currentPage = typeof page === "string" ? page : page[0];
+  const currentCategory = await httpServices.getCategory(categoryId);
 
   const responseProducts = await httpServices.getProducts({
     page: currentPage,
     category: categoryId,
   });
+
+  const paginationProducts = responseProducts?.meta?.pagination;
 
   const products =
     responseProducts && responseProducts.data.length > 0
@@ -46,10 +51,14 @@ const Products: FC<IParams> = async ({
 
   return (
     <>
-      {/* <BreadcrumbSetData
+      <BreadcrumbSetData
         isInProduct={false}
-        category={!responseCategory ? null : responseCategory.data[0]}
-      /> */}
+        category={
+          !!currentCategory && currentCategory.data
+            ? currentCategory.data[0]
+            : null
+        }
+      />
 
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
@@ -60,13 +69,25 @@ const Products: FC<IParams> = async ({
           {products.length > 0 && <ProductList productList={products} />}
 
           {pageCount > 1 && (
-            <Pagination pageCount={pageCount} forcePage={Number(currentPage)} />
+            <>
+              <div className={style.wrapPagination}>
+                <Pagination
+                  pageCount={pageCount}
+                  forcePage={Number(currentPage)}
+                />
+              </div>
+              <div className={style.wrapLoadMore}>
+                <ProductListLoadMore
+                  categoryId={categoryId}
+                  paginationProducts={paginationProducts}
+                />
+              </div>
+            </>
           )}
         </div>
       </section>
-      <section className={style.wrapSection}>
-        <CategoryDescription categoryId={categoryId} />
-      </section>
+
+      <CategoryDescription categoryId={categoryId} />
     </>
   );
 };
