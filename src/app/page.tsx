@@ -61,16 +61,6 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
             </Link>
           </div>
 
-          <div className={style.wrapAllProducts}>
-            <Link
-              href="/ggggggg"
-              className={style.buttonToAllProduct}
-              prefetch={false}
-            >
-              TEST
-            </Link>
-          </div>
-
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2 className={style.titleSection}>Лідери продажу</h2>

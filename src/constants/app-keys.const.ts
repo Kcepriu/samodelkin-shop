@@ -37,6 +37,7 @@ export const BACKEND_ROUTES = {
   ABOUT_USER: "/api/about-users",
   ABOUT_ME: "/api/users/me",
   ABOUT_ME_UPDATE: "/api/users",
+  SUBSCRIBE: "/api/subscriptions",
 };
 
 // Frontend routes

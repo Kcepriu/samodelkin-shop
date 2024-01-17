@@ -4,10 +4,7 @@ import Image from "next/image";
 import icon404 from "@/assets/404.svg";
 import style from "./not-found.module.css";
 
-import { redirect } from "next/navigation";
-
 const NotFound: FC = () => {
-  // redirect("/");
   return (
     <section className={style.wrapContent}>
       <div className={style.wrapLeft}>
@@ -16,7 +13,7 @@ const NotFound: FC = () => {
           Упссс...щось пішло не так. Зараз кинемо кубики, аби дізнатися, що
           трапилося.
         </p>
-        <Link href="http://localhost:3000/" replace className={style.button}>
+        <Link href="/" replace className={style.button}>
           Повернутися на головну
         </Link>
       </div>
