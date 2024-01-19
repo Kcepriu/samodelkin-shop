@@ -3,7 +3,11 @@
 }
 
 .logo {
-  @apply p-6 border border-white rounded-lg
+  @apply p-6 
+  border 
+  border-white 
+  rounded-lg
+  transition
   data-[active=true]:border-gray_our
   hover:border-blue_action;
 }

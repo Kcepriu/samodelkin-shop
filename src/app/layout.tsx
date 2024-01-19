@@ -49,7 +49,9 @@ const RootLayout: FC<IProps> = ({ children }) => {
           <div className={style.wrapBody}>
             <header className={style.header}>
               <div className={style.container}>
-                <HeaderPage />
+                <div className={style.wrapHeader}>
+                  <HeaderPage />
+                </div>
               </div>
             </header>
 

@@ -15,6 +15,7 @@ const FooterDevelopers: FC = () => {
         <div className={style.wrapInformation}>
           <Link
             className={style.link}
+            target="_blank"
             href="https://www.linkedin.com/in/nadiia-zhurba-b40867268/"
           >
             <Image
@@ -26,6 +27,7 @@ const FooterDevelopers: FC = () => {
           </Link>
           <Link
             className={style.link}
+            target="_blank"
             href="https://www.behance.net/nadiiazhurba"
           >
             <Image
@@ -43,6 +45,7 @@ const FooterDevelopers: FC = () => {
           <Link
             className={style.link}
             href="https://www.linkedin.com/in/serhii-kostiuchenko"
+            target="_blank"
           >
             <Image
               src={iconLinkedin}

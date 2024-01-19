@@ -26,7 +26,8 @@
   @apply mt-4
   md:mt-8
   w-full
-  md:w-[290px];
+  md:w-[290px]
+  lg:hidden;
 }
 .buttonToAllProduct {
   @apply block

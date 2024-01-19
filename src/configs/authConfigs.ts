@@ -2,6 +2,7 @@ import { AuthOptions, User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import httpServices from "@/services/http";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 
 export const authConfigs: AuthOptions = {
   providers: [
@@ -86,17 +87,7 @@ export const authConfigs: AuthOptions = {
       return Promise.resolve(token);
     },
   },
-  // TODO Delete
-  events: {
-    signIn: async ({ user, account, profile }) => {
-      // console.log("signIn", user);
-    },
-    signOut: async ({ token, session }) => {
-      // console.log("signOut", token);
-    },
-    session: async ({ token, session }) => {
-      // console.log("🚀 ~ token:", token);
-      // console.log("🚀 ~ session:", session);
-    },
+  pages: {
+    signIn: "/signin",
   },
 };
