@@ -16,7 +16,9 @@ type Props = {
 
 export const MobileMenu: FC<Props> = ({ children, onClose, isOpen }) => {
   const isDark = false;
+
   const [isOpenModal, setIsOpenModal] = useState(false);
+
   useEffect(() => {
     setIsOpenModal(isOpen);
   }, [isOpen]);

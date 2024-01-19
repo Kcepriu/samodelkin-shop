@@ -1,7 +1,9 @@
 .button {
   @apply relative
+  w-full
   flex
   gap-3
+  p-2
   mt-7
   text-black 
   

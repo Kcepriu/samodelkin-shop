@@ -44,9 +44,6 @@ const SliderReviews: FC<IProps> = ({
 
     if (currentPage >= countTotalPage) return;
 
-    console.log("countTotalPage", countTotalPage);
-    console.log("currentPage", currentPage);
-
     const nextPage = currentPage + 1;
 
     const newReviews = owner?.isProduct
