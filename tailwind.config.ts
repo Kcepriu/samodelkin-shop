@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        half_width: "calc(50% - 6px)",
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -78,6 +82,7 @@ const config: Config = {
       },
       lineHeight: {
         line_height_10: "1",
+        line_height_12: "1.2",
         line_height_15: "1.15",
         line_height_16: "1.16",
         line_height_17: "1.17",

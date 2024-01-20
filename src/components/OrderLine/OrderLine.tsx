@@ -24,13 +24,7 @@ const OrderLine: FC<IProps> = ({ order }) => {
         <p className={style.titleSumma}>Сумма замовлення</p>
         <p>{formatPrice(attributes.totalSum)} ₴</p>
       </div>
-      <Image
-        // className={style.image}
-        src={urlImage}
-        alt={titleProduct}
-        width={64}
-        height={60}
-      />
+      <Image src={urlImage} alt={titleProduct} width={64} height={60} />
     </div>
   );
 };

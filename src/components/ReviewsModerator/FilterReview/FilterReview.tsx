@@ -34,19 +34,12 @@ const FilterReview: FC = () => {
   const currentFilter = !!objSearchParams?.all_review ? "0" : "1";
 
   const handleChange = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
-
     const params = new URLSearchParams({
       ...objSearchParams,
       all_review: "true",
     });
     params.delete("page");
 
-    console.log(
-      "event.target.value",
-      typeof event.target.value,
-      event.target.value
-    );
     if (event.target.value === "1") params.delete("all_review");
     router.push(
       `${FRONTEND_ROUTES.ACCOUNT}${ACCOUNT_ADD_INFORMATION_ROUTES.REVIEWS_MODERATOR}?${params}`

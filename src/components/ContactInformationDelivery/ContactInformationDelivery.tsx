@@ -89,6 +89,13 @@ const ContactInformationDelivery: FC<IProps> = ({
   });
 
   useEffect(() => {
+    setFieldValue(
+      "deliveryServicesId",
+      deliveryServices.length > 0 ? deliveryServices[0].id : 0
+    );
+  }, [deliveryServices, setFieldValue]);
+
+  useEffect(() => {
     if (!values.email && user?.email) setFieldValue("email", user.email);
   }, [user, values, setFieldValue]);
 
