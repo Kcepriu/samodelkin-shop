@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        half_width: "calc(50% - 6px)",
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

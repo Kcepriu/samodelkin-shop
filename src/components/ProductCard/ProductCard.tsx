@@ -42,10 +42,12 @@ const ProductCard: FC<IProps> = ({ product }) => {
               />
             </div>
           </Link>
+
           <div className={styles.wrapFlag}>
             <FlagLanguages flags={attributes.languages} />
           </div>
         </div>
+
         <div className={styles.wrapBottom}>
           <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}`}>
             <h2 className={styles.title}>{attributes.title}</h2>

@@ -1,8 +1,11 @@
 .wrapCard {
   @apply relative  
-  w-[179px]  
+  w-full
+  
+  sm:w-[179px]   
   md:w-[234px]  
   lg:w-[292px]  
+
   overflow-hidden;
 }
 
