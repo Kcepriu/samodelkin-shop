@@ -53,13 +53,12 @@ export const authConfigs: AuthOptions = {
   // callbacks
   callbacks: {
     session: async ({ session, token, user }) => {
-      if (token) {
+      if (token && token.jwt) {
         session.user.id = token.id || "";
         session.user.fullName = token.fullName || "";
         session.user.isAdmin = token.isAdmin || false;
         session.user.jwt = token.jwt;
       }
-
       return session;
     },
 
@@ -70,17 +69,20 @@ export const authConfigs: AuthOptions = {
           token.fullName = user.fullName;
           token.id = user.id;
         } else {
-          const response = await fetch(
-            `${process.env.BACKEND_URL}/api/auth/${
-              account?.provider || "google"
-            }/callback?access_token=${account?.access_token}`
-          );
+          let data = null;
+          try {
+            const response = await fetch(
+              `${process.env.BACKEND_URL}/api/auth/${
+                account?.provider || "google"
+              }/callback?access_token=${account?.access_token}`
+            );
 
-          const data = await response.json();
+            if (response.ok) data = await response.json();
+          } catch {}
 
-          token.jwt = data.jwt;
-          token.id = data.user.id;
-          token.fullName = data.user.username;
+          token.jwt = data?.jwt || "";
+          token.id = data?.user.id || "";
+          token.fullName = data?.user.username || "";
         }
       }
 
