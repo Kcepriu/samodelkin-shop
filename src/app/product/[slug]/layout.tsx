@@ -45,10 +45,12 @@ const Layout: FC<IProps> = async ({
 
   return (
     <>
-      <BreadcrumbSetData
-        isInProduct={true}
-        category={!category ? null : category.data[0]}
-      />
+      <div id="start_page">
+        <BreadcrumbSetData
+          isInProduct={true}
+          category={!category ? null : category.data[0]}
+        />
+      </div>
       <section>
         {responseProduct && responseProduct.data.length > 0 && (
           <Product
