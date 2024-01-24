@@ -34,7 +34,6 @@ const Cart: FC<IProps> = ({ onClose }) => {
   return (
     <div className={style.wrapCart}>
       <h2 className={style.title}>Кошик</h2>
-      <div className={style.wrapTitle}></div>
 
       <ul className={style.wrapProduct}>
         {cart.map((rowCart) => {
@@ -68,6 +67,8 @@ const Cart: FC<IProps> = ({ onClose }) => {
           Оформити замовлення
         </button>
       </div>
+
+      {cart.length === 1 && <div>test</div>}
     </div>
   );
 };

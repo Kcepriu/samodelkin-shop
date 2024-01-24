@@ -51,7 +51,7 @@ const ReviewOne: FC<IProps> = ({
             </div>
 
             <p className={style.userName}>
-              {`${attributes.firstName} ${attributes.lastName}`}
+              {`${attributes.firstName || ""} ${attributes.lastName || ""}`}
             </p>
 
             <p className={style.data}>

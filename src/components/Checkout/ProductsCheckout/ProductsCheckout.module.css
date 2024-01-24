@@ -32,8 +32,8 @@
   @apply mt-5   
   text-black
   flex flex-col gap-5
-  max-h-[470px]
-  md:max-h-[480px]
+  max-h-[100%]
+  lg:max-h-[480px]
   overflow-y-auto;
 }
 

@@ -26,7 +26,10 @@
 }
 
 .link {
-  @apply flex gap-2  items-center
+  @apply flex 
+  gap-2  
+  items-center
+  transition
   hover:text-blue_action;
 }
 

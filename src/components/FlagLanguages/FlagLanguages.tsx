@@ -16,7 +16,7 @@ const FlagLanguages: FC<IProps> = ({ flags }) => {
         return (
           <li key={flag.id}>
             <Image
-              // className={styles.image}
+              className={style.image}
               src={getImageFlag(flag.language)}
               alt={flag.language}
               height={0}

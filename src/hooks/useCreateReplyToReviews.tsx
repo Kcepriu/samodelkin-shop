@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "@/components/Modal/Modal";
 import ReplyCreateUpdate from "@/components/ReplyCreateUpdate/ReplyCreateUpdate";
@@ -27,6 +27,10 @@ const useCreateReplyToReviews = ({
     setTextMessage,
   } = useModalMessage();
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
 
   const handleCloseModal = () => {
     setShowModal(false);

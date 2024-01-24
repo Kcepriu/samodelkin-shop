@@ -8,7 +8,8 @@
 }
 
 .wrapVideo {
-  @apply max-w-[384px]
+  @apply /* max-w-[384px] */
+  max-w-[100%]
   max-h-[216px]
   md:max-w-[728px]
   md:max-h-[407px]

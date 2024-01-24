@@ -4,13 +4,19 @@
   text-size_20
   font-weight_600
   leading-line_height_15
-  
-  pl-32
-  lg:pl-0;
+  text-center  
+    
+  lg:text-left;
 }
 
 .listCategory {
-  @apply mt-4 ml-3 flex flex-col gap-3 items-stretch;
+  @apply mt-6
+  lg:mt-4 
+  lg:ml-3 
+  flex 
+  flex-col 
+  gap-3 
+  items-stretch;
 }
 
 .buttonCategory {

@@ -8,11 +8,13 @@ import style from "./FilterCategories.module.css";
 interface IProps {
   allCategories: ICategorie[];
   currentCategory: string;
+  title: string;
   addAction?: () => void;
 }
 const FilterCategories: FC<IProps> = ({
   allCategories,
   currentCategory,
+  title,
   addAction,
 }) => {
   const router = useRouter();
@@ -40,7 +42,7 @@ const FilterCategories: FC<IProps> = ({
 
   return (
     <>
-      <h2 className={style.titleCategory}>Класифікація</h2>
+      <h2 className={style.titleCategory}>{title}</h2>
       <ul className={style.listCategory}>
         <li key="allCategories">
           <button

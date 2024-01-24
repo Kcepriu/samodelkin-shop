@@ -9,7 +9,7 @@
 }
 
 .elementCard {
-  @apply w-half_width  
+  @apply w-half_width    
   sm:w-[179px]  
   md:w-[234px]  
   lg:w-[292px];

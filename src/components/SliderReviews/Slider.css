@@ -10,13 +10,15 @@
 .mySwiperReviews .swiper-slide {
   text-align: center;
   font-size: 18px;
+  height: auto;
 
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-size: cover;
   background-position: center;
+}
+.mySwiperReviews .swiper-zoom-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 .mySwiperReviews .swiper-pagination {

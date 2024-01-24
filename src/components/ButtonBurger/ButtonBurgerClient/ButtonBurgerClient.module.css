@@ -1,7 +1,72 @@
+.wrapPage {
+  @apply h-full
+  flex 
+  flex-col
+  justify-between
+  px-5 
+  py-6;
+}
+
 .wrapFilter {
-  @apply w-full
-  pl-5
-  pr-12
-  py-4
+  @apply w-full  
   md:w-[409px];
+}
+
+.wrapFooterPage {
+  @apply mt-4
+  font-inter 
+  text-size_16 
+  font-weight_300 
+  leading-line_height_50;
+}
+
+.wrapInfo {
+  @apply flex 
+  flex-col
+  gap-2;
+}
+
+.wrapContacts {
+  @apply flex 
+  flex-col
+  gap-2
+  mt-4;
+}
+
+.title {
+  @apply font-weight_700;
+}
+
+.link {
+  @apply flex 
+  gap-1
+  align-baseline
+  font-inter 
+  text-size_16 
+  font-weight_300 
+  leading-line_height_50
+  transition
+  hover:text-blue_action;
+}
+
+.wrapDevelopers {
+  @apply flex 
+  flex-col
+  gap-2
+  mt-6;
+}
+
+.wrapPerson {
+  @apply flex 
+  gap-2  
+  items-center 
+  align-baseline;
+}
+
+.titleDeveloper {
+  @apply flex-none;
+}
+
+.developer {
+  @apply flex align-baseline flex-wrap;
 }

@@ -1,8 +1,7 @@
 "use client";
-import { FC, useRef, MutableRefObject, useEffect } from "react";
+import { FC, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, FreeMode } from "swiper/modules";
 import { getUrlAddInformation } from "@/helpers/addInformation";
 import {
   PRODUCT_ADD_INFORMATION_ROUTES,
@@ -31,7 +30,6 @@ const ButtonsAddInformationSlider: FC<IProps> = ({
   countManuals,
 }) => {
   const swiperRef = useRef<any>(null);
-  // const swiperRef: MutableRefObject<null>;
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -48,18 +46,13 @@ const ButtonsAddInformationSlider: FC<IProps> = ({
       <Swiper
         onAfterInit={(swiper) => (swiperRef.current = swiper)}
         loop={true}
-        // freeMode={true}
-        pagination={{
-          dynamicBullets: true,
-        }}
-        modules={[Pagination, FreeMode]}
         className="mySwiperAddInformation"
         breakpoints={{
           280: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 8,
           },
-          414: {
+          320: {
             slidesPerView: 2,
             spaceBetween: 8,
           },
@@ -84,7 +77,6 @@ const ButtonsAddInformationSlider: FC<IProps> = ({
           return (
             <SwiperSlide key={ind} className={style.elementCard}>
               <div
-                // className={style.elementCard}
                 data-active={currentUrlInfo === type_info.url}
                 className={style.typeInfo}
               >

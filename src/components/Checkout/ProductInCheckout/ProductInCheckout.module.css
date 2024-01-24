@@ -80,9 +80,10 @@
 
 .buttonDelete {
   /* @apply absolute top-2 right-1 p-1; */
-  @apply absolute 
+  @apply relative
+  /* absolute 
   top-0 right-2
-  md:relative
+  md:relative */
   p-1;
 }
 
@@ -96,10 +97,14 @@
 
 .wrapDetailsMobile {
   @apply mt-2
-  block
+  flex justify-between
+   gap-2
+  grow
+
+
   md:hidden;
 }
 
 .wrapCountMobile {
-  @apply flex gap-3;
+  @apply flex gap-14;
 }

@@ -8,6 +8,7 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
+import ButtonWithMenu from "@/components/ButtonWithMenu/ButtonWithMenu";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
@@ -53,6 +54,8 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           </section>
 
           <div className={style.wrapAllProducts}>
+            <ButtonWithMenu title="Каталог всіх ігор" />
+
             <Link
               href={FRONTEND_ROUTES.PRODUCT}
               className={style.buttonToAllProduct}
@@ -79,8 +82,10 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           </section>
 
           {responseReviews && responseReviews.data.length > 0 && (
-            <section className={style.section}>
-              <h2 className={style.titleSectionReview}>Відгуки</h2>
+            <section className={style.section} data-selected={true}>
+              <h2 className={style.titleSection} data-hidden-mobile={true}>
+                Відгуки
+              </h2>
               <div className={style.wrapReviewsSlider}>
                 <SliderReviews reviews={responseReviews.data} />
               </div>

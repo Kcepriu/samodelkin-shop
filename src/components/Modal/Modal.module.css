@@ -23,7 +23,8 @@
 .modalCloseBtn {
   @apply absolute   
   top-6 
-  right-6 
+  right-5
+  md:right-6 
   block 
   w-6 h-6 
   border-none 

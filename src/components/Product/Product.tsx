@@ -38,7 +38,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
           <div className={style.wrapRatingCode}>
             <div className={style.wrapRating}>
               <p>
-                code: <span>{attributes.code}</span>
+                Код: <span>{attributes.code}</span>
               </p>
 
               {rating > 0 && <RatingStar rating={rating} />}
