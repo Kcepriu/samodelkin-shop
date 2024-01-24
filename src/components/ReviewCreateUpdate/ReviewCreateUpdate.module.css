@@ -5,7 +5,13 @@
   md:max-w-[704px]
   px-2
   md:px-12 
-  py-12
+  
+  pt-12
+  pb-8
+  md:py-12
+
+
+
   max-h-screen
   overflow-y-scroll;
 }
@@ -101,8 +107,8 @@
 }
 
 .icon {
-  @apply min-w-[24px]
-  min-h-[24px]
+  @apply min-w-[32px]
+  min-h-[32px]
   mr-8
   md:min-w-[48px]
   md:min-h-[48px]
