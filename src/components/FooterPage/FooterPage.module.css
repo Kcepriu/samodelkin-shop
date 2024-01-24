@@ -1,5 +1,5 @@
 .wrapFooter {
-  @apply pt-6 
+  @apply pt-10 
   pb-6
   md:py-12
   md:pb-10
@@ -14,7 +14,8 @@
   @apply flex 
   lg:flex-row
   flex-col-reverse
-  gap-10
+  gap-6
+  md:gap-10
   justify-between w-full;
 }
 .wrapInformation {
@@ -22,7 +23,15 @@
   md:gap-36;
 }
 
+.wrapNavigate {
+  @apply hidden 
+  md:block;
+}
+
 .wrapDevelopers {
-  @apply text-left mt-6
+  @apply hidden
+  md:block
+  
+  text-left mt-6
   md:mt-12;
 }

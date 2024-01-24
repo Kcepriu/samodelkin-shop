@@ -8,6 +8,10 @@
   lg:m-0;
 }
 
+.label {
+  @apply font-weight_700;
+}
+
 .input {
   @apply p-4
   text-text_white

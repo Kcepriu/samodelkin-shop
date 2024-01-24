@@ -85,7 +85,7 @@ const SliderReviews: FC<IProps> = ({
         }}
       >
         {workReviews.map((review) => (
-          <SwiperSlide key={review.id} className={style.elementCard}>
+          <SwiperSlide key={review.id} className={style.wrapCard}>
             <div className="swiper-zoom-container">
               <div className={style.elementCard}>
                 <ReviewOne

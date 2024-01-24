@@ -11,16 +11,19 @@
     leading-line_height_21;
 }
 
+.elementCard {
+  @apply min-w-[174px];
+}
+
 .typeInfo {
   @apply px-3
-  min-w-full
+  /* min-w-full */
+  min-w-[174px]
   sm:min-w-[174px]
   md:min-w-[210px] 
 
   h-[60px]
   md:h-24  
-  
-  
   
   border 
   rounded-lg 

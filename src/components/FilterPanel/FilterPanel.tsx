@@ -17,6 +17,7 @@ const FilterPanel: FC<IParams> = async ({
       <FilterCategories
         allCategories={allCategories}
         currentCategory={categoryId}
+        title="Класифікація"
       />
     </>
   );

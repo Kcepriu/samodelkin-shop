@@ -32,10 +32,6 @@ const HeaderPage: FC = async () => {
       </Link>
 
       <div className={style.wrapNavigate}>
-        {/* <Link className={style.link} href="#contacts">
-          Контакти
-        </Link> */}
-
         <Link href={`tel:${telephoneNumber}`} className={style.phoneNumber}>
           <PiPhoneCall size={24} />
           {telephoneNumber}

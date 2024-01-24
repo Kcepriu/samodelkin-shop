@@ -1,9 +1,12 @@
 .wrapCart {
-  @apply max-w-[414px]
+  @apply max-w-[374px]
   md:w-[741px]
   md:max-w-[741px]
   lg:w-[818px]
   lg:max-w-[818px]
+  
+  max-h-screen
+  
   py-6
   px-5
 
@@ -25,9 +28,7 @@
 }
 
 .wrapProduct {
-  @apply mt-10
-  md:mt-6 
-  pr-2
+  @apply mt-6   
   max-h-[550px]
   md:max-h-[450px]
   
@@ -55,6 +56,10 @@
 
 .wrapButton {
   @apply flex 
+  flex-col-reverse
+  md:flex-row
+  gap-3
+
   justify-between
   
   mt-6
@@ -70,8 +75,12 @@
 }
 
 .buttonBack {
-  @apply hidden
-  md:flex gap-3 
+  @apply flex 
+  gap-3 
+  
+  justify-center
+  md:justify-start
+  
   py-3
   text-black
   transition

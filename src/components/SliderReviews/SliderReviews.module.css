@@ -3,6 +3,10 @@
   overflow-x-hidden;
 }
 
+.wrapCard {
+  @apply h-auto;
+}
+
 .elementCard {
   @apply block
   w-full;

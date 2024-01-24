@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import MessageModal from "@/components/MessageModal/MessageModal";
 
@@ -24,6 +24,10 @@ const useModalMessage = (): ICartComponentHook => {
     setShowModal(false);
     setTextMessage("");
   };
+
+    useEffect(() => {
+      document.body.style.overflow = showModal ? "hidden" : "auto";
+    }, [showModal]);
 
   const MessageComponent = (
     <>

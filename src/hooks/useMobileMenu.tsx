@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, Dispatch, SetStateAction, ReactNode } from "react";
+import {
+  useState,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+  useEffect,
+} from "react";
 import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 
 interface IUseMobileMenu {
@@ -18,6 +24,10 @@ const useMobileMenu = ({ contentComponent }: IParams): IUseMobileMenu => {
   const handleCloseMenu = () => {
     setShowMobileMenu(false);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = showMobileMenu ? "hidden" : "auto";
+  }, [showMobileMenu]);
 
   const ModalMenuComponent = (
     <>

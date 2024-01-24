@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "@/components/Modal/Modal";
 import { createProductReviews } from "@/services/serverActionHttp";
@@ -30,6 +30,10 @@ const useCreateReviews = ({ product }: IProps): ICreateReviewsComponentHook => {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
+
   const handlerCreatedReview = async (values: IValuesFormCreateReview) => {
     const newReview = {
       data: {
@@ -52,7 +56,10 @@ const useCreateReviews = ({ product }: IProps): ICreateReviewsComponentHook => {
 
     await setShowModal(false);
 
-    setTextMessage("Відгук створено", "Відгук зʼявиться на сайті після модерації адміністратором");
+    setTextMessage(
+      "Відгук створено",
+      "Відгук зʼявиться на сайті після модерації адміністратором"
+    );
     setShowModalMessage(true);
     router.refresh();
   };
