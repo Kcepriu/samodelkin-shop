@@ -25,7 +25,7 @@ export const MobileMenu: FC<Props> = ({ children, onClose, isOpen }) => {
 
   const handleClose = useCallback(async () => {
     await setIsOpenModal(false);
-    setTimeout(onClose, 300);
+    setTimeout(onClose, 500);
   }, [onClose]);
 
   const handleKeyPress = useCallback(

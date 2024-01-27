@@ -1,9 +1,9 @@
 "use client";
 import { FC } from "react";
 import Image from "next/image";
+import { useSearchParams, useRouter } from "next/navigation";
 import { LuAlignLeft } from "react-icons/lu";
 import { PiPhoneCall } from "react-icons/pi";
-import { useSearchParams, useRouter } from "next/navigation";
 import { IResponseMainPage } from "@/types/articles.types";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import useMobileMenu from "@/hooks/useMobileMenu";

@@ -1,7 +1,8 @@
 .wrapCardProduct {
-  @apply w-full relative
-  outline outline-1 outline-red-700;
+  @apply w-full 
+  overflow-hidden;
 }
+
 .wrapProduct {
   @apply relative
   flex gap-4 
@@ -97,7 +98,7 @@
 
 .buttonDelete {
   @apply /* absolute top-0 right-2 */
-  relative
+  
   p-1;
 }
 

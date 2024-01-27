@@ -13,6 +13,10 @@ const config: Config = {
         half_width: "calc(50% - 6px)",
       },
 
+      height: {
+        full_screen: "calc(100vh - 50px)",
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

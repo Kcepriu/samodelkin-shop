@@ -20,6 +20,7 @@ interface IProps {
     desktop: number;
     tablet: number;
     mobile: number;
+    mobile_small: number;
   };
 }
 
@@ -54,8 +55,8 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
         className="mySwiperProduct"
         breakpoints={{
           320: {
-            slidesPerView: 1,
-            spaceBetween: 16,
+            slidesPerView: slidesPerView.mobile_small,
+            spaceBetween: 8,
             pagination: {
               enabled: true,
             },
@@ -69,7 +70,7 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
           },
           768: {
             slidesPerView: slidesPerView.tablet,
-            spaceBetween: 24,
+            spaceBetween: 12,
             pagination: {
               enabled: false,
             },
@@ -81,7 +82,7 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
         }}
       >
         {productList.map((product) => (
-          <SwiperSlide key={product.id} className={style.elementCard}>
+          <SwiperSlide key={product.id}>
             <div className={style.elementCard}>
               <ProductCard product={product} />
             </div>

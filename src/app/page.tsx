@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import heroImage from "@/assets/hero.jpg";
 import AboutUsSection from "@/components/AboutUsSection/AboutUsSection";
@@ -8,10 +7,9 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
-import ButtonWithMenu from "@/components/ButtonWithMenu/ButtonWithMenu";
-import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
+import { SLIDES_PER_VIEW } from "@/constants/app-keys.const";
 import style from "./pageHome.module.css";
 
 interface IParams {
@@ -53,31 +51,20 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
             />
           </section>
 
-          <div className={style.wrapAllProducts}>
-            <ButtonWithMenu title="Каталог всіх ігор" />
-
-            <Link
-              href={FRONTEND_ROUTES.PRODUCT}
-              className={style.buttonToAllProduct}
-            >
-              Каталог всіх ігор
-            </Link>
-          </div>
-
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section}>
               <h2 className={style.titleSection}>Лідери продажу</h2>
 
               <div className={style.wrapSwiper}>
                 <SliderProducts
-                  productList={responseProducts.data}
-                  slidesPerView={{ desktop: 3, tablet: 2, mobile: 2 }}
+                  productList={responseProducts.data.slice(0, 3)}
+                  slidesPerView={SLIDES_PER_VIEW}
                 />
               </div>
             </section>
           )}
 
-          <section className={style.section}>
+          <section className={style.section} data-is-slider={true}>
             <RevisedProducts />
           </section>
 

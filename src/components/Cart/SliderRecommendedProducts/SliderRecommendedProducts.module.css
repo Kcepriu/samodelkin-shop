@@ -1,0 +1,7 @@
+.title {
+  @apply mb-10 
+  font-inter
+  text-size_20  
+  font-weight_600
+  leading-line_height_21;
+}

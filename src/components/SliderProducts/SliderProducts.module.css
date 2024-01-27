@@ -1,10 +1,13 @@
 .wrapSwiper {
   @apply w-full 
-  overflow-x-hidden;
+    overflow-x-hidden
+    md:overflow-x-visible
+  
+   /* overflow-x-hidden; */;
 }
 
 .elementCard {
-  @apply block;
+  @apply block max-w-full;
 }
 
 .wrapButton {
