@@ -7,9 +7,16 @@ interface IProps {
 }
 const ButtonMain: FC<IProps> = ({ text, handlerButton }) => {
   return (
-    <button type="button" onClick={handlerButton} className={style.button}>
-      {text}
-    </button>
+    <div className={style.wrapButton}>
+      <button
+        id="btn"
+        type="button"
+        onClick={handlerButton}
+        className={style.button}
+      >
+        {text}
+      </button>
+    </div>
   );
 };
 

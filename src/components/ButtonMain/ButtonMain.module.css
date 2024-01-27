@@ -1,4 +1,4 @@
-.button {
+.wrapButton .button {
   @apply p-[14px] 
   text-text_white
   w-full

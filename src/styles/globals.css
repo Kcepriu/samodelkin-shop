@@ -9,3 +9,12 @@ body {
   line-height: 1.28;
   color: #161718;
 }
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
