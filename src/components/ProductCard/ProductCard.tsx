@@ -30,7 +30,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
           />
         </div>
         <div className={styles.wrapTop}>
-          <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}`}>
+          <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}#start`}>
             <div className={styles.wrapImage}>
               <Image
                 className={styles.image}
@@ -49,7 +49,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
         </div>
 
         <div className={styles.wrapBottom}>
-          <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}`}>
+          <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}#start`}>
             <h2 className={styles.title}>{attributes.title}</h2>
           </Link>
 

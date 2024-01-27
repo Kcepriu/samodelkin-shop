@@ -9,9 +9,7 @@
   lg:w-[818px]
   lg:max-w-[818px]
   
-  h-svh
-  /* h-screen  
-  max-h-screen */
+   h-full_screen
   
   md:h-fit
   md:max-h-[70%]
