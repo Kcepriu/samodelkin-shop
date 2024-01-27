@@ -2,20 +2,14 @@
 .mySwiperProduct.swiper {
   height: 100%;
   width: 100%;
-
   box-sizing: border-box;
   overflow: visible;
-  /* overflow-x: clip;
-  overflow-y: visible; */
 }
 
 .mySwiperProduct .swiper-slide {
   text-align: center;
   font-size: 18px;
-  /* width: 100%; */
   width: 25%;
-
-  /* background: #fff; */
 
   /* Center slide text vertically */
   display: flex;

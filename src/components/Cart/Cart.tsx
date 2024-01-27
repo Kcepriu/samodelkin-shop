@@ -7,6 +7,9 @@ import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
 import ProductInCart from "./ProductInCart/ProductInCart";
 import { formatPrice } from "@/helpers/formatNumber";
+
+import SliderRecommendedProducts from "./SliderRecommendedProducts/SliderRecommendedProducts";
+
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 
 import style from "./Cart.module.css";
@@ -35,40 +38,44 @@ const Cart: FC<IProps> = ({ onClose }) => {
     <div className={style.wrapCart}>
       <h2 className={style.title}>Кошик</h2>
 
-      <ul className={style.wrapProduct}>
-        {cart.map((rowCart) => {
-          return (
-            <li key={rowCart.id}>
-              <ProductInCart
-                rowCart={rowCart}
-                onClose={onClose}
-                deleteProduct={handleDeleteProduct}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <div className={style.wrapContent}>
+        <ul className={style.wrapProduct}>
+          {cart.map((rowCart) => {
+            return (
+              <li key={rowCart.id}>
+                <ProductInCart
+                  rowCart={rowCart}
+                  onClose={onClose}
+                  deleteProduct={handleDeleteProduct}
+                />
+              </li>
+            );
+          })}
+        </ul>
 
-      <div className={style.wrapTotalSum}>
-        <p>{`До сплати ${formatPrice(totalSum)} ₴`}</p>
+        <div className={style.wrapTotalSum}>
+          <p>{`До сплати ${formatPrice(totalSum)} ₴`}</p>
+        </div>
+
+        <div className={style.wrapButton}>
+          <button className={style.buttonBack} type="button" onClick={onClose}>
+            <IoArrowBackCircleOutline className={style.iconBack} size={24} />
+            Повернутися до покупок
+          </button>
+
+          <button
+            className={style.buttonAccept}
+            type="button"
+            onClick={handleMakeOrder}
+          >
+            Оформити замовлення
+          </button>
+        </div>
+
+        <div className={style.wrapRecommendedProducts}>
+          <SliderRecommendedProducts />
+        </div>
       </div>
-
-      <div className={style.wrapButton}>
-        <button className={style.buttonBack} type="button" onClick={onClose}>
-          <IoArrowBackCircleOutline className={style.iconBack} size={24} />
-          Повернутися до покупок
-        </button>
-
-        <button
-          className={style.buttonAccept}
-          type="button"
-          onClick={handleMakeOrder}
-        >
-          Оформити замовлення
-        </button>
-      </div>
-
-      {cart.length === 1 && <div>test</div>}
     </div>
   );
 };

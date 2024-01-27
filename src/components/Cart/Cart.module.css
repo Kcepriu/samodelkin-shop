@@ -1,21 +1,35 @@
 .wrapCart {
-  @apply max-w-[374px]
+  @apply flex 
+  flex-col
+  
+  max-w-[374px]
   md:w-[741px]
   md:max-w-[741px]
+  
   lg:w-[818px]
   lg:max-w-[818px]
   
-  max-h-screen
+  h-screen  
+  
+  md:h-fit
+  md:max-h-[70%]
   
   py-6
   px-5
 
   md:py-8
-  
   md:pl-10
   md:pr-9
 
+  overflow-hidden
+
   text-black;
+}
+
+.wrapContent {
+  @apply relative
+  grow  
+  overflow-y-scroll;
 }
 
 .title {
@@ -29,9 +43,9 @@
 
 .wrapProduct {
   @apply mt-6   
-  max-h-[550px]
+  /* max-h-[550px]
+  md:max-h-[450px] */
   md:max-h-[450px]
-  
   text-black
   flex 
   flex-col 
@@ -55,7 +69,11 @@
 }
 
 .wrapButton {
-  @apply flex 
+  @apply sticky
+  bottom-0
+  
+  
+  flex 
   flex-col-reverse
   md:flex-row
   gap-3
@@ -71,7 +89,9 @@
   font-inter
   text-size_18  
   font-weight_300
-  leading-line_height_21;
+  leading-line_height_21
+  
+  bg-text_white;
 }
 
 .buttonBack {
@@ -120,4 +140,10 @@
 
 .buttonClean:hover .icon {
   @apply text-blue_action;
+}
+
+.wrapRecommendedProducts {
+  @apply block md:hidden
+  mt-10
+  mb-10;
 }

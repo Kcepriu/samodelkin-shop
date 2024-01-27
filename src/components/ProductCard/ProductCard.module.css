@@ -1,9 +1,7 @@
 .wrapCard {
   @apply relative  
   w-full
-  
-  sm:w-[179px]   
-  md:w-[234px]  
+  md:w-[232px]  
   lg:w-[292px]  
 
   overflow-hidden;
@@ -26,18 +24,12 @@
   md:min-h-[550px] 
   
   text-left
-   
-  rounded-xl;
+  rounded-xl
+  transition  
+  hover:shadow-lg 
+  hover:shadow-gray-500/80;
 }
 
-.card:hover {
-  /* absolute  */
-  @apply min-h-[400px] 
-  md:min-h-[550px] 
-  max-h-max 
-  shadow-lg 
-  shadow-gray-500/80;
-}
 .wrapTop {
   @apply relative  
   h-[211px]

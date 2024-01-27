@@ -79,12 +79,7 @@
 }
 
 .buttonDelete {
-  /* @apply absolute top-2 right-1 p-1; */
-  @apply relative
-  /* absolute 
-  top-0 right-2
-  md:relative */
-  p-1;
+  @apply p-1;
 }
 
 .icon {

@@ -164,3 +164,10 @@ export const DELIVERY_SERVICES = {
   UKR_POSHTA: 2,
   CURRIER: 3,
 };
+
+export const SLIDES_PER_VIEW = {
+  desktop: 3,
+  tablet: 3,
+  mobile: 2,
+  mobile_small: 2,
+};
