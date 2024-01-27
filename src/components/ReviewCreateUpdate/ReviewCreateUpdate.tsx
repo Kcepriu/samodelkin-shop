@@ -103,7 +103,7 @@ const ReviewCreateUpdate: FC<IProps> = ({
           onChange={handleChange}
           onBlur={handleBlur}
           multiline
-          rows={10}
+          rows={8}
           error={touched.content && Boolean(errors.content)}
           helperText={touched.content && errors.content}
           className={style.wrapField}

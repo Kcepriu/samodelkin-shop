@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Cart from "@/components/Cart/Cart";
 
@@ -14,6 +14,10 @@ const useCartComponent = (): ICartComponentHook => {
   const handlerCloseCard = () => {
     setShowModal(false);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
 
   const CartComponent = (
     <>

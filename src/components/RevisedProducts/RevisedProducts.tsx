@@ -3,6 +3,7 @@ import { FC } from "react";
 import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import useRevised from "@/stores/revised.store";
 import useStore from "@/helpers/useStore";
+import { SLIDES_PER_VIEW } from "@/constants/app-keys.const";
 import style from "./RevisedProducts.module.css";
 
 const RevisedProducts: FC = () => {
@@ -16,7 +17,7 @@ const RevisedProducts: FC = () => {
           <div className={style.wrapSwiper}>
             <SliderProducts
               productList={revised}
-              slidesPerView={{ desktop: 3, tablet: 2, mobile: 2 }}
+              slidesPerView={SLIDES_PER_VIEW}
             />
           </div>
         </>

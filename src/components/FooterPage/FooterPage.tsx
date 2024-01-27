@@ -11,7 +11,10 @@ const FooterPage: FC = () => {
       <div className={style.wrapTopRow}>
         <FooterSubscribe />
         <div className={style.wrapInformation}>
-          <FooterNavigate />
+          <div className={style.wrapNavigate}>
+            <FooterNavigate />
+          </div>
+
           <FooterInfo />
         </div>
       </div>

@@ -1,6 +1,8 @@
 .wrapCardProduct {
-  @apply w-full relative;
+  @apply w-full 
+  overflow-hidden;
 }
+
 .wrapProduct {
   @apply relative
   flex gap-4 
@@ -28,7 +30,7 @@
 .wrapContent {
   @apply grow 
   h-full
-  mt-7
+  md:mt-7
   md:py-8;
 }
 
@@ -71,7 +73,7 @@
 
 .wrapDetails {
   @apply flex 
-  gap-5
+  gap-20
   
   items-center
   font-roboto
@@ -95,9 +97,8 @@
 }
 
 .buttonDelete {
-  /* @apply absolute top-2 right-1 p-1; */
-  @apply absolute top-0 right-2
-  md:relative
+  @apply /* absolute top-0 right-2 */
+  
   p-1;
 }
 
@@ -110,8 +111,9 @@
 }
 
 .wrapCountProductMobile {
-  @apply mt-8
+  @apply mt-6
   flex 
+  justify-between
   md:hidden
   gap-6
   items-center;

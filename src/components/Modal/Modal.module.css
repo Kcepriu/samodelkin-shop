@@ -17,13 +17,22 @@
   min-w-[250px] 
   rounded-lg     
   overflow-y-auto  
-   bg-white;
+   bg-white
+   
+   
+  transition-transform
+  transform-gpu
+  duration-300
+  ease-in-out
+  scale-0
+  data-[is-open=true]:scale-100;
 }
 
 .modalCloseBtn {
   @apply absolute   
   top-6 
-  right-6 
+  right-5
+  md:right-6 
   block 
   w-6 h-6 
   border-none 

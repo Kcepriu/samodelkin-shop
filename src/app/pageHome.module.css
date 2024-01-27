@@ -51,7 +51,11 @@
 
 .section {
   @apply mt-6
-  md:mt-12;
+  md:mt-12
+  
+  data-[is-slider=true]:-mx-3
+  data-[is-slider=true]:px-3
+  data-[is-slider=true]:overflow-x-hidden;
 }
 
 .wrapSwiper {
@@ -79,16 +83,8 @@
   @apply font-robotoSerif
   text-size_32
   font-weight_500
-  leading-line_height_17
-  text-center
-  md:text-left;
-}
-
-.titleSectionReview {
-  @apply font-robotoSerif
-  text-size_32
-  font-weight_500
-  leading-line_height_17
-  hidden
+  leading-line_height_17  
+  text-left
+  data-[hidden-mobile=true]:hidden
   md:block;
 }

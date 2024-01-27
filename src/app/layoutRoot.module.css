@@ -28,11 +28,6 @@
   z-30;
 }
 
-/* .wrapHeader {
-  @apply  bg-dark_blue
-  w-full;
-} */
-
 .wrapMain {
   @apply flex-grow h-full  mt-28;
   /* 86+24 */

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useEffect, useCallback } from "react";
+import React, { FC, useEffect, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { PiXSquare } from "react-icons/pi";
@@ -15,6 +15,8 @@ type Props = {
 };
 
 export const Modal: FC<Props> = ({ children, onClose, isDark = false }) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   const handleKeyPress = useCallback(
     (evt: KeyboardEvent) => {
       if (evt.key === "Escape") {
@@ -34,6 +36,16 @@ export const Modal: FC<Props> = ({ children, onClose, isDark = false }) => {
   );
 
   useEffect(() => {
+    console.log("Open window");
+    setIsOpenModal(true);
+
+    return () => {
+      console.log("Close window");
+      setIsOpenModal(false);
+    };
+  }, []);
+
+  useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
@@ -44,7 +56,7 @@ export const Modal: FC<Props> = ({ children, onClose, isDark = false }) => {
   if (typeof document !== "undefined") {
     return createPortal(
       <div className={styles.overlay} onClick={handleOverlayClick}>
-        <div className={styles.modalContainer}>
+        <div className={styles.modalContainer} data-is-open={isOpenModal}>
           <button
             className={styles.modalCloseBtn}
             onClick={onClose}

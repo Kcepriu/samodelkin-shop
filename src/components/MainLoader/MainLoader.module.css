@@ -1,12 +1,10 @@
 .containerLoader {
-  @apply /* fixed
-  top-0
-  left-0 */
-  w-full
-  /* h-full */
+  @apply w-full  
   flex
   justify-center
   items-center
-  /* bg-black/80 */
-  z-10;
+  grow
+  z-10
+  h-full
+  py-40;
 }

@@ -4,7 +4,7 @@
 
 .wrapReviewWithReply {
   @apply w-full 
-  py-3
+  p-3
   lg:p-6
   flex
   flex-col

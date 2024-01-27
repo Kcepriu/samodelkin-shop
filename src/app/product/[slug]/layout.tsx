@@ -5,6 +5,7 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import httpServices from "@/services/http";
 import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
 import { setSeo } from "@/helpers/setSeo";
+import { SLIDES_PER_VIEW } from "@/constants/app-keys.const";
 import style from "./layoutProduct.module.css";
 
 interface IProps {
@@ -45,7 +46,7 @@ const Layout: FC<IProps> = async ({
 
   return (
     <>
-      <div id="start_page">
+      <div id="start">
         <BreadcrumbSetData
           isInProduct={true}
           category={!category ? null : category.data[0]}
@@ -68,7 +69,10 @@ const Layout: FC<IProps> = async ({
           <div className={style.wrapSwiper}>
             <SliderProducts
               productList={responseSalesLeaders.data}
-              slidesPerView={{ desktop: 4, tablet: 2, mobile: 2 }}
+              slidesPerView={{
+                ...SLIDES_PER_VIEW,
+                desktop: 4,
+              }}
             />
           </div>
         </section>

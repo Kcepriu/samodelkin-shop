@@ -1,19 +1,13 @@
-/* .wrapSwiper {
-  @apply w-full 
-  sm:max-w-screen-sm 
-  md:max-w-screen-md 
-  lg:max-w-[924px]
-  mt-4;
-} */
-
 .wrapSwiper {
   @apply w-full 
-  overflow-x-hidden
-  p-2;
+    overflow-x-hidden
+    md:overflow-x-visible
+  
+   /* overflow-x-hidden; */;
 }
 
 .elementCard {
-  @apply block;
+  @apply block max-w-full;
 }
 
 .wrapButton {
