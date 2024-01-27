@@ -15,6 +15,9 @@ const nextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 
   // webpack(config) {
   //   config.module.rules.push({

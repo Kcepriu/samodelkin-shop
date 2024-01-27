@@ -24,7 +24,6 @@ const options = [
 const FilterReview: FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const objSearchParams = {} as ISearchParams;
 
   for (const [key, value] of searchParams) {
