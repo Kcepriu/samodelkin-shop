@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
@@ -62,7 +62,7 @@ const Products: FC<IParams> = async ({
 
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
-          <FilterPanel categoryId={categoryId} />
+          <FilterPanel categoryId={categoryId} showFilters={true} />
         </div>
 
         <div className={style.wrapContent}>
@@ -71,10 +71,12 @@ const Products: FC<IParams> = async ({
           {pageCount > 1 && (
             <>
               <div className={style.wrapPagination}>
-                <Pagination
-                  pageCount={pageCount}
-                  forcePage={Number(currentPage)}
-                />
+                <Suspense>
+                  <Pagination
+                    pageCount={pageCount}
+                    forcePage={Number(currentPage)}
+                  />
+                </Suspense>
               </div>
               <div className={style.wrapLoadMore}>
                 <ProductListLoadMore

@@ -37,7 +37,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
     <>
       <div className={style.wrapHomePage}>
         <div className={style.wrapFilter}>
-          <FilterPanel categoryId={""} />
+          <FilterPanel categoryId={""} showFilters={false} />
         </div>
         <div className={style.wrapContent}>
           <section>

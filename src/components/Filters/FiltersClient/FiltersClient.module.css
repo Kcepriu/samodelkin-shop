@@ -1,0 +1,16 @@
+.listFilters {
+  @apply flex 
+  gap-8
+  flex-col;
+}
+
+.filter {
+  @apply w-full;
+}
+
+.title {
+  @apply font-inter
+  text-size_20
+  font-weight_400
+  leading-line_height_20;
+}

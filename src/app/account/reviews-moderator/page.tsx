@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import httpServices from "@/services/http";
 import ReviewsModerator from "@/components/ReviewsModerator/ReviewsModerator";
 
@@ -20,7 +20,9 @@ const PageModerator: FC<IParams> = async ({
   return (
     <>
       {responseReviews && responseReviews.data.length > 0 && (
-        <ReviewsModerator reviews={responseReviews.data} />
+        <Suspense>
+          <ReviewsModerator reviews={responseReviews.data} />
+        </Suspense>
       )}
     </>
   );

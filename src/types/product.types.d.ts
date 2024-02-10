@@ -25,9 +25,8 @@ interface IProduct {
     seo?: ISeo;
     characteristics: {
       id: number;
-      title: string;
       value: string;
-      isFilter: boolean;
+      characteristic: { data: ICharacteristic };
     }[];
     relatedProduct: {
       data?: {
@@ -60,5 +59,15 @@ interface IManual {
   description: string;
   file: {
     data: IFile;
+  };
+}
+
+interface ICharacteristic {
+  id: number;
+  attributes: {
+    title: string;
+    createdAt: string;
+    updatedAt: string;
+    isFilter: boolean;
   };
 }

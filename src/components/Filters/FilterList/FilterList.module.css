@@ -1,0 +1,31 @@
+.title {
+  @apply font-inter
+  text-size_20
+  font-weight_400
+  leading-line_height_20;
+}
+
+.listFilters {
+  @apply flex flex-col gap-4
+  mt-4;
+}
+
+.elementFilter {
+  @apply w-full;
+}
+
+.buttonFilter {
+  @apply w-full
+  flex
+  gap-2
+  p-[5px]
+  rounded-lg 
+  transition
+  hover:bg-light_blue
+  data-[is-active=true]:bg-light_blue
+  
+  font-inter
+  text-size_18
+  font-weight_400
+  leading-line_height_22;
+}

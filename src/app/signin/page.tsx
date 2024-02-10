@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import Signin from "@/components/Signin/Signin";
 
 function SearchBarFallback() {
@@ -8,7 +8,9 @@ function SearchBarFallback() {
 const SignIn: FC = () => {
   return (
     <>
-      <Signin />
+      <Suspense>
+        <Signin />
+      </Suspense>
     </>
   );
 };

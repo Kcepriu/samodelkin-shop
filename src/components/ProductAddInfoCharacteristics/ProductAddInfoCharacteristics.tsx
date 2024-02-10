@@ -9,11 +9,12 @@ const ProductAddInfoCharacteristics: FC<IProps> = ({ product }) => {
 
   return (
     <ul className={style.wrapContent}>
-      {characteristics.map((element) => {
+      {characteristics.map(({ id, value, characteristic }) => {
+        const title = characteristic.data.attributes.title;
         return (
-          <li key={element.id} className={style.content}>
-            <p className={style.title}>{element.title}</p>
-            <p>{element.value}</p>
+          <li key={id} className={style.content}>
+            <p className={style.title}>{title}</p>
+            <p>{value}</p>
           </li>
         );
       })}

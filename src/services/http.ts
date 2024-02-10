@@ -1203,6 +1203,24 @@ class HttpService {
       return false;
     }
   }
+
+  // * Filters
+  async getFilters(categoryId: string): Promise<IResponseFilter | null> {
+    let url = `${this.baseUrl}${BACKEND_ROUTES.FILTERS}`;
+    url = url + (categoryId ? `/${categoryId}` : "");
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
 }
 
 const httpServices = new HttpService();

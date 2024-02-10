@@ -1,13 +1,17 @@
 import { FC } from "react";
 import httpServices from "@/services/http";
 import FilterCategories from "../FilterCategories/FilterCategories";
+import Filters from "../Filters/Filters";
+import style from "./FilterPanel.module.css";
 
-interface IParams {
+interface IProps {
   categoryId: string;
+  showFilters: boolean;
 }
 
-const FilterPanel: FC<IParams> = async ({
+const FilterPanel: FC<IProps> = async ({
   categoryId,
+  showFilters = false,
 }): Promise<JSX.Element> => {
   const responseCategories = await httpServices.getCategories();
   const allCategories = responseCategories ? responseCategories.data : [];
@@ -19,6 +23,9 @@ const FilterPanel: FC<IParams> = async ({
         currentCategory={categoryId}
         title="Класифікація"
       />
+      <div className={style.wrapFilters}>
+        {showFilters && <Filters categoryId={categoryId} />}
+      </div>
     </>
   );
 };
