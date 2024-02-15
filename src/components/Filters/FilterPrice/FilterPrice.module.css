@@ -1,0 +1,22 @@
+.wrapSlider {
+  @apply flex 
+  flex-col
+  items-end
+  relative  
+  mt-14
+  pr-2;
+}
+
+.image {
+  @apply -mt-2;
+}
+
+.wrapDescribe {
+  @apply flex
+   justify-between
+   w-full
+   font-inter
+  text-size_14  
+  font-weight_500
+  leading-line_height_71;
+}

@@ -9,11 +9,13 @@ import style from "./ProductListLoadMore.module.css";
 interface IProps {
   categoryId: string;
   paginationProducts: IPagination | undefined;
+  filters: string;
 }
 
 const ProductListLoadMore: FC<IProps> = ({
   categoryId,
   paginationProducts,
+  filters,
 }) => {
   const countTotalPage = paginationProducts?.pageCount || 1;
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,6 +31,7 @@ const ProductListLoadMore: FC<IProps> = ({
     const newProducts = await getProducts({
       page: String(nextPage),
       category: categoryId,
+      filters,
     });
 
     if (newProducts) {

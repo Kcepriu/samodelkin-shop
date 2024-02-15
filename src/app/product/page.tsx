@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import ProductList from "@/components/ProductList/ProductList";
 import Pagination from "@/components/Pagination/Pagination";
 import FilterPanel from "@/components/FilterPanel/FilterPanel";
@@ -30,7 +30,7 @@ export async function generateMetadata({ searchParams }: IParams) {
 const Products: FC<IParams> = async ({
   searchParams,
 }): Promise<JSX.Element> => {
-  const { page = "1", category = "" } = searchParams;
+  const { page = "1", category = "", filters = "" } = searchParams;
   const categoryId = typeof category === "string" ? category : category[0];
   const currentPage = typeof page === "string" ? page : page[0];
   const currentCategory = await httpServices.getCategory(categoryId);
@@ -38,6 +38,7 @@ const Products: FC<IParams> = async ({
   const responseProducts = await httpServices.getProducts({
     page: currentPage,
     category: categoryId,
+    filters: typeof filters === "string" ? filters : filters[0],
   });
 
   const paginationProducts = responseProducts?.meta?.pagination;
@@ -62,7 +63,7 @@ const Products: FC<IParams> = async ({
 
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
-          <FilterPanel categoryId={categoryId} />
+          <FilterPanel categoryId={categoryId} showFilters={true} />
         </div>
 
         <div className={style.wrapContent}>
@@ -71,15 +72,18 @@ const Products: FC<IParams> = async ({
           {pageCount > 1 && (
             <>
               <div className={style.wrapPagination}>
-                <Pagination
-                  pageCount={pageCount}
-                  forcePage={Number(currentPage)}
-                />
+                <Suspense>
+                  <Pagination
+                    pageCount={pageCount}
+                    forcePage={Number(currentPage)}
+                  />
+                </Suspense>
               </div>
               <div className={style.wrapLoadMore}>
                 <ProductListLoadMore
                   categoryId={categoryId}
                   paginationProducts={paginationProducts}
+                  filters={typeof filters === "string" ? filters : filters[0]}
                 />
               </div>
             </>

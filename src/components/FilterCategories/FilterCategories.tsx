@@ -33,6 +33,8 @@ const FilterCategories: FC<IProps> = ({
     });
 
     params.delete("page");
+    params.delete("filters");
+
     if (category === "") params.delete("category");
 
     if (!!addAction) addAction();
