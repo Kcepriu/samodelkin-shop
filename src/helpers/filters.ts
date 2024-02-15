@@ -43,3 +43,16 @@ export const replaceFilter = (
 
   return newFilters;
 };
+
+export const addFilterToParamObj = (
+  paramsObj: { [key: string]: string },
+  filters: string
+) => {
+  if (!filters) return;
+  const currentFilters = parsingFiltersSearchParams(filters);
+
+  currentFilters.map(
+    (element) =>
+      (paramsObj[`filters[characteristics][id_${element.id}]=`] = element.value)
+  );
+};

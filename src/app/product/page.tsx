@@ -30,14 +30,17 @@ export async function generateMetadata({ searchParams }: IParams) {
 const Products: FC<IParams> = async ({
   searchParams,
 }): Promise<JSX.Element> => {
-  const { page = "1", category = "" } = searchParams;
+  const { page = "1", category = "", filters = "" } = searchParams;
   const categoryId = typeof category === "string" ? category : category[0];
   const currentPage = typeof page === "string" ? page : page[0];
   const currentCategory = await httpServices.getCategory(categoryId);
 
+  console.log("🚀 ~ filters:", filters);
+
   const responseProducts = await httpServices.getProducts({
     page: currentPage,
     category: categoryId,
+    filters: typeof filters === "string" ? filters : filters[0],
   });
 
   const paginationProducts = responseProducts?.meta?.pagination;
