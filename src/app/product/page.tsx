@@ -35,8 +35,6 @@ const Products: FC<IParams> = async ({
   const currentPage = typeof page === "string" ? page : page[0];
   const currentCategory = await httpServices.getCategory(categoryId);
 
-  console.log("🚀 ~ filters:", filters);
-
   const responseProducts = await httpServices.getProducts({
     page: currentPage,
     category: categoryId,
@@ -85,6 +83,7 @@ const Products: FC<IParams> = async ({
                 <ProductListLoadMore
                   categoryId={categoryId}
                   paginationProducts={paginationProducts}
+                  filters={typeof filters === "string" ? filters : filters[0]}
                 />
               </div>
             </>
