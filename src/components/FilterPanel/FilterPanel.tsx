@@ -7,11 +7,13 @@ import style from "./FilterPanel.module.css";
 interface IProps {
   categoryId: string;
   showFilters: boolean;
+  filters: IFilter[] | undefined;
 }
 
 const FilterPanel: FC<IProps> = async ({
   categoryId,
   showFilters = false,
+  filters = undefined,
 }): Promise<JSX.Element> => {
   const responseCategories = await httpServices.getCategories();
   const allCategories = responseCategories ? responseCategories.data : [];
@@ -24,7 +26,7 @@ const FilterPanel: FC<IProps> = async ({
         title="Класифікація"
       />
       <div className={style.wrapFilters}>
-        {showFilters && <Filters categoryId={categoryId} />}
+        {showFilters && <Filters filters={filters} />}
       </div>
     </>
   );

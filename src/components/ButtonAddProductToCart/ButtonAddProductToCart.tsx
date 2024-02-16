@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import { BsCart3 } from "react-icons/bs";
-import { PiShoppingCartDuotone } from "react-icons/pi";
 import useCart from "@/stores/cart.store";
 import useStore from "@/helpers/useStore";
 import ButtonMain from "../ButtonMain/ButtonMain";
@@ -45,11 +44,7 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
     <>
       {!bigButton && (
         <button type="button" onClick={handleAddToCart}>
-          {isInCart ? (
-            <PiShoppingCartDuotone size={32} className={style.icon} />
-          ) : (
-            <BsCart3 size={32} className={style.icon} />
-          )}
+          <BsCart3 size={32} className={style.icon} data-in-cart={isInCart} />
         </button>
       )}
 

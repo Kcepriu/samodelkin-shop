@@ -12,9 +12,15 @@ type Props = {
   children: React.ReactNode;
   onClose: () => void;
   isOpen: boolean;
+  isShowButtonCloseWindow?: boolean;
 };
 
-export const MobileMenu: FC<Props> = ({ children, onClose, isOpen }) => {
+export const MobileMenu: FC<Props> = ({
+  children,
+  onClose,
+  isOpen,
+  isShowButtonCloseWindow = true,
+}) => {
   const isDark = false;
 
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -64,17 +70,19 @@ export const MobileMenu: FC<Props> = ({ children, onClose, isOpen }) => {
       >
         <div className={styles.container} onClick={handleOverlayClick}>
           <div className={styles.modalContainer} data-is-open={isOpenModal}>
-            <button
-              className={styles.modalCloseBtn}
-              onClick={handleClose}
-              data-is-dark={isDark}
-            >
-              {isDark ? (
-                <IoCloseSharp size="24px" />
-              ) : (
-                <PiXSquare size="24px" />
-              )}
-            </button>
+            {isShowButtonCloseWindow && (
+              <button
+                className={styles.modalCloseBtn}
+                onClick={handleClose}
+                data-is-dark={isDark}
+              >
+                {isDark ? (
+                  <IoCloseSharp size="24px" />
+                ) : (
+                  <PiXSquare size="24px" />
+                )}
+              </button>
+            )}
             {children}
           </div>
         </div>
