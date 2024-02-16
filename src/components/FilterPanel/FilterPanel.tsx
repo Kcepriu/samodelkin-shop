@@ -7,7 +7,7 @@ import style from "./FilterPanel.module.css";
 interface IProps {
   categoryId: string;
   showFilters: boolean;
-  filters: IFilter[] | undefined;
+  filters?: IFilter[] | undefined;
 }
 
 const FilterPanel: FC<IProps> = async ({
