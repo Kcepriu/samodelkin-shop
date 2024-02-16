@@ -127,10 +127,9 @@
 .price {
   @apply font-inter
   text-size_20 
-  font-weight_500
-  md:font-weight_400
-  leading-line_height_21
-  text-blue_action;
+  font-weight_600
+  md:font-weight_600
+  leading-line_height_21;
 }
 
 .wrapPriceMobile {

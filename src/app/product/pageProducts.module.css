@@ -32,3 +32,8 @@
   md:hidden
   mt-5;
 }
+
+.wrapButtonFilters {
+  @apply block
+   lg:hidden;
+}

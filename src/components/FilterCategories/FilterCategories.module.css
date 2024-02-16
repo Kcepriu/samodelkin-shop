@@ -1,9 +1,9 @@
 .titleCategory {
-  @apply text-black
+  @apply text-blue_title
   font-inter
   text-size_20
-  font-weight_600
-  leading-line_height_15
+  font-weight_400
+  leading-line_height_21
   text-center  
     
   lg:text-left;

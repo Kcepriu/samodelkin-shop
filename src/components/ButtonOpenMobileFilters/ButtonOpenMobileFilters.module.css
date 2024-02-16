@@ -1,0 +1,30 @@
+.wrapContent {
+  @apply w-[292px]
+  px-5 py-6;
+}
+
+.button {
+  @apply flex   
+   gap-2
+   items-center
+   
+  font-roboto
+  text-size_16
+  font-weight_400  
+  leading-line_height_50
+  transition
+  hover:text-blue_action;
+}
+
+.buttonTitle {
+  @apply flex   
+   gap-6
+   items-center
+   
+  font-roboto
+  text-size_20
+  font-weight_400  
+  leading-line_height_21
+  transition
+  hover:text-blue_action;
+}

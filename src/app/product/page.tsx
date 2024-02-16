@@ -5,6 +5,7 @@ import FilterPanel from "@/components/FilterPanel/FilterPanel";
 import CategoryDescription from "@/components/CategoryDescription/CategoryDescription";
 import BreadcrumbSetData from "@/components/Breadcrumb/BreadcrumbSetData";
 import ProductListLoadMore from "@/components/ProductListLoadMore/ProductListLoadMore";
+import ButtonOpenMobileFilters from "@/components/ButtonOpenMobileFilters/ButtonOpenMobileFilters";
 import { setSeo } from "@/helpers/setSeo";
 import httpServices from "@/services/http";
 import style from "./pageProducts.module.css";
@@ -34,6 +35,7 @@ const Products: FC<IParams> = async ({
   const categoryId = typeof category === "string" ? category : category[0];
   const currentPage = typeof page === "string" ? page : page[0];
   const currentCategory = await httpServices.getCategory(categoryId);
+  const responseFilters = await httpServices.getFilters(categoryId);
 
   const responseProducts = await httpServices.getProducts({
     page: currentPage,
@@ -63,10 +65,20 @@ const Products: FC<IParams> = async ({
 
       <section className={style.wrapPage}>
         <div className={style.wrapFilter}>
-          <FilterPanel categoryId={categoryId} showFilters={true} />
+          <FilterPanel
+            categoryId={categoryId}
+            showFilters={true}
+            filters={responseFilters?.data}
+          />
         </div>
 
         <div className={style.wrapContent}>
+          <div className={style.wrapButtonFilters}>
+            {!!responseFilters && responseFilters.data.length > 0 && (
+              <ButtonOpenMobileFilters filters={responseFilters?.data} />
+            )}
+          </div>
+
           {products.length > 0 && <ProductList productList={products} />}
 
           {pageCount > 1 && (
