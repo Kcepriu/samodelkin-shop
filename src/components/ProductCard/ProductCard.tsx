@@ -54,12 +54,6 @@ const ProductCard: FC<IProps> = ({ product }) => {
           </Link>
 
           <div>
-            <div className={styles.wrapPriceMobile}>
-              <p className={styles.price}>
-                Ціна {formatPrice(attributes.price)} ₴
-              </p>
-            </div>
-
             {!!attributes.available ? (
               <p className={styles.isAvailable}>В наявності</p>
             ) : (
@@ -67,6 +61,12 @@ const ProductCard: FC<IProps> = ({ product }) => {
             )}
 
             <p className={styles.typeProduct}>Код: {attributes.code}</p>
+
+            <div className={styles.wrapPriceMobile}>
+              <p className={styles.price}>
+                Ціна {formatPrice(attributes.price)} ₴
+              </p>
+            </div>
 
             <div className={styles.wrapPrice}>
               <p className={styles.price}>

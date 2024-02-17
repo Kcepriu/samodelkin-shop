@@ -27,6 +27,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
   const responseProducts = await httpServices.getSalesLeaders();
   const responseReviews = await httpServices.getLastReviews();
   const responseMainPage = await httpServices.getMainPage();
+  const responseFilters = await httpServices.getFilters("");
 
   const banner =
     !!responseMainPage && !!responseMainPage.data.attributes.banner.data
@@ -37,7 +38,11 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
     <>
       <div className={style.wrapHomePage}>
         <div className={style.wrapFilter}>
-          <FilterPanel categoryId={""} showFilters={false} />
+          <FilterPanel
+            categoryId={""}
+            showFilters={true}
+            filters={responseFilters?.data}
+          />
         </div>
         <div className={style.wrapContent}>
           <section>
@@ -52,12 +57,12 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           </section>
 
           {responseProducts && responseProducts.data.length > 0 && (
-            <section className={style.section}>
+            <section className={style.section} data-is-slider={true}>
               <h2 className={style.titleSection}>Лідери продажу</h2>
 
               <div className={style.wrapSwiper}>
                 <SliderProducts
-                  productList={responseProducts.data.slice(0, 3)}
+                  productList={responseProducts.data.slice(0, 4)}
                   slidesPerView={SLIDES_PER_VIEW}
                 />
               </div>

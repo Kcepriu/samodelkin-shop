@@ -82,7 +82,9 @@ class HttpService {
     const paramsObj: { [key: string]: string } = {
       "pagination[pageSize]": this.countPageOnPage,
       "pagination[page]": page,
+      "filters[isDisable][$ne]": "true",
     };
+
     if (category !== "") paramsObj["filters[categories][slug][$eq]"] = category;
     if (category !== "") paramsObj["filters[categories][slug][$eq]"] = category;
     addFilterToParamObj(paramsObj, filters);

@@ -9,6 +9,7 @@ import {
   deleteFilter,
   replaceFilter,
 } from "@/helpers/filters";
+import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import style from "./FiltersClient.module.css";
 
 interface IProps {
@@ -51,7 +52,7 @@ const FiltersClient: FC<IProps> = ({ filters }) => {
     params.delete("page");
     if (!paramsFilter) params.delete("filters");
 
-    router.push(`${pathname}?${params}`);
+    router.push(`${FRONTEND_ROUTES.PRODUCTS}?${params}`);
   };
 
   return (

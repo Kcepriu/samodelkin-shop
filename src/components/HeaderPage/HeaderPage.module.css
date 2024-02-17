@@ -1,6 +1,7 @@
 .wrapHeader {
   @apply flex  items-center  
-  py-1
+  py-[19px]
+  lg:py-[13px]
   text-text_white
   font-inter
   text-size_20
@@ -10,8 +11,7 @@
 
 .burger {
   @apply lg:hidden
-  mr-8  
-  py-5;
+  mr-8;
 }
 
 .logo {
@@ -22,7 +22,7 @@
 
 .imageLogo {
   @apply w-12 h-12  
-  md:w-[78px] md:h-[78px];
+  md:w-[60px] md:h-[60px];
 }
 
 .wrapNavigate {
