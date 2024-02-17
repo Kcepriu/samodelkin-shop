@@ -167,7 +167,7 @@ export const DELIVERY_SERVICES = {
 };
 
 export const SLIDES_PER_VIEW = {
-  desktop: 3,
+  desktop: 4,
   tablet: 3,
   mobile: 2,
   mobile_small: 2,

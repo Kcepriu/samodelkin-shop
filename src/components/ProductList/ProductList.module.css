@@ -4,7 +4,7 @@
   justify-start
   gap-3
   gap-y-6
-  lg:gap-6  
+  lg:gap-x-8  
    w-full;
 }
 
@@ -12,5 +12,5 @@
   @apply w-half_width    
   sm:w-[179px]  
   md:w-[234px]  
-  lg:w-[292px];
+  lg:w-[203px];
 }

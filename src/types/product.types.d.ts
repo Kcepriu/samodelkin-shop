@@ -13,6 +13,7 @@ interface IProduct {
     countPlayers: number;
     slug: string;
     descrition: string;
+    isDisable: boolean;
     title: string;
     price: number;
     available: boolean;

@@ -44,7 +44,7 @@ const FilterCategories: FC<IProps> = ({
 
   return (
     <>
-      <h2 className={style.titleCategory}>{title}</h2>
+      {!!title && <h2 className={style.titleCategory}>{title}</h2>}
       <ul className={style.listCategory}>
         <li key="allCategories">
           <button

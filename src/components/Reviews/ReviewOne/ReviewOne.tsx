@@ -26,6 +26,8 @@ const ReviewOne: FC<IProps> = ({
   const repliesReview = attributes.replyReview;
   const product = attributes.product.data;
 
+  if (!product) return <></>;
+
   const urlImage = product.attributes.images?.data
     ? product.attributes.images?.data[0].attributes.url
     : ImgNoImage;
