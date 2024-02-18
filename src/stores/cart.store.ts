@@ -36,7 +36,8 @@ const getMissingProducts = (
 
   productsFrom.forEach((rowCartFrom) => {
     const isFound = productsTo.find(
-      (rowCartTo) => rowCartFrom.product.data.id === rowCartTo.product.data.id
+      (rowCartTo) =>
+        rowCartFrom.product?.data?.id === rowCartTo.product?.data?.id
     );
 
     if (isFound) return;
@@ -109,7 +110,7 @@ const useCart = create<IStateCart>()((set, get) => ({
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
-      (rowCart) => rowCart.product.data.id === newProduct.id
+      (rowCart) => rowCart?.product?.data?.id === newProduct.id
     );
 
     if (index !== -1) {
@@ -137,7 +138,7 @@ const useCart = create<IStateCart>()((set, get) => ({
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
-      (rowCart) => rowCart.product.data.id === changeProduct.id
+      (rowCart) => rowCart?.product?.data?.id === changeProduct.id
     );
 
     if (index !== -1) {
@@ -162,7 +163,7 @@ const useCart = create<IStateCart>()((set, get) => ({
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
-      (rowCart) => rowCart.product.data.id === changeProduct.id
+      (rowCart) => rowCart?.product?.data?.id === changeProduct.id
     );
 
     if (index !== -1) {
