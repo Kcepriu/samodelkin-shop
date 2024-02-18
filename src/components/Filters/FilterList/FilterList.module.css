@@ -17,7 +17,15 @@
 }
 
 .elementFilter {
-  @apply w-full;
+  @apply w-full
+  flex
+  gap-2
+  items-center;
+}
+
+.checkbox {
+  @apply w-6
+  h-6;
 }
 
 .buttonFilter {
