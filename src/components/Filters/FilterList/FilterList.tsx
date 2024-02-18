@@ -30,7 +30,10 @@ const FilterList: FC<IProps> = ({
 
   return (
     <>
-      <h3 className={style.title}>{attributes.title}</h3>
+      <h3 className={style.title}>
+        <IconComponent iconName={attributes.icon} />
+        {attributes.title}
+      </h3>
       <ul className={style.listFilters}>
         {attributes.value.map((element) => {
           return (
@@ -47,7 +50,6 @@ const FilterList: FC<IProps> = ({
                   )
                 }
               >
-                <IconComponent iconName={attributes.icon} />
                 {element}
               </button>
             </li>

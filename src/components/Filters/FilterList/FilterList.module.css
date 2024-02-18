@@ -1,5 +1,9 @@
 .title {
-  @apply font-inter
+  @apply flex
+  gap-2
+  items-center
+  
+  font-inter
   text-size_20
   font-weight_400
   leading-line_height_21;
@@ -18,18 +22,12 @@
 
 .buttonFilter {
   @apply w-full
-  flex
-  gap-2
-  p-[5px]
-  items-center
+  p-1
+  text-left
   rounded-lg 
   transition
   hover:bg-light_blue
   data-[is-active=true]:bg-light_blue
-  
-  
-  
-
   font-inter
   text-size_16
   font-weight_400

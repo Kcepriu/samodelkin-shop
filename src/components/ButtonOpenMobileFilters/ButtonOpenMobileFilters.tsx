@@ -22,6 +22,7 @@ const ButtonOpenMobileFilters: FC<IProps> = ({ filters }) => {
         <PiCaretLeft size={24} />
         Фільтри
       </button>
+
       <Filters filters={filters} />
     </div>
   );

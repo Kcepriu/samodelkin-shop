@@ -7,7 +7,10 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 import { nanoid } from "nanoid";
-import { convertCartToCreate } from "@/helpers/convertStructuresToBac";
+import {
+  convertCartToCreate,
+  deleteEmptyProductInCart,
+} from "@/helpers/convertStructuresToBac";
 
 interface IStateCart {
   products: ICartRow[];
@@ -73,13 +76,15 @@ const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
 
   if (isRemoteStorage) {
     let { isAuth, products } = await getCart();
+
     if (!isAuth) {
       await signOut();
       return { isAuth, productsFromLocalStorage };
     }
+    products = deleteEmptyProductInCart(products);
 
     const missingProducts = getMissingProducts(
-      productsFromLocalStorage,
+      deleteEmptyProductInCart(productsFromLocalStorage),
       products
     );
 

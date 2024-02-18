@@ -17,7 +17,6 @@ interface IProps {
 }
 const FiltersClient: FC<IProps> = ({ filters }) => {
   const router = useRouter();
-  const pathname = usePathname();
 
   const searchParams = useSearchParams();
   const textParamsFilter = searchParams.get("filters") || "";
