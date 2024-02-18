@@ -22,7 +22,7 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
   const addOneProductToCart = useCart((state) => state.addOneProductToCart);
 
   const isInCart =
-    cart?.some((element) => element.product.data.id === product.id) || false;
+    cart?.some((element) => element?.product?.data?.id === product.id) || false;
 
   const handleAddToCart = async () => {
     if (isInCart) {
