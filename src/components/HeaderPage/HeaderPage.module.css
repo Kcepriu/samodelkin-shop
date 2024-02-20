@@ -35,7 +35,7 @@
 .wrapButton {
   @apply flex justify-between  items-center 
   gap-4
-  pr-4
+  pr-2
   sm:gap-8
   md:gap-7;
 }

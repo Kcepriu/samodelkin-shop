@@ -1,6 +1,9 @@
 .form {
-  @apply max-w-[402px] flex flex-col gap-6
-    text-text_white
+  @apply max-w-[402px] 
+  flex 
+  flex-col 
+
+  text-text_white
   text-size_16 
   font-weight_300 
   leading-line_height_15
@@ -9,25 +12,31 @@
 }
 
 .label {
-  @apply font-weight_700;
+  @apply font-inter
+  text-size_13
+  font-weight_600
+  leading-line_height_40;
 }
 
 .input {
-  @apply p-4
+  @apply mt-2
+  p-4
   text-text_white
   font-inter
   text-size_16 
   font-weight_500 
   leading-line_height_24  
   placeholder:text-gray_our
-  bg-inherit
+   bg-inherit 
+  
   border
   rounded-lg
   border-text_white;
 }
 
 .button {
-  @apply rounded-lg 
+  @apply mt-4
+  rounded-lg 
   w-full 
   p-4
  
@@ -37,6 +46,7 @@
   leading-line_height_20
   transition;
 }
+
 .form .button {
   @apply bg-blue_action
   hover:bg-blue_action_button

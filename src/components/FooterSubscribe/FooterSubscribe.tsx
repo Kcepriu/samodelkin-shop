@@ -37,8 +37,8 @@ const FooterSubscribe: FC = () => {
   return (
     <form name="subscrabe" className={style.form} onSubmit={handleSubmit}>
       <label htmlFor="email" className={style.label}>
-        Хочете дізнаватися першим про акції і знижки? Підпишіться на нашу
-        розсилку
+        Хочете дізнаватися першим про акції і знижки? <br />
+        Підпишіться на нашу розсилку
       </label>
       <input
         className={style.input}
