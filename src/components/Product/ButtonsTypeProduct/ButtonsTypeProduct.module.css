@@ -1,10 +1,10 @@
 .wrapTypeProduct {
   @apply flex gap-6 
-  mt-3
-  font-roboto
-  text-size_18
+  
+  font-inter
+  text-size_14
   font-weight_400
-  leading-line_height_17;
+  leading-line_height_21;
 }
 
 .typeProduct {
