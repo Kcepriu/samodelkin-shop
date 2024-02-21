@@ -4,8 +4,8 @@
   items-center
   
   font-inter
-  text-size_20
-  font-weight_400
+  text-size_18
+  font-weight_500
   leading-line_height_21;
 }
 
@@ -19,8 +19,12 @@
 .elementFilter {
   @apply w-full
   flex
-  gap-2
-  items-center;
+  gap-4
+  items-center
+  font-inter
+  text-size_16
+  font-weight_400
+  leading-line_height_21;
 }
 
 .checkbox {

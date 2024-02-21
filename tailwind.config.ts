@@ -106,6 +106,7 @@ const config: Config = {
         line_height_25: "1.25",
         line_height_28: "1.28",
         line_height_29: "1.29",
+        line_height_30: "1.3",
         line_height_31: "1.31",
         line_height_40: "1.4",
         line_height_50: "1.5",

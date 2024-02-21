@@ -12,6 +12,7 @@
 
 .link {
   @apply flex gap-1
+  items-center
   text-text_white
   text-size_16 
   font-weight_300 

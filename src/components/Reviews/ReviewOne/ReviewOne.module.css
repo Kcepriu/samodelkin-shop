@@ -1,38 +1,48 @@
 .wrapReview {
-  @apply w-full  flex flex-col gap-6;
+  @apply w-full  
+  flex 
+  flex-col 
+  gap-3;
 }
 
 .wrapReviewWithReply {
   @apply w-full 
   p-3
   lg:p-6
+  
   flex
   flex-col
   lg:flex-row
+
   gap-6
   text-size_14
   font-weight_300
   leading-line_height_29
-  bg-blue_100
   border
-  border-blue_100
-  rounded-lg;
+  rounded-lg
+  bg-blue_100
+  border-blue_100;
+}
+
+.wrapHeader {
+  @apply flex gap-3;
 }
 
 .wrapContentWithModerator {
-  @apply w-full;
+  @apply w-full
+  flex flex-col
+  gap-3;
 }
 
 .wrapContentWithImage {
   @apply flex grow
-  gap-2
-  md:gap-6;
+  gap-3;
 }
 
 .wrapContent {
   @apply grow flex flex-col 
   gap-3
-  md:gap-6
+  
   font-inter 
   text-size_14 
   font-weight_300 
@@ -40,36 +50,35 @@
   text-left;
 }
 
-.content {
-  @apply font-inter 
-  text-size_14 
-  md:text-size_18 
-  font-weight_300 
-  leading-line_height_31;
+.titleProduct {
+  @apply h-9
+  font-inter 
+  text-left
+  text-size_12
+  md:text-size_14   
+  font-weight_500 
+  leading-line_height_21;
 }
 
-.wrapProduct {
-  @apply w-20
-  md:w-[187px] min-w-max;
-}
-
-.wrapRatingDesktop {
+.wrapTitleDesktop {
   @apply hidden
  lg:block;
 }
 
-.wrapRatingMobile {
-  @apply block  
- lg:hidden
- mb-1;
+.wrapTitleMobile {
+  @apply block
+  lg:hidden;
+}
+
+.wrapRating {
+  @apply mt-3;
 }
 
 .wrapUser {
   @apply flex  
-  gap-6
-  lg:gap-2 
-  lg:flex-col
-  items-center
+  flex-col
+  items-start
+  
   lg:w-[116px] 
   lg:min-w-[116px];
 }
@@ -77,40 +86,61 @@
 .userName {
   @apply block 
   w-full 
-  text-left
-  lg:text-center 
   overflow-hidden
-  mb-2
+  mt-1
+  md:mt-2
   
   font-inter 
-  text-size_14 
+  text-size_12 
   font-weight_400 
-  leading-line_height_28;
+  leading-line_height_30;
 }
 
 .data {
   @apply text-left
-  lg:text-center
+  mt-2
   font-roboto
-  text-size_14 
+  text-size_12 
   font-weight_300
-  leading-line_height_28;
+  leading-line_height_30;
+}
+
+.content {
+  @apply min-h-[280px]
+  md:min-h-[200px]
+  font-inter 
+  text-size_14   
+  font-weight_300 
+  leading-line_height_30;
+}
+
+.wrapAdvantages {
+  @apply flex
+  gap-3;
 }
 
 .titleField {
   @apply font-inter 
-  text-size_18 
+  text-size_14 
   font-weight_500 
-  leading-line_height_31;
+  leading-line_height_30;
+}
+
+.advantagesDisAdvantages {
+  @apply text-left
+  font-inter 
+  text-size_14   
+  font-weight_300 
+  leading-line_height_30;
 }
 
 .wrapImgPerson {
   @apply rounded-[50%]
   overflow-hidden
-  w-16
-  h-16
-  md:w-20
-  md:h-20;
+  w-11
+  h-11
+  md:w-8
+  md:h-8;
 }
 
 .image {
@@ -118,10 +148,16 @@
   border
   rounded-lg
   border-blue_100
-  w-16
-  h-16
-  md:w-20
-  md:h-20;
+  w-11
+  h-11
+  md:w-8
+  md:h-8;
+}
+
+.wrapProduct {
+  @apply w-20
+  md:w-[163px] 
+  min-w-max;
 }
 
 .imageProduct {

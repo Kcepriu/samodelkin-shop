@@ -79,10 +79,13 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
                 Відгуки
               </h2>
               <div className={style.wrapReviewsSlider}>
-                <SliderReviews reviews={responseReviews.data} />
+                <SliderReviews
+                  reviews={responseReviews.data}
+                  showReply={false}
+                />
               </div>
               <div className={style.wrapReviews}>
-                <Reviews reviews={responseReviews.data} />
+                <Reviews reviews={responseReviews.data} showReply={false} />
               </div>
             </section>
           )}
