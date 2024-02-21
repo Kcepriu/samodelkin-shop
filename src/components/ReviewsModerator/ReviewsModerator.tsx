@@ -36,6 +36,7 @@ const ReviewsModerator: FC<IProps> = ({ reviews }) => {
         reviews={reviews}
         isModerator={isModerator}
         isCreateReplyReview={isCreateReplyReview}
+        showReply={true}
       />
     </>
   );
