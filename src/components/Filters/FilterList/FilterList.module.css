@@ -1,7 +1,11 @@
 .title {
-  @apply font-inter
-  text-size_20
-  font-weight_400
+  @apply flex
+  gap-2
+  items-center
+  
+  font-inter
+  text-size_18
+  font-weight_500
   leading-line_height_21;
 }
 
@@ -13,23 +17,29 @@
 }
 
 .elementFilter {
-  @apply w-full;
+  @apply w-full
+  flex
+  gap-4
+  items-center
+  font-inter
+  text-size_16
+  font-weight_400
+  leading-line_height_21;
+}
+
+.checkbox {
+  @apply w-6
+  h-6;
 }
 
 .buttonFilter {
   @apply w-full
-  flex
-  gap-2
-  p-[5px]
-  items-center
+  p-1
+  text-left
   rounded-lg 
   transition
   hover:bg-light_blue
   data-[is-active=true]:bg-light_blue
-  
-  
-  
-
   font-inter
   text-size_16
   font-weight_400

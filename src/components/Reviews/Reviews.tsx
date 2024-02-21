@@ -5,12 +5,14 @@ interface IProps {
   reviews: IReview[];
   isModerator?: boolean;
   isCreateReplyReview?: boolean;
+  showReply: boolean;
 }
 
 const Reviews: FC<IProps> = ({
   reviews,
   isModerator = false,
   isCreateReplyReview = false,
+  showReply = true,
 }) => {
   return (
     <div className={style.wrapSection}>
@@ -22,6 +24,7 @@ const Reviews: FC<IProps> = ({
             review={review}
             isModerator={isModerator}
             isCreateReplyReview={isCreateReplyReview}
+            showReply={showReply}
           />
         );
       })}

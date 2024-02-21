@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { format } from "date-fns";
-import { PiArrowULeftUpBold } from "react-icons/pi";
+import Image from "next/image";
+
+import Logo from "@/assets/logo.png";
 
 import style from "./ReplyReviews.module.css";
 
@@ -11,8 +13,17 @@ interface IProps {
 const ReplyReviews: FC<IProps> = ({ replyReview, reviewId }) => {
   return (
     <div className={style.reply}>
-      <PiArrowULeftUpBold size={24} className={style.icon} />
       <div className={style.wrapUser}>
+        <div className={style.wrapImgPerson}>
+          <Image
+            className={style.image}
+            src={Logo}
+            alt="person"
+            height={80}
+            width={80}
+          />
+        </div>
+
         <p className={style.userName}>
           {`${replyReview.firstName} ${replyReview.lastName}`}
         </p>
@@ -23,10 +34,6 @@ const ReplyReviews: FC<IProps> = ({ replyReview, reviewId }) => {
       </div>
       <div>
         <p className={style.content}>{replyReview.content}</p>
-        {/* <p className={style.content}>
-          <span>Status:</span>&nbsp;
-          {String(replyReview.isPublication)}
-        </p> */}
       </div>
     </div>
   );

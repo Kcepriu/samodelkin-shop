@@ -19,7 +19,9 @@ interface IProps {
 const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
   const router = useRouter();
   const { product } = rowCart;
-  const attributes = product.data.attributes;
+  const attributes = product.data?.attributes;
+
+  if (!attributes) return <></>;
 
   const images = attributes.images?.data;
   const urlImage = images ? images[0].attributes.url : Img;

@@ -1,10 +1,9 @@
 .wrapFooter {
-  @apply pt-10 
-  pb-6
-  md:py-12
-  md:pb-10
+  @apply py-10 
 
   text-text_white
+
+  font-inter
   text-size_16
   font-weight_300
   leading-line_height_50;
@@ -32,6 +31,7 @@
   @apply hidden
   md:block
   
-  text-left mt-6
-  md:mt-12;
+  mt-8
+  
+  text-left;
 }

@@ -30,30 +30,35 @@ const FilterList: FC<IProps> = ({
 
   return (
     <>
-      <h3 className={style.title}>{attributes.title}</h3>
-      <ul className={style.listFilters}>
+      <h3 className={style.title}>
+        <IconComponent iconName={attributes.icon} />
+        {attributes.title}
+      </h3>
+
+      <form className={style.listFilters}>
         {attributes.value.map((element) => {
           return (
-            <li key={element} className={style.elementFilter}>
-              <button
-                type="button"
+            <label key={element} className={style.elementFilter}>
+              <input
+                type="checkbox"
+                className={style.checkbox}
+                name={element}
+                value={element}
+                checked={currentFilter === element}
                 data-is-active={currentFilter === element}
-                className={style.buttonFilter}
-                onClick={() =>
+                onChange={() =>
                   handleClickFilter(
                     filter.id,
                     element,
                     currentFilter === element
                   )
                 }
-              >
-                <IconComponent iconName={attributes.icon} />
-                {element}
-              </button>
-            </li>
+              />
+              {element}
+            </label>
           );
         })}
-      </ul>
+      </form>
     </>
   );
 };

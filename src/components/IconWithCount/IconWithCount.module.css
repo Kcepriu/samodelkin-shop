@@ -1,19 +1,23 @@
 .wrapElement {
   @apply relative
-   transition    
-   hover:text-black;
+   transition;
 }
+
 .textCount {
   @apply absolute 
-  top-[-10%] right-[-40%]
-  w-3/4 h-3/4
-  block 
-  border 
+  top-[-12px] right-[-8px]
+  w-[18px] 
+  h-[18px]
+  
+  font-inter
+  text-size_12
+  font-weight_600
+  leading-line_height_50
+  
+  block   
   rounded-full 
   transition
-  bg-blue_action_button  
+  bg-text_white 
+  text-dark_blue
   text-center;
-}
-.icon:hover .textCount {
-  @apply bg-blue_action;
 }

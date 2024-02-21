@@ -21,6 +21,7 @@ interface IProps {
   isModerator?: boolean;
   isCreateReplyReview?: boolean;
   paginationReviews?: IPagination;
+  showReply?: boolean;
 }
 
 const SliderReviews: FC<IProps> = ({
@@ -29,6 +30,7 @@ const SliderReviews: FC<IProps> = ({
   paginationReviews,
   isModerator = false,
   isCreateReplyReview = false,
+  showReply = true,
 }) => {
   const countTotalPage = paginationReviews?.pageCount || 1;
   const [currentPage, setCurrentPage] = useState(1);
@@ -92,6 +94,7 @@ const SliderReviews: FC<IProps> = ({
                   review={review}
                   isModerator={isModerator}
                   isCreateReplyReview={isCreateReplyReview}
+                  showReply={showReply}
                 />
               </div>
             </div>

@@ -16,11 +16,13 @@ interface IProps {
   review: IReview;
   isModerator: boolean;
   isCreateReplyReview: boolean;
+  showReply: boolean;
 }
 const ReviewOne: FC<IProps> = ({
   review,
   isModerator,
   isCreateReplyReview,
+  showReply,
 }) => {
   const { id, attributes } = review;
   const repliesReview = attributes.replyReview;
@@ -34,22 +36,19 @@ const ReviewOne: FC<IProps> = ({
 
   const urlProduct = `${FRONTEND_ROUTES.PRODUCT}/${product.attributes.slug}`;
   return (
-    <div key={id} className={style.wrapReview}>
+    <div className={style.wrapReview}>
       <div className={style.wrapReviewWithReply}>
-        <div className={style.wrapUser}>
-          <div className={style.wrapImgPerson}>
-            <Image
-              className={style.image}
-              src={imgPerson}
-              alt="person"
-              height={80}
-              width={80}
-            />
-          </div>
-
-          <div>
-            <div className={style.wrapRatingMobile}>
-              <RatingStar rating={attributes.rating} />
+        {/* User Plus Title on mobile */}
+        <div className={style.wrapHeader}>
+          <div className={style.wrapUser}>
+            <div className={style.wrapImgPerson}>
+              <Image
+                className={style.image}
+                src={imgPerson}
+                alt="person"
+                height={80}
+                width={80}
+              />
             </div>
 
             <p className={style.userName}>
@@ -60,24 +59,44 @@ const ReviewOne: FC<IProps> = ({
               {format(new Date(attributes.date), "dd-MM-yyyy")}
             </p>
           </div>
+
+          <div className={style.wrapTitleMobile}>
+            <h3 className={style.titleProduct}>{product.attributes.title}</h3>
+            <div className={style.wrapRating}>
+              <RatingStar rating={attributes.rating} />
+            </div>
+          </div>
         </div>
 
+        {/* All Content */}
         <div className={style.wrapContentWithModerator}>
           <div className={style.wrapContentWithImage}>
             <div className={style.wrapContent}>
-              <div className={style.wrapRatingDesktop}>
-                <RatingStar rating={attributes.rating} />
+              {/* Title on desktop */}
+              <div className={style.wrapTitleDesktop}>
+                <h3 className={style.titleProduct}>
+                  {product.attributes.title}
+                </h3>
+                <div className={style.wrapRating}>
+                  <RatingStar rating={attributes.rating} />
+                </div>
               </div>
 
               <p className={style.content}>{attributes.content}</p>
-              <p>
-                <span className={style.titleField}>Переваги:</span>&nbsp;
-                {attributes.advantages}
-              </p>
-              <p>
-                <span className={style.titleField}>Недоліки:</span>&nbsp;
-                {attributes.disAdvantages}
-              </p>
+
+              {/* <div className={style.wrapAdvantages}>
+                <p className={style.titleField}>Переваги:</p>
+                <p className={style.advantagesDisAdvantages}>
+                  {attributes.advantages}
+                </p>
+              </div>
+
+              <div className={style.wrapAdvantages}>
+                <p className={style.titleField}>Недоліки:</p>
+                <p className={style.advantagesDisAdvantages}>
+                  {attributes.disAdvantages}
+                </p>
+              </div> */}
             </div>
 
             <div className={style.wrapProduct}>
@@ -92,12 +111,28 @@ const ReviewOne: FC<IProps> = ({
                 />
               </Link>
             </div>
+
             {isModerator && (
               <div className={style.buttonDelete}>
                 <ButtonDeleteReview idReview={id} />
               </div>
             )}
           </div>
+
+          <div className={style.wrapAdvantages}>
+            <p className={style.titleField}>Переваги:</p>
+            <p className={style.advantagesDisAdvantages}>
+              {attributes.advantages}
+            </p>
+          </div>
+
+          <div className={style.wrapAdvantages}>
+            <p className={style.titleField}>Недоліки:</p>
+            <p className={style.advantagesDisAdvantages}>
+              {attributes.disAdvantages}
+            </p>
+          </div>
+
           {(isModerator || isCreateReplyReview) && (
             <ButtonsReview
               review={review}
@@ -107,8 +142,8 @@ const ReviewOne: FC<IProps> = ({
           )}
         </div>
       </div>
-      {repliesReview.length > 0 && (
-        <RepliesReviews reviewId={id} repliesReview={repliesReview} />
+      {showReply && repliesReview.length > 0 && (
+        <RepliesReviews reviewId={id} repliesReview={[repliesReview[0]]} />
       )}
     </div>
   );

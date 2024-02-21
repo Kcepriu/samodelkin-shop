@@ -29,7 +29,7 @@
 .wrapContent {
   @apply relative
   grow  
-  overflow-y-scroll;
+  overflow-y-auto;
 }
 
 .title {

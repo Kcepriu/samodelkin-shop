@@ -10,8 +10,9 @@ interface IProps {
 }
 const OrderLine: FC<IProps> = ({ order }) => {
   const { id, attributes } = order;
-  const images = attributes.products[0].product.data.attributes.images?.data;
-  const titleProduct = attributes.products[0].product.data.attributes.title;
+  const images = attributes.products[0].product.data?.attributes.images?.data;
+  const titleProduct =
+    attributes.products[0].product.data?.attributes.title || "No title";
   const urlImage =
     images && images.length === 1 ? images[0].attributes.url : ImgNoImage;
 

@@ -1,5 +1,6 @@
 .icon {
   @apply text-text_white
   transition
-   hover:text-blue_action;
+   hover:text-blue_action
+   w-8 h-8 lg:w-6 lg:h-6;
 }

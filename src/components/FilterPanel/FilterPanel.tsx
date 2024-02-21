@@ -23,7 +23,7 @@ const FilterPanel: FC<IProps> = async ({
       <FilterCategories
         allCategories={allCategories}
         currentCategory={categoryId}
-        title=""
+        title="Категорії"
       />
       <div className={style.wrapFilters}>
         {showFilters && <Filters filters={filters} />}

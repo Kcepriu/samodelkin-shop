@@ -17,11 +17,11 @@ interface IProps {
 }
 const FiltersClient: FC<IProps> = ({ filters }) => {
   const router = useRouter();
-  const pathname = usePathname();
 
   const searchParams = useSearchParams();
   const textParamsFilter = searchParams.get("filters") || "";
   const currentFilters = parsingFiltersSearchParams(textParamsFilter);
+  console.log("🚀 ~ currentFilters:", currentFilters);
 
   const objSearchParams = {} as ISearchParams;
   for (const [key, value] of searchParams) {
@@ -33,6 +33,10 @@ const FiltersClient: FC<IProps> = ({ filters }) => {
     filterValue: string,
     isActiveFilter: boolean
   ) => {
+    console.log("🚀 ~ isActiveFilter:", isActiveFilter);
+    console.log("🚀 ~ filterValue:", filterValue);
+    console.log("🚀 ~ filterId:", filterId);
+
     let newCurrentFilters = deleteFilter(currentFilters, filterId);
 
     if (!isActiveFilter)
