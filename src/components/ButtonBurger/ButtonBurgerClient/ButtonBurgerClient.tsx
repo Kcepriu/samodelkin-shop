@@ -1,16 +1,14 @@
 "use client";
 import { FC } from "react";
-import Image from "next/image";
+
+import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { LuAlignLeft } from "react-icons/lu";
-import { PiPhoneCall } from "react-icons/pi";
+import { PiPhoneCall, PiTelegramLogo, PiLinkedinLogo } from "react-icons/pi";
 import { IResponseMainPage } from "@/types/articles.types";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import useMobileMenu from "@/hooks/useMobileMenu";
 import FilterCategories from "@/components/FilterCategories/FilterCategories";
-import iconTelegram from "@/assets/icons/telegram.svg";
-import iconLinkedin from "@/assets/icons/linkedin.png";
-import iconBehance from "@/assets/icons/behance.png";
 import style from "./ButtonBurgerClient.module.css";
 
 interface IProps {
@@ -94,7 +92,7 @@ const ButtonBurgerClient: FC<IProps> = ({
             className={style.link}
             onClick={() => handleToLinkNewWindow(`tel:${telephoneNumber}`)}
           >
-            <PiPhoneCall size={24} />
+            <PiPhoneCall size={32} />
             {telephoneNumber}
           </button>
 
@@ -102,12 +100,7 @@ const ButtonBurgerClient: FC<IProps> = ({
             className={style.link}
             onClick={() => handleToLinkNewWindow(telegramName)}
           >
-            <Image
-              src={iconTelegram}
-              alt="Picture of the author"
-              width={24}
-              height={24}
-            />{" "}
+            <PiTelegramLogo size={32} />
             Telegram
           </button>
         </div>
@@ -124,27 +117,9 @@ const ButtonBurgerClient: FC<IProps> = ({
                 )
               }
             >
-              <Image
-                src={iconLinkedin}
-                alt="icon Linkedin"
-                height={32}
-                width={32}
-              />
+              <PiLinkedinLogo size={32} />
+              Design - Zhurba Nadiia
             </button>
-            <button
-              className={style.link}
-              onClick={() =>
-                handleToLinkNewWindow("https://www.behance.net/nadiiazhurba")
-              }
-            >
-              <Image
-                src={iconBehance}
-                alt="icon Behance"
-                height={28}
-                width={28}
-              />
-            </button>
-            <p>Design - Zhurba Nadiia</p>
           </div>
 
           <div className={style.wrapPerson}>
@@ -156,23 +131,8 @@ const ButtonBurgerClient: FC<IProps> = ({
                 )
               }
             >
-              <Image
-                src={iconLinkedin}
-                alt="icon Linkedin"
-                height={32}
-                width={32}
-              />
-            </button>
-            <p className={style.titleDeveloper}>Developer - </p>{" "}
-            <button
-              onClick={() =>
-                handleToLinkNewWindow("https://t.me/SerhiiKostiuchenko")
-              }
-              className={style.link}
-            >
-              <div className={style.developer}>
-                <p>Serhii</p> <p>Kostiuchenko</p>
-              </div>
+              <PiLinkedinLogo size={32} />
+              Development - Serhii Kostiuchenko
             </button>
           </div>
         </div>
