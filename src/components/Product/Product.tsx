@@ -128,12 +128,9 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
             <div className={style.buttonCart}>
               <ButtonAddProductToCart product={product} bigButton />
             </div>
-
-            <ButtonAddProductToFavorite
-              product={product}
-              size={24}
-              sizeIcon={24}
-            />
+            <div className={style.AddProductToFavorite}>
+              <ButtonAddProductToFavorite product={product} isEmptyIcon />
+            </div>
           </div>
 
           <div className={style.wrapGeneralInformation}>
@@ -177,11 +174,9 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               <ButtonAddProductToCart product={product} bigButton />
             </div>
 
-            <ButtonAddProductToFavorite
-              product={product}
-              size={40}
-              sizeIcon={40}
-            />
+            <div className={style.AddProductToFavorite}>
+              <ButtonAddProductToFavorite product={product} isEmptyIcon />
+            </div>
           </div>
 
           <div className={style.wrapGeneralInformation}>

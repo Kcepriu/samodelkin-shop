@@ -1,0 +1,17 @@
+.listFlag {
+  @apply flex 
+  flex-col
+  gap-1;
+}
+
+.element {
+  @apply rounded-full
+  w-4
+  h-4;
+}
+
+.image {
+  @apply object-contain
+  w-full
+  h-auto;
+}

@@ -1,19 +1,34 @@
 .button {
-  @apply flex justify-center items-center;
-}
-
-.icon {
-  @apply text-black transition;
-}
-
-.icon:hover {
-  @apply text-blue_action_button;
+  @apply flex 
+  justify-center 
+  items-center
+  w-full
+  h-full;
 }
 
 .iconFavorite {
-  @apply text-blue_action;
+  @apply transition 
+  w-full
+  h-full
+  
+  text-blue_action  
+  hover:text-blue_action_button;
 }
 
-.iconFavorite:hover {
-  @apply text-blue_action_button;
+.iconNoFavorite {
+  @apply transition
+  w-full
+  h-full
+  
+  text-black 
+  hover:text-blue_action_button;
+}
+
+.iconNoFavoriteFill {
+  @apply transition
+  w-full
+  h-full
+  
+  text-gray_our
+  hover:text-blue_action_button;
 }
