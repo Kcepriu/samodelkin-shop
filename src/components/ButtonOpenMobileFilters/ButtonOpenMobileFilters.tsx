@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect } from "react";
-import { PiFadersHorizontal, PiCaretLeft } from "react-icons/pi";
+import { PiFadersHorizontal, PiCaretLeft, PiFunnel } from "react-icons/pi";
 
 import Filters from "../Filters/Filters";
 import useMobileMenu from "@/hooks/useMobileMenu";
@@ -43,7 +43,7 @@ const ButtonOpenMobileFilters: FC<IProps> = ({ filters }) => {
         className={style.button}
         onClick={() => setShowMobileMenu(true)}
       >
-        <PiFadersHorizontal size={16} />
+        <PiFunnel size={24} />
         Фільтри
       </button>
       {ModalMenuComponent}

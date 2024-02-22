@@ -45,7 +45,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
           />
         </div>
         <div className={style.wrapContent}>
-          {/* <section>
+          <section>
             <Image
               className={style.imageHero}
               src={banner}
@@ -54,7 +54,7 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
               height={511}
               priority
             />
-          </section> */}
+          </section>
 
           {responseProducts && responseProducts.data.length > 0 && (
             <section className={style.section} data-is-slider={true}>

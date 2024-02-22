@@ -5,12 +5,13 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import { FaHome } from "react-icons/fa";
 import useBreadcrumb from "@/stores/breadcrumb.store";
 import useStore from "@/helpers/useStore";
+import style from "./Breadcrumb.module.css";
 
 const Breadcrumb: FC = () => {
   const breadcrumb = useStore(useBreadcrumb, (state) => state.breadcrumb) || [];
 
   return (
-    <div role="presentation">
+    <div role="presentation" className={style.wrapBreadcrumbs}>
       <Breadcrumbs aria-label="breadcrumb">
         <Link href="/">
           <FaHome sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -18,19 +19,15 @@ const Breadcrumb: FC = () => {
 
         {breadcrumb.map((element, index, arr) => {
           return (
-            <div key={element.url}>
+            <div key={element.url} className={style.wrapBreadcrumbs}>
               {!!element.url ? (
                 <Link href={element.url} key={element.url}>
                   {element.title}
                 </Link>
               ) : (
-                <Typography
-                  sx={{ display: "flex", alignItems: "center" }}
-                  color="text.primary"
-                  key={element.url}
-                >
+                <p key={element.url} className={style.lastEement}>
                   {element.title}
-                </Typography>
+                </p>
               )}
             </div>
           );
