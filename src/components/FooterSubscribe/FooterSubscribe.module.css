@@ -20,12 +20,12 @@
 
 .input {
   @apply mt-2
-  p-4
+  p-[17px]
   text-text_white
   font-inter
-  text-size_16 
+  text-size_14 
   font-weight_500 
-  leading-line_height_24  
+  leading-line_height_21
   placeholder:text-gray_our
    bg-inherit 
   
@@ -43,7 +43,7 @@
   font-inter
   text-size_18
   font-weight_500 
-  leading-line_height_20
+  leading-line_height_21
   transition;
 }
 

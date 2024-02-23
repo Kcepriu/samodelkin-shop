@@ -1,7 +1,12 @@
 .listFilters {
   @apply flex 
   gap-8
-  flex-col;
+  flex-col
+  p-3
+  rounded-xl
+  lg:mt-10
+  lg:border    
+  lg:border-light_blue;
 }
 
 .filter {

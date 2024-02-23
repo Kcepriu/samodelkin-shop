@@ -1,17 +1,22 @@
 .button {
   @apply flex gap-3
-  px-5
+  items-center
+  px-3
   py-3 
-  border 
-  border-white
+  
+  
+  bg-white_button
+  rounded-lg
 
   font-roboto 
-  text-size_18 
+  text-size_16 
   font-weight_300 
   leading-line_height_15
-
   
-  /* hover:shadow-lg */
-  hover:border-blue_action
-  hover:rounded-lg;
+  transition
+  hover:bg-light_blue;
+}
+
+.wrapIcon {
+  @apply text-gray_our;
 }

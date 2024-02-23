@@ -24,6 +24,7 @@ const config: Config = {
       },
       colors: {
         text_white: "#F0F0F0",
+        white_button: "#F6F6F6",
         black: "#161718",
         light_gray: "#C1C1C1",
         gray_our: "#9A9EA2",

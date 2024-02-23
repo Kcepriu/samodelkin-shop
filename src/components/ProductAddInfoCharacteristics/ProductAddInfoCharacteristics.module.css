@@ -1,19 +1,17 @@
 .wrapContent {
-  @apply mt-6
-  md:mt-12
+  @apply mt-[34px]
+  md:mt-6
   flex flex-col 
-  gap-6
-  text-size_18
+  gap-4
+  text-size_14
   font-weight_400
   leading-line_height_21;
 }
 
 .content {
-  @apply flex gap-3
-  md:gap-12;
+  @apply flex gap-12;
 }
 .title {
   @apply font-weight_600
-  min-w-[170px]
-  md:min-w-[200px];
+  min-w-[136px];
 }

@@ -5,18 +5,18 @@
 .title {
   @apply font-inter 
   text-text_white
-  text-size_16 
+  text-size_14 
   font-weight_700 
-  leading-line_height_15;
+  leading-line_height_50;
 }
 
 .link {
   @apply flex gap-1
   items-center
   text-text_white
-  text-size_16 
+  text-size_14 
   font-weight_300 
-  leading-line_height_15
+  leading-line_height_50
   transition
    hover:text-blue_action;
 }
