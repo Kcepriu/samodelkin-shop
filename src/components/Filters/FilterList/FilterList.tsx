@@ -2,6 +2,8 @@
 
 import { FC } from "react";
 import IconComponent from "@/components/IconComponent/IconComponent";
+import { getNameLanguage } from "@/helpers/getImageFlag";
+import { TypeLanguage } from "@/types/generalTypes/language.type";
 import style from "./FilterList.module.css";
 
 interface IProps {
@@ -10,6 +12,7 @@ interface IProps {
     id: string;
     value: string;
   }[];
+
   handleClickFilter: (
     filterId: string,
     filterValue: string,
@@ -54,7 +57,9 @@ const FilterList: FC<IProps> = ({
                   )
                 }
               />
-              {element}
+              {filter.id !== "language"
+                ? element
+                : getNameLanguage(element as TypeLanguage)}
             </label>
           );
         })}

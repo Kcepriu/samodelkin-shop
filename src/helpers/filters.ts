@@ -25,17 +25,20 @@ export const createFiltersSearchParams = (filters: IParams[]): string => {
 
 export const deleteFilter = (
   filters: IParams[],
-  idFilter: string
+  idFilter: string,
+  valueFilter: string
 ): IParams[] => {
-  return filters.filter(({ id }) => id !== idFilter);
+  return filters.filter(
+    ({ id, value }) => id !== idFilter && value !== valueFilter
+  );
 };
 
-export const replaceFilter = (
+export const addFilter = (
   filters: IParams[],
   idFilter: string,
   newValue: string
 ): IParams[] => {
-  const newFilters = deleteFilter(filters, idFilter);
+  const newFilters = [...filters];
   newFilters.push({
     id: idFilter,
     value: newValue,

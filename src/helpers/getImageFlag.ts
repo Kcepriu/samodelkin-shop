@@ -25,3 +25,11 @@ export const getImageFlag = (
   if (nameLanguages === TypeLanguage.RU) return ruFlag;
   return uaFlag;
 };
+
+export const getNameLanguage = (nameLanguages: TypeLanguage | undefined) => {
+  if (!nameLanguages) return "Українська";
+  if (nameLanguages === TypeLanguage.UA) return "Українська";
+  if (nameLanguages === TypeLanguage.US) return "Англійська";
+  if (nameLanguages === TypeLanguage.RU) return "Російська";
+  return "Українська";
+};

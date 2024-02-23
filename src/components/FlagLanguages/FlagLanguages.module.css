@@ -3,6 +3,7 @@
 }
 
 .image {
-  @apply w-[40px]
-  h-[33px];
+  @apply w-[41px]
+  h-[32px]
+  rounded;
 }

@@ -7,7 +7,7 @@ import {
   parsingFiltersSearchParams,
   createFiltersSearchParams,
   deleteFilter,
-  replaceFilter,
+  addFilter,
 } from "@/helpers/filters";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import style from "./FiltersClient.module.css";
@@ -16,10 +16,12 @@ interface IProps {
   filters: IFilter[];
 }
 const FiltersClient: FC<IProps> = ({ filters }) => {
+  console.log("🚀 ~ filters:", filters);
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const textParamsFilter = searchParams.get("filters") || "";
+
   const currentFilters = parsingFiltersSearchParams(textParamsFilter);
   console.log("🚀 ~ currentFilters:", currentFilters);
 
@@ -37,14 +39,16 @@ const FiltersClient: FC<IProps> = ({ filters }) => {
     console.log("🚀 ~ filterValue:", filterValue);
     console.log("🚀 ~ filterId:", filterId);
 
-    let newCurrentFilters = deleteFilter(currentFilters, filterId);
+    let newCurrentFilters = [...currentFilters];
 
-    if (!isActiveFilter)
-      newCurrentFilters = replaceFilter(
-        newCurrentFilters,
-        filterId,
-        filterValue
-      );
+    console.log("🚀 ~ 111111111");
+    if (!isActiveFilter) {
+      newCurrentFilters = addFilter(newCurrentFilters, filterId, filterValue);
+    } else {
+      newCurrentFilters = deleteFilter(currentFilters, filterId, filterValue);
+    }
+
+    console.log("🚀 ~ newCurrentFilters:", newCurrentFilters);
 
     const paramsFilter = createFiltersSearchParams(newCurrentFilters);
 
@@ -54,7 +58,10 @@ const FiltersClient: FC<IProps> = ({ filters }) => {
     });
 
     params.delete("page");
+
     if (!paramsFilter) params.delete("filters");
+
+    console.log("🚀 ~ paramsFilter:", params);
 
     router.push(`${FRONTEND_ROUTES.PRODUCTS}?${params}`);
   };
