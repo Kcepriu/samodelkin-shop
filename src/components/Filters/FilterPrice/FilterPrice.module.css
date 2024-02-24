@@ -3,8 +3,9 @@
   flex-col
   items-end
   relative  
-  mt-14
-  pr-2;
+  mt-7
+  pr-1
+  lg:pr-3;
 }
 
 .image {

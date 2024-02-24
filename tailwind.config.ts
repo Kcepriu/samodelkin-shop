@@ -24,6 +24,7 @@ const config: Config = {
       },
       colors: {
         text_white: "#F0F0F0",
+        white_button: "#F6F6F6",
         black: "#161718",
         light_gray: "#C1C1C1",
         gray_our: "#9A9EA2",
@@ -79,6 +80,7 @@ const config: Config = {
         size_20: "20px",
         size_22: "22px",
         size_24: "24px",
+        size_28: "28px",
         size_32: "32px",
         size_40: "40px",
         size_150: "150px",

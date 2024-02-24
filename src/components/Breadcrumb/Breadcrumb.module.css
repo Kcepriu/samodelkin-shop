@@ -1,0 +1,11 @@
+.wrapBreadcrumbs {
+  @apply font-inter
+  text-size_12  
+  md:text-size_14
+  font-weight_400 
+  leading-line_height_21;
+}
+
+.lastEement {
+  @apply text-black;
+}

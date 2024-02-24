@@ -65,6 +65,7 @@ export const PRODUCT_ADD_INFORMATION_ROUTES = {
   DESCRIBE: "",
   INFO: "/info",
   REVIEWS: "/reviews",
+  BOX_CONTENT: "/box_content",
   VIDEOS: "/videos",
   MANUALS: "/manuals",
 };
@@ -79,16 +80,16 @@ export const TYPES_PRODUCT_ADD_INFORMATION = [
     url: PRODUCT_ADD_INFORMATION_ROUTES.INFO,
   },
   {
+    title: "Вміст коробки",
+    url: PRODUCT_ADD_INFORMATION_ROUTES.BOX_CONTENT,
+  },
+  {
     title: "Відгуки",
     url: PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS,
   },
   {
     title: "Відео",
     url: PRODUCT_ADD_INFORMATION_ROUTES.VIDEOS,
-  },
-  {
-    title: "Інструкції",
-    url: PRODUCT_ADD_INFORMATION_ROUTES.MANUALS,
   },
 ];
 

@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { PiPhoneCall, PiTelegramLogo } from "react-icons/pi";
 import httpServices from "@/services/http";
 import style from "./FooterInfo.module.css";

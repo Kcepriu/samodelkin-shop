@@ -25,17 +25,20 @@ export const createFiltersSearchParams = (filters: IParams[]): string => {
 
 export const deleteFilter = (
   filters: IParams[],
-  idFilter: string
+  idFilter: string,
+  valueFilter: string
 ): IParams[] => {
-  return filters.filter(({ id }) => id !== idFilter);
+  return filters.filter(
+    ({ id, value }) => !(value === valueFilter && id === idFilter)
+  );
 };
 
-export const replaceFilter = (
+export const addFilter = (
   filters: IParams[],
   idFilter: string,
   newValue: string
 ): IParams[] => {
-  const newFilters = deleteFilter(filters, idFilter);
+  const newFilters = [...filters];
   newFilters.push({
     id: idFilter,
     value: newValue,
@@ -45,14 +48,17 @@ export const replaceFilter = (
 };
 
 export const addFilterToParamObj = (
-  paramsObj: { [key: string]: string },
+  paramsObj: [string, string][],
   filters: string
 ) => {
   if (!filters) return;
+
   const currentFilters = parsingFiltersSearchParams(filters);
 
-  currentFilters.map(
-    (element) =>
-      (paramsObj[`filters[characteristics][id_${element.id}]=`] = element.value)
+  currentFilters.map((element) =>
+    paramsObj.push([
+      `filters[characteristics][id_${element.id}]=`,
+      element.value,
+    ])
   );
 };

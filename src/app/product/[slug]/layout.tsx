@@ -71,7 +71,7 @@ const Layout: FC<IProps> = async ({
               productList={responseSalesLeaders.data}
               slidesPerView={{
                 ...SLIDES_PER_VIEW,
-                desktop: 4,
+                desktop: 5,
               }}
             />
           </div>

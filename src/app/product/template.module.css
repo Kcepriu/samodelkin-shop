@@ -1,4 +1,5 @@
 .wrapBreadcrumb {
-  @apply mb-4
-  md:mb-6;
+  @apply -mt-2
+  lg:-mt-3
+  mb-4;
 }

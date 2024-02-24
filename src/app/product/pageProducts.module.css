@@ -35,5 +35,6 @@
 
 .wrapButtonFilters {
   @apply block
-   lg:hidden;
+   lg:hidden
+   mb-4;
 }

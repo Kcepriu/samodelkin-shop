@@ -22,6 +22,7 @@ interface IProduct {
     images?: IResponseImages;
     videos: IVideo[];
     languages: ILanguage[];
+    boxContent: string;
     manual: IManual[];
     seo?: ISeo;
     characteristics: {
@@ -61,6 +62,7 @@ interface IManual {
   file: {
     data: IFile;
   };
+  languages: TypeLanguage;
 }
 
 interface ICharacteristic {

@@ -19,7 +19,6 @@ const SliderRecommendedProducts: FC = () => {
   useEffect(() => {
     const fetchRecommendedProducts = async (productsID: number[]) => {
       try {
-        console.log("fetch data");
         const responseFavorites = await getProductsByList(productsID);
 
         setRecommendedProducts(

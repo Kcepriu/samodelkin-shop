@@ -3,7 +3,8 @@
   w-full
   md:w-[232px]  
   lg:w-[203px]  
-  overflow-hidden;
+  overflow-hidden
+  outline outline-1 outline-red-700;
 }
 
 .wrapCard:hover {
@@ -66,9 +67,10 @@
 
 .wrapFlag {
   @apply absolute
-  bottom-0
-  right-2
-  md:right-1;
+  top-11
+  md:top-12
+
+  right-2;
 }
 
 .title {
@@ -101,12 +103,13 @@
 
 .addFavorite {
   @apply absolute 
-  p-1
-  rounded-md
-  bg-button_background_favorite
+  w-8
+  h-8
+
   block
-  top-1
-  right-1
+  top-0
+  right-0
+  
   z-10;
 }
 

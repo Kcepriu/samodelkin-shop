@@ -4,7 +4,7 @@
   items-center
   
   font-inter
-  text-size_18
+  text-size_16
   font-weight_500
   leading-line_height_21;
 }
@@ -22,17 +22,17 @@
   gap-4
   items-center
   font-inter
-  text-size_16
+  text-size_14
   font-weight_400
   leading-line_height_21;
 }
 
 .checkbox {
-  @apply w-6
-  h-6;
+  @apply w-4
+  h-4;
 }
 
-.buttonFilter {
+/* .buttonFilter {
   @apply w-full
   p-1
   text-left
@@ -44,4 +44,4 @@
   text-size_16
   font-weight_400
   leading-line_height_22;
-}
+} */

@@ -2,6 +2,8 @@
 
 import { FC } from "react";
 import IconComponent from "@/components/IconComponent/IconComponent";
+import { getNameLanguage } from "@/helpers/getImageFlag";
+import { TypeLanguage } from "@/types/generalTypes/language.type";
 import style from "./FilterList.module.css";
 
 interface IProps {
@@ -10,6 +12,7 @@ interface IProps {
     id: string;
     value: string;
   }[];
+
   handleClickFilter: (
     filterId: string,
     filterValue: string,
@@ -22,10 +25,10 @@ const FilterList: FC<IProps> = ({
   currentFilters,
   handleClickFilter,
 }) => {
-  const foundFilter = currentFilters.find(
-    (element) => element.id === filter.id
-  );
-  const currentFilter = foundFilter?.value || "";
+  const valuesCurrentFilter = currentFilters
+    .filter((element) => element.id === filter.id)
+    .map((element) => element.value);
+
   const { attributes } = filter;
 
   return (
@@ -37,6 +40,10 @@ const FilterList: FC<IProps> = ({
 
       <form className={style.listFilters}>
         {attributes.value.map((element) => {
+          const inCurrentFilter = !!valuesCurrentFilter.find(
+            (value) => value === element
+          );
+
           return (
             <label key={element} className={style.elementFilter}>
               <input
@@ -44,17 +51,15 @@ const FilterList: FC<IProps> = ({
                 className={style.checkbox}
                 name={element}
                 value={element}
-                checked={currentFilter === element}
-                data-is-active={currentFilter === element}
+                checked={inCurrentFilter}
+                data-is-active={inCurrentFilter}
                 onChange={() =>
-                  handleClickFilter(
-                    filter.id,
-                    element,
-                    currentFilter === element
-                  )
+                  handleClickFilter(filter.id, element, inCurrentFilter)
                 }
               />
-              {element}
+              {filter.id !== "language"
+                ? element
+                : getNameLanguage(element as TypeLanguage)}
             </label>
           );
         })}

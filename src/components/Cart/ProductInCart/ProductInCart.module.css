@@ -7,7 +7,7 @@
   @apply relative
   flex gap-4 
   w-full  
-  items-center;
+  items-start;
 }
 
 .wrapImage {
@@ -30,8 +30,12 @@
 .wrapContent {
   @apply grow 
   h-full
-  md:mt-7
-  md:py-8;
+  md:py-8
+  
+  font-roboto
+  text-size_20  
+  font-weight_400
+  leading-line_height_17;
 }
 
 .wrapTitle {
@@ -45,7 +49,7 @@
   font-inter
   
   text-size_18  
-  font-weight_700
+  font-weight_500
   leading-line_height_21;
 }
 
@@ -74,12 +78,7 @@
 .wrapDetails {
   @apply flex 
   gap-20
-  
-  items-center
-  font-roboto
-  text-size_20  
-  font-weight_300
-  leading-line_height_17;
+  items-center;
 }
 
 .wrapPrice {

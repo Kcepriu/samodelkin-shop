@@ -78,6 +78,9 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
           1440: {
             slidesPerView: slidesPerView.desktop,
             spaceBetween: 24,
+            pagination: {
+              enabled: false,
+            },
           },
         }}
       >

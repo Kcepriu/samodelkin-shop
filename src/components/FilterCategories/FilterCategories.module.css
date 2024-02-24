@@ -2,27 +2,26 @@
   @apply text-blue_title
   lg:text-black
   font-inter
-  text-size_20
-  font-weight_400
+  text-size_18
+  font-weight_500
   leading-line_height_21
-  text-center  
-    
-  lg:text-left;
+  text-left
+  lg:hidden;
 }
 
 .listCategory {
   @apply mt-6
-  lg:mt-4 
+  lg:mt-0 
   
   flex 
   flex-col 
-  gap-3 
+  gap-2 
   items-stretch;
 }
 
 .buttonCategory {
   @apply px-6 
-  py-4
+  py-[12px]
   w-full 
   text-left
 
