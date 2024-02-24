@@ -79,17 +79,19 @@ class HttpService {
     category: string;
     filters: string;
   }): Promise<IResponseProduct | null> {
-    const paramsObj: { [key: string]: string } = {
-      "pagination[pageSize]": this.countPageOnPage,
-      "pagination[page]": page,
-      "filters[isDisable][$ne]": "true",
-    };
+    const paramsObj: [string, string][] = [
+      ["pagination[pageSize]", this.countPageOnPage],
+      ["pagination[page]", page],
+      ["filters[isDisable][$ne]", "true"],
+    ];
 
-    if (category !== "") paramsObj["filters[categories][slug][$eq]"] = category;
-    if (category !== "") paramsObj["filters[categories][slug][$eq]"] = category;
+    if (category !== "")
+      paramsObj.push(["filters[categories][slug][$eq]", category]);
+
     addFilterToParamObj(paramsObj, filters);
 
     const params = new URLSearchParams(paramsObj);
+
     const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS}?${params}`;
 
     try {

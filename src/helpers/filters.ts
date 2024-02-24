@@ -29,7 +29,7 @@ export const deleteFilter = (
   valueFilter: string
 ): IParams[] => {
   return filters.filter(
-    ({ id, value }) => id !== idFilter && value !== valueFilter
+    ({ id, value }) => !(value === valueFilter && id === idFilter)
   );
 };
 
@@ -48,14 +48,17 @@ export const addFilter = (
 };
 
 export const addFilterToParamObj = (
-  paramsObj: { [key: string]: string },
+  paramsObj: [string, string][],
   filters: string
 ) => {
   if (!filters) return;
+
   const currentFilters = parsingFiltersSearchParams(filters);
 
-  currentFilters.map(
-    (element) =>
-      (paramsObj[`filters[characteristics][id_${element.id}]=`] = element.value)
+  currentFilters.map((element) =>
+    paramsObj.push([
+      `filters[characteristics][id_${element.id}]=`,
+      element.value,
+    ])
   );
 };
