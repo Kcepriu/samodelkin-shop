@@ -10,15 +10,15 @@
 }
 
 .elementCard {
-  @apply min-w-[144px];
+  @apply min-w-[157px]
+  /* max-w-[157px]; */;
 }
 
 .typeInfo {
   @apply px-3
   /* min-w-full */
-  min-w-[144px]
-  sm:min-w-[144px]
-  md:min-w-[144px] 
+  min-w-[157px]
+  sm:min-w-[157px]
 
   h-[50px]
   

@@ -1,5 +1,5 @@
 .listFlag {
-  @apply flex gap-2;
+  @apply flex gap-6;
 }
 
 .flag {
@@ -14,6 +14,6 @@
 }
 
 .image {
-  @apply w-[27px]
-  h-[20px];
+  @apply w-[41px]
+  h-[32px];
 }

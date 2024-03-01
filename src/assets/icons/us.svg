@@ -1,0 +1,25 @@
+<svg width="41" height="32" viewBox="0 0 41 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_1480_32225" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="41" height="32">
+<rect width="41" height="32" fill="white"/>
+</mask>
+<g mask="url(#mask0_1480_32225)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M-0.0609131 0.26123V31.7391H41.0609V0.26123H-0.0609131Z" fill="#2E42A5"/>
+<mask id="mask1_1480_32225" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-1" y="0" width="43" height="32">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M-0.0609131 0.26123V31.7391H41.0609V0.26123H-0.0609131Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_1480_32225)">
+<mask id="mask2_1480_32225" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="41" height="32">
+<rect width="41" height="32" fill="white"/>
+</mask>
+<g mask="url(#mask2_1480_32225)">
+<path d="M-4.63953 29.4905L4.40944 33.3965L41.2664 4.50818L46.0396 -1.29618L36.363 -2.60167L21.3299 9.84713L9.22982 18.2347L-4.63953 29.4905Z" fill="#F8F8F8"/>
+<path d="M-3.40088 32.2268L1.20915 34.4935L44.3254 -1.83577H37.8524L-3.40088 32.2268Z" fill="#F50100"/>
+<path d="M45.6399 29.4905L36.5909 33.3965L-0.266083 4.50818L-5.0392 -1.29618L4.63736 -2.60167L19.6705 9.84713L31.7705 18.2347L45.6399 29.4905Z" fill="#F8F8F8"/>
+<path d="M45.3312 31.4545L40.7211 33.7212L22.3618 18.1667L16.9186 16.4289L-5.49844 -1.27637H0.974575L23.3791 16.0086L29.3302 18.0925L45.3312 31.4545Z" fill="#F50100"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.6451 -2.36133H25.3545V9.0266H43.6663V23.2666H25.3545V34.3628H15.6451V23.2666H-2.5957V9.0266H15.6451V-2.36133ZM2.54452 14.2729V18.0203H15.6451V14.2729H2.54452ZM25.3545 14.2729V18.0203H38.5261V14.2729H25.3545Z" fill="#F8F8F8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M25.3544 -2.36157H15.6451V10.7542H-2.5957V21.2468H15.6451V34.3626H25.3544V21.2468H43.6663V10.7542H25.3544V-2.36157Z" fill="#F50100"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.6451 10.7542H-2.5957V21.2468H15.6451V34.3626H25.3544V21.2468H43.6663V10.7542H25.3544V-2.36157H15.6451V10.7542ZM18.2152 0.261582V13.3774H-0.0255904V18.6237H18.2152V31.7394H22.7843V18.6237H41.0962V13.3774H22.7843V0.261582H18.2152Z" fill="#F8F8F8"/>
+</g>
+</g>
+</g>
+</svg>

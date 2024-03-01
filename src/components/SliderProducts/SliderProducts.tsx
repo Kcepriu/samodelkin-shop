@@ -22,9 +22,14 @@ interface IProps {
     mobile: number;
     mobile_small: number;
   };
+  addAction?: () => void;
 }
 
-const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
+const SliderProducts: FC<IProps> = ({
+  productList,
+  slidesPerView,
+  addAction = undefined,
+}) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -87,7 +92,7 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
         {productList.map((product) => (
           <SwiperSlide key={product.id}>
             <div className={style.elementCard}>
-              <ProductCard product={product} />
+              <ProductCard product={product} addAction={addAction} />
             </div>
           </SwiperSlide>
         ))}

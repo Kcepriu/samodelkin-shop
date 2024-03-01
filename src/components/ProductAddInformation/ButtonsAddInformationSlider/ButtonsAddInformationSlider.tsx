@@ -51,14 +51,18 @@ const ButtonsAddInformationSlider: FC<IProps> = ({
           280: {
             slidesPerView: 2,
             spaceBetween: 8,
+            // centeredSlides: false,
           },
           320: {
             slidesPerView: 2,
-            spaceBetween: 8,
+            spaceBetween: 16,
+            width: 157,
+            // centeredSlides: false,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 32,
+            // centeredSlides: false,
           },
         }}
       >

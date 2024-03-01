@@ -98,6 +98,7 @@ const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
   }
 
   const products = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.CART, []);
+
   return {
     isAuth: false,
     products,

@@ -9,7 +9,9 @@
   lg:w-[818px]
   lg:max-w-[818px]
   
-   h-full_screen
+  /* max-h-full_screen */
+  h-fit
+  max-h-screen
   
   md:h-fit
   md:max-h-[70%]
@@ -17,7 +19,7 @@
   py-6
   px-5
   
-  md:py-8
+  md:py-10
   md:pl-10
   md:pr-9
 
@@ -57,11 +59,10 @@
 
 .wrapTotalSum {
   @apply mt-6 
-  text-left
-  md:pr-28
+  text-left  
   md:text-right
 
-  font-roboto
+  font-inter
   text-size_24  
   font-weight_600
   md:font-weight_500
@@ -79,13 +80,14 @@
 
   justify-between
   
-  pt-3
   mt-3
   md:mt-20
+  
+  pt-3
   md:pt-0
-
+  
   lg:pl-11
-  lg:pr-11 
+  lg:pr-9 
   
   font-inter
   text-size_18  

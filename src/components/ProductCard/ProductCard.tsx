@@ -11,9 +11,10 @@ import styles from "./ProductCard.module.css";
 
 interface IProps {
   product: IProduct;
+  addAction?: () => void;
 }
 
-const ProductCard: FC<IProps> = ({ product }) => {
+const ProductCard: FC<IProps> = ({ product, addAction = undefined }) => {
   const { attributes } = product;
   const images = attributes.images?.data;
 
@@ -70,12 +71,16 @@ const ProductCard: FC<IProps> = ({ product }) => {
                 Ціна {formatPrice(attributes.price)} ₴
               </p>
 
-              <ButtonAddProductToCart product={product} />
+              <ButtonAddProductToCart product={product} addAction={addAction} />
             </div>
           </div>
         </div>
         <div className={styles.wrapButtonMobile}>
-          <ButtonAddProductToCart product={product} bigButton />
+          <ButtonAddProductToCart
+            product={product}
+            bigButton
+            addAction={addAction}
+          />
         </div>
       </div>
     </div>

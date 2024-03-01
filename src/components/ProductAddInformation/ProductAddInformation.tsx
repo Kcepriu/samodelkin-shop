@@ -41,10 +41,6 @@ const ProductAddInformation: FC<IProps> = async ({
       ? String(paginationReviews.total)
       : "";
   const countManuals = manuals.length > 0 ? String(manuals.length) : "";
-  const urlToManuals = getUrlAddInformation(
-    PRODUCT_ADD_INFORMATION_ROUTES.MANUALS,
-    slug
-  );
 
   const findUrl = Object.values(PRODUCT_ADD_INFORMATION_ROUTES).find(
     (element) => element === currentUrlInfo
