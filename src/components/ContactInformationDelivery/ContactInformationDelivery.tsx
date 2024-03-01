@@ -155,6 +155,7 @@ const ContactInformationDelivery: FC<IProps> = ({
               error={touched.firstName && Boolean(errors.firstName)}
               helperText={touched.firstName && errors.firstName}
               className={style.inputFields}
+              size="small"
             />
             <TextField
               fullWidth
@@ -167,6 +168,7 @@ const ContactInformationDelivery: FC<IProps> = ({
               error={touched.lastName && Boolean(errors.lastName)}
               helperText={touched.lastName && errors.lastName}
               className={style.inputFields}
+              size="small"
             />
           </div>
           <div className={style.lineContacts}>
@@ -181,6 +183,7 @@ const ContactInformationDelivery: FC<IProps> = ({
               error={touched.phone && Boolean(errors.phone)}
               helperText={touched.phone && errors.phone}
               className={style.inputFields}
+              size="small"
             />
             <TextField
               fullWidth
@@ -193,6 +196,7 @@ const ContactInformationDelivery: FC<IProps> = ({
               error={touched.email && Boolean(errors.email)}
               helperText={touched.email && errors.email}
               className={style.inputFields}
+              size="small"
             />
           </div>
         </div>
@@ -224,6 +228,7 @@ const ContactInformationDelivery: FC<IProps> = ({
                 error={touched.city && Boolean(errors.city)}
                 helperText={touched.city && errors.city}
                 className={style.inputFields}
+                size="small"
               />
               <TextField
                 fullWidth
@@ -236,6 +241,7 @@ const ContactInformationDelivery: FC<IProps> = ({
                 error={touched.postOffice && Boolean(errors.postOffice)}
                 helperText={touched.postOffice && errors.postOffice}
                 className={style.inputFields}
+                size="small"
               />
             </div>
           )}

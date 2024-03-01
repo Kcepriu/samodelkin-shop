@@ -78,8 +78,9 @@ const ProductInCart: FC<IProps> = ({ rowCart, onClose, deleteProduct }) => {
                   <PiTrash className={style.icon} size={24} />
                 </button>
               </div>
+
               <div className={style.wrapInformationMobile}>
-                <p>{formatPrice(rowCart.price)} ₴</p>
+                <p>Ціна: {formatPrice(rowCart.price)} ₴</p>
               </div>
 
               <div className={style.wrapChangeLanguage}>

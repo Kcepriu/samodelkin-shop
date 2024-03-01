@@ -13,9 +13,14 @@ import style from "./ButtonAddProductToCart.module.css";
 interface IProps {
   product: IProduct;
   bigButton?: boolean;
+  addAction?: () => void;
 }
 
-const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
+const ButtonAddProductToCart: FC<IProps> = ({
+  product,
+  bigButton,
+  addAction = undefined,
+}) => {
   const cart = useStore(useCart, (state) => state.products);
   const { CartComponent, setShowModal } = useCartComponent();
 
@@ -26,7 +31,10 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
 
   const handleAddToCart = async () => {
     if (isInCart) {
+      // if (!!addAction) addAction();
+      console.log("Before1");
       setShowModal(true);
+      console.log("After");
       return;
     }
 
@@ -36,7 +44,11 @@ const ButtonAddProductToCart: FC<IProps> = ({ product, bigButton }) => {
         ? product.attributes.languages[0]
         : defaultLanguage
     );
-    setShowModal(true);
+
+    if (!addAction) setShowModal(true);
+
+    console.log("Before");
+    // if (!!addAction) addAction();
     return;
   };
 

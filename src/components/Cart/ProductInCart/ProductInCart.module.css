@@ -99,7 +99,7 @@
 }
 
 .icon {
-  @apply text-gray_our;
+  @apply text-black;
 }
 
 .buttonDelete:hover .icon {
