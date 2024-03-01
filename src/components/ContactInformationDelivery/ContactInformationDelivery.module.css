@@ -9,17 +9,21 @@
 }
 
 .form {
-  @apply mt-6;
+  @apply mt-4
+  font-inter;
 }
 
 .wrapContacts {
-  @apply flex flex-col gap-3
+  @apply flex 
+  flex-col 
+  gap-3
+  pb-3
+  
   text-size_14
   font-weight_500
   leading-line_height_71
   
-  border-b
-  pb-3;
+  border-b;
 }
 
 .wrapDeliveryService {
@@ -44,20 +48,29 @@
   md:gap-12 
   w-full 
   justify-between 
-  min-h-[80px];
+  min-h-[64px];
 }
 
 .inputFields {
-  /* @apply w-[320px]; */
-  @apply w-full;
+  @apply w-full
+  
+  px-[14px]
+  py-3
+  font-inter
+  text-size_12
+  font-weight_500
+  leading-line_height_50;
 }
 .inputComment {
   @apply w-full;
 }
 
 .input {
-  @apply px-4 py-3
-  border 
+  @apply border 
   border-light_gray
   rounded-md;
+}
+
+.input input {
+  @apply px-4 py-3;
 }

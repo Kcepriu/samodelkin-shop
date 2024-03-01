@@ -40,7 +40,7 @@ const CountProductChange: FC<IProps> = ({ rowCart }) => {
         <AiOutlineMinusCircle size={24} className={style.icon} />
       </button>
 
-      <p>{count}</p>
+      <p className={style.count}>{count}</p>
 
       <button type="button" onClick={() => handleChangeCount(1)}>
         <AiOutlinePlusCircle size={24} className={style.icon} />

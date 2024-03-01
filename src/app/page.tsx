@@ -68,11 +68,9 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
               </div>
             </section>
           )}
-
           <section className={style.section} data-is-slider={true}>
             <RevisedProducts />
           </section>
-
           {responseReviews && responseReviews.data.length > 0 && (
             <section className={style.section} data-selected={true}>
               <h2 className={style.titleSection} data-hidden-mobile={true}>

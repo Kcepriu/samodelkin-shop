@@ -32,51 +32,46 @@
   h-full
   md:py-8
   
-  font-roboto
+  font-inter
   text-size_20  
   font-weight_400
   leading-line_height_17;
 }
 
 .wrapTitle {
-  @apply flex justify-between items-baseline
-  /* w-[400px]
-  lg:w-[715px]; */;
+  @apply flex justify-between items-baseline;
 }
 
 .title {
   @apply text-left
+
   font-inter
-  
-  text-size_18  
+  text-size_20  
   font-weight_500
   leading-line_height_21;
 }
 
 .wrapChangeLanguage {
-  @apply flex gap-2 items-center
-  mt-4
-  font-roboto
-  text-size_20  
-  font-weight_300
-  leading-line_height_17;
+  @apply max-w-[100px]
+  mt-4;
 }
 
 .wrapInformation {
   @apply grow
   mt-4
-  hidden
-  md:block;
+  md:mt-6;
 }
 
 .wrapInformationMobile {
   @apply mt-4
+  
   block
   md:hidden;
 }
 
 .wrapDetails {
-  @apply flex 
+  @apply hidden
+  md:flex 
   gap-20
   items-center;
 }
@@ -92,7 +87,9 @@
 }
 
 .totalSum {
-  @apply font-weight_500;
+  @apply text-size_18  
+  md:text-size_20   
+  font-weight_500;
 }
 
 .buttonDelete {

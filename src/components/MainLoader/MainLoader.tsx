@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
-
 import styles from "./MainLoader.module.css";
 
 const MainLoader: FC = () => {

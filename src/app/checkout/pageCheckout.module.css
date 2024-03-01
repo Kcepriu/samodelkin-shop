@@ -1,13 +1,15 @@
 .wrapTitle {
   @apply py-3
   border-b
-  border-light_blue
+border-light_blue
   w-full
   md:w-[713px];
 }
 
 .title {
-  @apply text-size_22
+  @apply font-robotoSerif
+  text-size_22  
+  md:text-size_32  
   font-weight_600
   leading-line_height_60;
 }

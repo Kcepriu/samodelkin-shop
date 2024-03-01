@@ -23,6 +23,7 @@ import {
 import { IAboutUserStore } from "@/types/aboutUser.types";
 
 import style from "./ContactInformationDelivery.module.css";
+import "./ContactInformationDelivery.css";
 
 interface IProps {
   deliveryServices: IDeliveryServices[];

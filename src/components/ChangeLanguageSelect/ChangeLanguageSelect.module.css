@@ -1,0 +1,12 @@
+.item {
+  @apply flex 
+  flex-col
+  gap-3;
+}
+
+.menuList {
+  @apply flex 
+  flex-col  
+  gap-3
+  pl-1;
+}
