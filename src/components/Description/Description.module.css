@@ -26,11 +26,15 @@
   items-center
   
   before:content-['']
-  before:bg-cover
-  before:bg-[url('@/assets/icons/dice_six.svg')]  
+  before:bg-cover  
+  before:bg-[url('/images/dice_six.svg')]  
   before:w-6
   before:min-w-[24px]
   before:h-6
   before:min-h-[24px]
   before:block;
+
+  /* &::before {
+    background-image: url("/public/dice_six.svg");
+  } */
 }

@@ -4,6 +4,7 @@ import TitleDescription from "./TitleDescription/TitleDescription";
 import ContentDescription from "./ContentDescription/ContentDescription";
 import ContentWithImageDescription from "./ContentWithImageDescription/ContentWithImageDescription";
 import ImageDescription from "./ImageDescription/ImageDescription";
+import backgroundImage from "@/assets/icons/dice_six.svg";
 
 import { TypeArticles } from "@/types/generalTypes/articles.type";
 
