@@ -4,14 +4,17 @@ import { FC } from "react";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import TitleDescription from "../TitleDescription/TitleDescription";
 import { breakpoints } from "@/constants/breakpoints";
+import { ITitleArticle } from "@/types/articles.types";
 import style from "./ContentWithImageDescription.module.css";
 
 interface IProps {
   params: IContentImageArticle;
+  elementTitle?: ITitleArticle;
 }
 
-const ContentWithImageDescription: FC<IProps> = ({ params }) => {
+const ContentWithImageDescription: FC<IProps> = ({ params, elementTitle }) => {
   const image = params.image;
   const matches = useMediaQuery(`(min-width:${breakpoints.desktop}px)`);
 
@@ -22,12 +25,12 @@ const ContentWithImageDescription: FC<IProps> = ({ params }) => {
         style={
           matches
             ? {
-                backgroundColor: "tomato",
                 width: `${100 - params.percentImage}%`,
               }
             : {}
         }
       >
+        {!!elementTitle && <TitleDescription params={elementTitle} />}
         <Markdown>{params.content}</Markdown>
       </div>
 

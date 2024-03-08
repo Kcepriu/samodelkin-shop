@@ -5,22 +5,17 @@ import ContentDescription from "./ContentDescription/ContentDescription";
 import ContentWithImageDescription from "./ContentWithImageDescription/ContentWithImageDescription";
 import ImageDescription from "./ImageDescription/ImageDescription";
 
-import {
-  TypeArticles,
-  TypeDescription,
-} from "@/types/generalTypes/articles.type";
+import { TypeArticles } from "@/types/generalTypes/articles.type";
 
 import { ITitleArticle, TArticleGeneral } from "@/types/articles.types";
 import style from "./Description.module.css";
 
 interface IProps {
   content: TArticleGeneral[];
-  type: TypeDescription;
   isFirstTitleInSection?: boolean;
 }
 const Description: FC<IProps> = ({
   content,
-  type,
   isFirstTitleInSection = false,
 }) => {
   let numberSection = 0;
@@ -31,7 +26,7 @@ const Description: FC<IProps> = ({
       {content.map((element, index) => {
         // * Title
         if (element.__component === TypeArticles.Title) {
-          if (isFirstTitleInSection && numberSection > 0) {
+          if (isFirstTitleInSection && numberSection === 0 && !elementTitle) {
             elementTitle = element;
             return null;
           }
@@ -79,7 +74,14 @@ const Description: FC<IProps> = ({
 
         // * ContentImage
         if (element.__component === TypeArticles.ContentImage) {
+          let newElementTitle;
+          if (!!elementTitle) {
+            newElementTitle = elementTitle;
+            elementTitle = undefined;
+          }
+
           numberSection++;
+
           return (
             <div
               key={index}
@@ -88,7 +90,7 @@ const Description: FC<IProps> = ({
             >
               <ContentWithImageDescription
                 params={element}
-                //elementTitle={elementTitle}
+                elementTitle={newElementTitle}
               />
             </div>
           );
