@@ -79,7 +79,7 @@ const ProductInCheckout: FC<IProps> = ({ rowCart, deleteProduct }) => {
 
       <div className={style.wrapDetailsMobile}>
         <div className={style.wrapCountMobile}>
-          <div>Кількість: {rowCart.count} шт.</div>
+          <div className={style.titleCount}>Кількість: {rowCart.count} шт.</div>
           <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
         </div>
 

@@ -19,7 +19,7 @@ const PagePaymentDelivery: FC = async (): Promise<JSX.Element> => {
 
   return (
     <GeneralInfoPage
-      titlePage="Оплата і доставка"
+      titlePage=""
       content={content}
       type={TypeDescription.GeneralPage}
       isPage

@@ -41,7 +41,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
               <Link
                 className={style.countReviews}
-                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}#review`}
               >
                 <PiChatText size={24} />
                 {countReview}
@@ -92,7 +92,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
               <Link
                 className={style.countReviews}
-                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}#review`}
               >
                 <PiChatText size={24} />
                 {countReview}

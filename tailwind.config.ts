@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { breakpoints } from "./src/constants/breakpoints";
 
 const config: Config = {
   content: [
@@ -40,18 +41,19 @@ const config: Config = {
         modal_overlay: "#1B1919",
       },
       screens: {
-        xs: "320px",
+        xs: `${breakpoints.small_mobile}px`,
         // => @media (min-width: 320px) { ... }
 
-        sm: "414px",
-        // => @media (min-width: 480px) { ... }
+        sm: `${breakpoints.mobile}px`,
+        // => @media (min-width: 414px) { ... }
 
-        md: "768px",
+        md: `${breakpoints.tablet}px`,
         // => @media (min-width: 768px) { ... }
 
-        lg: "1440px",
-        // => @media (min-width: 1280px) { ... }
+        lg: `${breakpoints.desktop}px`,
+        // => @media (min-width: 1440px) { ... }
       },
+
       margin: {
         describe_big: "80px",
         describe_big_after_title: "32px",

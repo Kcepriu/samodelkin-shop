@@ -5,72 +5,91 @@ import ContentDescription from "./ContentDescription/ContentDescription";
 import ContentWithImageDescription from "./ContentWithImageDescription/ContentWithImageDescription";
 import ImageDescription from "./ImageDescription/ImageDescription";
 
-import { TypeArticles } from "@/types/generalTypes/articles.type";
-import { TArticleGeneral } from "@/types/articles.types";
-import { TypeDescription } from "@/types/generalTypes/articles.type";
+import {
+  TypeArticles,
+  TypeDescription,
+} from "@/types/generalTypes/articles.type";
+
+import { ITitleArticle, TArticleGeneral } from "@/types/articles.types";
 import style from "./Description.module.css";
 
 interface IProps {
   content: TArticleGeneral[];
   type: TypeDescription;
+  isFirstTitleInSection?: boolean;
 }
-const Description: FC<IProps> = ({ content, type }) => {
-  let countAfterTitile = 2;
+const Description: FC<IProps> = ({
+  content,
+  type,
+  isFirstTitleInSection = false,
+}) => {
+  let numberSection = 0;
+  let elementTitle: ITitleArticle | undefined = undefined;
 
   return (
     <>
       {content.map((element, index) => {
         // * Title
         if (element.__component === TypeArticles.Title) {
-          countAfterTitile = 0;
+          if (isFirstTitleInSection && numberSection > 0) {
+            elementTitle = element;
+            return null;
+          }
 
-          return <TitleDescription key={index} params={element} />;
-        }
-        // * Content
-        if (element.__component === TypeArticles.Content) {
-          countAfterTitile++;
+          numberSection++;
+
           return (
             <div
-              className={style.wrapContent}
               key={index}
-              data-after-title={countAfterTitile === 1}
-              data-about-us={type === TypeDescription.GeneralPage}
-              data-category={type === TypeDescription.Category}
-              data-product={type === TypeDescription.Product}
+              className={style.wrapTitle}
+              data-is-first-section={numberSection === 1}
+            >
+              <TitleDescription params={element} />
+            </div>
+          );
+        }
+
+        // * Content
+        if (element.__component === TypeArticles.Content) {
+          numberSection++;
+          return (
+            <div
+              key={index}
+              className={style.wrapContent}
+              data-is-first-section={numberSection === 1}
             >
               <ContentDescription params={element} />
             </div>
           );
         }
+
         // * Image
         if (element.__component === TypeArticles.Image) {
-          countAfterTitile++;
+          numberSection++;
           return (
             <div
-              className={style.wrapContent}
               key={index}
-              data-after-title={countAfterTitile === 1}
-              data-about-us={type === TypeDescription.GeneralPage}
-              data-category={type === TypeDescription.Category}
-              data-product={type === TypeDescription.Product}
+              className={style.wrapContent}
+              data-is-first-section={numberSection === 1}
             >
               <ImageDescription params={element} />
             </div>
           );
         }
+
         // * ContentImage
         if (element.__component === TypeArticles.ContentImage) {
-          countAfterTitile++;
+          numberSection++;
           return (
             <div
-              className={style.wrapContent}
               key={index}
-              data-after-title={countAfterTitile === 1}
-              data-about-us={type === TypeDescription.GeneralPage}
-              data-category={type === TypeDescription.Category}
-              data-product={type === TypeDescription.Product}
+              className={style.wrapContent}
+              data-is-first-section={numberSection === 1}
             >
-              <ContentWithImageDescription params={element} />
+              <ContentWithImageDescription
+                params={element}
+                //elementTitle={elementTitle}
+              />
             </div>
           );
         }

@@ -73,6 +73,7 @@ const ChangeLanguageSelect: FC<IProps> = ({ rowCart }) => {
       <Select
         options={availableLanguages}
         defaultValue={currentLanguage}
+        isSearchable={false}
         onChange={handleChangeLanguage}
         // menuIsOpen={true}
         menuPlacement="top"

@@ -9,13 +9,14 @@
 }
 
 .form {
-  @apply mt-6;
+  @apply mt-10
+  md:mt-0;
 }
 
 .lineContacts {
   @apply flex 
   flex-col
-  gap-3 
+  gap-4 
   w-full
   md:min-h-[80px]
   lg:max-w-[50%];

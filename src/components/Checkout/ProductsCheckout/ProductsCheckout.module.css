@@ -1,5 +1,6 @@
 .wrapComponent {
-  @apply mt-4
+  @apply relative
+  mt-0
   md:mt-0
   lg:py-7 
   lg:pl-6 
@@ -14,10 +15,20 @@
 }
 
 .title {
-  @apply font-robotoSerif
+  @apply hidden
+  lg:block
+  font-robotoSerif
   text-size_28 
   font-weight_500 
   leading-line_height_17;
+}
+
+.buttonClean {
+  @apply absolute
+  -top-11
+  md:-top-12
+  right-0
+  lg:static;
 }
 
 .icon {
@@ -29,7 +40,7 @@
 }
 
 .wrapProduct {
-  @apply mt-5   
+  @apply lg:mt-5   
   text-black
   flex flex-col gap-5
   max-h-[100%]
@@ -40,7 +51,7 @@
 .wrapDelivery {
   @apply mt-6 
   flex 
-  flex-col
+  flex-row
   gap-4
   md:flex-row
   justify-between 
@@ -51,13 +62,12 @@
 }
 
 .wrapTotal {
-  @apply mt-4
+  @apply mt-6
   md:mt-7
   flex 
-  justify-start
+  justify-between
   items-center
   gap-2
-  md:justify-between
   
   text-size_24
   font-weight_600

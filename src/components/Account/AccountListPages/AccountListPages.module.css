@@ -1,5 +1,8 @@
 .listPage {
-  @apply flex flex-col gap-3 
+  @apply flex 
+  flex-col 
+  gap-3
+  md:gap-2
   w-full
   md:w-[226px];
 }
@@ -13,10 +16,12 @@
   gap-3
   h-full
   w-full
-  p-2  
+  py-3 
+  px-2
+  items-center 
   text-black
   font-inter
-  text-size_18
+  text-size_16
   font-weight_400
   leading-line_height_21
 

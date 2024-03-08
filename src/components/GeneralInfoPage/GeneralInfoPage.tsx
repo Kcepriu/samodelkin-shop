@@ -23,15 +23,15 @@ const GeneralInfoPage: FC<IProps> = async ({
 
   return (
     <>
-      {!!isPage ? (
+      {!!titlePage && !!isPage && (
         <h1 className={style.titleSection}>{titlePage}</h1>
-      ) : (
+      )}
+
+      {!!titlePage && !isPage && (
         <h2 className={style.titleSection}>{titlePage}</h2>
       )}
 
-      <div className={style.wrapSection}>
-        <Description content={content} type={type} />
-      </div>
+      <Description content={content} type={type} />
     </>
   );
 };

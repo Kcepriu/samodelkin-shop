@@ -3,18 +3,26 @@
   gap-3
   md:gap-6   
   flex-col
+  items-center
   
   lg:data-[reverse=false]:flex-row
-  lg:data-[reverse=true]:flex-row-reverse;
+  lg:data-[reverse=true]:flex-row-reverse
+  w-full;
 }
 
-.wrapContent .wrapText {
+.wrapText {
   @apply overflow-hidden 
-  flex flex-col justify-center;
+  flex 
+  flex-col 
+  justify-center
+  gap-3
+  w-full;
 }
 
 .wrapImage {
-  @apply overflow-hidden;
+  @apply overflow-hidden
+  w-full
+  md:w-[50%];
 }
 
 .image {
