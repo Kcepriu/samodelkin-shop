@@ -20,11 +20,7 @@
 
   lg:flex-row
   gap-6
-  lg:gap-11
-  
-  /* outline
-  outline-1
-  outline-red-700; */;
+  lg:gap-11;
 }
 
 .wrapContactInformation {

@@ -3,6 +3,7 @@ import { FC, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { PiArrowCircleLeft, PiArrowCircleRight } from "react-icons/pi";
+import { breakpoints } from "@/constants/breakpoints";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
 
@@ -59,7 +60,7 @@ const SliderProducts: FC<IProps> = ({
         modules={[Navigation, Pagination]}
         className="mySwiperProduct"
         breakpoints={{
-          320: {
+          [breakpoints.small_mobile]: {
             slidesPerView: slidesPerView.mobile_small,
             spaceBetween: 8,
             pagination: {
@@ -73,14 +74,14 @@ const SliderProducts: FC<IProps> = ({
               enabled: true,
             },
           },
-          768: {
+          [breakpoints.tablet]: {
             slidesPerView: slidesPerView.tablet,
             spaceBetween: 12,
             pagination: {
               enabled: false,
             },
           },
-          1440: {
+          [breakpoints.desktop]: {
             slidesPerView: slidesPerView.desktop,
             spaceBetween: 24,
             pagination: {

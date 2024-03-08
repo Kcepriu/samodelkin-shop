@@ -1,3 +1,5 @@
 .wrapContent {
-  /* @apply mt-20 data-[after-title=true]:mt-8; */
+  @apply flex 
+  flex-col 
+  gap-3;
 }

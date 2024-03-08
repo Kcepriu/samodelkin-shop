@@ -1,8 +1,12 @@
 .button {
-  @apply font-roboto 
+  @apply font-inter
   font-weight_300
-  text-size_18 leading-line_height_17
+  text-size_18 
+  leading-line_height_17
+  text-black
+  
   underline
   underline-offset-1
+  visited:text-black
   hover:text-blue_action;
 }

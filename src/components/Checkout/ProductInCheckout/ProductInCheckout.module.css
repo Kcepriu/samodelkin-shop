@@ -16,7 +16,9 @@
 
 .wrapImage {
   @apply block 
-  max-w-[173px]
+  w-[94px]
+  min-w-[94px]
+  
   sm:w-[173px]
   sm:min-w-[173px]
   
@@ -69,9 +71,19 @@
 
 .wrapDetails {
   @apply hidden
-  md:flex justify-between
-  mt-4 gap-2
+  md:flex 
+  justify-between
+  gap-2
+  mt-4 
   grow;
+}
+
+.titleCount {
+  @apply font-roboto
+  text-size_14  
+  md:text-size_16
+  font-weight_300
+  leading-line_height_17;
 }
 
 .totalSum {
@@ -92,14 +104,18 @@
 
 .wrapDetailsMobile {
   @apply mt-2
-  flex justify-between
-   gap-2
+  flex 
+  justify-between
+  gap-2
   grow
-
-
+  
   md:hidden;
 }
 
 .wrapCountMobile {
-  @apply flex gap-14;
+  @apply flex 
+  justify-between
+  items-center
+  w-full
+  gap-14;
 }

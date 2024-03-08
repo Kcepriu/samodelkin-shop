@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import httpServices from "@/services/http";
 import Description from "../Description/Description";
-import { TypeDescription } from "@/types/generalTypes/articles.type";
 import { PiArrowLineDown } from "react-icons/pi";
 import { getImageFlag } from "@/helpers/getImageFlag";
 import style from "./ProductAddInfoDescription.module.css";
@@ -26,7 +25,6 @@ const ProductAddInfoDescription: FC<IPros> = async ({
       {!!respProductDescription && respProductDescription.data.length > 0 && (
         <Description
           content={respProductDescription.data[0].attributes.content}
-          type={TypeDescription.Product}
         />
       )}
 

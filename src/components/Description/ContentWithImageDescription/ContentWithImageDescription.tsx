@@ -1,30 +1,48 @@
+"use client";
 import { IContentImageArticle } from "@/types/articles.types";
 import { FC } from "react";
-import Markdown from "react-markdown";
-// import Markdown from "markdown-to-jsx";
-
 import Image from "next/image";
+import Markdown from "react-markdown";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import TitleDescription from "../TitleDescription/TitleDescription";
+import { breakpoints } from "@/constants/breakpoints";
+import { ITitleArticle } from "@/types/articles.types";
 import style from "./ContentWithImageDescription.module.css";
 
 interface IProps {
   params: IContentImageArticle;
+  elementTitle?: ITitleArticle;
 }
 
-const ContentWithImageDescription: FC<IProps> = ({ params }) => {
+const ContentWithImageDescription: FC<IProps> = ({ params, elementTitle }) => {
   const image = params.image;
+  const matches = useMediaQuery(`(min-width:${breakpoints.desktop}px)`);
 
   return (
     <div className={style.wrapContent} data-reverse={params.reverseDirection}>
       <div
-        className={`${style.wrapText} w-full lg:w-[${
-          100 - params.percentImage
-        }%]`}
+        className={style.wrapText}
+        style={
+          matches
+            ? {
+                width: `${100 - params.percentImage}%`,
+              }
+            : {}
+        }
       >
+        {!!elementTitle && <TitleDescription params={elementTitle} />}
         <Markdown>{params.content}</Markdown>
       </div>
 
       <div
-        className={`${style.wrapImage} w-full lg:w-[${params.percentImage}%]`}
+        className={style.wrapImage}
+        style={
+          matches
+            ? {
+                width: `${params.percentImage}%`,
+              }
+            : {}
+        }
       >
         {image && image.data && (
           <Image
@@ -34,7 +52,7 @@ const ContentWithImageDescription: FC<IProps> = ({ params }) => {
             height={0}
             width={0}
             // priority={true}
-            sizes="(max-width: 1440px) 30vw, (max-width: 768px) 50vw,  100vw"
+            sizes={`(max-width: ${breakpoints.desktop}px) 30vw, (max-width: ${breakpoints.tablet}px) 50vw,  100vw`}
           />
         )}
       </div>

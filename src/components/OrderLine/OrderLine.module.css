@@ -9,6 +9,18 @@
   leading-line_height_50;
 }
 
+.wrapLeft {
+  @apply flex 
+  flex-col
+  md:flex-row
+  justify-between 
+  items-center
+
+  gap-3
+  md:gap-10
+  lg:gap-64;
+}
+
 .titleSumma {
   @apply text-gray_our
   mb-2;

@@ -20,7 +20,7 @@ const AddReview: FC<IProps> = ({ product }) => {
 
   return (
     <>
-      <div>
+      <div id="review">
         <button className={style.button} onClick={handleCreateReview}>
           Залишити відгук
           <div className={style.wrapIcon}>

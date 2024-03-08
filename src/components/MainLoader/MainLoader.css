@@ -1,0 +1,28 @@
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+}
+.loader:after {
+  content: "";
+  background: #243650;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+
+  transform-origin: -34px -64px;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0%,
+  100% {
+    transform: rotate(-45deg) translate(-50%, -50%);
+  }
+  50% {
+    transform: rotate(-245deg) translate(-50%, -50%);
+  }
+}

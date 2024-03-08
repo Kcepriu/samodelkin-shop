@@ -1,7 +1,6 @@
 import { FC } from "react";
 import httpServices from "@/services/http";
 import Description from "../Description/Description";
-import { TypeDescription } from "@/types/generalTypes/articles.type";
 import style from "./CategoryDescription.module.css";
 
 interface IProps {
@@ -24,10 +23,7 @@ const CategoryDescription: FC<IProps> = async ({
   return (
     <section className={style.wrapSection}>
       <div className={style.wrapContent}>
-        <Description
-          content={CategoryDescription}
-          type={TypeDescription.Category}
-        />
+        <Description content={CategoryDescription} />
       </div>
     </section>
   );

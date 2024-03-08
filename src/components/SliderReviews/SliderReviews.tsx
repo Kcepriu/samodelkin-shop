@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Zoom } from "swiper/modules";
 import ReviewOne from "../Reviews/ReviewOne/ReviewOne";
 import { getProductReviews, getUserReviews } from "@/services/serverActionHttp";
+import { breakpoints } from "@/constants/breakpoints";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -72,15 +73,15 @@ const SliderReviews: FC<IProps> = ({
         className="mySwiperReviews"
         onReachEnd={handleLoadMore}
         breakpoints={{
-          480: {
+          [breakpoints.mobile]: {
             slidesPerView: 1,
             spaceBetween: 10,
           },
-          768: {
+          [breakpoints.tablet]: {
             slidesPerView: 1,
             spaceBetween: 24,
           },
-          1440: {
+          [breakpoints.desktop]: {
             slidesPerView: 1,
             spaceBetween: 24,
           },

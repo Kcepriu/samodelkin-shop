@@ -18,13 +18,17 @@ const OrderLine: FC<IProps> = ({ order }) => {
 
   return (
     <div className={style.wrapOrder}>
-      <p>
-        №{id} від {formatDateOrder(Date.parse(attributes.date))}
-      </p>
-      <div>
-        <p className={style.titleSumma}>Сумма замовлення</p>
-        <p>{formatPrice(attributes.totalSum)} ₴</p>
+      <div className={style.wrapLeft}>
+        <p>
+          №{id} від {formatDateOrder(Date.parse(attributes.date))}
+        </p>
+
+        <div>
+          <p className={style.titleSumma}>Сумма замовлення</p>
+          <p>{formatPrice(attributes.totalSum)} ₴</p>
+        </div>
       </div>
+
       <Image src={urlImage} alt={titleProduct} width={64} height={60} />
     </div>
   );

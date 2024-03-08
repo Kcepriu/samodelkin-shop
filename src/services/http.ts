@@ -323,7 +323,7 @@ class HttpService {
   async getLastReviews(category?: string): Promise<IResponseReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.LAST_REVIEWS}`;
 
-    const filterCategory = category ? `?category=${category}` : "";
+    const filterCategory = category ? `?category=${category}` : "?count=2";
 
     try {
       const res = await fetch(url + filterCategory);
