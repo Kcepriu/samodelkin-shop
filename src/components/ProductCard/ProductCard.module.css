@@ -152,5 +152,6 @@
 
 .wrapButtonMobile {
   @apply block
-  md:hidden;
+  md:hidden
+  pb-3;
 }

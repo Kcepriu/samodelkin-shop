@@ -1,13 +1,13 @@
 .titleSection {
   @apply font-robotoSerif
-  text-size_32
+  text-size_28
   font-weight_500
   leading-line_height_17;
 }
 
 .wrapSwiper {
-  @apply mt-5
-  md:mt-8
+  @apply mt-3
+  md:mt-6
   
   w-full 
   sm:max-w-screen-sm 
