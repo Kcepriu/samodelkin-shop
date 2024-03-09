@@ -7,6 +7,9 @@ import SliderProducts from "@/components/SliderProducts/SliderProducts";
 import Reviews from "@/components/Reviews/Reviews";
 import SliderReviews from "@/components/SliderReviews/SliderReviews";
 import RevisedProducts from "@/components/RevisedProducts/RevisedProducts";
+import ProductList from "@/components/ProductList/ProductList";
+import ProductListLoadMore from "@/components/ProductListLoadMore/ProductListLoadMore";
+import ButtonOpenMobileFilters from "@/components/ButtonOpenMobileFilters/ButtonOpenMobileFilters";
 import httpServices from "@/services/http";
 import { setSeo } from "@/helpers/setSeo";
 import { SLIDES_PER_VIEW } from "@/constants/app-keys.const";
@@ -24,15 +27,25 @@ export async function generateMetadata() {
 }
 
 const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
-  const responseProducts = await httpServices.getSalesLeaders();
+  const responseSalesLeaders = await httpServices.getSalesLeaders();
   const responseReviews = await httpServices.getLastReviews();
   const responseMainPage = await httpServices.getMainPage();
   const responseFilters = await httpServices.getFilters("");
+  const responseProducts = await httpServices.getProducts({});
 
   const banner =
     !!responseMainPage && !!responseMainPage.data.attributes.banner.data
       ? responseMainPage.data.attributes.banner.data[0].attributes.url
       : heroImage;
+
+  const paginationProducts = responseProducts?.meta?.pagination;
+
+  const products =
+    responseProducts && responseProducts.data.length > 0
+      ? responseProducts.data
+      : [];
+
+  const pageCount = responseProducts?.meta?.pagination.pageCount || 1;
 
   return (
     <>
@@ -56,24 +69,48 @@ const App: FC<IParams> = async ({ searchParams }): Promise<JSX.Element> => {
             />
           </section>
 
-          {responseProducts && responseProducts.data.length > 0 && (
-            <section className={style.section} data-is-slider={true}>
+          {products.length > 0 && (
+            <section className={style.section}>
+              <div className={style.wrapButtonFilters}>
+                {!!responseFilters && responseFilters.data.length > 0 && (
+                  <ButtonOpenMobileFilters filters={responseFilters?.data} />
+                )}
+              </div>
+
+              <ProductList productList={products} />
+
+              {pageCount > 1 && (
+                <div className={style.wrapLoadMore}>
+                  <ProductListLoadMore
+                    categoryId=""
+                    paginationProducts={paginationProducts}
+                    filters=""
+                  />
+                </div>
+              )}
+            </section>
+          )}
+
+          {responseSalesLeaders && responseSalesLeaders.data.length > 0 && (
+            <section className={style.section} data-is-slider>
               <h2 className={style.titleSection}>Лідери продажу</h2>
 
               <div className={style.wrapSwiper}>
                 <SliderProducts
-                  productList={responseProducts.data.slice(0, 4)}
+                  productList={responseSalesLeaders.data.slice(0, 4)}
                   slidesPerView={SLIDES_PER_VIEW}
                 />
               </div>
             </section>
           )}
-          <section className={style.section} data-is-slider={true}>
+
+          <section className={style.section} data-is-slider>
             <RevisedProducts />
           </section>
+
           {responseReviews && responseReviews.data.length > 0 && (
-            <section className={style.section} data-selected={true}>
-              <h2 className={style.titleSection} data-hidden-mobile={true}>
+            <section className={style.section} data-selected>
+              <h2 className={style.titleSection} data-hidden-mobile>
                 Відгуки
               </h2>
               <div className={style.wrapReviewsSlider}>

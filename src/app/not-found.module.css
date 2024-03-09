@@ -1,6 +1,8 @@
 .wrapContent {
   @apply flex 
   flex-col-reverse
+  items-center
+  
   md:flex-row
   justify-end 
   md:mt-10;
@@ -27,6 +29,7 @@
   @apply mt-3
   w-full
   md:w-[370px]
+  text-left
   font-inter
   text-size_17
   md:text-size_18
@@ -49,7 +52,7 @@
 }
 
 .image {
-  @apply w-full
+  @apply w-[220px]
   md:w-[300px]
   lg:w-[463px];
 }

@@ -99,11 +99,13 @@
   md:mt-6
   font-inter
   text-size_32
+  md:text-size_24
   font-weight_500
-  leading-line_height_21;
+  leading-line_height_22;
 }
 .currency {
-  @apply text-size_32;
+  @apply text-size_32
+  md:text-size_24;
 }
 
 .wrapAvailable {

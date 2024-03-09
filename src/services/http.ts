@@ -75,9 +75,9 @@ class HttpService {
     category = "",
     filters = "",
   }: {
-    page: string;
-    category: string;
-    filters: string;
+    page?: string;
+    category?: string;
+    filters?: string;
   }): Promise<IResponseProduct | null> {
     const paramsObj: [string, string][] = [
       ["pagination[pageSize]", this.countPageOnPage],
