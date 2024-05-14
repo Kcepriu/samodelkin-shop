@@ -15,22 +15,20 @@ const RatingStar: FC<IProps> = ({ rating, maxRating = 5 }) => {
         return ind < rating ? (
           <Image
             key={ind}
-            // className={style.image}
+            className={style.star}
             src={imgStar}
             alt="star"
-            height={24}
-            width={24}
-            className={style.star}
+            height={16}
+            width={16}
           />
         ) : (
           <Image
             key={ind}
-            // className={style.image}
+            className={style.star}
             src={imgStarEmpty}
             alt="empty star"
-            height={24}
-            width={24}
-            className={style.star}
+            height={16}
+            width={16}
           />
         );
       })}

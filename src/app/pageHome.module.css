@@ -22,6 +22,10 @@
   @apply w-full max-w-[924px];
 }
 
+.wrapLoadMore {
+  @apply mt-5;
+}
+
 .wrapAllProducts {
   @apply mt-4
   md:mt-8
@@ -29,6 +33,7 @@
   md:w-[290px]
   lg:hidden;
 }
+
 .buttonToAllProduct {
   @apply block
   p-[14px] 
@@ -50,17 +55,16 @@
 }
 
 .section {
-  @apply mt-6
-  md:mt-12
-  
+  @apply mt-10
+
   data-[is-slider=true]:-mx-3
   data-[is-slider=true]:px-3
   data-[is-slider=true]:overflow-x-hidden;
 }
 
 .wrapSwiper {
-  @apply mt-5
-  md:mt-8  
+  @apply mt-3
+  md:mt-6  
   w-full 
   sm:max-w-screen-sm 
   md:max-w-screen-md 
@@ -81,10 +85,16 @@
 
 .titleSection {
   @apply font-robotoSerif
-  text-size_32
+  text-size_28
   font-weight_500
   leading-line_height_17  
   text-left
   data-[hidden-mobile=true]:hidden
   md:block;
+}
+
+.wrapButtonFilters {
+  @apply block
+   lg:hidden
+   mb-4;
 }

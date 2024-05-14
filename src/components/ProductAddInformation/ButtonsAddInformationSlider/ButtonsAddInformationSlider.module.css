@@ -1,29 +1,27 @@
 .listTypesInfo {
   @apply block    
-
     w-full
     md:w-[700px]
-    
 
     font-inter 
-    text-size_20 
+    text-size_16 
     font-weight_400 
     leading-line_height_21;
 }
 
 .elementCard {
-  @apply min-w-[174px];
+  @apply min-w-[157px]
+  /* max-w-[157px]; */;
 }
 
 .typeInfo {
   @apply px-3
   /* min-w-full */
-  min-w-[174px]
-  sm:min-w-[174px]
-  md:min-w-[210px] 
+  min-w-[157px]
+  sm:min-w-[157px]
 
-  h-[60px]
-  md:h-24  
+  h-[50px]
+  
   
   border 
   rounded-lg 

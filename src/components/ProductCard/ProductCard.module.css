@@ -2,8 +2,7 @@
   @apply relative  
   w-full
   md:w-[232px]  
-  lg:w-[292px]  
-
+  lg:w-[203px]  
   overflow-hidden;
 }
 
@@ -13,15 +12,19 @@
 
 .card {
   @apply relative
-  flex flex-col   
+  flex 
+  flex-col   
   w-full 
   max-h-full
   
-  h-[420px]
-  min-h-[420px] 
+  h-[470px]
+  min-h-[470px] 
   
-  md:h-[550px] 
-  md:min-h-[550px] 
+  md:h-[420px] 
+  md:min-h-[420px] 
+
+  lg:h-[400px] 
+  lg:min-h-[400px] 
   
   text-left
   rounded-xl
@@ -35,8 +38,8 @@
   h-[211px]
   min-h-[211px]
 
-  md:h-[340px]
-  md:min-h-[340px];
+  md:h-[221px]
+  md:min-h-[221px];
 }
 
 .wrapBottom {
@@ -44,10 +47,6 @@
   flex-col justify-between
   p-2
   
-  md:pt-6
-  md:pb-5
-  md:px-2
-
   grow
   font-robotoSerif
   text-size_14 
@@ -57,7 +56,7 @@
 
 .image {
   @apply h-[211px]
-  md:h-80 
+  md:h-[221px]
   w-auto 
   ml-auto 
   mr-auto 
@@ -67,18 +66,21 @@
 
 .wrapFlag {
   @apply absolute
-  -bottom-1
-  lg:-bottom-3
-  right-2
-  md:right-6;
+  top-11
+  md:top-12
+
+  right-2;
 }
 
 .title {
   @apply text-left
   font-inter
-  text-size_16 
-  lg:text-size_20 
-  font-weight_600
+  text-size_16    
+  font-weight_400
+
+  lg:text-size_14 
+  lg:font-weight_500
+
   leading-line_height_21;
 }
 
@@ -100,12 +102,13 @@
 
 .addFavorite {
   @apply absolute 
-  p-1
-  rounded-md
-  bg-button_background_favorite
+  w-8
+  h-8
+
   block
-  top-1
-  right-1
+  top-0
+  right-0
+  
   z-10;
 }
 
@@ -118,9 +121,7 @@
 }
 
 .typeProduct {
-  @apply mt-4
-  hidden
-  md:block
+  @apply mt-4  
   text-gray_our;
 }
 
@@ -128,15 +129,17 @@
   @apply font-inter
   text-size_20 
   font-weight_500
-  md:font-weight_400
-  leading-line_height_21
-  text-blue_action;
+  md:text-size_16 
+  md:font-weight_600
+  
+  
+  leading-line_height_21;
 }
 
 .wrapPriceMobile {
   @apply block
   md:hidden
-  mb-3;
+  mt-2;
 }
 
 .wrapPrice {
@@ -149,5 +152,6 @@
 
 .wrapButtonMobile {
   @apply block
-  md:hidden;
+  md:hidden
+  pb-3;
 }

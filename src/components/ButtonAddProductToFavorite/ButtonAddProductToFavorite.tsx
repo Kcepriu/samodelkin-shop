@@ -7,14 +7,12 @@ import style from "./ButtonAddProductToFavorite.module.css";
 
 interface IProps {
   product: IProduct;
-  size?: number;
-  sizeIcon?: number;
+  isEmptyIcon?: boolean;
 }
 
 const ButtonAddProductToFavorite: FC<IProps> = ({
   product,
-  size = 24,
-  sizeIcon = 24,
+  isEmptyIcon = false,
 }) => {
   const favorites = useStore(useFavorite, (state) => state.favorites);
   const [addFavorite, deleteFavorite] = useFavorite((state) => [
@@ -34,18 +32,18 @@ const ButtonAddProductToFavorite: FC<IProps> = ({
   };
 
   return (
-    <button
-      className={`w-[${size}px] h-[${size}px]  ${style.button}`}
-      type="button"
-      onClick={handleOnClick}
-    >
-      {!!isFavorite ? (
+    <button className={style.button} type="button" onClick={handleOnClick}>
+      {!!isFavorite && <AiFillHeart className={style.iconFavorite} />}
+
+      {!isFavorite && !isEmptyIcon && (
         <AiFillHeart
-          size={sizeIcon}
-          className={`w-[${size}px] h-[${size}px] min-w-[${size}px] min-h-[${size}px] ${style.iconFavorite}`}
+          data-is-empty-icon={isEmptyIcon}
+          className={style.iconNoFavoriteFill}
         />
-      ) : (
-        <AiOutlineHeart size={sizeIcon} className={style.icon} />
+      )}
+
+      {!isFavorite && isEmptyIcon && (
+        <AiOutlineHeart className={style.iconNoFavorite} />
       )}
     </button>
   );

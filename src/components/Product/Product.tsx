@@ -37,24 +37,19 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
           <div className={style.wrapRatingCode}>
             <div className={style.wrapRating}>
-              <p>
-                Код: <span>{attributes.code}</span>
-              </p>
-
               {rating > 0 && <RatingStar rating={rating} />}
 
               <Link
                 className={style.countReviews}
-                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}#review`}
               >
                 <PiChatText size={24} />
                 {countReview}
               </Link>
             </div>
-
-            <div className={style.wrapLanguages}>
-              <FlagLanguages flags={attributes.languages} />
-            </div>
+            <p>
+              Код: <span>{attributes.code}</span>
+            </p>
           </div>
 
           <div className={style.wrapTypeProduct}>
@@ -97,29 +92,20 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
 
               <Link
                 className={style.countReviews}
-                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}`}
+                href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}${PRODUCT_ADD_INFORMATION_ROUTES.REVIEWS}#review`}
               >
                 <PiChatText size={24} />
                 {countReview}
               </Link>
             </div>
             <p>
-              code: <span>{attributes.code}</span>
+              Код: <span>{attributes.code}</span>
             </p>
           </div>
 
           <div className={style.wrapTypeProduct}>
             <ButtonsTypeProduct product={product} />
           </div>
-
-          <div className={style.wrapLanguages}>
-            <FlagLanguages flags={attributes.languages} />
-          </div>
-
-          <p className={style.price}>
-            {formatPrice(attributes.price)}
-            <span className={style.currency}>₴</span>
-          </p>
 
           <div className={style.wrapAvailable}>
             {!!attributes.available ? (
@@ -129,16 +115,22 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
             )}
           </div>
 
+          <div className={style.wrapLanguages}>
+            <FlagLanguages flags={attributes.languages} />
+          </div>
+
+          <p className={style.price}>
+            {formatPrice(attributes.price)}
+            <span className={style.currency}> ₴</span>
+          </p>
+
           <div className={style.wrapButton}>
             <div className={style.buttonCart}>
               <ButtonAddProductToCart product={product} bigButton />
             </div>
-
-            <ButtonAddProductToFavorite
-              product={product}
-              size={24}
-              sizeIcon={24}
-            />
+            <div className={style.AddProductToFavorite}>
+              <ButtonAddProductToFavorite product={product} isEmptyIcon />
+            </div>
           </div>
 
           <div className={style.wrapGeneralInformation}>
@@ -168,9 +160,13 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
             )}
           </div>
 
+          <div className={style.wrapLanguages}>
+            <FlagLanguages flags={attributes.languages} />
+          </div>
+
           <p className={style.price}>
             {formatPrice(attributes.price)}
-            <span className={style.currency}>₴</span>
+            <span className={style.currency}> ₴</span>
           </p>
 
           <div className={style.wrapButton}>
@@ -178,11 +174,9 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               <ButtonAddProductToCart product={product} bigButton />
             </div>
 
-            <ButtonAddProductToFavorite
-              product={product}
-              size={40}
-              sizeIcon={40}
-            />
+            <div className={style.AddProductToFavorite}>
+              <ButtonAddProductToFavorite product={product} isEmptyIcon />
+            </div>
           </div>
 
           <div className={style.wrapGeneralInformation}>
@@ -190,6 +184,7 @@ const Product: FC<IProps> = ({ product, rating, countReview }) => {
               <PiTruck size={24} className={style.iconGeneralInformation} />
               <p>Доставка новою поштою, укр поштою</p>
             </div>
+
             <div className={style.generalInformation}>
               <HiOutlineIdentification
                 size={24}

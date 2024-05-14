@@ -33,6 +33,8 @@ const FilterCategories: FC<IProps> = ({
     });
 
     params.delete("page");
+    params.delete("filters");
+
     if (category === "") params.delete("category");
 
     if (!!addAction) addAction();
@@ -42,7 +44,7 @@ const FilterCategories: FC<IProps> = ({
 
   return (
     <>
-      <h2 className={style.titleCategory}>{title}</h2>
+      {!!title && <h2 className={style.titleCategory}>{title}</h2>}
       <ul className={style.listCategory}>
         <li key="allCategories">
           <button

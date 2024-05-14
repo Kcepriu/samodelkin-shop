@@ -13,7 +13,7 @@
 }
 
 .wrapFooterPage {
-  @apply mt-4
+  @apply mt-6
   font-inter 
   text-size_16 
   font-weight_300 
@@ -30,7 +30,7 @@
   @apply flex 
   flex-col
   gap-2
-  mt-4;
+  mt-6;
 }
 
 .title {
@@ -39,8 +39,8 @@
 
 .link {
   @apply flex 
-  gap-1
-  align-baseline
+  gap-2
+  items-center  
   font-inter 
   text-size_16 
   font-weight_300 

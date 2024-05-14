@@ -29,7 +29,9 @@
 }
 
 .wrapMain {
-  @apply flex-grow h-full  mt-28;
+  @apply flex-grow h-full  
+  mt-[102px]
+  md:mt-[110px];
   /* 86+24 */
 }
 

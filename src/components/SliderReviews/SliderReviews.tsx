@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Zoom } from "swiper/modules";
 import ReviewOne from "../Reviews/ReviewOne/ReviewOne";
 import { getProductReviews, getUserReviews } from "@/services/serverActionHttp";
+import { breakpoints } from "@/constants/breakpoints";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -21,6 +22,7 @@ interface IProps {
   isModerator?: boolean;
   isCreateReplyReview?: boolean;
   paginationReviews?: IPagination;
+  showReply?: boolean;
 }
 
 const SliderReviews: FC<IProps> = ({
@@ -29,6 +31,7 @@ const SliderReviews: FC<IProps> = ({
   paginationReviews,
   isModerator = false,
   isCreateReplyReview = false,
+  showReply = true,
 }) => {
   const countTotalPage = paginationReviews?.pageCount || 1;
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,15 +73,15 @@ const SliderReviews: FC<IProps> = ({
         className="mySwiperReviews"
         onReachEnd={handleLoadMore}
         breakpoints={{
-          480: {
+          [breakpoints.mobile]: {
             slidesPerView: 1,
             spaceBetween: 10,
           },
-          768: {
+          [breakpoints.tablet]: {
             slidesPerView: 1,
             spaceBetween: 24,
           },
-          1440: {
+          [breakpoints.desktop]: {
             slidesPerView: 1,
             spaceBetween: 24,
           },
@@ -92,6 +95,7 @@ const SliderReviews: FC<IProps> = ({
                   review={review}
                   isModerator={isModerator}
                   isCreateReplyReview={isCreateReplyReview}
+                  showReply={showReply}
                 />
               </div>
             </div>

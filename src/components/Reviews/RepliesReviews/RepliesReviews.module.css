@@ -1,7 +1,5 @@
 .wrapReplies {
-  @apply ml-9
-  md:ml-28
-  flex 
+  @apply flex 
   flex-col 
   gap-6;
 }

@@ -29,10 +29,11 @@ const ProductAddInfoReviews: FC<IProps> = ({
               />
             </div>
             <div className={style.wrapReviewsDesktop}>
-              <Reviews reviews={reviews} isModerator isCreateReplyReview />
+              <Reviews reviews={reviews} showReply={true} />
               <ReviewsLoadMore
                 owner={{ isProduct: true, id: String(product.id) }}
                 paginationReviews={paginationReviews}
+                showReply={true}
               />
             </div>
           </>

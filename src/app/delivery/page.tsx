@@ -1,7 +1,7 @@
 import { FC } from "react";
 import httpServices from "@/services/http";
 import { TypeDescription } from "@/types/generalTypes/articles.type";
-import GeneralInfoPage from "@/components/GeneralInfoPage/GeneralInfoPage";
+import Description from "@/components/Description/Description";
 import { setSeo } from "@/helpers/setSeo";
 
 export async function generateMetadata() {
@@ -17,14 +17,7 @@ const PagePaymentDelivery: FC = async (): Promise<JSX.Element> => {
 
   const content = response.data.attributes.content;
 
-  return (
-    <GeneralInfoPage
-      titlePage="Оплата і доставка"
-      content={content}
-      type={TypeDescription.GeneralPage}
-      isPage
-    />
-  );
+  return <Description content={content} />;
 };
 
 export default PagePaymentDelivery;

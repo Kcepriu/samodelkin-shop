@@ -7,7 +7,10 @@ import {
   loadDataFromLocalStorage,
 } from "@/helpers/localStorage";
 import { nanoid } from "nanoid";
-import { convertCartToCreate } from "@/helpers/convertStructuresToBac";
+import {
+  convertCartToCreate,
+  deleteEmptyProductInCart,
+} from "@/helpers/convertStructuresToBac";
 
 interface IStateCart {
   products: ICartRow[];
@@ -36,7 +39,8 @@ const getMissingProducts = (
 
   productsFrom.forEach((rowCartFrom) => {
     const isFound = productsTo.find(
-      (rowCartTo) => rowCartFrom.product.data.id === rowCartTo.product.data.id
+      (rowCartTo) =>
+        rowCartFrom.product?.data?.id === rowCartTo.product?.data?.id
     );
 
     if (isFound) return;
@@ -72,13 +76,15 @@ const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
 
   if (isRemoteStorage) {
     let { isAuth, products } = await getCart();
+
     if (!isAuth) {
       await signOut();
       return { isAuth, productsFromLocalStorage };
     }
+    products = deleteEmptyProductInCart(products);
 
     const missingProducts = getMissingProducts(
-      productsFromLocalStorage,
+      deleteEmptyProductInCart(productsFromLocalStorage),
       products
     );
 
@@ -92,6 +98,7 @@ const fetchCartFromStorage = async (isRemoteStorage: boolean) => {
   }
 
   const products = loadDataFromLocalStorage(KEYS_LOCAL_STORAGE.CART, []);
+
   return {
     isAuth: false,
     products,
@@ -109,7 +116,7 @@ const useCart = create<IStateCart>()((set, get) => ({
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
-      (rowCart) => rowCart.product.data.id === newProduct.id
+      (rowCart) => rowCart?.product?.data?.id === newProduct.id
     );
 
     if (index !== -1) {
@@ -137,7 +144,7 @@ const useCart = create<IStateCart>()((set, get) => ({
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
-      (rowCart) => rowCart.product.data.id === changeProduct.id
+      (rowCart) => rowCart?.product?.data?.id === changeProduct.id
     );
 
     if (index !== -1) {
@@ -162,7 +169,7 @@ const useCart = create<IStateCart>()((set, get) => ({
     const newProducts = [...get().products];
 
     const index = newProducts.findIndex(
-      (rowCart) => rowCart.product.data.id === changeProduct.id
+      (rowCart) => rowCart?.product?.data?.id === changeProduct.id
     );
 
     if (index !== -1) {

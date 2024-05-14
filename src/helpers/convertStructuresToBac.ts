@@ -107,3 +107,7 @@ export const convertAboutUserToStore = (
     contactInformation,
   };
 };
+
+export const deleteEmptyProductInCart = (products: ICartRow[]): ICartRow[] => {
+  return products.filter((row) => !!row.product?.data);
+};

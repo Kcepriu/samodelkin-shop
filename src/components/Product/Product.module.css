@@ -11,7 +11,7 @@
 
   flex items-start 
   overflow-hidden
-  w-[234px]
+  w-[320px]
   md:w-[397px];
 }
 
@@ -40,7 +40,8 @@
 
 .title {
   @apply font-robotoSerif 
-    text-size_32 
+  text-size_28  
+  md:text-size_32 
     font-weight_500
     leading-line_height_16;
 }
@@ -48,34 +49,40 @@
 .wrapRatingCode {
   @apply flex 
   flex-wrap
+  gap-x-16
   gap-y-3
-  justify-between 
+  justify-between
+  md:justify-start 
   items-center
-  mt-3
-  md:mt-4
+  mt-4  
   text-gray_our
   font-inter 
-  text-size_16
-  font-weight_300
+  text-size_14
+  font-weight_400
   leading-line_height_21;
 }
+
 .wrapRating {
   @apply flex 
-  gap-4
   mr-4
+  gap-[75px]
   md:gap-16 
   items-center;
 }
 
 .countReviews {
-  @apply flex gap-1
+  @apply flex 
+  gap-1
   items-center
+   font-inter 
+  text-size_14
+  font-weight_400
+  leading-line_height_21
   hover:text-blue_action;
 }
 
 .wrapTypeProduct {
-  @apply mt-6
-  md:mt-3;
+  @apply mt-4;
 }
 
 .wrapLanguages {
@@ -83,24 +90,29 @@
   gap-2
   md:gap-3 
   items-center
+  mt-4
   md:mt-6;
 }
 
 .price {
-  @apply mt-6
+  @apply mt-4
+  md:mt-6
   font-inter
-  text-size_40
+  text-size_32
+  md:text-size_24
   font-weight_500
-  leading-line_height_21;
+  leading-line_height_22;
 }
 .currency {
-  @apply text-size_32;
+  @apply text-size_32
+  md:text-size_24;
 }
 
 .wrapAvailable {
-  @apply mt-2
-  font-robotoSerif
-  text-size_16
+  @apply mt-6
+
+  font-inter
+  text-size_14
   font-weight_400
   leading-line_height_21
   text-light_gray;
@@ -111,9 +123,12 @@
 }
 
 .wrapButton {
-  @apply flex mt-6 
+  @apply flex 
+  items-center
+  mt-4
+  md:mt-6
   gap-4
-  md:gap-10;
+  md:gap-6;
 }
 
 .buttonCart {
@@ -124,10 +139,13 @@
 
 .wrapGeneralInformation {
   @apply grow
-  flex flex-col justify-end gap-6
+  flex 
+  flex-col 
+  justify-start 
+  gap-6
   mt-6
-  font-roboto
-  text-size_16
+  font-inter
+  text-size_14
   font-weight_300
   leading-line_height_17;
 }
@@ -144,4 +162,10 @@
   h-6
   min-w-[24px]
   min-h-[24px];
+}
+
+.AddProductToFavorite {
+  @apply w-10 h-10
+  md:w-6
+  md:h-6;
 }

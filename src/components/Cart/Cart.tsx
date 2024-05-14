@@ -72,9 +72,9 @@ const Cart: FC<IProps> = ({ onClose }) => {
           </button>
         </div>
 
-        <div className={style.wrapRecommendedProducts}>
-          <SliderRecommendedProducts />
-        </div>
+        {/* <div className={style.wrapRecommendedProducts}>
+          <SliderRecommendedProducts addAction={onClose} />
+        </div> */}
       </div>
     </div>
   );

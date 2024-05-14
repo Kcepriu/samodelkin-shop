@@ -4,6 +4,8 @@ import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
 import { TAGS_DATA } from "@/constants/app-keys.const";
+import { addFilterToParamObj } from "@/helpers/filters";
+
 import {
   IResponseCreateAboutUser,
   IResponseAboutUser,
@@ -71,17 +73,25 @@ class HttpService {
   async getProducts({
     page = "1",
     category = "",
+    filters = "",
   }: {
-    page: string;
-    category: string;
+    page?: string;
+    category?: string;
+    filters?: string;
   }): Promise<IResponseProduct | null> {
-    const paramsObj: { [key: string]: string } = {
-      "pagination[pageSize]": this.countPageOnPage,
-      "pagination[page]": page,
-    };
-    if (category !== "") paramsObj["filters[categories][slug][$eq]"] = category;
+    const paramsObj: [string, string][] = [
+      ["pagination[pageSize]", this.countPageOnPage],
+      ["pagination[page]", page],
+      ["filters[isDisable][$ne]", "true"],
+    ];
+
+    if (category !== "")
+      paramsObj.push(["filters[categories][slug][$eq]", category]);
+
+    addFilterToParamObj(paramsObj, filters);
 
     const params = new URLSearchParams(paramsObj);
+
     const url = `${this.baseUrl}${BACKEND_ROUTES.PRODUCTS}?${params}`;
 
     try {
@@ -313,7 +323,7 @@ class HttpService {
   async getLastReviews(category?: string): Promise<IResponseReviews | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.LAST_REVIEWS}`;
 
-    const filterCategory = category ? `?category=${category}` : "";
+    const filterCategory = category ? `?category=${category}` : "?count=2";
 
     try {
       const res = await fetch(url + filterCategory);
@@ -1201,6 +1211,24 @@ class HttpService {
       return true;
     } catch {
       return false;
+    }
+  }
+
+  // * Filters
+  async getFilters(categoryId: string): Promise<IResponseFilter | null> {
+    let url = `${this.baseUrl}${BACKEND_ROUTES.FILTERS}`;
+    url = url + (categoryId ? `/${categoryId}` : "");
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        return null;
+      }
+
+      return res.json();
+    } catch {
+      return null;
     }
   }
 }

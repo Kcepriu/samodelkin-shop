@@ -4,13 +4,12 @@
   justify-start
   gap-3
   gap-y-6
-  lg:gap-6  
-   w-full;
+  lg:gap-x-9  
+  w-full;
 }
 
 .elementCard {
-  @apply w-half_width    
-  sm:w-[179px]  
+  @apply w-half_width      
   md:w-[234px]  
-  lg:w-[292px];
+  lg:w-[203px];
 }

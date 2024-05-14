@@ -101,6 +101,7 @@ const AccountPageInformation: FC = () => {
               error={touched.firstName && Boolean(errors.firstName)}
               helperText={touched.firstName && errors.firstName}
               className={style.inputFields}
+              size="small"
             />
             <TextField
               fullWidth
@@ -113,6 +114,7 @@ const AccountPageInformation: FC = () => {
               error={touched.lastName && Boolean(errors.lastName)}
               helperText={touched.lastName && errors.lastName}
               className={style.inputFields}
+              size="small"
             />
 
             <TextField
@@ -126,6 +128,7 @@ const AccountPageInformation: FC = () => {
               error={touched.phoneNumber && Boolean(errors.phoneNumber)}
               helperText={touched.phoneNumber && errors.phoneNumber}
               className={style.inputFields}
+              size="small"
             />
 
             <button type="submit" className={style.button}>

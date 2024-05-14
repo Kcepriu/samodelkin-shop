@@ -3,6 +3,7 @@ import { FC, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { PiArrowCircleLeft, PiArrowCircleRight } from "react-icons/pi";
+import { breakpoints } from "@/constants/breakpoints";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
 
@@ -22,9 +23,14 @@ interface IProps {
     mobile: number;
     mobile_small: number;
   };
+  addAction?: () => void;
 }
 
-const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
+const SliderProducts: FC<IProps> = ({
+  productList,
+  slidesPerView,
+  addAction = undefined,
+}) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -54,7 +60,7 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
         modules={[Navigation, Pagination]}
         className="mySwiperProduct"
         breakpoints={{
-          320: {
+          [breakpoints.small_mobile]: {
             slidesPerView: slidesPerView.mobile_small,
             spaceBetween: 8,
             pagination: {
@@ -68,23 +74,26 @@ const SliderProducts: FC<IProps> = ({ productList, slidesPerView }) => {
               enabled: true,
             },
           },
-          768: {
+          [breakpoints.tablet]: {
             slidesPerView: slidesPerView.tablet,
             spaceBetween: 12,
             pagination: {
               enabled: false,
             },
           },
-          1440: {
+          [breakpoints.desktop]: {
             slidesPerView: slidesPerView.desktop,
             spaceBetween: 24,
+            pagination: {
+              enabled: false,
+            },
           },
         }}
       >
         {productList.map((product) => (
           <SwiperSlide key={product.id}>
             <div className={style.elementCard}>
-              <ProductCard product={product} />
+              <ProductCard product={product} addAction={addAction} />
             </div>
           </SwiperSlide>
         ))}

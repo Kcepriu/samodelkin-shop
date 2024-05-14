@@ -23,11 +23,13 @@ export const getProductsByList = async (
 export const getProducts = async ({
   page = "1",
   category = "",
+  filters = "",
 }: {
   page: string;
   category: string;
+  filters: string;
 }): Promise<IResponseProduct | null> => {
-  const result = await httpServices.getProducts({ page, category });
+  const result = await httpServices.getProducts({ page, category, filters });
   return result;
 };
 

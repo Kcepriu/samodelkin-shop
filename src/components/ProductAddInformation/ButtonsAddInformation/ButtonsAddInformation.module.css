@@ -1,16 +1,16 @@
 .listTypesInfo {
   @apply flex    
-    gap-6
+    gap-4
     font-inter 
-    text-size_20 
+    text-size_16 
     font-weight_400 
     leading-line_height_21;
 }
 
 .typeInfo {
-  @apply w-[188px] 
-  min-w-[188px] 
-  h-24  
+  @apply w-[147px] 
+  min-w-[147px] 
+  h-[52px]
   
   border 
   rounded-lg 

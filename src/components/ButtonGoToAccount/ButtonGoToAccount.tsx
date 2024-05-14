@@ -7,6 +7,7 @@ import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import IconWithCount from "../IconWithCount/IconWithCount";
 import { GoPerson } from "react-icons/go";
 import { FiLogIn } from "react-icons/fi";
+import { PiArrowLineRightLight } from "react-icons/pi";
 
 import style from "./ButtonGoToAccount.module.css";
 
@@ -18,7 +19,11 @@ const ButtonGoToAccount: FC = () => {
     <>
       {!user && (
         <Link className={style.link} href={`${FRONTEND_ROUTES.SIGNIN}`}>
-          <IconWithCount Icon={FiLogIn} sizeIcon={32} className={style.icon} />
+          <IconWithCount
+            Icon={PiArrowLineRightLight}
+            sizeIcon={32}
+            className={style.icon}
+          />
         </Link>
       )}
       {!!user && (

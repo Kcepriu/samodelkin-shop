@@ -1,31 +1,36 @@
 .wrapContactInfo {
-  @apply lg:mt-6;
+  /* @apply lg:mt-6; */
 }
 
 .titleSecond {
-  @apply text-size_16
+  @apply font-inter
+  text-size_16
   font-weight_500
   leading-line_height_75;
 }
 
 .form {
-  @apply mt-6;
+  @apply mt-5
+  font-inter;
 }
 
 .wrapContacts {
-  @apply flex flex-col gap-3
+  @apply flex 
+  flex-col 
+  gap-4
+  pb-3
+  
   text-size_14
   font-weight_500
   leading-line_height_71
   
-  border-b
-  pb-3;
+  border-b;
 }
 
 .wrapDeliveryService {
-  @apply mt-5
+  @apply mt-4
   border-b
-  pb-5;
+  pb-4;
 }
 
 .wrapDelivery {
@@ -44,20 +49,29 @@
   md:gap-12 
   w-full 
   justify-between 
-  min-h-[80px];
+  /* min-h-[64px]; */;
 }
 
 .inputFields {
-  /* @apply w-[320px]; */
-  @apply w-full;
+  @apply w-full
+  
+  px-[14px]
+  py-4
+  font-inter
+  text-size_12
+  font-weight_500
+  leading-line_height_50;
 }
 .inputComment {
   @apply w-full;
 }
 
 .input {
-  @apply px-4 py-3
-  border 
+  @apply border 
   border-light_gray
   rounded-md;
+}
+
+.input input {
+  @apply px-4 py-3;
 }

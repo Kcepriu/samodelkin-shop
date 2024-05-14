@@ -10,20 +10,25 @@ interface IProps {
 }
 const OrderLine: FC<IProps> = ({ order }) => {
   const { id, attributes } = order;
-  const images = attributes.products[0].product.data.attributes.images?.data;
-  const titleProduct = attributes.products[0].product.data.attributes.title;
+  const images = attributes.products[0].product.data?.attributes.images?.data;
+  const titleProduct =
+    attributes.products[0].product.data?.attributes.title || "No title";
   const urlImage =
     images && images.length === 1 ? images[0].attributes.url : ImgNoImage;
 
   return (
     <div className={style.wrapOrder}>
-      <p>
-        №{id} від {formatDateOrder(Date.parse(attributes.date))}
-      </p>
-      <div>
-        <p className={style.titleSumma}>Сумма замовлення</p>
-        <p>{formatPrice(attributes.totalSum)} ₴</p>
+      <div className={style.wrapLeft}>
+        <p>
+          №{id} від {formatDateOrder(Date.parse(attributes.date))}
+        </p>
+
+        <div>
+          <p className={style.titleSumma}>Сумма замовлення</p>
+          <p>{formatPrice(attributes.totalSum)} ₴</p>
+        </div>
       </div>
+
       <Image src={urlImage} alt={titleProduct} width={64} height={60} />
     </div>
   );

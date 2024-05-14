@@ -1,0 +1,5 @@
+.wrapFilters {
+  @apply hidden
+  lg:block
+  mt-3;
+}

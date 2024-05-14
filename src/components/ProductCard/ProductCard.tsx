@@ -4,16 +4,17 @@ import Img from "@/assets/no_images.png";
 import Link from "next/link";
 import { FRONTEND_ROUTES } from "@/constants/app-keys.const";
 import ButtonAddProductToCart from "../ButtonAddProductToCart/ButtonAddProductToCart";
-import FlagLanguages from "../FlagLanguages/FlagLanguages";
+import FlagLanguagesInProductCard from "../FlagLanguagesInProductCard/FlagLanguagesInProductCard";
 import ButtonAddProductToFavorite from "../ButtonAddProductToFavorite/ButtonAddProductToFavorite";
 import { formatPrice } from "@/helpers/formatNumber";
 import styles from "./ProductCard.module.css";
 
 interface IProps {
   product: IProduct;
+  addAction?: () => void;
 }
 
-const ProductCard: FC<IProps> = ({ product }) => {
+const ProductCard: FC<IProps> = ({ product, addAction = undefined }) => {
   const { attributes } = product;
   const images = attributes.images?.data;
 
@@ -23,12 +24,9 @@ const ProductCard: FC<IProps> = ({ product }) => {
     <div className={styles.wrapCard}>
       <div className={styles.card} key={product.id}>
         <div className={styles.addFavorite}>
-          <ButtonAddProductToFavorite
-            product={product}
-            size={48}
-            sizeIcon={24}
-          />
+          <ButtonAddProductToFavorite product={product} />
         </div>
+
         <div className={styles.wrapTop}>
           <Link href={`${FRONTEND_ROUTES.PRODUCT}/${attributes.slug}#start`}>
             <div className={styles.wrapImage}>
@@ -44,7 +42,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
           </Link>
 
           <div className={styles.wrapFlag}>
-            <FlagLanguages flags={attributes.languages} />
+            <FlagLanguagesInProductCard flags={attributes.languages} />
           </div>
         </div>
 
@@ -54,12 +52,6 @@ const ProductCard: FC<IProps> = ({ product }) => {
           </Link>
 
           <div>
-            <div className={styles.wrapPriceMobile}>
-              <p className={styles.price}>
-                Ціна {formatPrice(attributes.price)} ₴
-              </p>
-            </div>
-
             {!!attributes.available ? (
               <p className={styles.isAvailable}>В наявності</p>
             ) : (
@@ -68,17 +60,27 @@ const ProductCard: FC<IProps> = ({ product }) => {
 
             <p className={styles.typeProduct}>Код: {attributes.code}</p>
 
+            <div className={styles.wrapPriceMobile}>
+              <p className={styles.price}>
+                Ціна {formatPrice(attributes.price)} ₴
+              </p>
+            </div>
+
             <div className={styles.wrapPrice}>
               <p className={styles.price}>
                 Ціна {formatPrice(attributes.price)} ₴
               </p>
 
-              <ButtonAddProductToCart product={product} />
+              <ButtonAddProductToCart product={product} addAction={addAction} />
             </div>
           </div>
         </div>
         <div className={styles.wrapButtonMobile}>
-          <ButtonAddProductToCart product={product} bigButton />
+          <ButtonAddProductToCart
+            product={product}
+            bigButton
+            addAction={addAction}
+          />
         </div>
       </div>
     </div>

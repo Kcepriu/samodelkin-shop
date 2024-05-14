@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { breakpoints } from "./src/constants/breakpoints";
 
 const config: Config = {
   content: [
@@ -24,6 +25,7 @@ const config: Config = {
       },
       colors: {
         text_white: "#F0F0F0",
+        white_button: "#F6F6F6",
         black: "#161718",
         light_gray: "#C1C1C1",
         gray_our: "#9A9EA2",
@@ -32,24 +34,26 @@ const config: Config = {
         blue_action: "#4488ED",
         blue_action_button: "#1673FF",
         blue_100: "#EDF5FF",
+        blue_title: "#1B00AE",
         green_main: "#398F3D",
         button_active_page: "#DDDDDD",
         button_background_favorite: "#ffffffb3",
         modal_overlay: "#1B1919",
       },
       screens: {
-        xs: "320px",
+        xs: `${breakpoints.small_mobile}px`,
         // => @media (min-width: 320px) { ... }
 
-        sm: "414px",
-        // => @media (min-width: 480px) { ... }
+        sm: `${breakpoints.mobile}px`,
+        // => @media (min-width: 414px) { ... }
 
-        md: "768px",
+        md: `${breakpoints.tablet}px`,
         // => @media (min-width: 768px) { ... }
 
-        lg: "1440px",
-        // => @media (min-width: 1280px) { ... }
+        lg: `${breakpoints.desktop}px`,
+        // => @media (min-width: 1440px) { ... }
       },
+
       margin: {
         describe_big: "80px",
         describe_big_after_title: "32px",
@@ -63,6 +67,14 @@ const config: Config = {
         itim: [`var(--font-itim)`],
       },
       fontSize: {
+        xs: "12px",
+        sm: "14px",
+        base: "16px",
+        lg: "18px",
+        xl: "20px",
+        "2xl": "24px",
+        size_12: "12px",
+        size_13: "13px",
         size_14: "14px",
         size_16: "16px",
         size_17: "17px",
@@ -70,6 +82,7 @@ const config: Config = {
         size_20: "20px",
         size_22: "22px",
         size_24: "24px",
+        size_28: "28px",
         size_32: "32px",
         size_40: "40px",
         size_150: "150px",
@@ -97,7 +110,9 @@ const config: Config = {
         line_height_25: "1.25",
         line_height_28: "1.28",
         line_height_29: "1.29",
+        line_height_30: "1.3",
         line_height_31: "1.31",
+        line_height_40: "1.4",
         line_height_50: "1.5",
         line_height_60: "1.6",
         line_height_71: "1.71",

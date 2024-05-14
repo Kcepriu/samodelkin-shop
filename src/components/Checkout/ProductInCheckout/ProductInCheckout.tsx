@@ -54,13 +54,13 @@ const ProductInCheckout: FC<IProps> = ({ rowCart, deleteProduct }) => {
               <div className={style.wrapDetails}>
                 <div>Кількість: {rowCart.count} шт.</div>
                 <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
-                <button
+                {/* <button
                   className={style.buttonDelete}
                   type="button"
                   onClick={async () => await deleteProduct(product.data)}
                 >
                   <PiTrash className={style.icon} size={18} />
-                </button>
+                </button> */}
               </div>
 
               <div className={style.wrapLanguage}>
@@ -79,17 +79,17 @@ const ProductInCheckout: FC<IProps> = ({ rowCart, deleteProduct }) => {
 
       <div className={style.wrapDetailsMobile}>
         <div className={style.wrapCountMobile}>
-          <div>Кількість: {rowCart.count} шт.</div>
+          <div className={style.titleCount}>Кількість: {rowCart.count} шт.</div>
           <p className={style.totalSum}>{formatPrice(rowCart.sum)} ₴</p>
         </div>
 
-        <button
+        {/* <button
           className={style.buttonDelete}
           type="button"
           onClick={async () => await deleteProduct(product.data)}
         >
           <PiTrash className={style.icon} size={18} />
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -9,7 +9,10 @@ import style from "./SliderRecommendedProducts.module.css";
 
 import { SLIDES_PER_VIEW } from "@/constants/app-keys.const";
 
-const SliderRecommendedProducts: FC = () => {
+interface IProps {
+  addAction: () => void;
+}
+const SliderRecommendedProducts: FC<IProps> = ({ addAction }) => {
   const cart = useStore(useCart, (state) => state.products);
 
   const [recommendedProducts, setRecommendedProducts] = useState<IProduct[]>(
@@ -19,7 +22,6 @@ const SliderRecommendedProducts: FC = () => {
   useEffect(() => {
     const fetchRecommendedProducts = async (productsID: number[]) => {
       try {
-        console.log("fetch data");
         const responseFavorites = await getProductsByList(productsID);
 
         setRecommendedProducts(
@@ -51,6 +53,7 @@ const SliderRecommendedProducts: FC = () => {
           <SliderProducts
             productList={recommendedProducts}
             slidesPerView={SLIDES_PER_VIEW}
+            addAction={addAction}
           />
         </>
       )}

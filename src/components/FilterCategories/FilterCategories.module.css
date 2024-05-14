@@ -1,33 +1,33 @@
 .titleCategory {
-  @apply text-black
+  @apply text-blue_title
+  lg:text-black
   font-inter
-  text-size_20
-  font-weight_600
-  leading-line_height_15
-  text-center  
-    
-  lg:text-left;
+  text-size_18
+  font-weight_500
+  leading-line_height_21
+  text-left
+  lg:hidden;
 }
 
 .listCategory {
   @apply mt-6
-  lg:mt-4 
-  lg:ml-3 
+  lg:mt-0 
+  
   flex 
   flex-col 
-  gap-3 
+  gap-2 
   items-stretch;
 }
 
 .buttonCategory {
-  @apply px-4 
-  py-3
+  @apply px-6 
+  py-[12px]
   w-full 
-  text-center
+  text-left
 
   text-black
   font-inter
-  text-size_18
+  text-size_16
   font-weight_400
   leading-line_height_21
 

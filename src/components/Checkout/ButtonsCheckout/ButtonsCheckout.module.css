@@ -6,11 +6,8 @@
   md:justify-between
 
   gap-6
-  mt-6
-  pb-2
-  text-size_18
-  font-weight_300
-  leading-line_height_20;
+  mt-10
+  pb-2;
 }
 
 .wrapButton .buttonCheckout {
@@ -24,13 +21,16 @@
   bg-blue_action
   text-white  
   hover:bg-blue_action_button
-  /* hover:shadow-gray-500/80
-  hover:shadow-lg   */
+  
 
-  transition;
+  transition
+  font-inter
+  text-size_18
+  font-weight_500
+  leading-line_height_21;
 }
 
-.buttonBack {
+.wrapButton .buttonBack {
   @apply flex gap-3 
   w-full
   md:w-fit
@@ -41,11 +41,20 @@
   py-3
   text-dark_blue
   hover:text-blue_action
-  transition;
+  transition
+  
+  font-inter
+  text-size_20
+  font-weight_500
+  leading-line_height_21;
 }
 
 .iconBack {
-  @apply text-dark_blue;
+  @apply text-dark_blue
+  w-8
+  h-8
+  md:w-6
+  md:h-6;
 }
 
 .buttonBack:hover .iconBack {

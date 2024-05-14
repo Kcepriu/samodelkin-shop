@@ -1,6 +1,6 @@
 .wrapComponent {
   @apply flex 
-  gap-1
+  gap-2
   justify-between 
   items-center
   text-black
@@ -10,7 +10,19 @@
   p-2;
 }
 
+.count {
+  @apply font-inter
+  text-size_20  
+  font-weight_300
+  leading-line_height_17;
+}
+
 .icon {
   @apply transition
+  w-8
+  h-8
+  md:w-6
+  md:h-6
+
    hover:text-blue_action;
 }

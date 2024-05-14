@@ -1,12 +1,13 @@
 .titleSection {
-  @apply text-center
+  @apply mb-3
+  md:mb-6
+  text-center
   font-robotoSerif
-  text-size_32
+  text-size_28
   font-weight_500
   leading-line_height_17;
 }
 
 .wrapSection {
-  @apply mt-4
-  md:mt-8;
+  @apply mt-0;
 }

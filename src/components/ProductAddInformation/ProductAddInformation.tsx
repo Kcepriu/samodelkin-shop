@@ -6,7 +6,7 @@ import ProductAddInfoReviews from "@/components/ProductAddInfoReviews/ProductAdd
 import ProductAddInfoCharacteristics from "../ProductAddInfoCharacteristics/ProductAddInfoCharacteristics";
 import ProductAddInfoDescription from "../ProductAddInfoDescription/ProductAddInfoDescription";
 import ProductAddInfoVideos from "../ProductAddInfoVideos/ProductAddInfoVideos";
-import ProductAddInfoManuals from "../ProductAddInfoManuals/ProductAddInfoManuals";
+import ProductAddInfoBoxContent from "../ProductAddInfoBoxContent/ProductAddInfoBoxContent";
 import ButtonsAddInformation from "./ButtonsAddInformation/ButtonsAddInformation";
 import ButtonsAddInformationSlider from "./ButtonsAddInformationSlider/ButtonsAddInformationSlider";
 import { getUrlAddInformation } from "@/helpers/addInformation";
@@ -41,10 +41,6 @@ const ProductAddInformation: FC<IProps> = async ({
       ? String(paginationReviews.total)
       : "";
   const countManuals = manuals.length > 0 ? String(manuals.length) : "";
-  const urlToManuals = getUrlAddInformation(
-    PRODUCT_ADD_INFORMATION_ROUTES.MANUALS,
-    slug
-  );
 
   const findUrl = Object.values(PRODUCT_ADD_INFORMATION_ROUTES).find(
     (element) => element === currentUrlInfo
@@ -75,7 +71,7 @@ const ProductAddInformation: FC<IProps> = async ({
       {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.DESCRIBE && (
         <ProductAddInfoDescription
           productId={String(product.id)}
-          urlToManuals={urlToManuals}
+          manuals={manuals}
         />
       )}
 
@@ -95,8 +91,10 @@ const ProductAddInformation: FC<IProps> = async ({
         <ProductAddInfoVideos videos={videos} />
       )}
 
-      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.MANUALS && (
-        <ProductAddInfoManuals manuals={manuals} />
+      {currentUrlInfo === PRODUCT_ADD_INFORMATION_ROUTES.BOX_CONTENT && (
+        <ProductAddInfoBoxContent
+          boxContent={product.attributes?.boxContent || ""}
+        />
       )}
     </>
   );

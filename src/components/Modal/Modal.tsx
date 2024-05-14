@@ -36,11 +36,9 @@ export const Modal: FC<Props> = ({ children, onClose, isDark = false }) => {
   );
 
   useEffect(() => {
-    console.log("Open window");
     setIsOpenModal(true);
 
     return () => {
-      console.log("Close window");
       setIsOpenModal(false);
     };
   }, []);

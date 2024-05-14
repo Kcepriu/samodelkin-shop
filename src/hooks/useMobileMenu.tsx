@@ -16,9 +16,13 @@ interface IUseMobileMenu {
 
 interface IParams {
   contentComponent: ReactNode;
+  isShowButtonCloseWindow?: boolean;
 }
 
-const useMobileMenu = ({ contentComponent }: IParams): IUseMobileMenu => {
+const useMobileMenu = ({
+  contentComponent,
+  isShowButtonCloseWindow = true,
+}: IParams): IUseMobileMenu => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const handleCloseMenu = () => {
@@ -32,7 +36,11 @@ const useMobileMenu = ({ contentComponent }: IParams): IUseMobileMenu => {
   const ModalMenuComponent = (
     <>
       {showMobileMenu && (
-        <MobileMenu onClose={handleCloseMenu} isOpen={showMobileMenu}>
+        <MobileMenu
+          onClose={handleCloseMenu}
+          isOpen={showMobileMenu}
+          isShowButtonCloseWindow={isShowButtonCloseWindow}
+        >
           {contentComponent}
         </MobileMenu>
       )}

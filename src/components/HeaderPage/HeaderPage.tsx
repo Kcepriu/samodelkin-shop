@@ -25,8 +25,8 @@ const HeaderPage: FC = async () => {
         <Image
           src={ImageLogo}
           alt="Logo Shop"
-          width={78}
-          height={78}
+          width={60}
+          height={60}
           className={style.imageLogo}
         />
       </Link>

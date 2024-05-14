@@ -1,8 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import iconTelegram from "@/assets/icons/telegram.svg";
-import { PiPhoneCall } from "react-icons/pi";
+import { PiPhoneCall, PiTelegramLogo } from "react-icons/pi";
 import httpServices from "@/services/http";
 import style from "./FooterInfo.module.css";
 
@@ -23,13 +21,7 @@ const FooterInfo: FC = async () => {
       </Link>
 
       <Link href={telegramName} target="_blank" className={style.link}>
-        <Image
-          src={iconTelegram}
-          alt="Picture of the author"
-          width={24}
-          height={24}
-        />{" "}
-        Telegram
+        <PiTelegramLogo size={24} /> Telegram
       </Link>
     </div>
   );
