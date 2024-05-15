@@ -42,6 +42,7 @@ const Products: FC<IParams> = async ({
     category: categoryId,
     filters: typeof filters === "string" ? filters : filters[0],
   });
+  console.log("🚀 ~ responseProducts:", responseProducts);
 
   const paginationProducts = responseProducts?.meta?.pagination;
 
