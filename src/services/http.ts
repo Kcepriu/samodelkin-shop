@@ -1,10 +1,13 @@
-import { NextResponse, NextRequest } from "next/server";
+import { z } from "zod";
+import { NextRequest } from "next/server";
 
 import { BACKEND_ROUTES } from "@/constants/app-keys.const";
 import { getServerSession } from "next-auth";
 import { authConfigs } from "@/configs/authConfigs";
 import { TAGS_DATA } from "@/constants/app-keys.const";
 import { addFilterToParamObj } from "@/helpers/filters";
+
+import type { TResponseAuth } from "@/types/auth.types";
 
 import {
   IResponseCreateAboutUser,
@@ -21,6 +24,8 @@ import {
   IResponseProductDescription,
   IResponseMainPage,
 } from "@/types/articles.types";
+
+import { schemaResponseAuth } from "@/schemesZod/auth.scheme";
 
 class HttpService {
   private baseUrl: string = "";
@@ -42,7 +47,7 @@ class HttpService {
   async logIn(
     identifier: string,
     password: string
-  ): Promise<IResponseAuth | null> {
+  ): Promise<TResponseAuth | null> {
     const url = `${this.baseUrl}${BACKEND_ROUTES.LOGIN}`;
     try {
       const res = await fetch(url, {
@@ -61,8 +66,11 @@ class HttpService {
         return null;
       }
 
-      return res.json();
+      const result = res.json();
+      const fetchResponseAuth = schemaResponseAuth.parse(result);
+      return fetchResponseAuth;
     } catch {
+      console.log("error login");
       return null;
     }
   }
