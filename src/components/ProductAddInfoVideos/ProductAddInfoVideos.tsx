@@ -1,4 +1,6 @@
+"use client";
 import { FC } from "react";
+import ReactPlayer from "react-player/youtube";
 import style from "./ProductAddInfoVideos.module.css";
 
 interface IProps {
@@ -18,7 +20,7 @@ const ProductAddInfoVideos: FC<IProps> = ({ videos }) => {
       {videos.map((video, index) => {
         return (
           <div key={index} className={style.wrapVideo}>
-            <iframe
+            {/* <iframe
               className={style.wrapVideo}
               width="853"
               height="480"
@@ -27,6 +29,15 @@ const ProductAddInfoVideos: FC<IProps> = ({ videos }) => {
               // frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+            /> */}
+            <ReactPlayer
+              className={style.wrapVideo}
+              width="853px"
+              height="480px"
+              url={video.url}
+              light
+              playing
+              controls
             />
           </div>
         );

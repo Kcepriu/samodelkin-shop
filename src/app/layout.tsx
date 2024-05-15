@@ -44,7 +44,7 @@ const RootLayout: FC<IProps> = ({ children }) => {
       lang="ua"
       className={`${inter.variable} ${roboto.variable} ${robotoSerif.variable} ${itim.variable}`}
     >
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <Providers>
           <div className={style.wrapBody}>
             <header className={style.header}>
