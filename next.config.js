@@ -10,6 +10,12 @@ const nextConfig = {
         port: "",
         pathname: "/dnue4gq1m/image/upload/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/dvwgw4efu/image/upload/**",
+      },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
